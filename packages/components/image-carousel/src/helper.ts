@@ -1,0 +1,14 @@
+/**
+ * 旋转数组
+ * @param length int整型 数组长度
+ * @param m int整型 右移距离
+ * @param arr int整型一维数组 给定数组
+ * @return int整型一维数组
+ */
+export const shiftCycleSolve = (length, m, arr) => {
+    if (m > length) m = m % length
+    return arr.splice(length - m, length).concat(arr)
+}
+
+export const arrowsImage =
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYCAYAAAGEp02aAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAEKADAAQAAAABAAAAGAAAAAAEJTozAAAC+ElEQVQ4EX1TXUhUQRSeue6aZT/4kq5QWCCBKeuCRNCToIm5Poi25mpPRkbP+SD0nKC9RkT1VHv9qSDYu+XWa/a6u4YFFltGSkErFhK0u83pO7N7b3c3dR5m5sz5vnPOfHNGRKLJWYHhEYIGYQiDLTYKK89PFt76/lm8i0QTxOs8UQX278EuHIaklNg2OgjbIWaeJxrY4GFGE2vCtJIjbNixdGI2hnsDHAMeK/VUb4qTIQU9Nq3EYjyequYzTQkHA2cyWbo+a6WaJfNRwsVwsPWhm1pMktGF2g4O8z2rtoSUi8PBVp1UAyTRIWZk8mrSqabI0jmR4wfsD6TEBBEVNSsgnBRgNvKRtJJziBbyGpW+UM/JrwYKBIm0ggxAsYOcJi/yQV0oplV2lA8zlgxBtvuc4uh/zmhqgpS6UeHxnnJqsEERK3mPSI1WGXsa+rubVksAkPQFyunct1/U9LU3bTLJASDfGzibT/haK9vaZM6OWJBaiHVco75cJAYVhIJTGnLCZrlXDTA84hgpmkRL3HU7ea8BQ92BT1wY0lxCf8bdIEf3vvbAJheIvj2Lqy7ZIAfAB1y9LpSoJWIl1vmsBMAHPAogWQtdViTur3B/bo4ROCIascs0E0teUUrcQin80CueIhlNpr/GjlSUNC1IXFOKGLtmCE/nhWDLO+cltmPOLy9X5tM5kwT1gwyiSIkqT1e4o+Wbjd82QMRaqhGknuXS2dMMRMaFA3WH+3vb6n/ZRHstCQDicSHUS0F/sGrinaEe/1UEUDahfHUFUOcF0QMGGNIYHwr6b/I+zNMuw/VMMo5avzBWkZo2o6mpXXiOyx3gJ/76EbnXU4c3XSKhxvnP4a0fsZgOo2zjClDwsMLh3oD/oK+2msXDdx6AmL/RyK+1uGUBXBqUeoqKd6NPDDOWuo31MsTdQB+nvV7ZEeryf2TGjgHscMUXGIM9ZsYS4/hWU7kspdHBG/CdwxXkHJyfZQW9skk7reGewDT/A2kYA6hoC9cb/Quid1XYfe4yDQAAAABJRU5ErkJggg=='

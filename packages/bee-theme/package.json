@@ -1,0 +1,15 @@
+{
+    "name": "@beeboat/bee-theme",
+    "version": "1.0.0",
+    "description": "beeboat bee-theme library",
+    "main": "index.ts",
+    "scripts": {
+        "build": "gulp"
+    },
+    "keywords": [],
+    "author": "mickey | xiukun@163.com",
+    "license": "ISC",
+    "dependencies": {
+        "@ctrl/tinycolor": "^3.4.1"
+    }
+}

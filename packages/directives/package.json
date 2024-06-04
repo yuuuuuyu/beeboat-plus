@@ -1,0 +1,12 @@
+{
+    "name": "@beeboat/directives",
+    "version": "1.0.0",
+    "description": "beeboat directives library",
+    "main": "index.ts",
+    "scripts": {
+        "build": "gulp"
+    },
+    "keywords": [],
+    "author": "mickey | xiukun@163.com",
+    "license": "ISC"
+}

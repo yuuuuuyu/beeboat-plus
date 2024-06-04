@@ -1,0 +1,96 @@
+.bt-file-mirror {
+    .bt-file-mirror__tree {
+        display: flex;
+        flex-flow: row nowrap;
+        width: 100%;
+        height: 100%;
+
+        .is-diff {
+            color: #FE9800;
+        }
+
+        .is-add {
+            color: #2CBF77;
+        }
+    }
+
+    .bt-file-mirror__code {
+        .cm-mergeView {
+            .cm-line {
+                box-sizing: border-box;
+                height: 24px;
+                padding-left: 20px;
+                font-size: 14px;
+                line-height: 22px;
+            }
+
+            .cm-content {
+                padding: 0;
+            }
+
+            .cm-merge-a {
+                .cm-changedLine {
+                    background: #fbe9eb;
+
+                    &::before {
+                        position: absolute;
+                        left: 40px;
+                        display: inline-block;
+                        color: #9bb0a1;
+                        content: "-";
+                    }
+                }
+            }
+
+            .cm-deletedChunk {
+                background: #fbe9eb;
+            }
+
+            .cm-merge-b {
+                .cm-changedLine {
+                    background: #ddfbe6;
+
+                    &::before {
+                        position: absolute;
+                        left: 40px;
+                        display: inline-block;
+                        color: #9bb0a1;
+                        content: "+";
+                    }
+                }
+            }
+
+            .cm-merge-revert {
+                button {
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    .el-dialog__header {
+        margin-right: 0;
+        border-bottom: 1px solid #dce4f2;
+    }
+
+    .el-dialog__body {
+        padding: 8px 32px;
+    }
+
+    .bt-dialog-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .bt-icon-sty {
+        width: 14px;
+        height: 14px;
+        cursor: pointer;
+    }
+
+    .bt-ml {
+        margin-left: 24px;
+    }
+}

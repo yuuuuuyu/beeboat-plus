@@ -1,0 +1,12 @@
+{
+    "name": "@beeboat/theme",
+    "version": "1.0.0",
+    "description": "beeboat theme library",
+    "main": "index.ts",
+    "scripts": {
+        "build": "gulp"
+    },
+    "keywords": [],
+    "author": "mickey | xiukun@163.com",
+    "license": "ISC"
+}

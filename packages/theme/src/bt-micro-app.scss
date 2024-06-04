@@ -1,0 +1,11 @@
+.bt-micro-app {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+:deep(.bt-micro-app) micro-app-body {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}

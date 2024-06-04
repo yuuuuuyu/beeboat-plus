@@ -1,0 +1,108 @@
+.bt-user-tool {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 300px;
+    height: 52px;
+    padding: 0 10px;
+
+    .bt-user-tool__img {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+    }
+
+
+    .bt-user-tool__img--person {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .el-badge__content {
+        top: 5px;
+    }
+}
+
+//注：el-popover组件中的样式必须拿出来，不能放到bt-user-tool里面，否则样式会不生效
+.bt-user-tool__div--message {
+    .message-title {
+        width: 100%;
+        padding-bottom: 10px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .message-all {
+        width: 100%;
+        padding-top: 10px;
+        text-align: center;
+        cursor: pointer;
+        border-top: 1px solid #ddd;
+    }
+
+    .message-item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+        font-size: 14px;
+        cursor: pointer;
+
+        &:hover {
+            color: #5C84F2;
+            background: #EEF2FF;
+        }
+
+
+        //宽度和为300
+        .message-item--icon {
+            width: 20px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        .message-item--desc {
+            width: 180px;
+            overflow: hidden;
+            text-align: center;
+            text-overflow: ellipsis;
+
+            /*强制文本在一行内显示*/
+            white-space: nowrap;
+        }
+
+        .message-item--date {
+            width: 65px;
+            margin-right: 10px;
+            margin-left: 5px;
+            font-size: 12px;
+        }
+    }
+}
+
+.bt-user-tool__div--qr {
+    width: 100%;
+    padding: 0px 25px;
+
+    .bt-user-tool__img--download {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.bt-user-tool__div--person {
+    width: 100%;
+    text-align: center;
+
+    .person--item {
+        line-height: 30px;
+        cursor: pointer;
+
+        &:hover {
+            color: #5C84F2;
+            background: #EEF2FF;
+        }
+    }
+}

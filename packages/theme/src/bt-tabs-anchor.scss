@@ -1,0 +1,65 @@
+.bt-tabs-anchor {
+    .el-tabs {
+        .el-tab-pane {
+            display: block !important;
+        }
+    }
+
+    .el-tabs.el-tabs--top {
+        display: flex;
+        flex-direction: column;
+        .el-tab-pane {
+            display: block !important;
+        }
+        .el-tabs__content {
+            flex: 1;
+            width: 100%;
+            overflow: hidden;
+        }
+    }
+
+    .el-tabs.el-tabs--bottom {
+        display: flex;
+        flex-direction: column;
+
+        .el-tab-pane {
+            display: block !important;
+        }
+
+        .el-tabs__content {
+            flex: 1;
+            width: 100%;
+            overflow: hidden;
+        }
+    }
+
+    .el-tabs.el-tabs--right {
+        display: flex;
+        flex-direction: row-reverse;
+
+        .el-tab-pane {
+            display: block !important;
+        }
+
+        .el-tabs__content {
+            flex: 1;
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+
+    .el-tabs.el-tabs--left {
+        display: flex;
+        flex-direction: row;
+
+        .el-tab-pane {
+            display: block !important;
+        }
+
+        .el-tabs__content {
+            flex: 1;
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+}

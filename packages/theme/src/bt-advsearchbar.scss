@@ -1,0 +1,256 @@
+.bt-adv-search-bar {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 80px;
+    padding-top: 24px;
+}
+
+.bt-advsearchbar {
+    position: absolute;
+    box-sizing: border-box;
+    display: block;
+    flex-wrap: wrap;
+    width: 100%;
+    height: inherit;
+    overflow: hidden;
+    background-color: white;
+
+
+    .bt-advsearchbar-toolbar {
+        position: relative;
+        box-sizing: border-box;
+        display: flex;
+        float: right;
+
+        .el-button+.el-button {
+            margin-left: 8px;
+        }
+    }
+
+    .bt-advsearchbar-item {
+        position: relative;
+        box-sizing: border-box;
+        padding-bottom: 24px;
+        background-color: white;
+    }
+
+    .bt-advsearchbar-searchitem-datetime {
+        box-sizing: border-box;
+        display: flex;
+        float: left;
+        width: 484px;
+        height: 56px;
+
+        .bt-advsearchbar-searchitem--label {
+            box-sizing: border-box;
+            width: 109px;
+            padding-right: 8px;
+            padding-left: 16px;
+            overflow: hidden;
+            font-size: 14px;
+            line-height: 32px;
+            text-align: right;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .bt-advsearchbar-searchitem--content {
+            position: relative;
+            box-sizing: border-box;
+            width: 360px;
+
+            .el-range-editor.el-input__wrapper {
+                box-sizing: border-box;
+            }
+
+            & .el-input {
+                height: 100%;
+            }
+
+            & .el-date-editor {
+                height: 100%;
+            }
+
+            & .el-select {
+                width: 100%;
+            }
+
+            .bt-advsearchbar--searchitem--remove {
+                display: none;
+            }
+
+            &:hover .bt-advsearchbar--searchitem--remove {
+                position: absolute;
+                top: 0;
+                right: -5px;
+                z-index: 10;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 14px;
+                height: 14px;
+                background-color: #8c95a8;
+                border-radius: 50%;
+
+                .item-icon--remove {
+
+                    font-size: 12px;
+                    color: #fff;
+                    cursor: pointer;
+                    transform: scale(0.6);
+                }
+            }
+        }
+    }
+
+    .bt-advsearchbar-searchitem {
+        box-sizing: border-box;
+        display: flex;
+        float: left;
+        width: 340px;
+        height: 56px;
+
+        .bt-advsearchbar-searchitem--label {
+            box-sizing: border-box;
+            width: 109px;
+            padding-right: 8px;
+            padding-left: 16px;
+            overflow: hidden;
+            font-size: 14px;
+            line-height: 32px;
+            text-align: right;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .bt-advsearchbar-searchitem--content {
+            position: relative;
+            box-sizing: border-box;
+            width: 224px;
+
+            & .el-input {
+                height: 100%;
+            }
+
+            & .el-date-editor {
+                height: 100%;
+            }
+
+            & .el-select {
+                width: 100%;
+            }
+
+            .bt-advsearchbar--searchitem--remove {
+                display: none;
+            }
+
+            &:hover .bt-advsearchbar--searchitem--remove {
+                position: absolute;
+                top: 0px;
+                right: -5px;
+                z-index: 100;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 14px;
+                height: 14px;
+                background-color: #8c95a8;
+                border-radius: 50%;
+
+                .item-icon--remove {
+
+                    font-size: 12px;
+                    color: #fff;
+                    cursor: pointer;
+                    transform: scale(0.6);
+                }
+            }
+        }
+    }
+
+    .bt-advsearchbar--expose-btn {
+        box-sizing: border-box;
+        display: flex;
+        float: left;
+        height: 56px;
+    }
+}
+
+.bt-advsearchbar--all {
+    height: auto;
+    overflow: inherit;
+    box-shadow: 0px 4px 4px 0px rgb(200 201 204 / 30%);
+}
+
+.bt-adv-search-bar.fold-index,
+.bt-advsearchbar.fold-index {
+    z-index: 10;
+    height: 80px;
+    overflow: hidden;
+}
+
+.bt-adv-search-bar.unfold-index,
+.bt-advsearchbar.unfold-index {
+    z-index: 20;
+}
+
+.bt-adv-search-bar.unfold-overflow,
+.bt-advsearchbar.unfold-overflow {
+    z-index: 20;
+    overflow: hidden;
+}
+
+.bt-advsearchbar-dialog {
+    .bt-advsearchbar-dialog--subtitle {
+        padding-bottom: 4px;
+    }
+
+    .bt-advsearchbar-dialog--container {
+        line-height: 40px;
+
+        >ul {
+            padding: 0;
+
+            >li {
+                display: inline-block;
+                list-style: none;
+            }
+        }
+
+        .bt-advsearchbar-dialog--item {
+            width: 240px;
+
+            & .el-select {
+                width: 100%;
+            }
+        }
+
+        .bt-advsearchbar-dialog--expression {
+            width: 160px;
+            margin: 0 8px;
+
+            & .el-select {
+                width: 100%;
+            }
+        }
+
+        .bt-advsearchbar-dialog--value {
+            width: 320px;
+
+            .el-range-editor.el-input__wrapper {
+                top: 3px;
+                box-sizing: border-box;
+            }
+        }
+
+        .bt-advsearchbar-dialog--delete {
+            padding-left: 8px;
+            cursor: pointer;
+        }
+    }
+
+    .bt-advsearchbar-dialog--toolbar {
+        padding-top: 4px;
+    }
+}

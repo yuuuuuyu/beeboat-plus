@@ -1,0 +1,57 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+webSite
+*.local
+
+/packages/core/es/
+/packages/core/lib/
+
+/packages/directives/es/
+/packages/directives/lib/
+
+/packages/common/es/
+/packages/common/lib/
+
+/packages/bee-theme/es/
+/packages/bee-theme/lib/
+
+/play/
+/paly/src/
+
+
+npm-debug.log*
+.pnpm-error.log*
+.pnpm-debug.log
+
+# Editor directories and files
+# .vscode/*
+# !.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+
+# vitest ignore
+tests/**/__snapshots__/
+coverage/
+.eslintcache
+
+
+
+
+
+helper.json
