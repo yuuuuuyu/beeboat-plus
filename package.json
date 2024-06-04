@@ -1,5 +1,5 @@
 {
-    "name": "beeboat",
+    "name": "beeboat-plus",
     "private": true,
     "version": "1.0.0",
     "description": "beeboat-plus repository",
@@ -100,6 +100,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://git.hive-df.com/evergrand/beeboat-repo/product/hive-boat/web/beeboat-plus.git"
+        "url": "`https://git.hive-df.com/evergrand/beeboat-repo/product/hive-boat/web/beeboat-plus.git`"
     }
 }
