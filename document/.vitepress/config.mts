@@ -1,4 +1,6 @@
 import { defineConfig } from 'vitepress'
+import nav from './config/nav'
+import sidebar from './config/sidebar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -17,24 +19,13 @@ export default defineConfig({
                 timeStyle: 'medium',
             },
         },
-        nav: [
-            { text: 'Home', link: '/' },
-            { text: 'Examples', link: '/markdown-examples' },
-        ],
+        nav: nav,
         logo: '/logo.png',
         footer: {
             copyright: 'Copyright © 2024-present yuzhiyong',
         },
-        sidebar: [
-            {
-                text: 'Examples',
-                items: [
-                    { text: 'Markdown Examples', link: '/markdown-examples' },
-                    { text: 'Runtime API Examples', link: '/api-examples' },
-                ],
-            },
-        ],
+        sidebar: sidebar,
 
-        socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
+        // socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
     },
 })
