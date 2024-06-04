@@ -1,0 +1,24 @@
+{
+  "name": "beeboat-plus-docs",
+  "version": "1.0.0",
+  "description": "beeboat-plus配套文档网站",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:serve": "vitepress serve docs",
+    "docs:preview": "vitepress preview"
+  },
+  "author": "zhiyong.yu@ytever.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@algolia/client-search": "4.9.1",
+    "search-insights": "2.14.0",
+    "vitepress": "^1.2.2"
+  },
+  "dependencies": {
+    "blueimp-md5": "^2.19.0",
+    "markdown-it-task-lists": "^2.1.1",
+    "vue": "^3.4.27"
+  }
+}
