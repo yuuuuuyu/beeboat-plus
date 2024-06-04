@@ -11,10 +11,10 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /markdown-examples
+      link: /components/
     - theme: alt
       text: API Examples
-      link: /api-examples
+      link: /markdown/api-examples
 
 features:
   - icon: 🔑
