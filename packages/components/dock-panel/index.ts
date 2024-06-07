@@ -1,7 +1,6 @@
 import { withInstall } from '@beeboat/core/with-install'
-import DockPanel from './src/dock-panel.vue'
+import DockPanel from './src/index.vue'
 
-const BtDockPanel = withInstall(DockPanel)
+const BtpDockPanel = withInstall(DockPanel)
 
-export { BtDockPanel }
-export default BtDockPanel
+export { BtpDockPanel }

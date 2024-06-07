@@ -1,0 +1,27 @@
+import { BtUseAppStore } from '@beeboat/core/store'
+
+export const useSelects = (state: any, props) => {
+    /**
+     * 加载动态选项数据
+     */
+    const loadOptionData = () => {
+        state.options = []
+        if (props.dictId) {
+            const appStore = BtUseAppStore()
+            state.options = appStore.getDictById(props.dictId as string) || []
+            state.options.forEach((item: any) => {
+                item.label = item.name
+                item.value = isNaN(parseInt(item.value)) ? item.value : parseInt(item.value)
+            })
+        } else if (props.dataApi) {
+            props.dataApi().then((res: any) => {
+                res.data.forEach((item: any) => {
+                    item.label = item[props.props.label]
+                    item.value = item[props.props.value]
+                })
+                state.options = res.data
+            })
+        }
+    }
+    return { loadOptionData }
+}

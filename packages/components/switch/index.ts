@@ -1,7 +1,6 @@
 import { withInstall } from '@beeboat/core/with-install'
-import Switch from './src/switch.vue'
+import Switch from './src/index.vue'
 
-const BtSwitch = withInstall(Switch)
+const BtpSwitch = withInstall(Switch)
 
-export { BtSwitch }
-export default BtSwitch
+export { BtpSwitch }

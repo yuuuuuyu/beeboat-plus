@@ -1,7 +1,6 @@
 import { withInstall } from '@beeboat/core/with-install'
-import Button from './src/button.vue'
+import Button from './src/index.vue'
 
-const BtButton = withInstall(Button)
+const BtpButton = withInstall(Button)
 
-export { BtButton }
-export default BtButton
+export { BtpButton }

@@ -1,77 +1,44 @@
-import BtApplication from './app'
-import { BtBaseApi, GetRequest, PostRequest } from './api'
+import BTPApplication from './app/application'
+import BTPBaseApplication from './app/base-application'
+import { BTPViewContext,BTPBaseViewContext,BTPGlobalAppManager,BTPDialogViewContext } from './view/index'
 import {
-    BtBaseHandler,
-    BtBaseApiHandler,
-    BtBaseInitHandler,
-    BtBaseMountHandler,
-    BtBaseSetupHandler,
-} from './base'
-import {
-    BtCookieCreateHandler,
-    BtStoreCreateHandler,
-    BtRouterCreateHandler,
-    BtHttpCreateHandler,
-    BtSenceHandler,
-} from './handlers'
-import {
-    BtBaseComponentContext,
-    BtBasePageContext,
-    BtBaseDialogPageContext,
-    BtBaseFormContext,
-    BtBaseTableContext,
-} from './page'
-
-import {
-    BtPageContext,
-    BtBaseContext,
-    BtComponentContext,
-    BtDialogPageContext,
-    BtFormComponentContext,
-    BtTableComponentContext,
-    BtPickerDialogPageContext,
-} from './context'
-
-import { BtMenuDataHandler, BtDictDataHandler, BtUserDataHandler } from './plugins'
+    BTPBaseHandler,
+    BTPBaseApiHandler,
+    BTPBaseInitHandler,
+    BTPBaseMountHandler,
+    BTPBaseSetupHandler,
+    BTPDictDataHandler,
+    BTPMenuDataHandler,
+    BTPUserDataHandler,
+    BTPUserSenceHandler,
+    BTPRouterCreateHandler,
+    BTPAppMountHandler,
+    BTPCookieCreateHandler,
+    BTPHttpCreateHandler,
+    BTPStoreCreateHandler,
+} from './handlers/index'
 import { BtUseAppStore } from './store'
-import * as BtUtils from './utils'
-import { BTMicroAppUtils, BtUserTokenInfo } from './utils'
-import { UseEventBus } from './hook'
 
-export default BtApplication
 export {
-    BtApplication,
-    BtBaseApi,
-    GetRequest,
-    PostRequest,
-    BtCookieCreateHandler,
-    BtBaseHandler,
-    BtBaseApiHandler,
-    BtBaseInitHandler,
-    BtBaseMountHandler,
-    BtBaseSetupHandler,
-    BtMenuDataHandler,
-    BtDictDataHandler,
-    BtHttpCreateHandler,
-    BtSenceHandler,
-    BtRouterCreateHandler,
-    BtBaseComponentContext,
-    BtBasePageContext,
-    BtBaseDialogPageContext,
-    BtBaseFormContext,
-    BtBaseTableContext,
-    BtUserDataHandler,
-    BtStoreCreateHandler,
+    BTPApplication,
+    BTPBaseApplication,
+    BTPViewContext,
+    BTPBaseViewContext,
+    BTPGlobalAppManager,
+    BTPDialogViewContext,
+    BTPBaseHandler,
+    BTPBaseApiHandler,
+    BTPBaseInitHandler,
+    BTPBaseMountHandler,
+    BTPBaseSetupHandler,
+    BTPDictDataHandler,
+    BTPMenuDataHandler,
+    BTPUserDataHandler,
+    BTPUserSenceHandler,
+    BTPRouterCreateHandler,
+    BTPAppMountHandler,
+    BTPCookieCreateHandler,
+    BTPHttpCreateHandler,
+    BTPStoreCreateHandler,
     BtUseAppStore,
-    BTMicroAppUtils,
-    BtUserTokenInfo,
-    BtUtils,
-    UseEventBus,
-    BtPageContext,
-    BtBaseContext,
-    BtComponentContext,
-    BtDialogPageContext,
-    BtFormComponentContext,
-    BtTableComponentContext,
-    BtPickerDialogPageContext,
 }

@@ -7,6 +7,5 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
-    "author": "mickey | xiukun@163.com",
-    "license": "ISC"
+    "author": "mickey | xiukun@163.com"
 }

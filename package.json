@@ -85,7 +85,6 @@
     },
     "dependencies": {
         "@beeboat/bee-theme": "workspace:^1.0.0",
-        "@beeboat/common": "workspace:^1.0.0",
         "@beeboat/components": "workspace:^1.0.0",
         "@beeboat/core": "workspace:^1.0.0",
         "@beeboat/directives": "workspace:^1.0.0",

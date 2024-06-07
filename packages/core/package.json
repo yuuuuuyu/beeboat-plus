@@ -9,7 +9,6 @@
     },
     "keywords": [],
     "author": "mickey | xiukun@163.com",
-    "license": "ISC",
     "dependencies": {
         "axios": "^0.26.1",
         "jsencrypt": "^3.2.1",

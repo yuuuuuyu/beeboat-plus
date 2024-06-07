@@ -8,7 +8,6 @@
     },
     "keywords": [],
     "author": "mickey | xiukun@163.com",
-    "license": "ISC",
     "dependencies": {
         "@ctrl/tinycolor": "^3.4.1"
     }

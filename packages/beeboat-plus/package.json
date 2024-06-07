@@ -1,6 +1,6 @@
 {
     "name": "beeboat-plus",
-    "version": "0.0.1",
+    "version": "0.0.6",
     "private": false,
     "description": "",
     "main": "lib/index.js",
@@ -10,7 +10,6 @@
     },
     "keywords": [],
     "author": "zhiyong.yu@ytever.com",
-    "license": "ISC",
     "dependencies": {
         "jsencrypt": "^3.2.1",
         "vue-cookies": "^1.8.2"

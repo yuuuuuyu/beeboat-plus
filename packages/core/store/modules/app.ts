@@ -1,6 +1,6 @@
 import { defineStore, StoreDefinition, _ActionsTree } from 'pinia'
 import { IStoreState, IStoreAction, IStoreGetters, AxiosInstance, VueCookies } from './typing'
-import BtApplication from '../../app'
+import BTPApplication from '../../app/application'
 /**
  * appStore存储数据
  */
@@ -71,7 +71,7 @@ export const BtUseAppStore: StoreDefinition<string, IStoreState, IStoreGetters, 
              * @returns `application`
              */
             getApp(): any {
-                return BtApplication.getInstance()
+                return BTPApplication.getInstance()
             },
             /**
              * token登录令牌

@@ -1,7 +1,6 @@
 import { withInstall } from '@beeboat/core/with-install'
-import Input from './src/input.vue'
+import Input from './src/index.vue'
 
-const BtInput = withInstall(Input)
+const BtpInput = withInstall(Input)
 
-export { BtInput }
-export default BtInput
+export { BtpInput }
