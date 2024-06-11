@@ -6,6 +6,7 @@ import { getEverTableCss } from './ever-table'
 import commonCss from '../theme/common/css'
 
 function setCss(text: string, themeConfig: Theme.ThemeConfig) {
+    debugger
     const id = 'ever-h3-bee-theme'
     const el = document.documentElement
 

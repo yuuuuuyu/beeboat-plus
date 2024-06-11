@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts" setup>
+import beeTheme from '@beeboat/bee-theme'
+beeTheme.start()
 
-import cookies from 'vue-cookies'
-;(cookies as any).set('mickey', '18')
-console.log(cookies.get('mickey'), 'get...')
+
 </script>
 <style>
 body {
