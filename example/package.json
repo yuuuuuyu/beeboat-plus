@@ -16,7 +16,7 @@
     "@element-plus/icons-vue": "^2.0.10",
     "axios": "^0.26.1",
     "cross-env": "^7.0.3",
-    "element-plus": "2.3.7",
+    "element-plus": "2.7.4",
     "pinia": "^2.0.18",
     "vue": "^3.2.37",
     "vue-cookies": "^1.8.2",

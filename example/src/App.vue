@@ -1,11 +1,10 @@
 <template>
-    <el-config-provider :locale="zhCn" size="default">
+    <el-config-provider size="default">
         <router-view />
     </el-config-provider>
 </template>
 
 <script lang="ts" setup>
-import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 
 import cookies from 'vue-cookies'
 ;(cookies as any).set('mickey', '18')

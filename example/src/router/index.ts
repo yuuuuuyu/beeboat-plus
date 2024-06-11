@@ -23,6 +23,15 @@ const base = [
                     hidden: true,
                 },
             },
+            {
+                path: '/tables',
+                name: 'tables',
+                component: () => import('@/views/tables/index.vue'),
+                meta: {
+                    title: '表格',
+                    hidden: true,
+                },
+            },
         ],
     },
 ]

@@ -29,13 +29,13 @@
             </slot>
         </div>
         <div class="btp-dockpanel-separator" @mousedown="onMouseDown($event)">
-            <div class="btp-dockpanel-separatorline" />
+            <div class="btp-dockpanel-separatorline"></div>
             <div
                 :class="{ 'btp-dockpanel-collapsed ': state.collapsed }"
                 class="btp-dockpanel-dock"
                 @click="state.collapsed = !state.collapsed"
             >
-                <i class="bt-icon bt-icon-unfold" />
+                <i class="bt-icon bt-icon-unfold"></i>
             </div>
         </div>
         <div class="btp-dockpanel-right">
