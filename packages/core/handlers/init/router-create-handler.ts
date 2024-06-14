@@ -4,12 +4,12 @@ import {
     RouterHistory,
     createRouter,
     createWebHashHistory,
-    createWebHistory,
 } from 'vue-router'
 import BtNProgress from '../../utils/nprogress'
 import { BtUseAppStore } from '../../store'
 import { treeToList } from '../../utils/utils'
 import BTGlobalAppManager from '../../view/global-manager'
+
 /**
  * 路由创建对象
  * @author Enmaai
@@ -23,49 +23,11 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
 
     async handle() {
         const routes = (await this.loadRemoteRouteData()) as any
-        const history = this.createHistory()
-        const scrollBehavior = this.createScrollBehavior as any
+        const router = await this.createRouterInstance()
 
-        const router: Router = createRouter({
-            history,
-            routes,
-            strict: true,
-            scrollBehavior(to, from, savedPosition) {
-                return scrollBehavior(to, from, savedPosition)
-            },
-        })
-        router.afterEach(() => {
-            this.nprogress.done()
-        })
-        router.beforeEach(async (to, _from, next) => {
-            this.nprogress.start()
-            //1.判断地址是否白名单地址
-            if (this.isWhiteUrl(to.path) || to.meta?.dynamicLoad == false) {
-                next()
-                return
-            }
-            if (this.getApp().getToken()) {
-                //2.存在登录信息则正常跳转
-                const appStore = BtUseAppStore()
-                //判断用户信息是否加载完毕
-                if (!appStore.getUser?.id) {
-                    this.getApp().options.constRoutes.map(i => {
-                        router.addRoute({ ...i })
-                    })
-                    //重新加载用户、菜单数据
-                    //重新加载用户、菜单数据
-                    await this.app.loadCacheData()
-                    //进行路由菜单权限处理
-                    this.loadRouteData(router, routes)
-                }
-                next()
-                return
-            }
-
-            next({ path: this.getLoginUrl() })
-        })
-
-        this.getApp().setRouter(router)
+        await this.addRouteBeforeListener(router,routes)
+        await this.addRouteAfterListener(router,routes)
+        await this.getApp().setRouter(router)
     }
 
     /**
@@ -75,7 +37,7 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
      * @param savedPosition 已保存位置
      * @returns 对象
      */
-    createScrollBehavior(to, from, savedPosition) {
+    createScrollBehavior(to, from, savedPosition): Promise<any> {
         return new Promise(resolve => {
             if (savedPosition) {
                 return savedPosition
@@ -88,15 +50,79 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
             }
         })
     }
+
     /**
-     * @description 初始化URL路由模式 默认hash
+     * @description 创建路由对象
+     * @returns 路由信息
+     */
+    async createRouterInstance():Promise<Router>{
+        const history = this.createHistory()
+        const routes = await this.loadRemoteRouteData()
+        const scrollBehavior = this.createScrollBehavior as any
+
+        const router = createRouter({
+            history,
+            routes,
+            strict: true,
+            scrollBehavior(to, from, savedPosition) {
+                return scrollBehavior(to, from, savedPosition)
+            },
+        })
+        return new Promise(resolve=>{
+            resolve(router)
+        })
+    }
+
+    /**
+     * @description 初始化URL路由模式
+     * @returns 历史信息
      */
     createHistory(): RouterHistory {
-        if ((this.getApp().getEnv('VITE_ROUTER_HISTORY') || 'hash') === 'hash') {
-            return createWebHashHistory()
-        } else {
-            return createWebHistory()
-        }
+        return createWebHashHistory()
+    }
+
+    /**
+     * @description 添加路由的前监听器
+     * @param router 路由
+     * @param routes 路由数据
+     */
+    addRouteBeforeListener(router: Router,routes:any): Promise<Boolean> {
+        return new Promise(resolve => {
+            router.beforeEach(async (to, _from, next) => {
+                this.nprogress.start()
+                if (this.isWhiteUrl(to.path) || to.meta?.dynamicLoad == false) {
+                    next()
+                    return
+                }
+                if (this.getApp().getToken()) {
+                    const appStore = BtUseAppStore()
+                    if (!appStore.getUser?.id) {
+                        //重新加载用户、菜单数据
+                        await this.getApp().loadCacheData()
+                        //进行路由菜单权限处理
+                        this.loadRouteData(router, routes)
+                    }
+                    next()
+                    return
+                }
+                next({ path: this.getLoginUrl() })
+            })
+            resolve(true)
+        })
+    }
+
+    /**
+     * @description 添加路由的后监听器
+     * @param router 路由
+     * @param _routes 路由数据
+     */
+    addRouteAfterListener(router: Router,_routes:any): Promise<Boolean> {
+        return new Promise(resolve => {
+            router.afterEach(() => {
+                this.nprogress.done()
+            })
+            resolve(true)
+        })
     }
 
     /**
@@ -116,19 +142,25 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
         return this.getApp()?.options?.loginPath || '/login'
     }
 
-    loadRemoteRouteData() {
-        return new Promise(resolve => {
-            fetch('./mock/route.json')
-                .then(response => response.json())
-                .then(data => {
-                    this.formatRouteView(data)
-                    this.getApp().setAllRouter(data)
-                    resolve(data)
-                })
+    /**
+     * @description 加载远程路由数据
+     * @returns 路由数据
+     */
+    loadRemoteRouteData():Promise<any> {
+        return new Promise(resolve=>{
+            BTGlobalAppManager.getHandler().loadRemoteRouteData().then(data=>{
+                this.formatRouteView(data)
+                this.getApp().setAllRouter(data)
+                resolve(data)
+            })
         })
     }
 
-    formatRouteView(routes) {
+    /**
+     * @description 格式化路由视图
+     * @param routes 路由信息
+     */
+    formatRouteView(routes) :void {
         if (routes) {
             routes.forEach(item => {
                 if (item.meta?.viewId) {

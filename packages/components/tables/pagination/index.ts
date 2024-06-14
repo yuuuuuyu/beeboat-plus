@@ -1,4 +1,4 @@
-import { withInstall } from '@beeboat/core/with-install'
+import { withInstall } from '../../with-install'
 import Pagination from './src/index.vue'
 
 const BtpPagination = withInstall(Pagination)

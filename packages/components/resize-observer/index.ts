@@ -1,4 +1,4 @@
-import { withInstall } from '@beeboat/core/with-install'
+import { withInstall } from '../with-install'
 import ResizeObserver from './src/resize-observer.vue'
 const BtpResizeObserver = withInstall(ResizeObserver)
 

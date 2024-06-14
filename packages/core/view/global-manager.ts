@@ -9,6 +9,12 @@ export default class BTPGlobalAppManager {
 
     static viewContext = {} as any
 
+    static handler = undefined as any
+
+    static registerHandler(handler){
+        this.handler = handler
+    }
+
     /**
      * 注册组件
      */
@@ -78,13 +84,7 @@ export default class BTPGlobalAppManager {
     }
 
     static getView(viewModelId: string): any {
-        return new Promise<any>(resolve => {
-            fetch(`./mock/${viewModelId}.json`)
-                .then(response => response.json())
-                .then(data => {
-                    resolve(data)
-                })
-        })
+        return this.handler.getView(viewModelId)
     }
 
     /**
@@ -114,5 +114,9 @@ export default class BTPGlobalAppManager {
             }
         })
         return datas
+    }
+
+    static getHandler(){
+        return this.handler
     }
 }
