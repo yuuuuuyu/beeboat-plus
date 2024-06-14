@@ -27,7 +27,7 @@
 <script script setup lang="ts">
 import { reactive, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import BTPApplication from '@beeboat/core/app/application'
+import { BTPApplication } from '@beeboat/core/app'
 
 defineProps({
     /**

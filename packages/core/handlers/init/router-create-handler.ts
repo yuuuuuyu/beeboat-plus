@@ -6,8 +6,6 @@ import {
     createWebHashHistory,
 } from 'vue-router'
 import BtNProgress from '../../utils/nprogress'
-import { BtUseAppStore } from '../../store'
-import { treeToList } from '../../utils/utils'
 import BTGlobalAppManager from '../../view/global-manager'
 
 /**
@@ -94,9 +92,8 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
                     next()
                     return
                 }
-                if (this.getApp().getToken()) {
-                    const appStore = BtUseAppStore()
-                    if (!appStore.getUser?.id) {
+                if (this.getCacheManager().getTokenId()) {
+                    if (!this.getCacheManager().getUserId()) {
                         //重新加载用户、菜单数据
                         await this.getApp().loadCacheData()
                         //进行路由菜单权限处理
@@ -182,17 +179,13 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
      * @param concatRouter 路由树
      */
     loadRouteData(router: any, concatRouter: any) {
-        const menuList = treeToList(BtUseAppStore().getMenuList())
-        const menuMap = {}
-        menuList.forEach(menu => {
-            menuMap[menu.routeId] = menu
-        })
         const dynamicList = []
         concatRouter.forEach((route: any) => {
             this.listDynamicRoute(route, dynamicList)
         })
+
         dynamicList.forEach((route: any) => {
-            if (!menuMap[route.meta.id]) {
+            if (!this.getCacheManager().hasMenuRouteId(route.meta.id)) {
                 router.removeRoute(route.name)
             }
         })

@@ -1,5 +1,4 @@
 import { BTPBaseApiHandler } from '../base'
-import { BtUseAppStore } from '../../store/'
 
 /**
  * 数据字典数据加载对象
@@ -13,19 +12,14 @@ export default class BTPUserDataHandler extends BTPBaseApiHandler {
     }
 
     async handle() {
-        const appStore = BtUseAppStore()
-
         if (this.getApp().options?.autoLoadMicroAppData && this.isMicroApp()) {
-            appStore.setUserTokenData(this.getMicroAppData().appData?.userTokenData)
+            this.getCacheManager().setToken(this.getMicroAppData().appData?.userTokenData)
         } else {
-            const api = this.getApp().options.env?.userInfoLoadApi
-            const data = await this.getApp().$http.post(api, { t: Math.random() * 1000 + 1 })
-            const result = data.data.userToken
+            const data = await this.getApp().$http.post(this.getEnv('VITE_GLOBAL_USERDATA_API'), {
+                t: Math.random() * 1000 + 1,
+            })
 
-            if (result) {
-                const userInfo = result
-                appStore.setUserTokenData(userInfo)
-            }
+            this.getCacheManager().setToken(data.data.userToken)
         }
     }
 }

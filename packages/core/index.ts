@@ -19,9 +19,12 @@ import {
 } from './handlers/index'
 import { BtUseAppStore } from './store'
 
+import BTPAppCacheManager from './cache/app-cache-manager'
+
 export {
     BTPApplication,
     BTPBaseApplication,
+    BTPAppCacheManager,
     BTPViewContext,
     BTPBaseViewContext,
     BTPGlobalAppManager,

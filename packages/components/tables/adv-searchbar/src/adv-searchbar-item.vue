@@ -248,7 +248,8 @@
 </template>
 <script setup lang="ts">
 import { nextTick, reactive, ref, watch, h, onMounted } from 'vue'
-import { BtUseAppStore } from '@beeboat/core/store'
+import { BTPApplication } from '@beeboat/core/app'
+
 onMounted(() => {
     // 禁用tab
     document.onkeydown = function (e) {
@@ -489,8 +490,7 @@ const initItem = () => {
     //数据源
     state.datasourceList = []
     if (props.columnProps?.dictId) {
-        const appStore = BtUseAppStore()
-        const itemList = appStore.getDictById(props.columnProps.dictId)
+        const itemList = BTPApplication.getInstance().getCacheManager().getDictItemList(props.columnProps.dictId)
         if (itemList) {
             itemList.forEach(item => {
                 state.datasourceList.push({

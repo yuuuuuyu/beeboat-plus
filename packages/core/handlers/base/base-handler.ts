@@ -36,6 +36,14 @@ export default class BtBaseHandler {
         return this.app
     }
 
+    getCacheManager() {
+        return this.getApp().getCacheManager()
+    }
+
+    getEnv(key: string): any {
+        return this.getApp().getEnv(key)
+    }
+
     getVueApp() {
         return this.app.$app
     }

@@ -1,6 +1,4 @@
 import { BTPBaseApiHandler } from '../base'
-import { BtUseAppStore } from '../../store'
-import { listToTree } from '../../utils/utils'
 
 /**
  * 用户菜单加载对象
@@ -14,19 +12,14 @@ export default class BTPMenuDataHandler extends BTPBaseApiHandler {
     }
 
     async handle() {
-        const appStore = BtUseAppStore()
-
         if (this.getApp().options?.autoLoadMicroAppData && this.isMicroApp()) {
             const microAppData = this.getMicroAppData()
-            appStore.setMenuData(
-                microAppData.appData?.menuList || [],
-                microAppData.appData?.menuTree || [],
-            )
+            this.getCacheManager().setMenuData(microAppData.appData?.menuTree || [])
         } else {
-            const data = await this.getApp().$http.post(this.getApp().options.env?.menuLoadApi, {
+            const data = await this.getApp().$http.post(this.getEnv('VITE_GLOBAL_MENU_API'), {
                 t: Math.random() * 1000 + 1,
             })
-            appStore.setMenuData(data.data, listToTree(data.data))
+            this.getCacheManager().setMenuData(data.data)
         }
     }
 }

@@ -14,6 +14,7 @@ import {
     BTPHttpCreateHandler,
     BTPStoreCreateHandler,
 } from '../handlers/index'
+import BTPAppCacheManager from '../cache/app-cache-manager'
 
 let applicationInstance: BTPBaseApplication
 
@@ -58,12 +59,18 @@ export default class BTPBaseApplication {
      */
     pluginHandlers: any
 
+    /**
+     * 缓存管理对象
+     */
+    cacheManager: any
+
     constructor(options: any) {
         this.options = options
         this.appId = this.getEnv('VITE_MAIN_APP_ID') + this.getEnv('VITE_MODE')
         this.appCode = this.getEnv('VITE_APP_CODE')
         this.pluginHandlers = this.getDefaultHandlers()
         this.formatPluginHandlers()
+        this.cacheManager = new BTPAppCacheManager()
     }
 
     async init() {
@@ -86,6 +93,14 @@ export default class BTPBaseApplication {
      */
     public static getInstance(): BTPBaseApplication {
         return applicationInstance
+    }
+
+    /**
+     * 获取缓存管理对象
+     * @returns 缓存管理对象
+     */
+    getCacheManager() {
+        return this.cacheManager
     }
 
     /**

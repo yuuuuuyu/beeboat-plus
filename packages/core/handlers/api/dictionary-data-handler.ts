@@ -1,5 +1,5 @@
 import { BTPBaseApiHandler } from '../base'
-import { BtUseAppStore } from '../../store'
+import Utils from '../../utils-ex/utils'
 
 /**
  * 数据字典数据加载对象
@@ -12,16 +12,26 @@ export default class BTPDictDataHandler extends BTPBaseApiHandler {
         super()
         this._rank = 10
     }
+
     async handle() {
-        const appStore = BtUseAppStore()
-
         if (this.getApp().options?.autoLoadMicroAppData && this.isMicroApp()) {
-            appStore.setDictData(this.getMicroAppData().appData?.dictList || [])
+            this.getCacheManager().setDictMap(
+                this.formatDictData(this.getMicroAppData().appData?.dictList || []),
+            )
         } else {
-            const api = this.getApp().options.env?.dictLoadApi
-            const data = await this.getApp().$http.post(api, { t: Math.random() * 1000 + 1 })
-
-            appStore.setDictData(data.data || [])
+            const data = await this.getApp().$http.post(this.getEnv('VITE_GLOBAL_DICT_API'), {
+                t: Math.random() * 1000 + 1,
+            })
+            this.getCacheManager().setDictMap(this.formatDictData(data.data || []))
         }
+    }
+
+    /**
+     * @description 格式化树数据
+     * @param dataList 数据
+     * @returns 树数据
+     */
+    formatDictData(dataList: any): any {
+        return Utils.listToTree(dataList)
     }
 }

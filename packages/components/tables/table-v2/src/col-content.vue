@@ -1,7 +1,7 @@
 <template>
     <!-- 文字（自带格式化） -->
     <template v-if="item?.dictId">
-        <dict-status :data="appStore.getDictItem(item.dictId,scope.rowData[item.prop!])" />
+        <dict-status :data="cacheManager.getDictItem(item.dictId,scope.rowData[item.prop!])" />
     </template>
     <template v-else-if="item?.searchProps?.dataSourceProps">
         {{ dataSourceShowe(scope.rowData, item, props.tableSrc) }}
@@ -23,9 +23,10 @@
 <script setup lang="ts">
 import { isArray } from '@beeboat/core/utils/is'
 import DictStatus from '../../../dict-status/src/dict-status.vue'
-import { BtUseAppStore } from '@beeboat/core'
+import { BTPApplication } from '@beeboat/core/app'
+
 const props = defineProps<{ item: any; scope: any; tableSrc: any }>()
-const appStore = BtUseAppStore()
+const cacheManager = BTPApplication.getInstance().getCacheManager()
 
 /**
  * 格式化表格单元格默认值

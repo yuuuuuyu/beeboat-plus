@@ -1,12 +1,5 @@
 import Axios, { AxiosInstance } from 'axios'
 import { BTPBaseSetupHandler } from '../base'
-import { BtUseAppStore } from '../../store'
-import BtNProgress from '../../utils/nprogress'
-import { tokenErrorCode } from '../../utils/error-code'
-import { ElNotification, ElMessageBox } from 'element-plus'
-
-const logoutState = false // 判断登录token失效时的参数
-const { CancelToken } = Axios
 
 /**
  * http(axios)加载处理对象
@@ -14,10 +7,6 @@ const { CancelToken } = Axios
 export default class BTPHttpCreateHandler extends BTPBaseSetupHandler {
     readonly className: string = 'BTPHttpCreateHandler'
 
-    /**
-     * 进度条
-     */
-    protected nprogress = new BtNProgress()
     /**
      * 应用请求对象
      */
