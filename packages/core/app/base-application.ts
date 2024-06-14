@@ -99,7 +99,7 @@ export default class BTPBaseApplication {
      * 获取缓存管理对象
      * @returns 缓存管理对象
      */
-    getCacheManager() {
+    getCacheManager(): BTPAppCacheManager {
         return this.cacheManager
     }
 
@@ -201,6 +201,7 @@ export default class BTPBaseApplication {
      * @param boolean
      */
     removeToken(): boolean {
+        this.getCacheManager().clear()
         return (
             this.getCookie().remove(this.getAppId()) &&
             this.getCookie().remove(this.getEnv('VITE_MAIN_APP_ID'))

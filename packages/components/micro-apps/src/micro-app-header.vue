@@ -31,7 +31,7 @@ defineProps({
 const router = useRouter()
 
 const onLogout = () => {
-    BTPApplication.getInstance().setToken('')
+    BTPApplication.getInstance().removeToken()
     router.push('/')
 }
 </script>

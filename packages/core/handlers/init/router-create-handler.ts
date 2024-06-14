@@ -92,7 +92,7 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
                     next()
                     return
                 }
-                if (this.getCacheManager().getTokenId()) {
+                if (this.getApp().getToken()) {
                     if (!this.getCacheManager().getUserId()) {
                         //重新加载用户、菜单数据
                         await this.getApp().loadCacheData()

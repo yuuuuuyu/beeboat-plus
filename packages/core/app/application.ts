@@ -8,6 +8,14 @@ export default class BTPApplication extends BTPBaseApplication {
     }
 
     /**
+     * 静态方法 获取应用实例对象
+     * @returns 应用实例
+     */
+    public static getInstance(): BTPApplication {
+        return super.getInstance() as BTPApplication
+    }
+
+    /**
      * 获取微应用事件
      * @returns 微应用事件
      */

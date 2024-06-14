@@ -14,12 +14,12 @@ export default class BTPMenuDataHandler extends BTPBaseApiHandler {
     async handle() {
         if (this.getApp().options?.autoLoadMicroAppData && this.isMicroApp()) {
             const microAppData = this.getMicroAppData()
-            this.getCacheManager().setMenuData(microAppData.appData?.menuTree || [])
+            this.getCacheManager().setMenuTreeList(microAppData.appData?.menuTree || [])
         } else {
             const data = await this.getApp().$http.post(this.getEnv('VITE_GLOBAL_MENU_API'), {
                 t: Math.random() * 1000 + 1,
             })
-            this.getCacheManager().setMenuData(data.data)
+            this.getCacheManager().setMenuTreeList(data.data)
         }
     }
 }
