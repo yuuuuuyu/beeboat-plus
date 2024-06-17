@@ -9,6 +9,7 @@ import {
     BTPUserDataHandler,
     BTPUserSenceHandler,
     BTPRouterCreateHandler,
+    BTPRemoteMethodLoadHandler,
     BTPAppMountHandler,
     BTPCookieCreateHandler,
     BTPHttpCreateHandler,
@@ -48,11 +49,6 @@ export default class BTPBaseApplication {
      * 路由对象
      */
     $router!: Router
-
-    /**
-     * 全部路由数据
-     */
-    allRouter: any
 
     /**
      * 插件
@@ -115,20 +111,6 @@ export default class BTPBaseApplication {
      */
     setRouter(router: Router): void {
         this.$router = router
-    }
-
-    /**
-     * @description 获取全部路由数据
-     */
-    getAllRouter(): any {
-        return this.allRouter
-    }
-
-    /**
-     * @description 设置全部路由数据
-     */
-    setAllRouter(allRouter: any): void {
-        this.allRouter = allRouter
     }
 
     /**
@@ -227,6 +209,7 @@ export default class BTPBaseApplication {
             new BTPUserDataHandler(),
             new BTPUserSenceHandler(),
             new BTPRouterCreateHandler(),
+            new BTPRemoteMethodLoadHandler(),
             new BTPAppMountHandler(),
             new BTPCookieCreateHandler(),
             new BTPHttpCreateHandler(),

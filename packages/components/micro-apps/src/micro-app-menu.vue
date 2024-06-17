@@ -52,7 +52,7 @@ const state = reactive({
 const router = useRouter()
 
 const getList = computed(() => {
-    const allRouter = BTPApplication.getInstance().getAllRouter()
+    const allRouter = BTPApplication.getInstance().getCacheManager().getAllRouter()
     return allRouter.find(i => i.path == '/')?.children || []
 })
 

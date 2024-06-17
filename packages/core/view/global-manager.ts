@@ -96,7 +96,7 @@ export default class BTPGlobalAppManager {
         if (!componentList) {
             return []
         }
-        const datas = []
+        const datas = [] as any
         datas.push(...componentList)
         componentList.forEach(element => {
             datas.push(...this.parseComponentList((element && element.children) || []))

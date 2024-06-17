@@ -12,7 +12,7 @@ import {
     BTPUserDataHandler,
     BTPUserSenceHandler,
 } from './api/index'
-import { BTPRouterCreateHandler } from './init/index'
+import { BTPRouterCreateHandler,BTPRemoteMethodLoadHandler } from './init/index'
 import { BTPAppMountHandler } from './mount/index'
 import { BTPCookieCreateHandler, BTPHttpCreateHandler, BTPStoreCreateHandler } from './setup/index'
 export {
@@ -26,6 +26,7 @@ export {
     BTPUserDataHandler,
     BTPUserSenceHandler,
     BTPRouterCreateHandler,
+    BTPRemoteMethodLoadHandler,
     BTPAppMountHandler,
     BTPCookieCreateHandler,
     BTPHttpCreateHandler,

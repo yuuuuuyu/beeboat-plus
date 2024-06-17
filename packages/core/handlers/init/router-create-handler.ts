@@ -147,7 +147,7 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
         return new Promise(resolve=>{
             BTGlobalAppManager.getHandler().loadRemoteRouteData().then(data=>{
                 this.formatRouteView(data)
-                this.getApp().setAllRouter(data)
+                this.getCacheManager().setAllRouter(data)
                 resolve(data)
             })
         })

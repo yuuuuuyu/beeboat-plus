@@ -5,6 +5,17 @@ import Utils from '../utils-ex/utils'
  * @author Enmaai
  */
 export default class BTPAppCacheManager {
+
+    /**
+     * 接口数据
+     */
+    private methodMap = {} as any
+
+    /**
+     * 全部路由数据
+     */
+    allRouter: any
+
     /**
      * 用户登录信息
      */
@@ -239,5 +250,49 @@ export default class BTPAppCacheManager {
                 return child
             }
         }
+    }
+
+    /**
+     * @description 获取全部路由数据
+     */
+    public getAllRouter(): any {
+        return this.allRouter
+    }
+
+    /**
+     * @description 设置全部路由数据
+     */
+    public setAllRouter(allRouter: any): void {
+        this.allRouter = allRouter
+    }
+
+    /**
+     * @description 缓存接口列表
+     * @param methodList 接口列表
+     */
+    public cacheMethodList(methodList: Array<any>): void {
+        if (Array.isArray(methodList)) {
+            methodList.forEach(item => {
+                this.methodMap[item.id] = item
+            })
+        }
+    }
+
+    /**
+     * @description 获取接口信息
+     * @param methodId 接口标识
+     * @returns 接口信息
+     */
+    public getMethod(methodId: string): any {
+        return this.methodMap[methodId]
+    }
+
+    /**
+     * @description 获取接口地址
+     * @param methodId 接口标识
+     * @returns 接口地址
+     */
+    public getMethodUrl(methodId: string): string {
+        return this.methodMap[methodId]?.url || null
     }
 }
