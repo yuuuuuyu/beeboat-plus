@@ -1,5 +1,5 @@
 <template>
-    <div class="aa">123</div>
+    <div class="aa">123{{ vv.pageSize }}--{{ vv.currentPage }}</div>
     <btp-button>123</btp-button>
     <btp-pagination
     :current-row="vv.currentRow"
@@ -28,6 +28,7 @@ const vv = reactive({
 })
 const onChange = (v1,v2)=>{
     console.log(v1,v2)
+    vv.currentPage = 3
 }
 const onChange2 = (v1,v2)=>{
     console.log(v1,v2)

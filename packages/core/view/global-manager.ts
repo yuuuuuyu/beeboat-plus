@@ -107,10 +107,10 @@ export default class BTPGlobalAppManager {
                 datas.push(...this.parseComponentList(element.advsearchbar?.children))
             }
             if (element.dock?.children) {
-                datas.push(...this.parseComponentList(element.toolbar?.children))
+                datas.push(...this.parseComponentList(element.dock?.children))
             }
             if (element.dockcontent?.children) {
-                datas.push(...this.parseComponentList(element.advsearchbar?.children))
+                datas.push(...this.parseComponentList(element.dockcontent?.children))
             }
         })
         return datas
