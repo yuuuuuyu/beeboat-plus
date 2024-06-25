@@ -27,7 +27,7 @@
                             :style="component.styles"
                             :bt-view-context="btViewContext"
                             :bt-config="component"
-                            v-on="component.actions"
+                            v-on="component.events"
                             v-bind="component.props"
                         />
                     </template>
@@ -81,7 +81,7 @@
                                                 :style="component.styles"
                                                 :bt-view-context="btViewContext"
                                                 :bt-config="component"
-                                                v-on="component.actions"
+                                                v-on="component.events"
                                                 v-bind="component.props"
                                             />
                                         </template>

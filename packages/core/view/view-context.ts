@@ -3,6 +3,7 @@ import { ComponentInternalInstance } from 'vue'
 import BTPGlobalAppManager from './global-manager'
 import BTPApplication from '../app/application'
 import BTPBaseViewContext from './base-view-context'
+import Utils from '../utils-ex/utils'
 
 export default class BTPViewContext extends BTPBaseViewContext {
     /**
@@ -97,8 +98,22 @@ export default class BTPViewContext extends BTPBaseViewContext {
     buildView(data: any): void {
         this.viewModel.refers = data.refers
         this.viewModel.components = data.components
+        this.buildProps(this.viewModel.components)
         this.buildDataModel(this.viewModel.components)
         this.buildEvents(this.viewModel.components)
+    }
+
+    buildProps(data: any): void {
+        const componentList = BTPGlobalAppManager.parseComponentList(data)
+        componentList.forEach(item => {
+            if (item.props?.rules) {
+                item.props.rules.forEach(item => {
+                    if(item.pattern) {
+                        item.pattern = new RegExp(item.pattern)
+                    }
+                })
+            }
+        })
     }
 
     buildDataModel(data: any): void {
@@ -116,13 +131,13 @@ export default class BTPViewContext extends BTPBaseViewContext {
     }
 
     buildEvents(components): void {
-        components.forEach(item => {
-            if (item.events) {
-                Object.keys(item.events).forEach(eventName => {
-                    if (!item.actions) {
-                        item.actions = []
-                    }
-                    item.actions[eventName] = (p1, p2, p3, p4, p5, p6, p7) => {
+        const componentList = BTPGlobalAppManager.parseComponentList(components)
+
+        componentList.forEach(item => {
+            item.events = {}
+            if (item.actions) {
+                Object.keys(item.actions).forEach(eventName => {
+                    item.events[eventName] = (p1, p2, p3, p4, p5, p6, p7) => {
                         this.executeAction(eventName, item, p1, p2, p3, p4, p5, p6, p7)
                     }
                 })

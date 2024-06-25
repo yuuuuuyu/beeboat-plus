@@ -1,19 +1,8 @@
 <template>
     <el-button>
-        <template v-if="$slots.default"><slot /></template>
-        <template v-else>
-            <template :key="component.id" v-for="component in btConfig?.children">
-                <component
-                    :is="btViewContext.render(component)"
-                    :style="component.styles"
-                    :bt-view-context="btViewContext"
-                    :bt-config="component"
-                    v-on="component.actions"
-                    v-bind="component.props"
-                    v-model="btViewContext.dataModelProxy[component.model?.prop]"
-                />
-            </template>
-        </template>
+        <slot >{{ btConfig?.name||'' }}</slot>
+        <template v-if="$slots.icon"><slot name="icon"/></template>
+        <template v-if="$slots.loading"><slot name="loading"/></template>
     </el-button>
 </template>
 <script lang="ts" setup>

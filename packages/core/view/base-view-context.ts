@@ -74,9 +74,8 @@ export default class BTPBaseViewContext {
                     } else {
                         if (!Reflect.has(lastObject, val)) {
                             lastObject[val] = {}
-                        } else {
-                            lastObject = lastObject[val]
                         }
+                        lastObject = lastObject[val]
                     }
                 }
                 return true

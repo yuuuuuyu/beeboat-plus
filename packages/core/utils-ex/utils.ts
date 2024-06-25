@@ -35,6 +35,21 @@ export default class Utils {
         if (!Array.isArray(dataTreeList)) {
             return []
         }
-        return dataTreeList.reduce((prev, cur) => prev.concat([cur], this.treeToList(cur[childName] || [])), [])
+        return dataTreeList.reduce(
+            (prev, cur) => prev.concat([cur], this.treeToList(cur[childName] || [])),
+            [],
+        )
+    }
+
+    /**
+     * 转字符串为驼峰字符串
+     * @param str 字符串
+     * @returns 驼峰字符串
+     */
+    static varName(str: any): string {
+        if (str && str.length > 0) {  
+            return str[0].toLowerCase() + str.slice(1);  
+        }  
+        return str;
     }
 }

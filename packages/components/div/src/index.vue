@@ -8,7 +8,7 @@
                     :style="component.styles"
                     :bt-view-context="btViewContext"
                     :bt-config="component"
-                    v-on="component.actions"
+                    v-on="component.events"
                     v-bind="component.props"
                     v-model="btViewContext.dataModelProxy[component.model?.prop]"
                 />
