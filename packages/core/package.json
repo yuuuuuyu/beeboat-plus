@@ -10,6 +10,7 @@
     "keywords": [],
     "author": "mickey | xiukun@163.com",
     "dependencies": {
+        "uuid": "^10.0.0",
         "axios": "^0.26.1",
         "jsencrypt": "^3.2.1",
         "nprogress": "^0.2.0",

@@ -1,6 +1,7 @@
 import BTPApplication from './app/application'
 import BTPBaseApplication from './app/base-application'
 import { BTPViewContext,BTPBaseViewContext,BTPGlobalAppManager,BTPDialogViewContext,BTPGlobalConfigHandler } from './view/index'
+import BTPUtils from './utils-ex/utils-ex'
 import {
     BTPBaseHandler,
     BTPBaseApiHandler,
@@ -44,5 +45,6 @@ export {
     BTPCookieCreateHandler,
     BTPHttpCreateHandler,
     BTPStoreCreateHandler,
+    BTPUtils,
     BtUseAppStore,
 }
