@@ -3,7 +3,7 @@ import { ComponentInternalInstance } from 'vue'
 import BTPGlobalAppManager from './global-manager'
 import BTPApplication from '../app/application'
 import BTPBaseViewContext from './base-view-context'
-import Utils from '../utils-ex/utils'
+import BTPUtils from '../utils-ex/utils-ex'
 
 export default class BTPViewContext extends BTPBaseViewContext {
     /**
@@ -35,7 +35,7 @@ export default class BTPViewContext extends BTPBaseViewContext {
         this.viewModelId = viewModelId || vueInstance.type.props.viewModelId
 
         if (this.viewModelId) {
-            BTPGlobalAppManager.getView(this.viewModelId).then(res => {
+            BTPUtils.getAppManager().getView(this.viewModelId).then(res => {
                 this.buildView(res)
             })
         } else {
@@ -104,7 +104,7 @@ export default class BTPViewContext extends BTPBaseViewContext {
     }
 
     buildProps(data: any): void {
-        const componentList = BTPGlobalAppManager.parseComponentList(data)
+        const componentList = BTPUtils.getAppManager().parseComponentList(data)
         componentList.forEach(item => {
             if (item.props?.rules) {
                 item.props.rules.forEach(item => {
@@ -117,7 +117,7 @@ export default class BTPViewContext extends BTPBaseViewContext {
     }
 
     buildDataModel(data: any): void {
-        const componentList = BTPGlobalAppManager.parseComponentList(data)
+        const componentList = BTPUtils.getAppManager().parseComponentList(data)
         componentList.forEach(item => {
             if (item.model?.prop?.length > 0) {
                 this.dataModelProxy[item.model?.prop] = item.model?.defaultValue || undefined
@@ -131,7 +131,7 @@ export default class BTPViewContext extends BTPBaseViewContext {
     }
 
     buildEvents(components): void {
-        const componentList = BTPGlobalAppManager.parseComponentList(components)
+        const componentList = BTPUtils.getAppManager().parseComponentList(components)
 
         componentList.forEach(item => {
             item.events = {}

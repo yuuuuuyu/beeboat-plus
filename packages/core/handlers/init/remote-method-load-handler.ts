@@ -1,6 +1,5 @@
 import { BTPBaseInitHandler } from '../base/index'
-
-import BTGlobalAppManager from '../../view/global-manager'
+import BTPUtils from '../../utils-ex/utils-ex'
 
 /**
  * 路由创建对象
@@ -10,7 +9,7 @@ export default class BTPRemoteMethodLoadHandler extends BTPBaseInitHandler {
     readonly className = 'BTPRemoteMethodLoadHandler'
 
      async handle() {
-        const data = await BTGlobalAppManager.getHandler().loadMethodList()
+        const data = await BTPUtils.getAppManager().loadMethodList()
 
         this.getCacheManager().cacheMethodList(data)
     }

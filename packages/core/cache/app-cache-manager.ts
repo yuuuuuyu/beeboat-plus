@@ -1,4 +1,5 @@
 import Utils from '../utils-ex/utils'
+import BTPUtils from '../utils-ex/utils-ex'
 
 /**
  * 全局应用缓存数据管理对象
@@ -294,5 +295,42 @@ export default class BTPAppCacheManager {
      */
     public getMethodUrl(methodId: string): string {
         return this.methodMap[methodId]?.url || null
+    }
+
+    /**
+     * @description 获取用户场景数据
+     * @param sceneId 场景ID
+     * @returns  用户场景数据
+     */
+    getScene(sceneId: string): Promise<any> {
+        return new Promise(resolve => {
+            BTPUtils.getApp()
+                .getHttp()
+                .get(`runtime/api/theme/scene?id=${sceneId}`)
+                .then(res => {
+                    resolve(res.data)
+                })
+        })
+    }
+
+    /**
+     * @description 保存用户场景数据
+     * @param sceneId 场景ID
+     * @param data 场景数据
+     * @returns  结果
+     */
+    saveScene(sceneId: string, data: any): Promise<any> {
+        const datas = {
+            id: sceneId,
+            data: data,
+        }
+        return new Promise(resolve => {
+            BTPUtils.getApp()
+                .getHttp()
+                .post(`runtime/api/theme/saveScene`, datas)
+                .then(res => {
+                    resolve(res.data)
+                })
+        })
     }
 }

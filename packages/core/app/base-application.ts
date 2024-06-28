@@ -17,6 +17,7 @@ import {
 } from '../handlers/index'
 import BTPAppCacheManager from '../cache/app-cache-manager'
 import BTPAppMessageBoxManager from '../hook/global-message-manager'
+import { BTPGlobalAppManager } from '../view'
 
 let applicationInstance: BTPBaseApplication
 
@@ -55,6 +56,10 @@ export default class BTPBaseApplication {
      * 插件
      */
     pluginHandlers: any
+    /**
+     * 应用管理对象
+     */
+    appManager: any
 
     /**
      * 缓存管理对象
@@ -72,6 +77,7 @@ export default class BTPBaseApplication {
         this.appCode = this.getEnv('VITE_APP_CODE')
         this.pluginHandlers = this.getDefaultHandlers()
         this.formatPluginHandlers()
+        this.appManager = new BTPGlobalAppManager()
         this.cacheManager = new BTPAppCacheManager()
         this.messageBoxManager = new BTPAppMessageBoxManager()
     }
@@ -96,6 +102,14 @@ export default class BTPBaseApplication {
      */
     public static getInstance(): BTPBaseApplication {
         return applicationInstance
+    }
+
+    /**
+     * 获取应用管理对象
+     * @returns 应用管理对象
+     */
+    getAppManager(): BTPGlobalAppManager {
+        return this.appManager
     }
 
     /**
@@ -210,7 +224,7 @@ export default class BTPBaseApplication {
      * @param handlers 插件
      */
     registerHandlers(handlers: any) {
-        this.pluginHandlers.push(...handlers)
+        this.pluginHandlers.unshift(...handlers)
         this.formatPluginHandlers()
     }
 

@@ -11,6 +11,14 @@ export default class BTPUtils {
     }
 
     /**
+     * @description 获取应用管理对象
+     * @returns 应用管理对象
+     */
+    static getAppManager() {
+        return this.getApp().getAppManager()
+    }
+
+    /**
      * @description 获取应用缓存对象
      * @returns 应用缓存对象
      */

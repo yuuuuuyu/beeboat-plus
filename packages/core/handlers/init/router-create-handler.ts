@@ -6,7 +6,7 @@ import {
     createWebHashHistory,
 } from 'vue-router'
 import BtNProgress from '../../utils/nprogress'
-import BTGlobalAppManager from '../../view/global-manager'
+import BTPUtils from '../../utils-ex/utils-ex'
 
 /**
  * 路由创建对象
@@ -145,7 +145,7 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
      */
     loadRemoteRouteData():Promise<any> {
         return new Promise(resolve=>{
-            BTGlobalAppManager.getHandler().loadRemoteRouteData().then(data=>{
+            BTPUtils.getAppManager().loadRemoteRouteData().then(data=>{
                 this.formatRouteView(data)
                 this.getCacheManager().setAllRouter(data)
                 resolve(data)
@@ -161,7 +161,7 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
         if (routes) {
             routes.forEach(item => {
                 if (item.meta?.viewId) {
-                    item.component = BTGlobalAppManager.getPage(
+                    item.component = BTPUtils.getAppManager().getPage(
                         item.meta.viewId,
                         item.meta.viewModelId,
                     )
