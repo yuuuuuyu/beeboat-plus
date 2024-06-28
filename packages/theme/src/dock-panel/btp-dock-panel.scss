@@ -1,0 +1,109 @@
+.btp-dockpanel {
+    display: flex;
+    flex-direction: row;
+
+    .btp-dockpanel-separator {
+        position: relative;
+        z-index: 100;
+        .btp-dockpanel-separatorline {
+            position: absolute;
+            left: -4px;
+            cursor: ew-resize;
+        }
+    }
+
+    .btp-dockpanel-right {
+        flex: 1;
+    }
+
+    .btp-dockpanel-dock {
+        position: absolute;
+        top: calc(50% - 13px);
+        left: -13px;
+        transform: rotate(180deg);
+        i {
+            position: absolute;
+            left: 6px;
+        }
+    }
+
+    .btp-dockpanel-dock:hover {
+        color: white;
+    }
+
+    .btp-dockpanel-collapsed {
+        transform: rotate(0deg);
+    }
+}
+
+.btp-dockpanel.btp-dockpanel--horizontal {
+    flex-direction: column;
+    .btp-dockpanel-separator {
+        position: relative;
+        .btp-dockpanel-separatorline {
+            position: absolute;
+            top: -5px;
+            cursor: ns-resize;
+        }
+    }
+
+    .btp-dockpanel-dock {
+        position: absolute;
+        top: -13px;
+        left: calc(50% - 14px);
+        transform: rotate(-90deg);
+    }
+
+    .btp-dockpanel-collapsed {
+        transform: rotate(90deg);
+    }
+}
+
+
+.btp-dockpanel {
+    .btp-dockpanel-dock {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor:pointer;
+        background-color: var(--el-color-white);
+        border-radius: 12px;
+        box-shadow: 0 0 10px var(--el-border-color);
+    }
+    .btp-dockpanel-dock:hover {
+        background-color: var(--el-color-primary);
+        .btp-icon {
+            color:var(--el-color-white);
+        }
+    }
+}
+
+/** 停靠面板 */
+.btp-dockpanel .btp-dockpanel-separator {
+    width: 1px;
+    background-color: var(--bt-dockpanel-separator-color);
+}
+
+.btp-dockpanel .btp-dockpanel-separator .btp-dockpanel-separatorline {
+    width: 9px;
+    height: var(--bt-width-full);
+}
+
+.btp-dockpanel .btp-dockpanel-dock {
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    color: var(--el-color-primary);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.btp-dockpanel.btp-dockpanel--horizontal .btp-dockpanel-separator {
+    width: var(--bt-width-full);
+    height: 1px;
+}
+
+.btp-dockpanel.btp-dockpanel--horizontal .btp-dockpanel-separator .btp-dockpanel-separatorline {
+    width: var(--bt-width-full);
+    height: 9px;
+}

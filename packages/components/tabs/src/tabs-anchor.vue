@@ -1,5 +1,5 @@
 <template>
-    <div ref="tabRef" class="bt-tabs-anchor">
+    <div ref="tabRef" class="btp-tabs-anchor">
         <el-tabs
             ref="elTabRef"
             v-bind="$attrs"

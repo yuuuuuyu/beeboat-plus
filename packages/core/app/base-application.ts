@@ -16,6 +16,7 @@ import {
     BTPStoreCreateHandler,
 } from '../handlers/index'
 import BTPAppCacheManager from '../cache/app-cache-manager'
+import BTPAppMessageBoxManager from '../hook/global-message-manager'
 
 let applicationInstance: BTPBaseApplication
 
@@ -60,6 +61,11 @@ export default class BTPBaseApplication {
      */
     cacheManager: any
 
+    /**
+     * 消息弹框管理对象
+     */
+    messageBoxManager: any
+
     constructor(options: any) {
         this.options = options
         this.appId = this.getEnv('VITE_MAIN_APP_ID') + this.getEnv('VITE_MODE')
@@ -67,6 +73,7 @@ export default class BTPBaseApplication {
         this.pluginHandlers = this.getDefaultHandlers()
         this.formatPluginHandlers()
         this.cacheManager = new BTPAppCacheManager()
+        this.messageBoxManager = new BTPAppMessageBoxManager()
     }
 
     async init() {
@@ -97,6 +104,14 @@ export default class BTPBaseApplication {
      */
     getCacheManager(): BTPAppCacheManager {
         return this.cacheManager
+    }
+
+    /**
+     * 获取消息弹框管理对象
+     * @returns 消息弹框管理对象
+     */
+    getMessageBoxManager(): BTPAppMessageBoxManager {
+        return this.messageBoxManager
     }
 
     /**

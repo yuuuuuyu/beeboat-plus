@@ -1,8 +1,8 @@
 <template>
-    <div class="bt-tree">
+    <div class="btp-tree">
         <!--搜索栏-->
         <slot name="treeSearchbar">
-            <div v-if="props.showFilterInput" class="bt-tree--searchbar">
+            <div v-if="props.showFilterInput" class="btp-tree--searchbar">
                 <el-input
                     v-model.trim="state.searchText"
                     :placeholder="props.placeholder"
@@ -18,7 +18,7 @@
             </div>
         </slot>
         <!--按钮栏-->
-        <div class="bt-tree--toolbar">
+        <div class="btp-tree--toolbar">
             <slot name="treeToolbar">
                 <template v-if="btConfig?.toolbar?.children?.length > 0">
                     <template :key="component.id" v-for="component in btConfig?.toolbar?.children">
@@ -34,7 +34,7 @@
                 </template>
             </slot>
         </div>
-        <div class="bt-tree--content">
+        <div class="btp-tree--content">
             <el-scrollbar>
                 <el-tree
                     ref="elTreeRef"
@@ -64,7 +64,7 @@
                             <slot name="prepend" :node="node" :data="data" />
                             <!--文本插槽-->
                             <slot name="content" :node="node" :data="data">
-                                <span class="bt-tree-node__label">
+                                <span class="btp-tree-node__label">
                                     {{ data[props.props.label || 'name'] }}
                                 </span>
                             </slot>

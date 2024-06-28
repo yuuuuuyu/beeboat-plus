@@ -1,8 +1,11 @@
 <template>
-    <div class="bt-pagination-ex">
-        <div class="bt-pagination-ex--toolbar">
+    <div class="btp-pagination">
+        <div class="btp-pagination--toolbar">
             <div v-if="props.reserveSelection">
-                <el-switch v-model="state.mode" @change="$emit('reserve-change', state.mode)" />
+                <el-switch
+                    v-model="state.mode"
+                    @change="$emit('update:reserve', state.mode)"
+                ></el-switch>
                 <el-button type="default" link>
                     已选{{ selection ? selection.length : 0 }}行
                 </el-button>
@@ -25,17 +28,21 @@
             @current-change="$emit('current-change', $event)"
             @prev-click="$emit('prev-click', $event)"
             @next-click="$emit('next-click', $event)"
-            @change="(v1,v2) => { $emit('change', v1,v2) }"
-        />
-        <ResizeObserver :emit-on-mount="true" @notify="onViewResized" />
+            @change="
+                (v1, v2) => {
+                    $emit('change', v1, v2)
+                }
+            "
+        ></el-pagination>
+        <ResizeObserver :emit-on-mount="true" @notify="onViewResized"></ResizeObserver>
     </div>
 </template>
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive, watch } from 'vue'
 import ResizeObserver from '../../../resize-observer/src/resize-observer.vue'
 
 //定义事件
-defineEmits([
+const emits = defineEmits([
     'size-change',
     'current-change',
     'change',
@@ -43,6 +50,9 @@ defineEmits([
     'next-click',
     'reserve-change',
     'clear-selection',
+    'update:page-size',
+    'update:current-page',
+    'update:reserve',
 ])
 const layouts = {
     1: 'prev, next, jumper',
@@ -82,8 +92,8 @@ const getLayout = (mode: any, width: any) => {
 interface PaginationProps {
     pageSizes?: any
     autoLayout?: boolean
-    /**表格选中数据 */
     selection: any
+    reserve?: boolean
     /**是否开启跨页勾选 */
     reserveSelection?: boolean
     total: number
@@ -95,14 +105,15 @@ const props = withDefaults(defineProps<PaginationProps>(), {
     pageSizes: [20, 50, 100, 200, 500],
     autoLayout: true,
     selection: [],
+    reserve: false,
     reserveSelection: true,
     pageSize: 20,
     currentPage: 1,
 })
 
 const state = reactive({
-    mode: false,
-    pageSize: 20,
+    mode: props.reserve || false,
+    pageSize: props.pageSize || 20,
     currentPage: 1,
     layout: getLayout(4, null),
 })
@@ -116,6 +127,27 @@ const reset = () => {
     state.currentPage = 1
     state.pageSize = 20
 }
+
+/**
+ * 进行V-Model监控
+ */
+watch(
+    () => state.currentPage,
+    value => {
+        emits('update:current-page', value)
+    },
+    { immediate: false },
+)
+/**
+ * 进行V-Model监控
+ */
+watch(
+    () => state.pageSize,
+    value => {
+        emits('update:page-size', value)
+    },
+    { immediate: false },
+)
 
 defineExpose({
     reset,
