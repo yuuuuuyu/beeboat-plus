@@ -15,6 +15,7 @@ import { definedReplaceAll } from './utils/replace-all'
 export const buildPackages = (dirname: string, name: string) => {
     const tasks = Object.entries(buildConfig).map(([_module, config]) => {
         const output = path.resolve(dirname, config.output.name)
+
         // 安装依赖gulp-typescript
         return series(
             // 处理ts文件
@@ -57,7 +58,7 @@ export const buildPackages = (dirname: string, name: string) => {
                 // 将打包好的文件放到 es=>utils 和 lib => utils
                 // 将utils模块拷贝到dist目录下的es和lib目录
                 return src(`${output}/**`).pipe(
-                    dest(path.resolve(outDir, config.output.name, name)),
+                    dest(path.resolve(outDir, config.output.alias, name)),
                 )
             }),
         )

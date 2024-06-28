@@ -5,7 +5,8 @@ export const buildConfig = {
         module: 'ESNext', // tsconfig输出的结果es6模块
         format: 'esm', // 需要配置格式化化后的模块规范
         output: {
-            name: 'es', // 打包到dist目录下的那个目录
+            name: 'dist/es', // 打包到dist目录下的那个目录
+            alias: 'es',
             path: path.resolve(outDir, 'es'),
         },
         bundle: {
@@ -16,7 +17,8 @@ export const buildConfig = {
         module: 'CommonJS',
         format: 'cjs',
         output: {
-            name: 'lib',
+            name: 'dist/lib',
+            alias: 'lib',
             path: path.resolve(outDir, 'lib'),
         },
         bundle: {
