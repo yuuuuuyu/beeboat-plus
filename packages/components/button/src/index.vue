@@ -1,8 +1,8 @@
 <template>
     <el-button>
-        <slot >{{ btConfig?.name||'' }}</slot>
-        <template v-if="$slots.icon"><slot name="icon"/></template>
-        <template v-if="$slots.loading"><slot name="loading"/></template>
+        <slot>{{ btConfig?.name || '' }}</slot>
+        <template v-if="$slots.icon"><slot name="icon"></slot></template>
+        <template v-if="$slots.loading"><slot name="loading"></slot></template>
     </el-button>
 </template>
 <script lang="ts" setup>
