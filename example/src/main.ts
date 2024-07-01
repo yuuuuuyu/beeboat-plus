@@ -10,9 +10,13 @@ import '@beeboat/theme/src/index.scss'
 import './styles/index.scss'
 
 import RouteHandler from './hooks/route-handler'
-import {DictDataHandler,DataHandler,UserHandler,RemoteMethodLoadHandler}from './hooks/api-handlers'
+import {
+    DictDataHandler,
+    DataHandler,
+    UserHandler,
+    RemoteMethodLoadHandler,
+} from './hooks/api-handlers'
 import AppCacheManager from './hooks/cache-manager'
-
 
 class UserApplication extends BTPApplication {
     constructor(options) {
@@ -32,7 +36,13 @@ function initApp() {
                 env: data,
                 componentKit: [ElementPlus],
             })
-            application.registerHandlers([new RouteHandler(),new DictDataHandler(),new DataHandler(),new UserHandler(),new  RemoteMethodLoadHandler()])
+            application.registerHandlers([
+                new RouteHandler(),
+                new DictDataHandler(),
+                new DataHandler(),
+                new UserHandler(),
+                new RemoteMethodLoadHandler(),
+            ])
             await application.init()
             application.mount()
             Object.entries(components).forEach(([name, component]) => {
