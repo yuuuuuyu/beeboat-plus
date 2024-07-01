@@ -1,12 +1,8 @@
 <template>
     <div class="btp-table">
         <div class="btp-table--searchbar">
-            <BtpAdvSearchbar
-                v-if="props.search?.enable"
-                ref="searchbarRef"
-                v-bind="props.search"
-                :column-list="props.columns"
-            >
+            <BtpAdvSearchbar v-if="props.search?.enable" ref="searchbarRef" v-bind="props.search"
+                :column-list="props.columns" @search="onAdvSearch">
                 <template #default>
                     <slot name="search"></slot>
                 </template>
@@ -18,17 +14,14 @@
         </div>
         <div class="btp-table--table">
             <div class="btp-table--table--container">
-                <el-table
-                    ref="tableRef"
-                    border
-                    :data="getTableData()"
-                    size="small"
-                    row-key="id"
-                    v-loading="status.loading"
-                    v-on="emitEvents"
-                >
-                    <template v-if="$slots.append" #append><slot name="append"></slot></template>
-                    <template v-if="$slots.empty" #empty><slot name="empty"></slot></template>
+                <el-table ref="tableRef" :data="getTableData()" v-loading="status.loading"
+                    v-bind="{ ...$props, ...$attrs }" v-on="emitEvents">
+                    <template v-if="$slots.append" #append>
+                        <slot name="append"></slot>
+                    </template>
+                    <template v-if="$slots.empty" #empty>
+                        <slot name="empty"></slot>
+                    </template>
                     <!--原生插槽-->
                     <slot>
                         <template v-for="item in state.columns" :key="item.uniqueIndex">
@@ -39,11 +32,8 @@
                                             {{ computeRowIndex(scope.$index) }}
                                         </template>
                                         <template v-else-if="item.type == 'radio'">
-                                            <el-radio
-                                                :label="scope.row.id"
-                                                v-model="state.radioSelection"
-                                                @change="radioSelectionChange(scope.row)"
-                                            >
+                                            <el-radio :label="scope.row.id" v-model="state.radioSelection"
+                                                @change="radioSelectionChange(scope.row)">
                                                 {{ '' }}
                                             </el-radio>
                                         </template>
@@ -51,10 +41,8 @@
                                             <el-button :row="scope">123</el-button>
                                         </template>
                                         <template v-else-if="!item.type || item.type == ''">
-                                            <BtpTableColumnContent
-                                                :column="item"
-                                                :scope="scope"
-                                            ></BtpTableColumnContent>
+                                            <BtpTableColumnContent :column="item" :scope="scope">
+                                            </BtpTableColumnContent>
                                         </template>
                                     </template>
                                 </el-table-column>
@@ -62,10 +50,8 @@
                         </template>
                         <el-table-column v-if="props.columnSetting" width="60" fixed="right">
                             <template #header>
-                                <BtpTableColumnSetting
-                                    :columns="state.columns"
-                                    @change="onColumnSettingChange"
-                                ></BtpTableColumnSetting>
+                                <BtpTableColumnSetting :columns="state.columns" @change="onColumnSettingChange">
+                                </BtpTableColumnSetting>
                             </template>
                         </el-table-column>
                     </slot>
@@ -73,17 +59,10 @@
             </div>
         </div>
         <!-- 分页 -->
-        <BtpPagination
-            v-if="props.pagination?.enable"
-            ref="paginationRef"
-            v-bind="props.pagination"
-            v-model:current-page="state.pagination.currentPage"
-            v-model:page-size="state.pagination.pageSize"
-            v-model:reserve="state.pagination.reserve"
-            :selection="state.selection"
-            :total="state.pagination.total"
-            @clear-selection="onPaginationClearSelection"
-        ></BtpPagination>
+        <BtpPagination v-if="props.pagination?.enable" ref="paginationRef" v-bind="props.pagination"
+            v-model:current-page="state.pagination.currentPage" v-model:page-size="state.pagination.pageSize"
+            v-model:reserve="state.pagination.reserve" :selection="state.selection" :total="state.pagination.total"
+            @clear-selection="onPaginationClearSelection"></BtpPagination>
     </div>
 </template>
 <script setup lang="ts">
@@ -115,12 +94,7 @@ const emits = defineEmits([
     'header-dragend',
     'expand-change',
     /*自定义事件 */
-    'move-change',
-    'edit-change',
-    'beforeSenceLoad',
-    'aftersenceLoad',
-    'beforeQuery',
-    'afterQuery',
+    'data-loaded'
 ])
 
 interface IProps {
@@ -131,6 +105,7 @@ interface IProps {
     columns?: any
     columnSetting?: boolean
     dataApi?: any
+    initLoading?:boolean
 }
 const props = withDefaults(defineProps<IProps>(), {
     id: '',
@@ -142,6 +117,7 @@ const props = withDefaults(defineProps<IProps>(), {
     columns: [],
     columnSetting: true,
     dataApi: null,
+    initLoading:true
 })
 const tableRef = ref()
 const state = reactive({
@@ -156,6 +132,7 @@ const state = reactive({
         pageSize: props.pagination.pageSize || 20,
     },
     radioSelection: null,
+    advQueryParam: null as any
 })
 const status = reactive({
     loading: false,
@@ -187,6 +164,14 @@ watch(
     { immediate: false },
 )
 
+const onAdvSearch = advQueryParam => {
+    state.advQueryParam = advQueryParam
+    loadData()
+}
+
 initTable()
-loadData()
+
+if(props.initLoading && !props.search.enable){
+    loadData()
+}
 </script>

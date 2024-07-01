@@ -19,6 +19,7 @@ const table = {
     columnSetting: true,
     dataApi: dataApi,
     rowKey: 'id',
+    border:true
 }
 
 const tables = {
@@ -159,5 +160,6 @@ const pagination = {
     reserveSelection: true,
     pageSize: 10,
     background: true,
+    size:'small'
 }
 </script>

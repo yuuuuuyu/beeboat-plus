@@ -18,6 +18,40 @@ export const useAdvSearchbar = (props, emits, state) => {
             })
     }
 
+    const getAdvQueryParam = () => {
+        const advQueryParam: any = []
+        const scene = state.sceneList.find(item => {
+            return item.id == state.currentSceneId
+        })
+        if (scene) {
+            scene.searchList.forEach(item => {
+                if (item.searchCondition == 'isNull' || item.searchCondition == 'isNotNull') {
+                    advQueryParam.push({
+                        value: item.searchValue,
+                        express: item.searchCondition,
+                        field:
+                            item.columnConfig.searchProps.searchPropKey || item.columnConfig.prop,
+                    })
+                } else {
+                    if (
+                        item.searchValue &&
+                        Array.isArray(item.searchValue) &&
+                        item.searchValue.length > 0
+                    ) {
+                        advQueryParam.push({
+                            value: item.searchValue,
+                            express: item.searchCondition,
+                            field:
+                                item.columnConfig.searchProps.searchPropKey ||
+                                item.columnConfig.prop,
+                        })
+                    }
+                }
+            })
+        }
+        return advQueryParam
+    }
+
     const initAdvSearchbar = async () => {
         let sceneList = props.scene.sceneList
         state.currentSceneId = props.scene.defaultId
@@ -36,6 +70,9 @@ export const useAdvSearchbar = (props, emits, state) => {
             })
         })
         onSceneChange()
+        if(props.initLoading) {
+            emits('search',getAdvQueryParam())
+        }
     }
 
     const sceneUpdateName = scene => {
