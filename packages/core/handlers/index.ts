@@ -10,7 +10,6 @@ import {
     BTPDictDataHandler,
     BTPMenuDataHandler,
     BTPUserDataHandler,
-    BTPUserSenceHandler,
 } from './api/index'
 import { BTPRouterCreateHandler,BTPRemoteMethodLoadHandler } from './init/index'
 import { BTPAppMountHandler } from './mount/index'
@@ -24,7 +23,6 @@ export {
     BTPDictDataHandler,
     BTPMenuDataHandler,
     BTPUserDataHandler,
-    BTPUserSenceHandler,
     BTPRouterCreateHandler,
     BTPRemoteMethodLoadHandler,
     BTPAppMountHandler,

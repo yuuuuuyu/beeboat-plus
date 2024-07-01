@@ -1,64 +1,163 @@
 <template>
-    <btp-button :btConfig="vv.btconfig" :loading="true">33
-        <template #loading>
-            <div class="custom-loading">
-                <svg class="circular" viewBox="-10, -10, 50, 50">
-                <path
-                    class="path"
-                    d="
-                    M 30 15
-                    L 28 17
-                    M 25.61 25.61
-                    A 15 15, 0, 0, 1, 15 30
-                    A 15 15, 0, 1, 1, 27.99 7.5
-                    L 15 15
-                "
-                    style="stroke-width: 4px; fill: rgba(0, 0, 0, 0)"
-                />
-                </svg>
-            </div>
-            </template>
-    </btp-button>
-    <div class="aa">123{{ vv.pageSize }}--{{ vv.currentPage }}</div>
-    <btp-pagination
-    :current-row="vv.currentRow"
-    :current-page="vv.currentPage"
-    :page-size="vv.pageSize"
-    :selection="vv.selection"
-    :total="vv.total"
-    @size-change="onChange1"
-    @current-change="onChange2"
-    @change="onChange3"
-    @prev-click="onChange4"
-    @next-click="onChange5"
-    />
-    <btp-adv-searchbar :enableAdvSearch="true"></btp-adv-searchbar>
+    <BtpTable :search="search" :columns="tables.children" :pagination="pagination" v-bind="table">
+        <template #index13>
+            <el-table-column label="222"></el-table-column>
+        </template>
+        <template #toolbar>
+            <el-button>123</el-button>
+        </template>
+    </BtpTable>
 </template>
-<script setup lang="ts">
-import { reactive } from 'vue'
 
-const vv = reactive({
-    btconfig:{name:'1234bbbbb'},
-    selection:[],
-    pageNumber:1,
-    pageSize:20,
-    total:1000,
-    currentPage:2,
-    currentRow:{},
-})
-const onChange1 = (v1,v2)=>{
-    console.log(1)
+<script lang="ts" setup>
+import { useDataLoader } from './table-data'
+
+const { dataApi } = useDataLoader()
+
+const table = {
+    id: '123',
+    columnSetting: true,
+    dataApi: dataApi,
+    rowKey: 'id',
 }
-const onChange2 = (v1,v2)=>{
-    console.log(2)
+
+const tables = {
+    children: [
+        {
+            id: 'jKJncyCVS77drVKEzPBpmT',
+            label: '序号',
+            prop: 'index1',
+            type: 'index',
+            width: '60px',
+            showOverflowTooltip: true,
+            editProps: {
+                enable: false,
+            },
+            searchProps: {
+                enable: true,
+                componentType: 'text',
+                supportConditionList: [
+                    'ne',
+                    'like',
+                    'eq',
+                    'isNull',
+                    'notlike',
+                    'isNotNull',
+                    'gele',
+                ],
+            },
+        },
+        {
+            id: '3',
+            label: '序号3',
+            prop: 'index3',
+            type: 'radio',
+            width: '60px',
+            showOverflowTooltip: true,
+            searchProps: {
+                enable: true,
+                componentType: 'text',
+                supportConditionList: [
+                    'ne',
+                    'like',
+                    'eq',
+                    'isNull',
+                    'notlike',
+                    'isNotNull',
+                    'gele',
+                ],
+            },
+        },
+        {
+            id: '4',
+            label: '序号4',
+            prop: 'index4',
+            type: 'selection',
+            width: '60px',
+            reserveSelection: true,
+            showOverflowTooltip: true,
+            searchProps: {
+                enable: true,
+                componentType: 'text',
+                supportConditionList: [
+                    'ne',
+                    'like',
+                    'eq',
+                    'isNull',
+                    'notlike',
+                    'isNotNull',
+                    'gele',
+                ],
+            },
+        },
+        {
+            id: '5',
+            label: '序号5',
+            prop: 'entityName',
+            showOverflowTooltip: true,
+            searchProps: {
+                enable: true,
+                componentType: 'text',
+                supportConditionList: [
+                    'ne',
+                    'like',
+                    'eq',
+                    'isNull',
+                    'notlike',
+                    'isNotNull',
+                    'gele',
+                ],
+            },
+        },
+        {
+            id: '6',
+            label: '序号6',
+            type: 'operate',
+            prop: 'index6',
+            showOverflowTooltip: true,
+            searchProps: {
+                enable: true,
+                componentType: 'text',
+                supportConditionList: [
+                    'ne',
+                    'like',
+                    'eq',
+                    'isNull',
+                    'notlike',
+                    'isNotNull',
+                    'gele',
+                ],
+            },
+        },
+    ],
 }
-const onChange3 = (v1,v2)=>{
-    console.log(3)
+const search = {
+    enable: true,
+    scene: {
+        id: '231321321321321',
+        defaultId: 'scene_123',
+        sceneList: [
+            {
+                id: 'scene_123',
+                name: '默认方案',
+                isDefault: true,
+                searchList: [
+                    {
+                        id: 'jKJncyCVS77drVKEzPBpmT',
+                        searchCondition: 'eq',
+                        searchVisible: true,
+                        searchValue: ['2024-06-04 00:00:00', '2024-06-04 00:00:00'],
+                    },
+                ],
+            },
+        ],
+    },
 }
-const onChange4 = (v1,v2)=>{
-    console.log(4)
-}
-const onChange5 = (v1,v2)=>{
-    console.log(5)
+
+const pagination = {
+    enable: true,
+    reserveSelection: true,
+    pageSize: 10,
+    background: true,
 }
 </script>

@@ -1,12 +1,8 @@
-import { createRouter, createWebHashHistory, Router } from 'vue-router'
-
-const Layout = () => import('@/views/index.vue')
-
-const base = [
+export const routes = [
     {
         path: '/',
         name: 'home',
-        component: Layout,
+        component: import('@/views/index.vue'),
         redirect: '/welcome',
         meta: {
             icon: 'home-filled',
@@ -35,10 +31,3 @@ const base = [
         ],
     },
 ]
-
-export const router: Router = createRouter({
-    history: createWebHashHistory(),
-    routes: base,
-})
-
-export default router
