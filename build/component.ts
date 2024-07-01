@@ -53,7 +53,7 @@ const buildEachComponent = async () => {
         const options = Object.values(buildConfig).map(config => ({
             format: config.format,
             file: path.resolve(config.output.path, `components/${file}/index.js`),
-            paths: pathRewriter(config.output.name), // @beeboat => `beeboat-plus`/es beeboat-plus/lib  处理路径
+            paths: pathRewriter(config.output.alias), // @beeboat => `beeboat-plus`/es beeboat-plus/lib  处理路径
             exports: config.format === 'cjs' ? 'named' : undefined,
             // sourcemap: true,
             removeComments: false,

@@ -5,7 +5,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import esbuild from 'rollup-plugin-esbuild'
 import typescript from 'rollup-plugin-typescript2'
 import postcss from 'rollup-plugin-postcss'
-import { series, parallel } from 'gulp'
+import { series } from 'gulp'
 import path from 'path'
 import { outDir, btRoot } from './utils/paths'
 import { rollup, OutputOptions } from 'rollup'
@@ -31,14 +31,12 @@ const buildFull = async () => {
     }
 
     // 组件库两种使用方式 import 导入组件库 在浏览器中使用script
-
     // esm umd
-
     const buildConfig = [
         {
             format: 'umd', // 打包的格式
             file: path.resolve(outDir, 'index.js'),
-            name: 'BeeboatUi', // 全局变量名字
+            name: 'BeeboatPlus', // 全局变量名字
             exports: 'named', // 导出的名字 用命名的方式导出 libaryTarget:"" name:""
             globals: {
                 // 表示使用的vue是全局的
@@ -81,7 +79,7 @@ async function buildEntry() {
             .map(config => ({
                 format: config.format,
                 dir: config.output.path,
-                paths: pathRewriter(config.output.name),
+                paths: pathRewriter(config.output.alias),
             }))
             .map(option => bundle.write(option as OutputOptions)),
     )
