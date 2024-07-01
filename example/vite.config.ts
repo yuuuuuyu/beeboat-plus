@@ -1,6 +1,7 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { createHtmlPlugin } from 'vite-plugin-html'
 
 // 路径查找
 const pathResolve = (dir: string): string => {
@@ -13,12 +14,39 @@ const alias: Record<string, string> = {
   '/@': pathResolve('src'),
 }
 
-// https://vitejs.dev/config/
+/*
+ * 创建HTML页面插件
+ */
+function createViteHtmlPlugin() {
+  return createHtmlPlugin({
+      minify: true,
+      entry: '/src/main.ts',
+      template: 'index.html',
+      inject: {
+          data: {
+              title: '首页',
+              injectScript: ``,
+          },
+          tags: [
+              {
+                  injectTo: 'body-prepend',
+                  tag: 'div',
+                  attrs: {
+                      id: `app-example`,
+                      class: 'btp-app',
+                  },
+              },
+          ],
+      },
+  })
+}
+
+
 export default defineConfig({
   resolve: {
     alias,
   },
-  plugins: [vue()],
+  plugins: [vue(),createViteHtmlPlugin()],
   css: {
     preprocessorOptions: {
       scss: {

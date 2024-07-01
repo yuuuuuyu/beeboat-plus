@@ -7,6 +7,7 @@ import DynamicView from './views/layout/bt-view.vue'
 
 import 'element-plus/dist/index.css'
 import '@beeboat/theme/src/index.scss'
+import './styles/index.scss'
 
 import RouteHandler from './hooks/route-handler'
 import {DictDataHandler,DataHandler,UserHandler,RemoteMethodLoadHandler}from './hooks/api-handlers'

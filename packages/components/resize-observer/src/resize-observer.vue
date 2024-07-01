@@ -1,5 +1,5 @@
 <template>
-    <div ref="btResizeRef" class="bt-resize-observer" tabindex="-1"></div>
+    <div ref="btResizeRef" class="btp-resize-observer" tabindex="-1"></div>
 </template>
 <script setup lang="ts">
 import { nextTick, onMounted, onUnmounted, ref, reactive } from 'vue'
