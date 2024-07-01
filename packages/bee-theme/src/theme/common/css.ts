@@ -13,6 +13,10 @@ export default `
     --bt-gap-s16: 16px;
     --bt-gap-s24: 24px;
     --bt-gap-s32: 32px;
+
+    --ever-button-text-color-secondary: var(--el-color-primary);
+    --ever-button-hover-text-color-secondary: var(--el-color-primary);
+    --ever-button-active-text-color-secondary: var(--el-color-white);
 }
 
 @function spacingWidth($width, $num) {

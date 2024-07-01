@@ -25,7 +25,16 @@ export const routes = [
                 component: () => import('@/views/tables/index.vue'),
                 meta: {
                     title: '表格',
-                    hidden: true,
+                    hidden: false,
+                },
+            },
+            {
+                path: '/button',
+                name: 'button',
+                component: () => import('@/views/button/index.vue'),
+                meta: {
+                    title: '按钮',
+                    hidden: false,
                 },
             },
         ],
