@@ -58,7 +58,7 @@ export const buildPackages = (dirname: string, name: string) => {
                 // 将打包好的文件放到 es=>utils 和 lib => utils
                 // 将utils模块拷贝到dist目录下的es和lib目录
                 return src(`${output}/**`).pipe(
-                    dest(path.resolve(outDir, config.output.alias, name)),
+                    dest(path.resolve(outDir, config.output.name, name)),
                 )
             }),
         )
