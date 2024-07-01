@@ -1,5 +1,6 @@
 @use './fonts/iconfont';
 
+@use './common/var.scss';
 @use './dock-panel/btp-dock-panel.scss';
 @use './resize-observer/btp-resize-observer.scss';
 @use './selects/tree/btp-tree.scss';
@@ -11,3 +12,4 @@
 @use './tables/btp-adv-searchbar-dialog.scss';
 @use './tabs/btp-tabs.scss';
 @use './tabs/btp-tabs-anchor.scss';
+@use './buttons/btp-button.scss';

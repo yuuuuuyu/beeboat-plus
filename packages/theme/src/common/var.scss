@@ -1,7 +1,5 @@
-$color-primary: var(--ever-color); /** 主题色*/
-$color-success: var(--el-color-success); /** 成功*/
-$color-warning: var(--el-color-warning); /** 警告*/
-$color-error: var(--el-color-danger); /** 失败*/
-
-/** 头部导航栏颜色 */
-$color-navigation: var(--ever-color-bg-head);
+:root {
+    --btp-button-text-color-secondary: var(--el-color-primary);
+    --btp-button-hover-text-color-secondary: var(--el-color-primary);
+    --btp-button-active-text-color-secondary: var(--el-color-white);
+}

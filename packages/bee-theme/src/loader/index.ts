@@ -1,5 +1,5 @@
 import { getElementVarCss } from './element'
-import { getEverButtonVarCss } from './ever-button'
+import { getEverButtonVarCss } from './btp-button'
 import { getEverLayoutVarCss } from './ever-layout'
 import { getEverBaseCss } from './ever-base'
 import { getEverTableCss } from './ever-table'

@@ -9,7 +9,12 @@
             </div>
         </div>
         <div class="grid-list">
-            <div v-for="item in routesList" class="grid-item" @click="toRoute(item.path)">
+            <div
+                v-for="(item, index) in routesList"
+                :key="index"
+                class="grid-item"
+                @click="toRoute(item.path)"
+            >
                 <div class="flex-item">
                     <el-link type="primary">{{ item.meta.title }}</el-link>
                 </div>

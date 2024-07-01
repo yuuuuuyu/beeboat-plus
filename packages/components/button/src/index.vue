@@ -1,5 +1,5 @@
 <template>
-    <el-button>
+    <el-button class="btp-button">
         <slot>{{ btConfig?.name || '' }}</slot>
         <template v-if="$slots.icon"><slot name="icon"></slot></template>
         <template v-if="$slots.loading"><slot name="loading"></slot></template>
