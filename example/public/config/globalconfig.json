@@ -1,14 +1,12 @@
 {
-    "VITE_APP_TITLE": "功能验证前端服务",
+    "VITE_APP_TITLE": "beeboat-plus 示例",
     "VITE_APP_MOUNT_NAME": "app-example",
     "VITE_APP_ID": "68cb50c2f33c44feab23af80626a1b79",
     "VITE_MAIN_APP_ID": "8b5c47c242fd4b1398f8692b11b1a613",
     "VITE_APP_CODE": "AppDecoder",
     "VITE_APP_CHILD_EVENT_NAME": "eventCenterForAppDecoder",
     
-    "VITE_PORT": 3033,
     "VITE_APP_BEG": "http",
-    "VITE_PUBLIC_PATH": "/",
     "VITE_MODE":"develop",
 
     "VITE_SAMEORIGN": false,
