@@ -1,36 +1,38 @@
 <template>
-    <template v-if="column.dictId">
-        <div class="bt-dict-status">
-            <span
-                class="mark"
-                :style="`background-color:${state.dictItem?.color || 'transparent'}`"
-            ></span>
-            <span class="text">{{ state.dictItem?.name || '-' }}</span>
-        </div>
+    <template v-if="column.editProps?.enable && editor.isEditing(scope.row)">
+        <CellEditor :column="column" :row="scope.row" :editor="editor"></CellEditor>
     </template>
     <template v-else>
-        {{ calcColumnText() }}
+        <template v-if="column.dictId">
+            <div class="bt-dict-status">
+                <span
+                    class="mark"
+                    :style="`background-color:${state.dictItem?.color || 'transparent'}`"
+                ></span>
+                <span class="text">{{ state.dictItem?.name || '-' }}</span>
+            </div>
+        </template>
+        <template v-else>
+            {{ calcColumnText() }}
+        </template>
     </template>
 </template>
 
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue'
+import CellEditor from '../../table-editor/src/index.vue'
 import BTPUtils from '@beeboat/core/utils-ex/utils-ex'
 
-const props = defineProps<{ column: any; scope: any }>()
+const props = defineProps<{ column: any; scope: any; editor: any }>()
 
 const state = reactive({
     dictItem: null as any,
 })
 
-const getCacheManager = () => {
-    return BTPUtils.getCacheManager()
-}
-
 onMounted(() => {
     if (props.column.dictId) {
         const value = props.scope.row[props.column.prop]
-        state.dictItem = getCacheManager().getDictItem(props.column.dictId, value)
+        state.dictItem = BTPUtils.getCacheManager().getDictItem(props.column.dictId, value)
     }
 })
 

@@ -1,4 +1,4 @@
-export const useTableEvents = (props, state, status, tableRef, emits) => {
+export const useTableEvents = (props, state, status, tableRef, emits, editor) => {
     /**
      * 拖动列头
      * @param newVal 新值
@@ -28,6 +28,7 @@ export const useTableEvents = (props, state, status, tableRef, emits) => {
             emits('cell-mouse-leave', v1, v2, v3, v4)
         },
         'cell-click': (v1, v2, v3, v4) => {
+            editor.edit(v1)
             emits('cell-click', v1, v2, v3, v4)
         },
         'cell-dblclick': (v1, v2, v3, v4) => {

@@ -19,7 +19,7 @@ const table = {
     columnSetting: true,
     dataApi: dataApi,
     rowKey: 'id',
-    border:true
+    border: true,
 }
 
 const tables = {
@@ -109,6 +109,19 @@ const tables = {
                     'gele',
                 ],
             },
+            editProps: {
+                enable: true,
+                rules: [
+                    {
+                        required: true,
+                        message: '名称必填',
+                    },
+                    {
+                        pattern: new RegExp('^[0-9]*$'),
+                        message: '格式错误',
+                    },
+                ],
+            },
         },
         {
             id: '6',
@@ -160,6 +173,6 @@ const pagination = {
     reserveSelection: true,
     pageSize: 10,
     background: true,
-    size:'small'
+    size: 'small',
 }
 </script>

@@ -144,7 +144,7 @@ export const useTableLoader = (props, state, status, tableRef, emits) => {
      * @returns void
      */
     const loadLocalData = () => {
-        //
+        state.data = props.data
     }
 
     /**

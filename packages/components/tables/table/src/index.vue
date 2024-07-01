@@ -1,8 +1,13 @@
 <template>
     <div class="btp-table">
         <div class="btp-table--searchbar">
-            <BtpAdvSearchbar v-if="props.search?.enable" ref="searchbarRef" v-bind="props.search"
-                :column-list="props.columns" @search="onAdvSearch">
+            <BtpAdvSearchbar
+                v-if="props.search?.enable"
+                ref="searchbarRef"
+                v-bind="props.search"
+                :column-list="props.columns"
+                @search="onAdvSearch"
+            >
                 <template #default>
                     <slot name="search"></slot>
                 </template>
@@ -14,8 +19,13 @@
         </div>
         <div class="btp-table--table">
             <div class="btp-table--table--container">
-                <el-table ref="tableRef" :data="getTableData()" v-loading="status.loading"
-                    v-bind="{ ...$props, ...$attrs }" v-on="emitEvents">
+                <el-table
+                    ref="tableRef"
+                    :data="getTableData()"
+                    v-loading="status.loading"
+                    v-bind="{ ...$props, ...$attrs }"
+                    v-on="emitEvents"
+                >
                     <template v-if="$slots.append" #append>
                         <slot name="append"></slot>
                     </template>
@@ -32,8 +42,11 @@
                                             {{ computeRowIndex(scope.$index) }}
                                         </template>
                                         <template v-else-if="item.type == 'radio'">
-                                            <el-radio :label="scope.row.id" v-model="state.radioSelection"
-                                                @change="radioSelectionChange(scope.row)">
+                                            <el-radio
+                                                :label="scope.row.id"
+                                                v-model="state.radioSelection"
+                                                @change="radioSelectionChange(scope.row)"
+                                            >
                                                 {{ '' }}
                                             </el-radio>
                                         </template>
@@ -41,17 +54,40 @@
                                             <el-button :row="scope">123</el-button>
                                         </template>
                                         <template v-else-if="!item.type || item.type == ''">
-                                            <BtpTableColumnContent :column="item" :scope="scope">
+                                            <BtpTableColumnContent
+                                                :column="item"
+                                                :scope="scope"
+                                                :editor="tableEditor"
+                                            >
                                             </BtpTableColumnContent>
                                         </template>
                                     </template>
                                 </el-table-column>
                             </slot>
                         </template>
-                        <el-table-column v-if="props.columnSetting" width="60" fixed="right">
+                        <el-table-column v-if="props.columnSetting" width="120px" fixed="right">
                             <template #header>
-                                <BtpTableColumnSetting :columns="state.columns" @change="onColumnSettingChange">
+                                <BtpTableColumnSetting
+                                    :columns="state.columns"
+                                    @change="onColumnSettingChange"
+                                >
                                 </BtpTableColumnSetting>
+                            </template>
+                            <template #default="scope">
+                                <el-button
+                                    type="primary"
+                                    :link="true"
+                                    @click.stop="tableEditor.add(scope.$index)"
+                                >
+                                    添加
+                                </el-button>
+                                <el-button
+                                    type="danger"
+                                    :link="true"
+                                    @click.stop="tableEditor.delete(scope.row)"
+                                >
+                                    删除
+                                </el-button>
                             </template>
                         </el-table-column>
                     </slot>
@@ -59,16 +95,24 @@
             </div>
         </div>
         <!-- 分页 -->
-        <BtpPagination v-if="props.pagination?.enable" ref="paginationRef" v-bind="props.pagination"
-            v-model:current-page="state.pagination.currentPage" v-model:page-size="state.pagination.pageSize"
-            v-model:reserve="state.pagination.reserve" :selection="state.selection" :total="state.pagination.total"
-            @clear-selection="onPaginationClearSelection"></BtpPagination>
+        <BtpPagination
+            v-if="props.pagination?.enable"
+            ref="paginationRef"
+            v-bind="props.pagination"
+            v-model:current-page="state.pagination.currentPage"
+            v-model:page-size="state.pagination.pageSize"
+            v-model:reserve="state.pagination.reserve"
+            :selection="state.selection"
+            :total="state.pagination.total"
+            @clear-selection="onPaginationClearSelection"
+        ></BtpPagination>
     </div>
 </template>
 <script setup lang="ts">
 import { reactive, ref, watch } from 'vue'
 import { useTable, useTableLoader } from './index'
 import { useTableEvents } from './table-events'
+import BTPTableEditor from '../../table-editor/table-editor'
 import BtpAdvSearchbar from '../../adv-searchbar/src/index.vue'
 import BtpPagination from '../../pagination/src/index.vue'
 import BtpTableColumnContent from '../../table-column-content/src/index.vue'
@@ -94,7 +138,7 @@ const emits = defineEmits([
     'header-dragend',
     'expand-change',
     /*自定义事件 */
-    'data-loaded'
+    'data-loaded',
 ])
 
 interface IProps {
@@ -105,7 +149,7 @@ interface IProps {
     columns?: any
     columnSetting?: boolean
     dataApi?: any
-    initLoading?:boolean
+    initLoading?: boolean
 }
 const props = withDefaults(defineProps<IProps>(), {
     id: '',
@@ -117,7 +161,7 @@ const props = withDefaults(defineProps<IProps>(), {
     columns: [],
     columnSetting: true,
     dataApi: null,
-    initLoading:true
+    initLoading: true,
 })
 const tableRef = ref()
 const state = reactive({
@@ -132,14 +176,18 @@ const state = reactive({
         pageSize: props.pagination.pageSize || 20,
     },
     radioSelection: null,
-    advQueryParam: null as any
+    advQueryParam: null as any,
 })
 const status = reactive({
     loading: false,
 })
-const { emitEvents } = useTableEvents(props, state, status, tableRef, emits)
+
 const { initTable, loadData, getTableData, onPaginationClearSelection, onColumnSettingChange } =
     useTableLoader(props, state, status, tableRef, emits)
+
+const tableEditor = new BTPTableEditor(props, getTableData, emits)
+
+const { emitEvents } = useTableEvents(props, state, status, tableRef, emits, tableEditor)
 const { computeRowIndex, radioSelectionChange } = useTable(props, state, status, tableRef, emits)
 
 /**
@@ -171,7 +219,7 @@ const onAdvSearch = advQueryParam => {
 
 initTable()
 
-if(props.initLoading && !props.search.enable){
+if (props.initLoading && !props.search.enable) {
     loadData()
 }
 </script>
