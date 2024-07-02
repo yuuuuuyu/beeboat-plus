@@ -29,6 +29,17 @@ export const routes = [
                 },
             },
             {
+                path: '/dynamic',
+                name: 'dynamic',
+                component: () => import('@/views/layout/bt-view.vue'),
+                meta: {
+                    title: '动态数据页《模块表格》',
+                    hidden: false,
+                    viewId: 'ModuleTablePage',
+                    viewModelId: 'ae96e0352e73edbc812fe26553278d7c',
+                },
+            },
+            {
                 path: '/button',
                 name: 'button',
                 component: () => import('@/views/button/index.vue'),

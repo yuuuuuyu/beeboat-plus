@@ -58,6 +58,7 @@
                                                 :column="item"
                                                 :scope="scope"
                                                 :editor="tableEditor"
+                                                :editable="props.editProps?.enable"
                                             >
                                             </BtpTableColumnContent>
                                         </template>
@@ -112,7 +113,7 @@
 import { reactive, ref, watch } from 'vue'
 import { useTable, useTableLoader } from './index'
 import { useTableEvents } from './table-events'
-import BTPTableEditor from '../../table-editor/table-editor'
+import BTPTableEditor from '../../table-editor/src/table-editor'
 import BtpAdvSearchbar from '../../adv-searchbar/src/index.vue'
 import BtpPagination from '../../pagination/src/index.vue'
 import BtpTableColumnContent from '../../table-column-content/src/index.vue'
@@ -139,6 +140,11 @@ const emits = defineEmits([
     'expand-change',
     /*自定义事件 */
     'data-loaded',
+    'row-edit-add',
+    'row-edit-edit',
+    'row-edit-delete',
+    'row-edit-cancel',
+    'row-edit-change',
 ])
 
 interface IProps {
@@ -146,6 +152,7 @@ interface IProps {
     rowKey?: string
     search?: any
     pagination?: any
+    editProps?: any
     columns?: any
     columnSetting?: boolean
     dataApi?: any
@@ -158,6 +165,7 @@ const props = withDefaults(defineProps<IProps>(), {
     pagination: {
         reserveSelection: false,
     },
+    editProps: { enable: false },
     columns: [],
     columnSetting: true,
     dataApi: null,
@@ -222,4 +230,8 @@ initTable()
 if (props.initLoading && !props.search.enable) {
     loadData()
 }
+
+defineExpose({
+    editor: tableEditor,
+})
 </script>

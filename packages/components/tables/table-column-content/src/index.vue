@@ -1,5 +1,5 @@
 <template>
-    <template v-if="column.editProps?.enable && editor.isEditing(scope.row)">
+    <template v-if="props.editable && column.editProps?.enable && editor.isEditing(scope.row)">
         <CellEditor :column="column" :row="scope.row" :editor="editor"></CellEditor>
     </template>
     <template v-else>
@@ -23,7 +23,18 @@ import { reactive, onMounted } from 'vue'
 import CellEditor from '../../table-editor/src/index.vue'
 import BTPUtils from '@beeboat/core/utils-ex/utils-ex'
 
-const props = defineProps<{ column: any; scope: any; editor: any }>()
+interface IProps {
+    editable?: boolean
+    column?: any
+    scope?: any
+    editor?: any
+}
+const props = withDefaults(defineProps<IProps>(), {
+    editable: false,
+    column: null,
+    scope: null,
+    editor: null,
+})
 
 const state = reactive({
     dictItem: null as any,

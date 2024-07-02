@@ -31,15 +31,15 @@
 
 // 所有按钮禁用状态
 .btp-button.is-disabled {
+    color: var(--el-color-white);
     background-color: var(--btp-button-disabled-bg-color);
     border-color: var(--btp-button-disabled-bg-color);
-    color: var(--el-color-white);
 }
 
 // 所有禁用按钮的悬浮/激活状态
 .btp-button.is-disabled:hover,
 .btp-button.is-disabled:active {
+    color: var(--el-color-white);
     background-color: var(--ever-color-button-disable);
     border-color: var(--ever-color-button-disable);
-    color: var(--el-color-white);
 }

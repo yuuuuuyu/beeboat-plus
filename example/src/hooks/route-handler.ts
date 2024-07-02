@@ -1,18 +1,13 @@
 import { BTPRouterCreateHandler } from '@beeboat/core/handlers/index'
-import {routes} from '../router/index'
-import {
-    Router,
-    RouterHistory,
-    createRouter,
-    createWebHashHistory,
-} from 'vue-router'
+import { routes } from '../router/index'
+import { Router, RouterHistory, createRouter, createWebHashHistory } from 'vue-router'
 
-export default class RouteHandler extends BTPRouterCreateHandler{
+export default class RouteHandler extends BTPRouterCreateHandler {
     async handle() {
         const router = await this.createRouterInstance()
 
-        await this.addRouteBeforeListener(router,routes)
-        await this.addRouteAfterListener(router,routes)
+        await this.addRouteBeforeListener(router, routes)
+        await this.addRouteAfterListener(router, routes)
         await this.getApp().setRouter(router)
     }
 
@@ -20,9 +15,11 @@ export default class RouteHandler extends BTPRouterCreateHandler{
      * @description 创建路由对象
      * @returns 路由信息
      */
-    async createRouterInstance():Promise<Router>{
+    async createRouterInstance(): Promise<Router> {
         const history = this.createHistory()
         const scrollBehavior = this.createScrollBehavior as any
+
+        this.formatRouteView(routes)
 
         const router = createRouter({
             history,
@@ -32,7 +29,7 @@ export default class RouteHandler extends BTPRouterCreateHandler{
                 return scrollBehavior(to, from, savedPosition)
             },
         })
-        return new Promise(resolve=>{
+        return new Promise(resolve => {
             resolve(router)
         })
     }
@@ -42,7 +39,7 @@ export default class RouteHandler extends BTPRouterCreateHandler{
      * @param router 路由
      * @param routes 路由数据
      */
-    addRouteBeforeListener(router: any,routes:any): Promise<Boolean> {
+    addRouteBeforeListener(router: any, routes: any): Promise<Boolean> {
         return new Promise(resolve => {
             router.beforeEach(async (to, _from, next) => {
                 next()
@@ -56,7 +53,7 @@ export default class RouteHandler extends BTPRouterCreateHandler{
      * @param router 路由
      * @param _routes 路由数据
      */
-    addRouteAfterListener(router: any,_routes:any): Promise<Boolean> {
+    addRouteAfterListener(router: any, _routes: any): Promise<Boolean> {
         return new Promise(resolve => {
             resolve(true)
         })
