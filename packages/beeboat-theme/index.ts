@@ -1,5 +1,5 @@
-import { loaderTheme } from './src/loader'
-import { getTheme, setTheme, getThemeAll } from './src/theme'
+import { loaderTheme } from './src/themes/loader'
+import { getTheme, setTheme, getThemeAll } from './src/themes/theme'
 
 /**
  * 添加主题

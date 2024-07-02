@@ -6,7 +6,7 @@ import * as components from '@beeboat/components'
 import DynamicView from './views/layout/bt-view.vue'
 
 import 'element-plus/dist/index.css'
-import '@beeboat/theme/src/index.scss'
+import '@beeboat/beeboat-theme/src/components/index.scss'
 import './styles/index.scss'
 
 import RouteHandler from './hooks/route-handler'

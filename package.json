@@ -84,16 +84,14 @@
         "vue-router": "^4.1.6"
     },
     "dependencies": {
-        "@beeboat/bee-theme": "workspace:^1.0.0",
+        "@beeboat/beeboat-theme": "workspace:^1.0.0",
         "@beeboat/components": "workspace:^1.0.0",
         "@beeboat/core": "workspace:^1.0.0",
         "@beeboat/directives": "workspace:^1.0.0",
-        "@beeboat/theme": "workspace:^1.0.0",
         "@micro-zoe/micro-app": "^1.0.0-beta.1",
         "pinia-plugin-persistedstate": "^3.2.0"
     },
     "directories": {
-        "doc": "doc",
         "example": "example"
     },
     "repository": {
