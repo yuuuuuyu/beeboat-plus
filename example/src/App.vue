@@ -5,10 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import beeTheme from '@beeboat/beeboat-theme'
+import beeTheme from '@beeboat/beeboat-theme/src/index'
 beeTheme.start()
-
-
 </script>
 <style>
 body {

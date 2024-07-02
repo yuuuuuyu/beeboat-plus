@@ -4,11 +4,10 @@ importers:
 
   .:
     specifiers:
-      '@beeboat/bee-theme': workspace:^1.0.0
+      '@beeboat/beeboat-theme': workspace:^1.0.0
       '@beeboat/components': workspace:^1.0.0
       '@beeboat/core': workspace:^1.0.0
       '@beeboat/directives': workspace:^1.0.0
-      '@beeboat/theme': workspace:^1.0.0
       '@codemirror/lang-javascript': ^6.2.0
       '@codemirror/lang-json': ^6.0.1
       '@codemirror/merge': ^6.1.2
@@ -74,11 +73,10 @@ importers:
       vue-i18n: ^9.2.2
       vue-router: ^4.1.6
     dependencies:
-      '@beeboat/bee-theme': link:packages/bee-theme
+      '@beeboat/beeboat-theme': link:packages/beeboat-theme
       '@beeboat/components': link:packages/components
       '@beeboat/core': link:packages/core
       '@beeboat/directives': link:packages/directives
-      '@beeboat/theme': link:packages/theme
       '@micro-zoe/micro-app': 1.0.0-rc.2
       pinia-plugin-persistedstate: 3.2.0_pinia@2.1.7
     devDependencies:
@@ -186,12 +184,6 @@ importers:
       vite-plugin-html: 3.2.2_vite@2.9.16
       vue-tsc: 0.34.17_typescript@4.9.5
 
-  packages/bee-theme:
-    specifiers:
-      '@ctrl/tinycolor': ^3.4.1
-    dependencies:
-      '@ctrl/tinycolor': 3.6.1
-
   packages/beeboat-plus:
     specifiers:
       jsencrypt: ^3.2.1
@@ -224,9 +216,6 @@ importers:
       vue-cookies: 1.8.3
 
   packages/directives:
-    specifiers: {}
-
-  packages/theme:
     specifiers: {}
 
 packages:
