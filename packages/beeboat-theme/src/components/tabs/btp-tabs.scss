@@ -1,4 +1,4 @@
-.btp-tabs.el-tabs.bt-tabs.el-tabs--top,.btp-tabs.el-tabs.bt-tabs.el-tabs--bottom {
+.btp-tabs.el-tabs.el-tabs--top,.btp-tabs.el-tabs.el-tabs--bottom {
     display: flex;
     flex-direction: column;
     .el-tabs__content{
@@ -10,7 +10,7 @@
         }
     }
 }
-.btp-tabs.el-tabs.bt-tabs.el-tabs--left,.btp-tabs.el-tabs.bt-tabs.el-tabs--right {
+.btp-tabs.el-tabs.el-tabs--left,.btp-tabs.el-tabs.el-tabs--right {
     .el-tabs__content{
         position: relative;
         height:100%;
