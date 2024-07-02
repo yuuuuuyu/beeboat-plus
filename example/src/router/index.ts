@@ -48,6 +48,42 @@ export const routes = [
                     hidden: false,
                 },
             },
+            {
+                path: '/switch',
+                name: 'switch',
+                component: () => import('@/views/switch/index.vue'),
+                meta: {
+                    title: '开关',
+                    hidden: false,
+                },
+            },
+            {
+                path: '/input',
+                name: 'input',
+                component: () => import('@/views/input/index.vue'),
+                meta: {
+                    title: '输入框',
+                    hidden: false,
+                },
+            },
+            {
+                path: '/tabs',
+                name: 'tabs',
+                component: () => import('@/views/tabs/index.vue'),
+                meta: {
+                    title: 'Tabs 标签页',
+                    hidden: false,
+                },
+            },
+            {
+                path: '/tabs-anchor',
+                name: 'tabs-anchor',
+                component: () => import('@/views/tabs-anchor/index.vue'),
+                meta: {
+                    title: 'Tabs 定位标签页',
+                    hidden: false,
+                },
+            },
         ],
     },
 ]

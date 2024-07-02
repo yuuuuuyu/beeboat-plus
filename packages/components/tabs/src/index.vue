@@ -1,5 +1,5 @@
 <template>
-    <el-tabs>
+    <el-tabs class="btp-tabs">
         <slot name="default">
             <template :key="component.id" v-for="component in btConfig?.children">
                 <component
