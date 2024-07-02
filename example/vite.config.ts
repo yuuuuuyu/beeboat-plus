@@ -51,7 +51,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: [
-          `@use "@beeboat/bee-theme/src/scss/var.scss" as *;`,
+          `@use "@beeboat/beeboat-theme/src/scss/var.scss" as *;`,
         ].join('\n'),
       },
     },

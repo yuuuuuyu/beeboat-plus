@@ -53,6 +53,6 @@ export function copyThemeSource() {
 }
 
 // 处理系统主题
-const themeTask = buildPackages(__dirname, 'bee-theme')
+const themeTask = buildPackages(__dirname, 'beeboat-theme')
 
 export default parallel(copyThemeSource, series(compile, copyFont, copyFullStyle), themeTask)

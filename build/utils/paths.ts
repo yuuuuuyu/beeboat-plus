@@ -7,7 +7,7 @@ export const projectRoot = path.resolve(__dirname, '../../')
 export const outDir = path.resolve(projectRoot, 'dist')
 
 /** 打包输出目录 */
-export const themeRoot = path.resolve(projectRoot, 'packages/bee-theme')
+export const themeRoot = path.resolve(projectRoot, 'packages/beeboat-theme')
 /** beeboat-plus 入口 index.ts */
 export const btRoot = path.resolve(projectRoot, 'packages/beeboat-plus')
 /** 组件目录 */
