@@ -1,5 +1,5 @@
 <template>
-    <el-radio-group>
+    <el-radio-group class="btp-radio-group">
         <slot>
             <template v-if="props.buttonMode">
                 <el-radio-button

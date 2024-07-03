@@ -1,5 +1,5 @@
 <template>
-    <el-select ref="selectRef">
+    <el-select class="btp-select" ref="selectRef">
         <template v-if="$slots.default">
             <slot>
                 <el-option

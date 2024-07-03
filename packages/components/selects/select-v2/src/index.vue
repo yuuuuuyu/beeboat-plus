@@ -1,5 +1,10 @@
 <template>
-    <el-select-v2 ref="selectRef" :options="props.options || state.options" :props="props.props">
+    <el-select-v2
+        class="btp-select-v2"
+        ref="selectRef"
+        :options="props.options || state.options"
+        :props="props.props"
+    >
         <template v-if="$slots.default" #default="{ item }">
             <slot :item="item" />
         </template>

@@ -1,5 +1,5 @@
 <template>
-    <el-autocomplete>
+    <el-autocomplete class="btp-autocomplete">
         <template v-if="$slots.default" #default><slot name="default" /></template>
         <template v-if="$slots.prefix" #prefix><slot name="prefix" /></template>
         <template v-if="$slots.suffix" #suffix><slot name="suffix" /></template>

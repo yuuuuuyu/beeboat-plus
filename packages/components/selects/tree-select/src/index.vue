@@ -1,5 +1,9 @@
 <template>
-    <el-tree-select :data="props.data || state.options" :props="props.props">
+    <el-tree-select
+        class="btp-tree-select"
+        :data="props.data || state.options"
+        :props="props.props"
+    >
         <template v-if="$slots.default" #default="{ node, data }">
             <slot :node="node" :data="data" />
         </template>

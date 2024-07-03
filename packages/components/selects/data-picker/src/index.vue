@@ -1,5 +1,6 @@
 <template>
     <el-input
+        class="btp-data-picker"
         v-model:value="state.textValue"
         readonly
         clearable

@@ -1,5 +1,5 @@
 <template>
-    <el-checkbox-group>
+    <el-checkbox-group class="btp-checkbox-group">
         <slot>
             <template v-if="props.buttonMode">
                 <el-checkbox-button
