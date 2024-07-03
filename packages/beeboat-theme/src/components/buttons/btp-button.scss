@@ -43,3 +43,8 @@
     background-color: var(--ever-color-button-disable);
     border-color: var(--ever-color-button-disable);
 }
+
+// 按钮的隐藏状态
+.btp-button[hidden] {
+    display: none;
+}

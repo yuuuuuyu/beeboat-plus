@@ -1,6 +1,6 @@
 <template>
     <div class="welcome">
-        <div class="title">我是组件列表目录</div>
+        <h1 class="title">组件列表</h1>
         <div class="grid-list">
             <div class="grid-item">
                 <div class="flex-item">组件</div>
@@ -46,7 +46,7 @@ const toRoute = path => {
 .grid-list {
     display: grid;
     row-gap: 10px;
-    width: 500px;
+    width: auto;
 }
 
 .grid-item {
