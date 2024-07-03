@@ -50,6 +50,7 @@ importers:
       postcss-import: ^15.0.0
       postcss-scss: ^4.0.4
       prettier: ^2.6.2
+      resize-observer: 1.0.4
       rollup: ^2.70.2
       rollup-plugin-esbuild: ^5.0.0
       rollup-plugin-postcss: ^4.0.2
@@ -79,6 +80,7 @@ importers:
       '@beeboat/directives': link:packages/directives
       '@micro-zoe/micro-app': 1.0.0-rc.2
       pinia-plugin-persistedstate: 3.2.0_pinia@2.1.7
+      resize-observer: 1.0.4
     devDependencies:
       '@codemirror/lang-javascript': 6.2.1
       '@codemirror/lang-json': 6.0.1
@@ -6028,6 +6030,10 @@ packages:
   /require-main-filename/1.0.1:
     resolution: {integrity: sha512-IqSUtOVP4ksd1C/ej5zeEh/BIP2ajqpn8c5x+q99gvcIG/Qf0cud5raVnE/Dwd0ua9TXYDoDc0RE5hBSdz22Ug==}
     dev: true
+
+  /resize-observer/1.0.4:
+    resolution: {integrity: sha512-AQ2MdkWTng9d6JtjHvljiQR949qdae91pjSNugGGeOFzKIuLHvoZIYhUTjePla5hCFDwQHrnkciAIzjzdsTZew==}
+    dev: false
 
   /resolve-dir/1.0.1:
     resolution: {integrity: sha512-R7uiTjECzvOsWSfdM0QKFNBVFcK27aHOUwdvK53BcW8zqnGdYp0Fbj82cy54+2A4P2tFM22J5kRfe1R+lM/1yg==}

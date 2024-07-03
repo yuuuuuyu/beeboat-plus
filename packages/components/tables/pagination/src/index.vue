@@ -1,5 +1,5 @@
 <template>
-    <div class="btp-pagination">
+    <div ref="paginationRef" class="btp-pagination">
         <div class="btp-pagination--toolbar">
             <div v-if="props.reserveSelection">
                 <el-switch
@@ -34,12 +34,11 @@
                 }
             "
         ></el-pagination>
-        <ResizeObserver :emit-on-mount="true" @notify="onViewResized"></ResizeObserver>
     </div>
 </template>
 <script setup lang="ts">
-import { reactive, watch } from 'vue'
-import ResizeObserver from '../../../resize-observer/src/resize-observer.vue'
+import { ref, reactive, watch, onMounted } from 'vue'
+import { ResizeObserver } from 'resize-observer'
 
 //定义事件
 const emits = defineEmits([
@@ -111,6 +110,7 @@ const props = withDefaults(defineProps<PaginationProps>(), {
     currentPage: 1,
 })
 
+const paginationRef = ref()
 const state = reactive({
     mode: props.reserve || false,
     pageSize: props.pageSize || 20,
@@ -118,11 +118,15 @@ const state = reactive({
     layout: getLayout(4, null),
 })
 
-const onViewResized = ({ width }) => {
+const observer = new ResizeObserver(() => {
     if (props.autoLayout) {
-        state.layout = getLayout('auto', width)
+        state.layout = getLayout('auto', paginationRef.value.offsetWidth)
     }
-}
+})
+
+onMounted(() => {
+    observer.observe(paginationRef.value)
+})
 const reset = () => {
     state.currentPage = 1
     state.pageSize = 20
