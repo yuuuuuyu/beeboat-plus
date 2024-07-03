@@ -1,5 +1,5 @@
 <template>
-    <el-dropdown ref="dropdownRef">
+    <el-dropdown class="btp-dropdown" ref="dropdownRef">
         <slot>
             <span v-if="$attrs['split-button'] || $attrs['splitButton']">
                 {{ btConfig?.props.name || '' }}

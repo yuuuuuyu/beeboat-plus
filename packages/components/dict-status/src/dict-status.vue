@@ -1,5 +1,5 @@
 <template>
-    <div class="bt-dict-status">
+    <div class="btp-dict-status">
         <span
             v-if="colorData?.color"
             class="mark"
