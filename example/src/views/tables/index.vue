@@ -1,20 +1,22 @@
 <template>
-    <BtpTable
-        ref="tableRef"
-        :search="search"
-        :columns="columns.children"
-        :pagination="pagination"
-        :editProps="editProps"
-        v-bind="table"
-    >
-        <template #index13>
-            <el-table-column label="222"></el-table-column>
-        </template>
-        <template #toolbar>
-            <el-button @click="onClick">123</el-button>
-            <el-button @click="onSaveClick">保存</el-button>
-        </template>
-    </BtpTable>
+    <div style="height: 600px">
+        <BtpTable
+            ref="tableRef"
+            :search="search"
+            :columns="columns.children"
+            :pagination="pagination"
+            :editProps="editProps"
+            v-bind="table"
+        >
+            <template #index13>
+                <el-table-column label="222"></el-table-column>
+            </template>
+            <template #toolbar>
+                <el-button @click="onClick">123</el-button>
+                <el-button @click="onSaveClick">保存</el-button>
+            </template>
+        </BtpTable>
+    </div>
 </template>
 
 <script lang="ts" setup>

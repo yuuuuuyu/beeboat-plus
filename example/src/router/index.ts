@@ -11,6 +11,15 @@ export const routes = [
         },
         children: [
             {
+                path: '/dockpanel',
+                name: 'dockpanel',
+                component: () => import('@/views/dock-panel/index.vue'),
+                meta: {
+                    title: 'DockPanel',
+                    hidden: false,
+                },
+            },
+            {
                 path: '/welcome',
                 name: 'welcome',
                 component: () => import('@/views/home/welcome.vue'),

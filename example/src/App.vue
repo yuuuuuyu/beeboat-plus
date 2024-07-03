@@ -1,6 +1,8 @@
 <template>
     <el-config-provider size="default">
-        <router-view />
+        <el-scrollbar>
+            <router-view />
+        </el-scrollbar>
     </el-config-provider>
 </template>
 
