@@ -9,7 +9,7 @@
                 @click="toRoute(item.path)"
             >
                 <div class="flex-item">
-                    <el-link type="primary">{{ item.meta.title }}</el-link>
+                    <el-link type="primary" class="link-item">{{ item.meta.title }}</el-link>
                 </div>
             </div>
         </div>
@@ -37,6 +37,9 @@ h1 {
 .grid-item {
     height: 40px;
     line-height: 40px;
+}
+.link-item {
+    font-size: 16px;
 }
 
 .cls-author {
