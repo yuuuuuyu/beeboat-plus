@@ -1,7 +1,6 @@
 <template>
-    <div>
-        <template v-if="$slots.default"><slot /></template>
-        <template v-else>
+    <div class="btp-div">
+        <slot>
             <template :key="component.id" v-for="component in btConfig?.children">
                 <component
                     :is="btViewContext.render(component)"
@@ -13,7 +12,7 @@
                     v-model="btViewContext.dataModelProxy[component.model?.prop]"
                 />
             </template>
-        </template>
+        </slot>
     </div>
 </template>
 <script lang="ts" setup>
