@@ -29,6 +29,15 @@ export const routes = [
                 },
             },
             {
+                path: '/logics',
+                name: 'logics',
+                component: () => import('@/views/logics/index.vue'),
+                meta: {
+                    title: '前端逻辑编排示例',
+                    hidden: false,
+                },
+            },
+            {
                 path: '/tables',
                 name: 'tables',
                 component: () => import('@/views/tables/index.vue'),
