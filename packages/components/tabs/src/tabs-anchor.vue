@@ -1,5 +1,14 @@
 <template>
-    <el-tabs class="btp-tabs-anchor" ref="elTabRef" v-model="state.activeTabName">
+    <el-tabs
+        class="btp-tabs-anchor"
+        ref="elTabRef"
+        v-model="state.activeTabName"
+        @tab-change="tabChange"
+        @tab-click="v1 => jump(v1, null)"
+        @tab-remove="v1 => $emit('tab-remove', v1)"
+        @tab-add="() => $emit('tab-add')"
+        @edit="(v1, v2) => $emit('edit', v1, v2)"
+    >
         <el-scrollbar>
             <slot name="default">
                 <template :key="component.id" v-for="component in btConfig?.children">
@@ -15,8 +24,8 @@
         </el-scrollbar>
     </el-tabs>
 </template>
-<script lang="ts" setup>
-import { onMounted, ref, reactive, getCurrentInstance, watch } from 'vue'
+<script setup lang="ts">
+import { onMounted, ref, reactive, getCurrentInstance } from 'vue'
 
 const emits = defineEmits([
     'update:modelValue',
@@ -27,37 +36,14 @@ const emits = defineEmits([
     'edit',
 ])
 
-defineProps({
-    /**
-     * @description 视图动态配置
-     */
-    btConfig: {
-        type: Object,
-        default: undefined,
-    },
-    /**
-     * @description 视图动态配置
-     */
-    btViewContext: {
-        type: Object,
-        default: undefined,
-    },
-})
 const instance = getCurrentInstance()
-const state = reactive({
-    activeTabName: instance?.attrs.modelValue || ('' as any),
-})
-
-let isTabClick = false
 const elTabRef = ref()
 
-watch(
-    () => state.activeTabName,
-    value => {
-        console.log('监控信息变化', instance, instance.$refs)
-        jump(state.activeTabName)
-    },
-)
+const state = reactive({
+    activeTabName: instance?.attrs.modelValue || ('' as any),
+    tabIndex: 0,
+})
+let isTabClick = false
 
 const querySelector = clazz => {
     return elTabRef.value.$el.querySelector(clazz)
@@ -68,23 +54,20 @@ const querySelectorAll = clazz => {
 
 onMounted(() => {
     querySelector('.el-scrollbar__wrap').addEventListener('scroll', e => {
-        console.log('isscoll')
         if (isTabClick) return
         const scrollTop = e.target.scrollTop
         const windowHeight = e.target.clientHeight
         const scrollHeight = e.target.scrollHeight
         if (Math.ceil(scrollTop + windowHeight) === scrollHeight) {
-            //
         } else {
             let scrollItems = querySelectorAll('.el-tab-pane')
             for (let i = scrollItems.length - 1; i >= 0; i--) {
+                // 判断滚动条滚动距离是否大于当前滚动项可滚动距离
                 let judge =
                     e.target.scrollTop >= scrollItems[i].offsetTop - scrollItems[0].offsetTop - 100
                 if (judge) {
                     state.activeTabName = scrollItems[i].id.split('-')[1]
                     emits('update:modelValue', state.activeTabName)
-                    emits('tab-click', state.activeTabName, event)
-                    emits('tab-change', state.activeTabName, event)
                     break
                 }
             }
@@ -112,19 +95,22 @@ function smoothUp(element, distance, totalY, step) {
         setTimeout(smoothUp.bind(null, element, distance, totalY, step), 10)
     } else {
         element.scrollTop = totalY
-        isTabClick = false
+        isTabClick = false // 重置标志
     }
 }
 
 // tab click
 const jump = (tabName, event) => {
-    isTabClick = true
+    isTabClick = true // 设置标志
+
+    emits('tab-click', tabName, event)
     let scrollTarget = querySelector('.el-scrollbar__wrap')
     let target = querySelector('.el-scrollbar__view')
     let scrollItems = target.children
     let totalY = scrollItems[tabName.index].offsetTop - scrollItems[0].offsetTop
-    let distance = target!.scrollTop
-
+    let distance = target!.scrollTop // 滚动条距离滚动区域顶部的距离
+    // 滚动动画实现, 使用setTimeout的递归实现平滑滚动，将距离细分为50小段，10ms滚动一次
+    // 计算每一小段的距离
     let step = totalY / 50
     if (totalY > distance) {
         smoothDown(scrollTarget, distance, totalY, step)
@@ -133,9 +119,11 @@ const jump = (tabName, event) => {
         step = newTotal / 50
         smoothUp(scrollTarget, distance, totalY, step)
     }
+}
 
-    emits('tab-click', tabName, event)
-    emits('tab-change', tabName, event)
+const tabChange = tabName => {
+    emits('update:modelValue', tabName)
+    emits('tab-change', tabName)
 }
 
 /**

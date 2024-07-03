@@ -1,9 +1,5 @@
 <template>
-    <btp-tabs-anchor
-        v-model2="state.value"
-        style="width: 100%; height: 100%"
-        @tab-change="onChange"
-    >
+    <btp-tabs-anchor style="width: 100%; height: 100%" @tab-change="onChange">
         <el-tab-pane label="User" name="first">
             <div style="height: 300px">User</div>
         </el-tab-pane>
