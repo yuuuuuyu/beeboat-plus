@@ -1,50 +1,53 @@
-// 次要按钮
-.btp-button.el-button--secondary {
-    color: var(--btp-button-text-color-secondary);
-    background-color: var(--btp-button-bg-color-secondary);
-    border-color: var(--btp-button-bg-color-secondary);
-}
+.btp-button {
 
-// 次要按钮-悬停/焦点
-.btp-button.el-button--secondary:hover,
-.btp-button.el-button--secondary:focus {
-    color: var(--el-color-primary);
-    background-color: var(--btp-button-hover-bg-color-secondary);
-    border-color: var(--btp-button-hover-bg-color-secondary);
-}
+    // 次要按钮
+    &.el-button--secondary {
+        color: var(--btp-button-text-color-secondary);
+        background-color: var(--btp-button-bg-color-secondary);
+        border-color: var(--btp-button-bg-color-secondary);
 
-// 次要文本按钮
-.btp-button.el-button--secondary.is-link {
-    color: var(--btp-button-text-color-secondary);
-    background-color: transparent;
-    border-color: transparent;
-}
+        // 次要按钮-悬停/焦点
+        &:hover,
+        &:focus {
+            color: var(--el-color-primary);
+            background-color: var(--btp-button-hover-bg-color-secondary);
+            border-color: var(--btp-button-hover-bg-color-secondary);
+        }
 
-.btp-button.el-button--secondary.is-link:hover,
-.btp-button.el-button--secondary.is-link:focus {
-    color: var(--btp-button-active-bg-color-secondary);
-}
+        // 次要文本按钮
+        &.is-link {
+            color: var(--btp-button-text-color-secondary);
+            background-color: transparent;
+            border-color: transparent;
 
-.btp-button.el-button--secondary.is-link:active {
-    color: var(--btp-button-text-color-secondary);
-}
+            &:hover,
+            &:focus {
+                color: var(--btp-button-active-bg-color-secondary);
+            }
 
-// 所有按钮禁用状态
-.btp-button.is-disabled {
-    color: var(--el-color-white);
-    background-color: var(--btp-button-disabled-bg-color);
-    border-color: var(--btp-button-disabled-bg-color);
-}
+            &:active {
+                color: var(--btp-button-text-color-secondary);
+            }
+        }
+    }
 
-// 所有禁用按钮的悬浮/激活状态
-.btp-button.is-disabled:hover,
-.btp-button.is-disabled:active {
-    color: var(--el-color-white);
-    background-color: var(--ever-color-button-disable);
-    border-color: var(--ever-color-button-disable);
-}
+    // 所有按钮禁用状态
+    &.is-disabled {
+        color: var(--el-color-white);
+        background-color: var(--btp-button-disabled-bg-color);
+        border-color: var(--btp-button-disabled-bg-color);
 
-// 按钮的隐藏状态
-.btp-button[hidden] {
-    display: none;
+        // 所有禁用按钮的悬浮/激活状态
+        &:hover,
+        &:active {
+            color: var(--el-color-white);
+            background-color: var(--ever-color-button-disable);
+            border-color: var(--ever-color-button-disable)
+        }
+    }
+
+    // 按钮的隐藏状态
+    &[hidden] {
+        display: none;
+    }
 }
