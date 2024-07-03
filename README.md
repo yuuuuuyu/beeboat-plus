@@ -6,25 +6,28 @@
 
 ## 用法
 
-初始拉取ui库，按照以下步骤依次执行
+初始拉取组件库，按照以下步骤依次执行
 
 ### node版本
 
 推荐nodejs 16版本
 
 ### nodejs内存扩展
-
+```bash
 npm install -g increase-memory-limit
 
 increase-memory-limit
 
 setx NODE_OPTIONS --max_old_space_size=8192
+```
 
 ### pnpm版本
 
 > 使用pnpm 6的最后版本或者pnpm7.0的版本，否则 pnpm build构建包出问题
 
+```bash
 npm install -g pnpm@6
+```
 
 ### 安装依赖
 
@@ -34,21 +37,31 @@ npm install -g pnpm@6
 >
 > 地址：packages\beeboat-plus\package.json
 >
-> "version": "2.0.135", 手动升级
+> "version": "1.0.1", 手动修改
 >
 ### 正式打包
-
-    pnpm build
-
+```bash
+pnpm build
+```
 ### 正式发布到私有npm源上
-
-    pnpm publish:version
-    或
-    pnpm publish:npm
+```bash
+pnpm publish:version
+# 或者
+pnpm publish:npm
+```
 
 ### 本地启动exampleUI库组件示例
+```bash
+pnpm dev
+```
 
-    pnpm dev
+### 代码规范
+
+    eslint
+
+### 代码提交规范
+
+    git cz
 
 ### gitlab提交规范
 
