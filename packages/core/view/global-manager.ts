@@ -43,7 +43,7 @@ export default class BTPGlobalAppManager {
     ) {
         const realViewId = viewId || vueInstance.type.props.viewId
         if (realViewId && this.viewContext[realViewId]) {
-            return this.viewContext[realViewId].createInstance(
+            return new this.viewContext[realViewId](
                 vueInstance,
                 realViewId,
                 viewModelId,
