@@ -1,9 +1,9 @@
 import { ComponentInternalInstance } from 'vue'
 
-import BTPGlobalAppManager from './global-manager'
 import BTPApplication from '../app/application'
 import BTPBaseViewContext from './base-view-context'
 import BTPUtils from '../utils-ex/utils-ex'
+import BTPLogicExecutor from '../logics/logic-executor'
 
 export default class BTPViewContext extends BTPBaseViewContext {
     /**
@@ -35,9 +35,11 @@ export default class BTPViewContext extends BTPBaseViewContext {
         this.viewModelId = viewModelId || vueInstance.type.props.viewModelId
 
         if (this.viewModelId) {
-            BTPUtils.getAppManager().getView(this.viewModelId).then(res => {
-                this.buildView(res)
-            })
+            BTPUtils.getAppManager()
+                .getView(this.viewModelId)
+                .then(res => {
+                    this.buildView(res)
+                })
         } else {
             console.log('无法获取参数', BTPApplication.getInstance().getRouter().currentRoute)
         }
@@ -108,7 +110,7 @@ export default class BTPViewContext extends BTPBaseViewContext {
         componentList.forEach(item => {
             if (item.props?.rules) {
                 item.props.rules.forEach(item => {
-                    if(item.pattern) {
+                    if (item.pattern) {
                         item.pattern = new RegExp(item.pattern)
                     }
                 })
@@ -122,23 +124,41 @@ export default class BTPViewContext extends BTPBaseViewContext {
             if (item.model?.prop?.length > 0) {
                 this.dataModelProxy[item.model?.prop] = item.model?.defaultValue || undefined
             }
-            if (item.props?.dataApiId) {
-                item.props.dataApi = () => {
-                    return this.executeCallableProps(item)
-                }
-            }
         })
     }
 
     buildEvents(components): void {
+        const viewContext = this
         const componentList = BTPUtils.getAppManager().parseComponentList(components)
 
         componentList.forEach(item => {
             item.events = {}
+            item.props.propEvents = {}
             if (item.actions) {
                 Object.keys(item.actions).forEach(eventName => {
-                    item.events[eventName] = (p1, p2, p3, p4, p5, p6, p7) => {
-                        this.executeAction(eventName, item, p1, p2, p3, p4, p5, p6, p7)
+                    const action = item.actions[eventName]
+                    if (action.propEvent) {
+                        item.props.propEvents[eventName] = (p1, p2, p3, p4, p5, p6, p7) => {
+                            const executor = new BTPLogicExecutor(
+                                viewContext,
+                                item,
+                                action,
+                                eventName,
+                                [p1, p2, p3, p4, p5, p6, p7],
+                            )
+                            this.executeAction(executor)
+                        }
+                    } else {
+                        item.events[eventName] = (p1, p2, p3, p4, p5, p6, p7) => {
+                            const executor = new BTPLogicExecutor(
+                                viewContext,
+                                item,
+                                action,
+                                eventName,
+                                [p1, p2, p3, p4, p5, p6, p7],
+                            )
+                            this.executeAction(executor)
+                        }
                     }
                 })
             }
@@ -148,14 +168,8 @@ export default class BTPViewContext extends BTPBaseViewContext {
         })
     }
 
-    executeAction(eventName, item, p1, p2, p3, p4, p5, p6, p7) {
-        console.log('执行事件', eventName, item, p1, p2, p3, p4, p5, p6, p7)
-    }
-
-    executeCallableProps(_component: any) {
-        console.log(this)
-        return new Promise(resolve => {
-            resolve({ data: [] })
-        })
+    executeAction(executor) {
+        console.log('执行事件', executor)
+        return executor.execute()
     }
 }

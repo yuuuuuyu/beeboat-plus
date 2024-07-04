@@ -106,10 +106,6 @@ export const useTableLoader = (props, state, status, tableRef, emits) => {
             status.loading = false
             return
         }
-        if (!props.dataApi) {
-            status.loading = false
-            return
-        }
         const params = JSON.parse(JSON.stringify(props.initParam || {}))
         //附加分页参数
         if (props.pagination?.enable) {
@@ -118,25 +114,46 @@ export const useTableLoader = (props, state, status, tableRef, emits) => {
         }
         params.advQueryParam = state.advQueryParam
         params.sortParamList = state.sortParamList
-
-        //执行请求
-        props
-            .dataApi(params)
-            .then(res => {
-                if (props.pagination?.enable) {
-                    state.data = res.data.records
-                    state.pagination.total = res.data.total
-                } else {
-                    state.data = res.data
-                }
-                status.loading = false
-                emits('data-loaded', state.data, state.pagination)
-            })
-            .catch(() => {
-                state.data = []
-                status.loading = false
-                state.pagination.total = 0
-            })
+        if (props.dataApi) {
+            //执行请求
+            props
+                .dataApi(params)
+                .then(res => {
+                    if (props.pagination?.enable) {
+                        state.data = res.data.records
+                        state.pagination.total = res.data.total
+                    } else {
+                        state.data = res.data
+                    }
+                    status.loading = false
+                    emits('data-loaded', state.data, state.pagination)
+                })
+                .catch(() => {
+                    state.data = []
+                    status.loading = false
+                    state.pagination.total = 0
+                })
+        } else if (props.propEvents?.loadTableData) {
+            props.propEvents
+                .loadTableData(params)
+                .then(res => {
+                    if (props.pagination?.enable) {
+                        state.data = res.data.records
+                        state.pagination.total = res.data.total
+                    } else {
+                        state.data = res.data
+                    }
+                    status.loading = false
+                    emits('data-loaded', state.data, state.pagination)
+                })
+                .catch(() => {
+                    state.data = []
+                    status.loading = false
+                    state.pagination.total = 0
+                })
+        } else {
+            status.loading = false
+        }
     }
 
     /**

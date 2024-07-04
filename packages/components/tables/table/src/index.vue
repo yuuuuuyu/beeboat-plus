@@ -157,6 +157,7 @@ interface IProps {
     columnSetting?: boolean
     dataApi?: any
     initLoading?: boolean
+    propEvents?: any
 }
 const props = withDefaults(defineProps<IProps>(), {
     id: '',
@@ -170,6 +171,7 @@ const props = withDefaults(defineProps<IProps>(), {
     columnSetting: true,
     dataApi: null,
     initLoading: true,
+    propEvents: {},
 })
 const tableRef = ref()
 const state = reactive({

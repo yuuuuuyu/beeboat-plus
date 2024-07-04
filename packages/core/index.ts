@@ -24,6 +24,7 @@ import {
 } from './handlers/index'
 
 import BTPAppCacheManager from './cache/app-cache-manager'
+import BTPLogicExecutor from './logics/logic-executor'
 
 export {
     BTPApplication,
@@ -33,6 +34,7 @@ export {
     BTPBaseViewContext,
     BTPGlobalAppManager,
     BTPDialogViewContext,
+    BTPLogicExecutor,
     BTPBaseHandler,
     BTPBaseApiHandler,
     BTPBaseInitHandler,
