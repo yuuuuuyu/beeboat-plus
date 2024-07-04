@@ -1,0 +1,8 @@
+.btp-pagination {
+    display: flex;
+    flex-direction: row;
+    
+    .btp-pagination--toolbar {
+        flex: 1;
+    }
+}

@@ -1,0 +1,88 @@
+/** 主色 */
+$bt-color: var(--el-color-primary);
+$bt-color-primary: var(--el-color-primary);
+
+/** 主色 */
+$bt-color: var(--el-color-primary);
+$bt-color-primary: var(--el-color-primary);
+/** 辅助类 白色 */
+$bt-color-white: var(--ever-color-white);
+/** 辅助类 黑色 */
+$bt-color-black: var(--ever-color-black);
+/** 辅助色（成功） */
+$bt-color-success: var(--ever-color-success);
+/** 辅助色（警示） */
+$bt-color-warning: var(--ever-color-warning);
+/** 辅助色 (错误) */
+$bt-color-danger: var(--ever-color-danger);
+/** 链接类信息 */
+$bt-color-link: var(--ever-color-link);
+/** 水槽颜色 */
+$bt-color-gutter: var(--ever-color-gutter);
+/** 文字主色 */
+$bt-color-font: var(--ever-color-font);
+/** 按钮禁用状态 */
+$bt-color-button-disable: var(--ever-color-button-disable);
+/** 线、输入框边、分割线 */
+$bt-color-line: var(--ever-color-line);
+/** 表单内提示信息 */
+$bt-color-form-info: var(--ever-color-form-info);
+/** 表单禁用填充 */
+$bt-color-form-disable: var(--ever-color-form-disable);
+/** 表单禁用描边 */
+$bt-color-form-disable-edge: var(--ever-color-form-disable-edge);
+/** 表单禁用文字 */
+$bt-color-form-disable-text: var(--ever-color-form-disable-text);
+
+/** 流程进行中状态：审核中、审批中、进行中、生产中、跟踪中、检验中、处理中、复检中、维修中、返修中 */
+$bt-color-color-start1: var(--ever-color-color-start1);
+/** 成功状态：已发布、已完成、已入库、已通过、审批通过、成交、已维护、已报价、已生效、已收货、正常、折旧完成、已审核、已维修、已确认、已提交、已分摊、运行 */
+$bt-color-color-start2: var(--ever-color-color-start2);
+/** 等待处理进入下一阶段状态：待机、待维护、待检验、待确认、待点检、待审核、待保养、待维修、待汇报、待交接、待开票、待收票、待维护货运信息、待进厂、待出厂、待收货 */
+$bt-color-color-start3: var(--ever-color-color-start3);
+/** 错误&失败状态：故障、被驳回、已驳回、逾期未处理、审批驳回、未通过 */
+$bt-color-color-start4: var(--ever-color-color-start4);
+/** 完成阶段性结果状态：已排产 */
+$bt-color-color-start5: var(--ever-color-color-start5);
+/** 临时暂停状态：已挂起、已暂停 */
+$bt-color-color-start6: var(--ever-color-color-start6);
+/** 阶段性操作状态提示：已发料 */
+$bt-color-color-start7: var(--ever-color-color-start7);
+/** 未启动、失效、结束等状态：关机、未开始、未提交、未处理、已停用、已创建、未提交、未报价、已作废、已关闭、已暂停、未分摊、报废、已撤回、已收票 */
+$bt-color-color-start8: var(--ever-color-color-start8);
+
+/** 背景 */
+$bt-color-bg: var(--ever-color-gutter);
+/** 顶部导航栏 背景色 */
+$bt-color-nav-bg: var(--ever-color-nav-bg);
+/** 头部 背景 */
+$bg-color-bg-head: var(--ever-color-bg-head);
+/** 头部 选中 */
+$bt-color-head-active: var(--ever-color-bg-head-active);
+
+/** 表单 */
+$bt-dialog-header-bg: var(--ever-table-color-head-bg);
+
+/** 表格 */
+$bt-table-head-bg: var(--ever-table-color-head-bg);
+
+$bt-gap-s1: var(--ever-gap-s1);
+$bt-gap-s2: var(--ever-gap-s2);
+$bt-gap-s3: var(--ever-gap-s3);
+$bt-gap-s4: var(--ever-gap-s4);
+$bt-gap-s5: var(--ever-gap-s5);
+$bt-gap-s6: var(--ever-gap-s6);
+$bt-gap-s7: var(--ever-gap-s7);
+$bt-gap-s8: var(--ever-gap-s8);
+$bt-gap-s9: var(--ever-gap-s9);
+$bt-gap-s10: var(--ever-gap-s10);
+$bt-gap-s11: var(--ever-gap-s11);
+$bt-gap-s12: var(--ever-gap-s12);
+$bt-gap-s13: var(--ever-gap-s13);
+$bt-gap-s14: var(--ever-gap-s14);
+$bt-gap-s15: var(--ever-gap-s15);
+$bt-gap-s16: var(--ever-gap-s16);
+$bt-gap-s17: var(--ever-gap-s17);
+$bt-gap-s18: var(--ever-gap-s18);
+$bt-gap-s19: var(--ever-gap-s19);
+$bt-gap-s20: var(--ever-gap-s20);

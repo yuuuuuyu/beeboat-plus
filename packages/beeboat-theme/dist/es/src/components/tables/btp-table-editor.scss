@@ -1,0 +1,9 @@
+.btp-table-cell-editor {
+    display: flex;
+    align-items: center;
+    
+    .btp-table-cell-editor--content {
+        flex:1;
+        padding-right: 4px;
+    }
+}

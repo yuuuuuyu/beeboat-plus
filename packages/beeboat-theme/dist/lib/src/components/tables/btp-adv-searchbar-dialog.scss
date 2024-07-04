@@ -1,0 +1,89 @@
+
+.btp-adv-searchbar-dialog {
+    width: 1160px !important;
+
+    .btp-adv-searchbar-dialog--content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 300px;
+    }
+
+    .btp-adv-searchbar-dialog--sence {
+        width: 204px;
+        height: 100%;
+        border: 1px solid #DCE4F2;
+
+        .btp-adv-searchbar-dialog--scene--item {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            height: 40px;
+            padding-right: 16px;
+            padding-left: 24px;
+            line-height: 40px;
+            cursor: pointer;
+
+            .btp-adv-searchbar-dialog--scene--item__label {
+                width: 140px;
+                overflow: hidden;
+                color: #3E4A6B;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        .btp-adv-searchbar-dialog--scene--item.active {
+            background: #F1F6FE;
+
+            .el-icon {
+                color: #5C84F2;
+            }
+        }
+    }
+
+    .btp-adv-searchbar-dialog--container {
+        flex: 1;
+        padding-left: 16px;
+
+        .btp-adv-searchbar-dialog--container--item {
+            margin-bottom: 12px;
+        }
+
+        .btp-adv-searchbar-dialog--container--item__label {
+            width: 240px;
+        }
+
+        .btp-adv-searchbar-dialog--container--item__condition {
+            width: 160px;
+        }
+
+        .btp-adv-searchbar-item {
+            float: inherit;
+            width: 326px;
+            padding-bottom: 0;
+        }
+    }
+
+    .btp-adv-searchbar-dialog--toolbar {
+        >.el-button {
+            margin-left: -4px;
+            span span {
+                margin-left: 8px;    
+            }
+        }
+    }
+}
+
+.btp-adv-searchbar-saveas-dialog {
+    width: 432px !important;
+
+    .btp-adv-searchbar-saveas-dialog-desc {
+        font-size: 12px;
+        font-weight: 400;
+        color: #3e4a6ba6;
+        letter-spacing: 0;
+    }
+}

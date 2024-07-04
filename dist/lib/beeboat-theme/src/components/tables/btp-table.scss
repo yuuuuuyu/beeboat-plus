@@ -1,0 +1,54 @@
+.btp-table {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    .btp-table--searchbar:not(:empty) {
+        padding: 0 0 16px 0;
+    }
+    .btp-table--toolbar:not(:empty) {
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        padding:  0 0 8px 0;
+        background: white;
+    }
+    .btp-table--table {
+        position: relative;
+        display: block;
+        flex: 1;
+
+        .btp-table--table--container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            >.el-table {
+                width: 100%;
+                height: 100%;
+            }
+
+            .el-scrollbar__view {
+                height: 100%;
+            }
+        }
+    }
+    .btp-pagination {
+        margin-top: 24px;
+    }
+}
+
+.btp-table--small {
+    .btp-table--searchbar:not(:empty) {
+        padding: 0 0 8px 0;
+    }
+    .btp-table--toolbar:not(:empty) {
+        padding:  0 0 8px 0;
+    }
+    .btp-pagination {
+        margin-top: 12px;
+    }
+}
