@@ -2,7 +2,7 @@
 
 #### 介绍
 
-蜂舟低码平台beeboat-plus库，基于pnpm monorepo管理方式构建，pnpm build生成npm包
+蜂舟低码平台beeboat-plus库，基于pnpm monorepo管理方式构建，pnpm build生成npm包.
 
 ## 用法
 
