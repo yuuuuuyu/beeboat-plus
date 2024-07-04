@@ -146,7 +146,7 @@ export default class BTPViewContext extends BTPBaseViewContext {
                                 eventName,
                                 [p1, p2, p3, p4, p5, p6, p7],
                             )
-                            this.executeAction(executor)
+                            return this.executeAction(executor)
                         }
                     } else {
                         item.events[eventName] = (p1, p2, p3, p4, p5, p6, p7) => {

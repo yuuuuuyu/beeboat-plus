@@ -9,7 +9,10 @@ export default class BTPLogicExecutor {
         this.component = component
         this.event = event
         this.eventName = eventName
-        this.params = params
+        this.params = {'row':params[0],node:params[1]}
+
+
+
     }
 
     execute() {
