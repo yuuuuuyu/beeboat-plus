@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { BTPApplication } from '../app'
-import BTPWebsocketObserver from './websocket-oobserver'
+import BTPWebsocketObserver from './websocket-observer'
 
 export default class BTPUtils {
     /**
