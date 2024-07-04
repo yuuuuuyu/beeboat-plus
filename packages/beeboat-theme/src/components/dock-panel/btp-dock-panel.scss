@@ -1,0 +1,94 @@
+.btp-dockpanel {
+    display: flex;
+    flex-direction: row;
+
+    // 分割线
+    .btp-dockpanel-separator {
+        position: relative;
+        z-index: 100;
+        width: 1px;
+        background-color: var(--bt-dockpanel-separator-color);
+
+        .btp-dockpanel-separatorline {
+            position: absolute;
+            left: -4px;
+            width: 9px;
+            height: var(--bt-width-full);
+            cursor: ew-resize;
+        }
+    }
+
+    // 右侧内容区域
+    .btp-dockpanel-right {
+        flex: 1;
+    }
+
+    // 折叠图标
+    .btp-dockpanel-dock {
+        position: absolute;
+        top: calc(50% - 13px);
+        left: -13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
+        color: var(--el-color-primary);
+        cursor: pointer;
+        background-color: var(--el-color-white);
+        border-radius: 50%;
+        box-shadow: 0 0 10px var(--el-border-color);
+        transition: all ease .5s;
+        transform: rotate(180deg);
+
+        i {
+            position: absolute;
+            left: 6px;
+        }
+
+        &:hover {
+            color: white;
+            background-color: var(--el-color-primary);
+
+            .btp-icon {
+                color: var(--el-color-white);
+            }
+        }
+    }
+
+    //  折叠后图标旋转
+    .btp-dockpanel-collapsed {
+        transform: rotate(0deg);
+    }
+
+    // 水平方向
+    &.btp-dockpanel--horizontal {
+        flex-direction: column;
+
+        .btp-dockpanel-separator {
+            position: relative;
+            width: var(--bt-width-full);
+            height: 1px;
+
+            .btp-dockpanel-separatorline {
+                position: absolute;
+                top: -5px;
+                width: var(--bt-width-full);
+                height: 9px;
+                cursor: ns-resize;
+            }
+        }
+
+        .btp-dockpanel-dock {
+            position: absolute;
+            top: -13px;
+            left: calc(50% - 14px);
+            transform: rotate(-90deg);
+        }
+
+        .btp-dockpanel-collapsed {
+            transform: rotate(90deg);
+        }
+    }
+}

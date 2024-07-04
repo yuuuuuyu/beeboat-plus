@@ -1,0 +1,17 @@
+{
+    "name": "beeboat-plus",
+    "version": "0.0.46",
+    "private": false,
+    "description": "",
+    "main": "lib/index.js",
+    "module": "es/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "zhiyong.yu@ytever.com",
+    "dependencies": {
+        "jsencrypt": "^3.2.1",
+        "vue-cookies": "^1.8.2"
+    }
+}

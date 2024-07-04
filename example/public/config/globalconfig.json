@@ -1,0 +1,20 @@
+{
+    "VITE_APP_TITLE": "beeboat-plus 示例",
+    "VITE_APP_MOUNT_NAME": "app-example",
+    "VITE_APP_ID": "68cb50c2f33c44feab23af80626a1b79",
+    "VITE_MAIN_APP_ID": "8b5c47c242fd4b1398f8692b11b1a613",
+    "VITE_APP_CODE": "AppDecoder",
+    "VITE_APP_CHILD_EVENT_NAME": "eventCenterForAppDecoder",
+    
+    "VITE_APP_BEG": "http",
+    "VITE_MODE":"develop",
+
+    "VITE_SAMEORIGN": false,
+    "VITE_SOCKET_URL": "develop.beeboat.cn/api/",
+    "VITE_GATEWAY_URL": "http://develop.beeboat.cn/api/",
+    "VITE_PROXY_DOMAIN_REAL": "develop.beeboat.cn/api/",
+    "VITE_WHITELIST":["/login"],
+    "VITE_GLOBAL_DICT_API": "/systemService/sync/dictionary/list",
+    "VITE_GLOBAL_MENU_API": "/systemService/organization/user/userMenuTree",
+    "VITE_GLOBAL_USERDATA_API": "/systemService/security/account/getUserInfo"
+}

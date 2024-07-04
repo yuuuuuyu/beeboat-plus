@@ -1,0 +1,14 @@
+{
+    "name": "@beeboat/beeboat-theme",
+    "version": "1.0.0",
+    "description": "beeboat-theme library",
+    "main": "index.ts",
+    "scripts": {
+        "build": "gulp"
+    },
+    "author": "于智勇｜15684187702@163.com",
+    "license": "ISC",
+    "dependencies": {
+        "@ctrl/tinycolor": "^3.4.1"
+    }
+}

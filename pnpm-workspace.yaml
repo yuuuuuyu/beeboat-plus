@@ -1,0 +1,6 @@
+packages:
+    - 'packages/**' # 存放编写的组件的
+    - example # 组件示例
+    - test # 测试用例
+    - play # 实际项目
+
