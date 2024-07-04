@@ -1,5 +1,5 @@
 <template>
-    <btp-tabs v-model="state.value" style="width: 100%; height: 100%">
+    <btp-tabs class="btp-tabs" v-model="state.value" style="width: 90%; height: 100%">
         <el-tab-pane label="User" name="first">User</el-tab-pane>
         <el-tab-pane label="Config" name="second">Config</el-tab-pane>
         <el-tab-pane label="Role" name="third">Role</el-tab-pane>
@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 const state = reactive({
-    value: '',
+    value: 'second',
     value2: 2,
 })
 
@@ -19,5 +19,3 @@ const onChange = v => {
     console.log('111', v)
 }
 </script>
-
-<style lang="scss" scoped></style>
