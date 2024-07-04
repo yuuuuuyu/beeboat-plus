@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { BTPApplication } from '../app'
+import BTPWebsocketObserver from './websocket-oobserver'
 
 export default class BTPUtils {
     /**
@@ -49,5 +50,16 @@ export default class BTPUtils {
      */
     static uuid(): string {
         return uuidv4()
+    }
+
+    /**
+     * @description 创建websocket客户端
+     * @param url 地址
+     * @param listener 监听器
+     * @param retry 重连时间默认10000
+     * @returns websocket客户端
+     */
+    static createSocket(url, listener, retry = 10000) {
+        return new BTPWebsocketObserver(url, listener, retry)
     }
 }
