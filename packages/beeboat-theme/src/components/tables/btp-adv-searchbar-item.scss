@@ -57,27 +57,27 @@
     .el-button+.el-button {
         margin-left: 8px;
     }
-}
 
-.btp-adv-searchbar-item.expose-item {
+    &.expose-item {
 
-    .el-input__wrapper,
-    .el-select__wrapper,
-    .el-select-v2__wrapper {
-        box-sizing: border-box;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-
-    .el-select-v2__wrapper {
-        .el-select-v2__tags-text {
-            max-width: 50px !important;
+        .el-input__wrapper,
+        .el-select__wrapper,
+        .el-select-v2__wrapper {
+            box-sizing: border-box;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
         }
-    }
 
-    .el-select-tags-wrapper {
-        .el-select__tags-text {
-            max-width: 50px !important;
+        .el-select-v2__wrapper {
+            .el-select-v2__tags-text {
+                max-width: 50px !important;
+            }
+        }
+
+        .el-select-tags-wrapper {
+            .el-select__tags-text {
+                max-width: 50px !important;
+            }
         }
     }
 }
