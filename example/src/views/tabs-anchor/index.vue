@@ -1,5 +1,9 @@
 <template>
-    <btp-tabs-anchor style="width: 100%; height: 100%" @tab-change="onChange">
+    <btp-tabs-anchor
+        style="width: 100%; height: 500px; border-bottom: 1px solid #e3e3e3"
+        @tab-change="onChange"
+        v-model="state.value"
+    >
         <el-tab-pane label="User" name="first">
             <div style="height: 300px">User</div>
         </el-tab-pane>
@@ -27,5 +31,3 @@ const onChange = v => {
     console.log('111', v)
 }
 </script>
-
-<style lang="scss" scoped></style>

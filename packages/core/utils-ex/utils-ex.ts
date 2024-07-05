@@ -12,6 +12,14 @@ export default class BTPUtils {
     }
 
     /**
+     * @description 获取路由对象
+     * @returns 路由对象
+     */
+    static getRouter() {
+        return BTPApplication.getInstance().getRouter()
+    }
+
+    /**
      * @description 获取应用管理对象
      * @returns 应用管理对象
      */
@@ -61,5 +69,29 @@ export default class BTPUtils {
      */
     static createSocket(url, listener, retry = 10000) {
         return new BTPWebsocketObserver(url, listener, retry)
+    }
+
+    /**
+     * @description 判断数组是否为空
+     * @returns 是否为空
+     */
+    static isEmptyArray(array) {
+        return !array || array.length == 0
+    }
+
+    /**
+     * @description 判断字符串是否为空
+     * @returns 是否为空
+     */
+    static isEmpty(str) {
+        return !str || str.length == 0
+    }
+
+    /**
+     * @description 判断两个字符串
+     * @returns 是否相同
+     */
+    static isEqual(str1, str2) {
+        return str1 == str2
     }
 }
