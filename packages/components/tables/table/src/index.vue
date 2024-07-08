@@ -15,7 +15,19 @@
         </div>
         <!-- 搜索栏下 头部左侧操作栏 -->
         <div class="btp-table--toolbar">
-            <slot name="toolbar" :selection="state.selection"></slot>
+            <slot name="toolbar" :selection="state.selection">
+                <template :key="component.id" v-for="component in btConfig?.toolbar?.children">
+                    <component
+                        :is="btViewContext.render(component)"
+                        :style="component.styles"
+                        :bt-view-context="btViewContext"
+                        :bt-config="component"
+                        v-on="component.events"
+                        v-bind="component.props"
+                        v-model="btViewContext.dataModelProxy[component.model?.prop]"
+                    />
+                </template>
+            </slot>
         </div>
         <div class="btp-table--table">
             <div class="btp-table--table--container">
@@ -148,6 +160,14 @@ const emits = defineEmits([
 ])
 
 interface IProps {
+    /**
+     * @description 视图动态配置
+     */
+    btConfig?: any
+    /**
+     * @description 视图动态配置
+     */
+    btViewContext?: any
     id?: string
     rowKey?: string
     search?: any
@@ -160,6 +180,8 @@ interface IProps {
     propEvents?: any
 }
 const props = withDefaults(defineProps<IProps>(), {
+    btConfig: null,
+    btViewContext: null,
     id: '',
     rowKey: 'id',
     search: {},
