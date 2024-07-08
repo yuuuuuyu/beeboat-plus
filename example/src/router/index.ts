@@ -102,6 +102,15 @@ export const routes = [
                     hidden: false,
                 },
             },
+            {
+                path: '/card',
+                name: 'card',
+                component: () => import('@/views/card/index.vue'),
+                meta: {
+                    title: 'card',
+                    hidden: false,
+                },
+            },
         ],
     },
 ]
