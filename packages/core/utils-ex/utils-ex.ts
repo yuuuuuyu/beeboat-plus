@@ -94,4 +94,12 @@ export default class BTPUtils {
     static isEqual(str1, str2) {
         return str1 == str2
     }
+
+    /**
+     * 判断对象是否为空
+     * @returns 是否为空
+     */
+    static isNull(val): boolean {
+        return val == null || val == undefined
+    }
 }
