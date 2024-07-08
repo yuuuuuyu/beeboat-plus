@@ -1,5 +1,5 @@
 <template>
-    <el-card class="bt-card">
+    <el-card class="btp-card">
         <slot name="default">
             <template :key="component.id" v-for="component in btConfig?.children">
                 <component
@@ -18,9 +18,9 @@
             v-if="$slots.header == undefined && btConfig?.toolbar?.children?.length > 0"
             #header
         >
-            <div class="bt-card-header">
-                <span class="bt-card-header--title">{{ $attrs.header }}</span>
-                <span class="bt-card-header--toolbar">
+            <div class="btp-card-header">
+                <span class="btp-card-header--title">{{ $attrs.header }}</span>
+                <span class="btp-card-header--toolbar">
                     <template :key="component.id" v-for="component in btConfig?.toolbar?.children">
                         <component
                             :is="btViewContext.render(component)"
@@ -40,9 +40,9 @@
             v-if="$slots.footer == undefined && btConfig?.footer?.children?.length > 0"
             #footer
         >
-            <div class="bt-card-footer">
-                <span class="bt-card-footer--title">{{ $attrs.footer }}</span>
-                <span class="bt-card-footer--toolbar">
+            <div class="btp-card-footer">
+                <span class="btp-card-footer--title">{{ $attrs.footer }}</span>
+                <span class="btp-card-footer--toolbar">
                     <template :key="component.id" v-for="component in btConfig?.footer?.children">
                         <component
                             :is="btViewContext.render(component)"
