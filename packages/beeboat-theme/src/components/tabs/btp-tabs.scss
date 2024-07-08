@@ -17,3 +17,26 @@
         }
     }
 }
+
+.el-tabs.btp-tabs.el-tabs--top,.el-tabs.btp-tabs.el-tabs--bottom {
+    display: flex;
+    flex-direction: column;
+    .el-tabs__content{
+        position: relative;
+        flex:1;
+        .el-tab-pane{
+            position: relative;
+            height: 100%;
+        }
+    }
+}
+.el-tabs.btp-tabs.el-tabs--left,.el-tabs.btp-tabs.el-tabs--right {
+    .el-tabs__content{
+        position: relative;
+        height:100%;
+        .el-tab-pane{
+            position: relative;
+            height: 100%;
+        }
+    }
+}
