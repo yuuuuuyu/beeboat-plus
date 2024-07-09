@@ -1,6 +1,10 @@
 .btp-adv-searchbar-dialog {
     width: 1160px !important;
 
+    &.el-dialog {
+        padding: 0;
+    }
+
     .btp-adv-searchbar-dialog--content {
         display: flex;
         flex-direction: row;

@@ -50,6 +50,7 @@
                             class="btp-adv-searchbar-dialog--container--item__label"
                             placeholder="请选择"
                             filterable
+                            :size="size"
                             @change="onSearchItemPropChange(item)"
                         >
                             <template v-for="opt in props.columnList" :key="opt.id">
@@ -66,6 +67,7 @@
                             class="btp-adv-searchbar-dialog--container--item__condition"
                             placeholder="请选择"
                             @change="onItemConditionChange(item)"
+                            :size="size"
                         >
                             <template v-for="(condition, key) in expressConfigList" :key="key">
                                 <el-option
@@ -79,6 +81,7 @@
                             v-if="!shouldShowItem(item)"
                             v-model:modelValue="item.searchValue"
                             :props="item"
+                            :size="size"
                             :expose-mode="false"
                         ></AdvSearchItem>
                         <el-space>
@@ -91,11 +94,12 @@
                                 v-model="item.searchVisible"
                                 label="外露"
                                 @change="onExposeClick"
+                                :size="size"
                             ></el-checkbox>
                         </el-space>
                     </el-space>
                     <div class="btp-adv-searchbar-dialog--toolbar">
-                        <el-button type="info" :link="true" @click="onAddSearchItem">
+                        <el-button :size="size" type="info" :link="true" @click="onAddSearchItem">
                             <el-icon>
                                 <Plus></Plus>
                             </el-icon>
@@ -107,6 +111,7 @@
                             label="设置为默认"
                             v-model="state.defaultSceneValue"
                             @change="onSetDefaultSceneClick"
+                            :size="size"
                         ></el-checkbox>
                     </div>
                     <div class="btp-adv-searchbar-dialog--toolbar">
@@ -114,16 +119,23 @@
                             v-model="state.exposeAll"
                             label="全部外露"
                             @change="onExposeAllClick"
+                            :size="size"
                         ></el-checkbox>
                     </div>
                 </el-scrollbar>
             </div>
         </div>
         <template #footer>
-            <el-button type="info" @click="state.dialogVisible = false">取 消</el-button>
-            <el-button type="primary" plain @click="onSaveSceneClick">保存方案</el-button>
-            <el-button type="primary" plain @click="onSaveAsSceneClick">另存方案</el-button>
-            <el-button @click="onSearchClick">查 询</el-button>
+            <el-button :size="size" type="info" @click="state.dialogVisible = false"
+                >取 消</el-button
+            >
+            <el-button :size="size" type="primary" plain @click="onSaveSceneClick"
+                >保存方案</el-button
+            >
+            <el-button :size="size" type="primary" plain @click="onSaveAsSceneClick"
+                >另存方案</el-button
+            >
+            <el-button :size="size" type="primary" @click="onSearchClick">查 询</el-button>
         </template>
     </el-dialog>
     <AdvSaveAsDialog ref="saveAsDialogRef"></AdvSaveAsDialog>
@@ -134,6 +146,7 @@ import AdvSearchItem from './adv-searchbar-item.vue'
 import AdvSaveAsDialog from './adv-searchbar-saveas-dialog.vue'
 import { expressConfigList } from './adv-searchbar-common'
 import { useAdvSearchbarDailog } from './adv-searchbar-dialog'
+import { useElementConfig } from '../../../useElementConfig'
 
 const emits = defineEmits([
     'scene-search',
@@ -147,11 +160,21 @@ const emits = defineEmits([
 interface IProps {
     sceneList?: any
     columnList?: any
+    size?: string
 }
 const props = withDefaults(defineProps<IProps>(), {
     sceneList: {},
     columnList: [],
+    size: '',
 })
+
+const { sizeClass, size } = useElementConfig(
+    {
+        componentName: 'btp-adv-searchbar-dialog',
+    },
+    props,
+)
+
 const saveAsDialogRef = ref()
 
 const state = reactive({

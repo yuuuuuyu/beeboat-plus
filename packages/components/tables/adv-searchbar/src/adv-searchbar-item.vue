@@ -1,7 +1,7 @@
 <template>
     <div class="btp-adv-searchbar-item" style="position: relative">
         <template v-if="props.exposeMode">
-            <el-text>
+            <el-text :size="size">
                 <div class="btp-adv-searchbar-item--label">
                     <el-tooltip
                         effect="dark"
@@ -12,7 +12,7 @@
                     </el-tooltip>
                 </div>
             </el-text>
-            <el-button class="btp-adv-searchbar-item--condition">
+            <el-button :size="size" class="btp-adv-searchbar-item--condition">
                 <el-dropdown @command="onConditionChange">
                     <span class="el-dropdown-link">
                         {{ getExpressValue(props.props.searchCondition) }}
@@ -39,6 +39,7 @@
             autosize
             clearable
             :disabled="shouldShowItem()"
+            :size="size"
             @change="onValueChange"
             @keyup.enter="onEnterClick"
         ></el-input>
@@ -51,6 +52,7 @@
                 autosize
                 clearable
                 :disabled="shouldShowItem()"
+                :size="size"
                 @change="onValueChange"
                 @keyup.enter="onEnterClick"
             ></el-input>
@@ -62,6 +64,7 @@
                     autosize
                     clearable
                     :disabled="shouldShowItem()"
+                    :size="size"
                     style="width: 46%; height: 100%"
                     @change="onNumberValueChange"
                     @keyup.enter="onEnterClick"
@@ -74,6 +77,7 @@
                     autosize
                     clearable
                     :disabled="shouldShowItem()"
+                    :size="size"
                     style="width: 46%; height: 100%"
                     @change="onNumberValueChange"
                     @keyup.enter="onEnterClick"
@@ -89,6 +93,7 @@
                 end-placeholder="结束时间"
                 clearable
                 :disabled="shouldShowItem()"
+                :size="size"
                 value-format="YYYY-MM-DD HH:mm:ss"
                 @change="onValueChange"
                 @keyup.enter="onEnterClick"
@@ -101,6 +106,7 @@
                 end-placeholder="结束时间"
                 clearable
                 :disabled="shouldShowItem()"
+                :size="size"
                 value-format="YYYY-MM-DD HH:mm:ss"
                 @change="onValueChange"
                 @keyup.enter="onEnterClick"
@@ -115,6 +121,7 @@
                 end-placeholder="结束日期"
                 clearable
                 :disabled="shouldShowItem()"
+                :size="size"
                 value-format="YYYY-MM-DD"
                 @change="onValueChange"
                 @keyup.enter="onEnterClick"
@@ -126,6 +133,7 @@
                 placeholder="请选择日期"
                 clearable
                 :disabled="shouldShowItem()"
+                :size="size"
                 value-format="YYYY-MM-DD"
                 @change="onValueChange"
                 @keyup.enter="onEnterClick"
@@ -140,6 +148,7 @@
                 end-placeholder="结束日期"
                 clearable
                 :disabled="shouldShowItem()"
+                :size="size"
                 value-format="YYYY-MM-DD"
                 @change="onValueChange"
                 @keyup.enter="onEnterClick"
@@ -151,6 +160,7 @@
                 placeholder="请选择日期"
                 clearable
                 :disabled="shouldShowItem()"
+                :size="size"
                 value-format="YYYY-MM-DD"
                 @change="onValueChange"
                 @keyup.enter="onEnterClick"
@@ -165,6 +175,7 @@
                 end-placeholder="结束时间"
                 clearable
                 :disabled="shouldShowItem()"
+                :size="size"
                 format="HH:mm:ss"
                 @change="onValueChange"
                 @keyup.enter="onEnterClick"
@@ -176,6 +187,7 @@
                 start-placeholder="请选择时间"
                 clearable
                 :disabled="shouldShowItem()"
+                :size="size"
                 format="HH:mm:ss"
                 @change="onValueChange"
                 @keyup.enter="onEnterClick"
@@ -190,6 +202,7 @@
                 clearable
                 filterable
                 :disabled="shouldShowItem()"
+                :size="size"
                 collapse-tags
                 collapse-tags-tooltip
                 @change="onValueChange"
@@ -223,6 +236,7 @@
                 clearable
                 filterable
                 :disabled="shouldShowItem()"
+                :size="size"
                 collapse-tags
                 collapse-tags-tooltip
                 @check-change="onTreeSelectValueChange"
@@ -234,6 +248,7 @@
 import { reactive, watch } from 'vue'
 import { expressConfigList } from './adv-searchbar-common'
 import { useAdvSearchbarItem } from './adv-searchbar-item'
+import { useElementConfig } from '../../../useElementConfig'
 
 const emits = defineEmits(['update:modelValue', 'search'])
 
@@ -241,12 +256,21 @@ interface IProps {
     props?: any
     modelValue?: any
     exposeMode?: any
+    size?: string
 }
 const props = withDefaults(defineProps<IProps>(), {
     props: {},
     modelValue: '',
     exposeMode: true,
+    size: '',
 })
+const { sizeClass, size } = useElementConfig(
+    {
+        componentName: 'btp-adv-searchbar-item',
+    },
+    props,
+)
+console.log(size)
 
 const state = reactive({
     options: [],

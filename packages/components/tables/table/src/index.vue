@@ -7,6 +7,7 @@
                 v-bind="props.search"
                 :column-list="props.columns"
                 @search="onAdvSearch"
+                :size="size || 'default'"
             >
                 <template #default>
                     <slot name="search"></slot>
@@ -118,6 +119,7 @@
             :selection="state.selection"
             :total="state.pagination.total"
             @clear-selection="onPaginationClearSelection"
+            :size="size || 'default'"
         ></BtpPagination>
     </div>
 </template>
@@ -132,9 +134,6 @@ import BtpTableColumnContent from '../../table-column-content/src/index.vue'
 import BtpTableColumnSetting from './column-setting-popover.vue'
 
 import { useElementConfig } from '../../../useElementConfig'
-const { sizeClass } = useElementConfig({
-    componentName: 'btp-table',
-})
 
 const emits = defineEmits([
     'select',
@@ -183,6 +182,7 @@ interface IProps {
     dataApi?: any
     initLoading?: boolean
     propEvents?: any
+    size?: string
 }
 const props = withDefaults(defineProps<IProps>(), {
     btConfig: null,
@@ -199,7 +199,17 @@ const props = withDefaults(defineProps<IProps>(), {
     dataApi: null,
     initLoading: true,
     propEvents: {},
+    size: '',
 })
+
+// 处理size
+const { sizeClass, size } = useElementConfig(
+    {
+        componentName: 'btp-table',
+    },
+    props,
+)
+
 const tableRef = ref()
 const state = reactive({
     data: [],
