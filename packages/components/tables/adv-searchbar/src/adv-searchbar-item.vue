@@ -1,17 +1,17 @@
 <template>
     <div class="btp-adv-searchbar-item" style="position: relative">
         <template v-if="props.exposeMode">
-            <el-button link>
+            <el-text>
                 <div class="btp-adv-searchbar-item--label">
                     <el-tooltip
                         effect="dark"
                         :content="props.props.columnConfig.label"
-                        placement="bottom-start"
+                        placement="top-start"
                     >
                         {{ props.props.columnConfig.label || '' }}
                     </el-tooltip>
                 </div>
-            </el-button>
+            </el-text>
             <el-button class="btp-adv-searchbar-item--condition">
                 <el-dropdown @command="onConditionChange">
                     <span class="el-dropdown-link">
