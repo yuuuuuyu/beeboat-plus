@@ -1,22 +1,62 @@
 <template>
-    <el-switch class="btp-switch" ref="switchRef">
-        <template #active-action><slot name="active-action" /></template>
-        <template #inactive-action>
-            <slot name="inactive-action" />
-        </template>
-    </el-switch>
+    <div ref="resizableRef" @mousedown="onMouseDown">
+        <slot></slot>
+    </div>
 </template>
-<script lang="ts" setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted, reactive } from 'vue'
 
-const switchRef = ref()
+const emits = defineEmits(['change'])
 
-/**
- * 将ElementPlus的内置方法继续暴露出去
- */
-defineExpose({
-    focus: () => {
-        switchRef.value.focus()
-    },
+const resizableRef = ref()
+const state = reactive({
+    isMoving: false,
+    offsetX: null,
+    offsetY: null,
+})
+
+const onMouseDown = () => {
+    state.isMoving = true
+    document.addEventListener('mousemove', onMouseMove)
+    document.addEventListener('mouseup', onMouseUp)
+}
+const onMouseMove = event => {
+    if (!state.isMoving) {
+        return
+    }
+    if (state.offsetX == null || state.offsetY == null) {
+        state.offsetX = event.clientX
+        state.offsetY = event.clientY
+        return
+    }
+    const x = event.clientX - state.offsetX
+    const y = event.clientY - state.offsetY
+
+    state.offsetX = event.clientX
+    state.offsetY = event.clientY
+
+    if (state.offsetX != null || state.offsetY != null) {
+        emits('change', { x: x, y: y })
+    }
+}
+
+const onMouseUp = () => {
+    state.isMoving = false
+    state.offsetX = null
+    state.offsetY = null
+    document.removeEventListener('mousemove', onMouseMove)
+    document.removeEventListener('mouseup', onMouseUp)
+}
+
+onMounted(() => {
+    document.addEventListener('mousedown', e => {
+        if (resizableRef.value && !resizableRef.value.contains(e.target)) {
+            onMouseUp()
+        }
+    })
+})
+
+onUnmounted(() => {
+    onMouseUp()
 })
 </script>
