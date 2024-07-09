@@ -8,7 +8,7 @@ export const columns = {
             label: '序号',
             prop: 'index1',
             type: 'index',
-            width: '60px',
+            width: '70px',
             showOverflowTooltip: true,
             editProps: {
                 enable: false,
@@ -32,7 +32,7 @@ export const columns = {
             label: '单选',
             prop: 'index3',
             type: 'radio',
-            width: '60px',
+            width: '70px',
             showOverflowTooltip: true,
             searchProps: {
                 enable: true,

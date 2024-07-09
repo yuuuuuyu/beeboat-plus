@@ -1,6 +1,6 @@
 <template>
     <h1>常规按钮</h1>
-    <btp-button type="primary" icon="111">主要按钮</btp-button>
+    <btp-button type="primary">主要按钮</btp-button>
     <btp-button type="secondary">次要按钮</btp-button>
     <btp-button type="success">成功按钮</btp-button>
     <btp-button type="danger">危险按钮</btp-button>

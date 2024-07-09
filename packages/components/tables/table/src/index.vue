@@ -1,5 +1,5 @@
 <template>
-    <div class="btp-table">
+    <div class="btp-table" :class="sizeClass">
         <div class="btp-table--searchbar">
             <BtpAdvSearchbar
                 v-if="props.search?.enable"
@@ -130,6 +130,11 @@ import BtpAdvSearchbar from '../../adv-searchbar/src/index.vue'
 import BtpPagination from '../../pagination/src/index.vue'
 import BtpTableColumnContent from '../../table-column-content/src/index.vue'
 import BtpTableColumnSetting from './column-setting-popover.vue'
+
+import { useElementConfig } from '../../../useElementConfig'
+const { sizeClass } = useElementConfig({
+    componentName: 'btp-table',
+})
 
 const emits = defineEmits([
     'select',
