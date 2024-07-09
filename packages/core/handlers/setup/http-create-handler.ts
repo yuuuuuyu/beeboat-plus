@@ -1,5 +1,6 @@
 import Axios, { AxiosInstance } from 'axios'
 import { BTPBaseSetupHandler } from '../base'
+import BTPUtils from '../../utils-ex/utils-ex'
 
 /**
  * http(axios)加载处理对象
@@ -62,17 +63,13 @@ export default class BTPHttpCreateHandler extends BTPBaseSetupHandler {
     initReqInterceptors(axiosInstance: AxiosInstance) {
         axiosInstance.interceptors.request.use(
             (config: any) => {
-                const $config = config
-
-                $config.headers['Authorization'] =
-                    $config.headers['Authorization'] || this.getApp().getToken()
-                return $config
+                config.headers['Authorization'] =
+                    config.headers['Authorization'] || this.getApp().getToken()
+                return config
             },
             error => {
-                debugger
-                const $error = error
                 return Promise.reject({
-                    msg: $error.statusText || '网络异常',
+                    msg: error.statusText || '网络异常',
                 })
             },
         )
@@ -86,20 +83,43 @@ export default class BTPHttpCreateHandler extends BTPBaseSetupHandler {
             response => {
                 const { data, config } = response
 
-                try {
-                    //文件请求,直接返回原始响应数据
-                    if (config?.responseType == 'blob' || config?.responseType == 'arraybuffer') {
-                        return response
-                    }
-                    const code = data.code.toString()
-                    if (code === '0') {
-                        return data
-                    }
-                } catch (error) {
-                    debugger
+                if (config?.responseType == 'blob' || config?.responseType == 'arraybuffer') {
+                    return response
                 }
+                if (data.code == 0) {
+                    return data
+                }
+                if (this.isAuthExpired(data)) {
+                    this.getApp().logout()
+                    return
+                }
+                if (this.isEnableNotice(data)) {
+                    BTPUtils.message(data.msg || data.stackMsg, 'error')
+                }
+                return Promise.reject({
+                    ...response,
+                    msg: data.msg ?? data.stackMsg ?? (response.statusText || '网络异常'),
+                })
             },
             error => {},
         )
+    }
+
+    /**
+     * 判断是否过期登录
+     * @param result 响应
+     * @returns 是否过期登录
+     */
+    isAuthExpired(result): boolean {
+        return ['130001', '130002', '130003', '130004', '130005'].includes(`${result.code}`)
+    }
+
+    /**
+     * 判断是否开启全局异常提示
+     * @param result 响应
+     * @returns 是否开启全局异常提示
+     */
+    isEnableNotice(result): boolean {
+        return true
     }
 }
