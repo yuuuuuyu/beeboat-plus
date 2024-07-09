@@ -1,10 +1,12 @@
 @use './fonts/iconfont';
 
 @use './common/var.scss';
+@use './common/common.scss';
 @use './dock-panel/btp-dock-panel.scss';
 @use './selects/tree/btp-tree.scss';
 @use './tables/btp-table.scss';
 @use './tables/btp-table-editor.scss';
+@use './tables/btp-table-setting.scss';
 @use './tables/btp-pagination.scss';
 @use './tables/btp-adv-searchbar.scss';
 @use './tables/btp-adv-searchbar-item.scss';
@@ -12,3 +14,4 @@
 @use './tabs/btp-tabs.scss';
 @use './tabs/btp-tabs-anchor.scss';
 @use './buttons/btp-button.scss';
+@use './card/btp-card.scss';

@@ -10,13 +10,24 @@
                             <CaretBottom v-else></CaretBottom>
                         </el-icon>
                     </el-button>
-                    <el-button type="primary" @click="onSearchClick()">查 询</el-button>
-                    <el-button plain @click="onReset">重 置</el-button>
+                    <el-button :size="size" type="primary" @click="onSearchClick()"
+                        >查 询</el-button
+                    >
+                    <el-button :size="size" plain @click="onReset">重 置</el-button>
                     <template v-if="props.enableAdvSearch">
-                        <el-button type="primary" plain @click="onAdvSearchDialogClick">
+                        <el-button
+                            :size="size"
+                            type="primary"
+                            plain
+                            @click="onAdvSearchDialogClick"
+                        >
                             高级查询
                         </el-button>
-                        <el-select v-model="state.currentSceneId" @change="onSceneChange">
+                        <el-select
+                            :size="size"
+                            v-model="state.currentSceneId"
+                            @change="onSceneChange"
+                        >
                             <el-option
                                 v-for="item in state.sceneList"
                                 :key="`${item.id}Select`"
@@ -36,6 +47,7 @@
                         v-model:modelValue="item.searchValue"
                         class="expose-item"
                         @search="onSearchClick()"
+                        :size="size"
                     ></AdvSearchItem>
                 </template>
             </el-scrollbar>
@@ -44,6 +56,7 @@
             ref="advSearchDialogRef"
             :scene-list="state.sceneList"
             :column-list="props.columnList"
+            :size="size"
             @scene-update-default="sceneUpdateDefault"
             @scene-update-name="sceneUpdateName"
             @scene-delete="sceneDelete"
@@ -58,6 +71,7 @@ import { reactive, ref } from 'vue'
 import AdvSearchItem from './adv-searchbar-item.vue'
 import AdvSearchDialog from './adv-searchbar-dialog.vue'
 import { useAdvSearchbar } from './adv-searchbar'
+import { useElementConfig } from '../../../useElementConfig'
 
 const emits = defineEmits(['search', 'reset'])
 
@@ -66,13 +80,22 @@ interface IProps {
     columnList?: any
     initLoading?: boolean
     enableAdvSearch?: boolean
+    size?: string
 }
 const props = withDefaults(defineProps<IProps>(), {
     scene: {},
     columnList: [],
     initLoading: true,
     enableAdvSearch: true,
+    size: '',
 })
+
+const { sizeClass, size } = useElementConfig(
+    {
+        componentName: 'btp-adv-searchbar',
+    },
+    props,
+)
 
 const advSearchDialogRef = ref()
 

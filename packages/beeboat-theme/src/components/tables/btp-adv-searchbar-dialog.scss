@@ -1,6 +1,9 @@
-
 .btp-adv-searchbar-dialog {
     width: 1160px !important;
+
+    &.el-dialog {
+        padding: 0;
+    }
 
     .btp-adv-searchbar-dialog--content {
         display: flex;
@@ -36,7 +39,7 @@
         }
 
         .btp-adv-searchbar-dialog--scene--item.active {
-            background: #F1F6FE;
+            background: var(--btp-table-header-bg-color);
 
             .el-icon {
                 color: #5C84F2;
@@ -70,8 +73,9 @@
     .btp-adv-searchbar-dialog--toolbar {
         >.el-button {
             margin-left: -4px;
+
             span span {
-                margin-left: 8px;    
+                margin-left: 8px;
             }
         }
     }

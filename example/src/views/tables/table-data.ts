@@ -1,5 +1,5 @@
 export const editProps = {
-    enable: true,
+    enable: false,
 }
 export const columns = {
     children: [
@@ -8,7 +8,7 @@ export const columns = {
             label: '序号',
             prop: 'index1',
             type: 'index',
-            width: '60px',
+            width: '70px',
             showOverflowTooltip: true,
             editProps: {
                 enable: false,
@@ -29,10 +29,10 @@ export const columns = {
         },
         {
             id: '3',
-            label: '序号3',
+            label: '单选',
             prop: 'index3',
             type: 'radio',
-            width: '60px',
+            width: '70px',
             showOverflowTooltip: true,
             searchProps: {
                 enable: true,
@@ -150,7 +150,7 @@ export const search = {
 export const pagination = {
     enable: true,
     reserveSelection: true,
-    pageSize: 10,
+    pageSize: 20,
     background: true,
     size: 'small',
 }
@@ -181,6 +181,7 @@ export const useDataLoader = () => {
             ) {
                 data.records.push(staticData[i])
             }
+
             resolve({
                 code: 0,
                 data: data,

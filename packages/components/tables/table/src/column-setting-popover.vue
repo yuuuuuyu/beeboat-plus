@@ -4,13 +4,18 @@
             <em style="cursor: pointer" class="bt-icon bt-icon-col-setting"></em>
         </template>
         <template #default>
-            <div class="bt-table-ex--setting">
-                <el-input v-model="state.searchText" clearable placeholder="搜索显示字段"></el-input>
-                <div class="bt-table-ex--setting-title">显示字段</div>
-                <el-scrollbar class="bt-table-ex--setting-content">
+            <div class="btp-table-ex--setting">
+                <el-input
+                    v-model="state.searchText"
+                    clearable
+                    placeholder="搜索显示字段"
+                    class="btp-table-ex--setting-search"
+                ></el-input>
+                <div class="btp-table-ex--setting-title">显示字段</div>
+                <el-scrollbar class="btp-table-ex--setting-content">
                     <template v-for="(item, index) in state.dataList" :key="`${index}`">
                         <div
-                            class="bt-table-ex--setting-line"
+                            class="btp-table-ex--setting-line"
                             :class="{
                                 active: state.overActive == item.id,
                             }"
@@ -54,8 +59,8 @@
                     </template>
                 </el-scrollbar>
 
-                <div class="bt-table-ex--setting-footer">
-                    <el-button type="info" @click="onColReset"> 取 消 </el-button>
+                <div class="btp-table-ex--setting-footer">
+                    <el-button @click="onColReset"> 取 消 </el-button>
                     <el-button type="primary" @click="onColSave"> 保 存 </el-button>
                 </div>
             </div>

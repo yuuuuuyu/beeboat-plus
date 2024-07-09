@@ -1,0 +1,31 @@
+.btp-table-ex--setting {
+    .btp-table-ex--setting-search {
+        margin-bottom: 8px;
+    }
+
+    .btp-table-ex--setting-title {
+        height: 40px;
+        font-weight: 700;
+        line-height: 40px;
+    }
+
+    .btp-table-ex--setting-content {
+        height: 240px;
+
+        .btp-table-ex--setting-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+
+        }
+    }
+
+    .btp-table-ex--setting-footer {
+        float: right;
+        padding-top: 8px;
+    }
+}

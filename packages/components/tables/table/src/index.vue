@@ -1,5 +1,5 @@
 <template>
-    <div class="btp-table">
+    <div class="btp-table" :class="sizeClass">
         <div class="btp-table--searchbar">
             <BtpAdvSearchbar
                 v-if="props.search?.enable"
@@ -7,6 +7,7 @@
                 v-bind="props.search"
                 :column-list="props.columns"
                 @search="onAdvSearch"
+                :size="size || 'default'"
             >
                 <template #default>
                     <slot name="search"></slot>
@@ -15,7 +16,19 @@
         </div>
         <!-- 搜索栏下 头部左侧操作栏 -->
         <div class="btp-table--toolbar">
-            <slot name="toolbar" :selection="state.selection"></slot>
+            <slot name="toolbar" :selection="state.selection">
+                <template :key="component.id" v-for="component in btConfig?.toolbar?.children">
+                    <component
+                        :is="btViewContext.render(component)"
+                        :style="component.styles"
+                        :bt-view-context="btViewContext"
+                        :bt-config="component"
+                        v-on="component.events"
+                        v-bind="component.props"
+                        v-model="btViewContext.dataModelProxy[component.model?.prop]"
+                    />
+                </template>
+            </slot>
         </div>
         <div class="btp-table--table">
             <div class="btp-table--table--container">
@@ -106,6 +119,7 @@
             :selection="state.selection"
             :total="state.pagination.total"
             @clear-selection="onPaginationClearSelection"
+            :size="size || 'default'"
         ></BtpPagination>
     </div>
 </template>
@@ -118,6 +132,8 @@ import BtpAdvSearchbar from '../../adv-searchbar/src/index.vue'
 import BtpPagination from '../../pagination/src/index.vue'
 import BtpTableColumnContent from '../../table-column-content/src/index.vue'
 import BtpTableColumnSetting from './column-setting-popover.vue'
+
+import { useElementConfig } from '../../../useElementConfig'
 
 const emits = defineEmits([
     'select',
@@ -148,6 +164,14 @@ const emits = defineEmits([
 ])
 
 interface IProps {
+    /**
+     * @description 视图动态配置
+     */
+    btConfig?: any
+    /**
+     * @description 视图动态配置
+     */
+    btViewContext?: any
     id?: string
     rowKey?: string
     search?: any
@@ -158,8 +182,11 @@ interface IProps {
     dataApi?: any
     initLoading?: boolean
     propEvents?: any
+    size?: string
 }
 const props = withDefaults(defineProps<IProps>(), {
+    btConfig: null,
+    btViewContext: null,
     id: '',
     rowKey: 'id',
     search: {},
@@ -172,7 +199,17 @@ const props = withDefaults(defineProps<IProps>(), {
     dataApi: null,
     initLoading: true,
     propEvents: {},
+    size: '',
 })
+
+// 处理size
+const { sizeClass, size } = useElementConfig(
+    {
+        componentName: 'btp-table',
+    },
+    props,
+)
+
 const tableRef = ref()
 const state = reactive({
     data: [],
