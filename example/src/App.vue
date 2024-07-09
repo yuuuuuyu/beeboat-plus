@@ -1,5 +1,5 @@
 <template>
-    <el-config-provider size="default">
+    <el-config-provider size="default" :locale="zhCn">
         <el-scrollbar>
             <router-view />
         </el-scrollbar>
@@ -7,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+import zhCn from 'element-plus/dist/locale/zh-cn'
 import beeTheme from '@beeboat/beeboat-theme'
 beeTheme.start()
 </script>

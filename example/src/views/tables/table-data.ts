@@ -150,7 +150,7 @@ export const search = {
 export const pagination = {
     enable: true,
     reserveSelection: true,
-    pageSize: 10,
+    pageSize: 20,
     background: true,
     size: 'small',
 }
