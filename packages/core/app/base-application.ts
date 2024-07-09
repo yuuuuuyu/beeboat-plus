@@ -302,4 +302,20 @@ export default class BTPBaseApplication {
             (window as any)?.__MICRO_APP_PROXY_WINDOW__
         )
     }
+
+    /**
+     * @description 获取登录页面路由地址
+     * @returns 登录页面路由地址
+     */
+    getLoginUrl() {
+        return this.getEnv('VITE_LOGIN_URL') || '/login'
+    }
+
+    /**
+     * @description 注销并退出到登录页面
+     */
+    logout(): void {
+        this.removeToken()
+        this.getRouter().push(this.getLoginUrl())
+    }
 }

@@ -96,10 +96,18 @@ export default class BTPUtils {
     }
 
     /**
-     * 判断对象是否为空
+     * @description 判断对象是否为空
      * @returns 是否为空
      */
     static isNull(val): boolean {
         return val == null || val == undefined
+    }
+
+    /**
+     * @description 返回第一个不为空的字符串
+     * @returns 返回第一个不为空的字符串
+     */
+    static nvl(str1, str2) {
+        return str1 || str2
     }
 }

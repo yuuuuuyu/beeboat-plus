@@ -1,10 +1,5 @@
 import { BTPBaseInitHandler } from '../base/index'
-import {
-    Router,
-    RouterHistory,
-    createRouter,
-    createWebHashHistory,
-} from 'vue-router'
+import { Router, RouterHistory, createRouter, createWebHashHistory } from 'vue-router'
 import BtNProgress from '../../utils/nprogress'
 import BTPUtils from '../../utils-ex/utils-ex'
 
@@ -23,8 +18,8 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
         const routes = (await this.loadRemoteRouteData()) as any
         const router = await this.createRouterInstance()
 
-        await this.addRouteBeforeListener(router,routes)
-        await this.addRouteAfterListener(router,routes)
+        await this.addRouteBeforeListener(router, routes)
+        await this.addRouteAfterListener(router, routes)
         await this.getApp().setRouter(router)
     }
 
@@ -53,7 +48,7 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
      * @description 创建路由对象
      * @returns 路由信息
      */
-    async createRouterInstance():Promise<Router>{
+    async createRouterInstance(): Promise<Router> {
         const history = this.createHistory()
         const routes = await this.loadRemoteRouteData()
         const scrollBehavior = this.createScrollBehavior as any
@@ -66,7 +61,7 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
                 return scrollBehavior(to, from, savedPosition)
             },
         })
-        return new Promise(resolve=>{
+        return new Promise(resolve => {
             resolve(router)
         })
     }
@@ -84,7 +79,7 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
      * @param router 路由
      * @param routes 路由数据
      */
-    addRouteBeforeListener(router: Router,routes:any): Promise<Boolean> {
+    addRouteBeforeListener(router: Router, routes: any): Promise<Boolean> {
         return new Promise(resolve => {
             router.beforeEach(async (to, _from, next) => {
                 this.nprogress.start()
@@ -102,7 +97,7 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
                     next()
                     return
                 }
-                next({ path: this.getLoginUrl() })
+                next({ path: this.getApp().getLoginUrl() })
             })
             resolve(true)
         })
@@ -113,7 +108,7 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
      * @param router 路由
      * @param _routes 路由数据
      */
-    addRouteAfterListener(router: Router,_routes:any): Promise<Boolean> {
+    addRouteAfterListener(router: Router, _routes: any): Promise<Boolean> {
         return new Promise(resolve => {
             router.afterEach(() => {
                 this.nprogress.done()
@@ -132,24 +127,18 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
     }
 
     /**
-     * @description 获取登录页面
-     * @returns 登录页面
-     */
-    getLoginUrl() {
-        return this.getApp()?.options?.loginPath || '/login'
-    }
-
-    /**
      * @description 加载远程路由数据
      * @returns 路由数据
      */
-    loadRemoteRouteData():Promise<any> {
-        return new Promise(resolve=>{
-            BTPUtils.getAppManager().loadRemoteRouteData().then(data=>{
-                this.formatRouteView(data)
-                this.getCacheManager().setAllRouter(data)
-                resolve(data)
-            })
+    loadRemoteRouteData(): Promise<any> {
+        return new Promise(resolve => {
+            BTPUtils.getAppManager()
+                .loadRemoteRouteData()
+                .then(data => {
+                    this.formatRouteView(data)
+                    this.getCacheManager().setAllRouter(data)
+                    resolve(data)
+                })
         })
     }
 
@@ -157,7 +146,7 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
      * @description 格式化路由视图
      * @param routes 路由信息
      */
-    formatRouteView(routes) :void {
+    formatRouteView(routes): void {
         if (routes) {
             routes.forEach(item => {
                 if (item.meta?.viewId) {
