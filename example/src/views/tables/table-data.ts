@@ -1,5 +1,5 @@
 export const editProps = {
-    enable: true,
+    enable: false,
 }
 export const columns = {
     children: [
@@ -29,7 +29,7 @@ export const columns = {
         },
         {
             id: '3',
-            label: '序号3',
+            label: '单选',
             prop: 'index3',
             type: 'radio',
             width: '60px',
@@ -181,6 +181,7 @@ export const useDataLoader = () => {
             ) {
                 data.records.push(staticData[i])
             }
+
             resolve({
                 code: 0,
                 data: data,
