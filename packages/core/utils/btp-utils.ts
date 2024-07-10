@@ -168,8 +168,13 @@ export default class BTPUtils {
      * @returns 路由params参数值
      */
     static getRouteParamValue(paramName: string): string {
-        const params = this.getRouter().currentRoute?.value?.params || {}
-        return params[paramName] || ''
+        const params = this.getRouter().currentRoute?.value?.params || {} 
+        const value = params[paramName]
+        if (typeof value === 'string') {
+            return value
+        } else {
+            return ''
+        }
     }
 
     /**
@@ -177,8 +182,13 @@ export default class BTPUtils {
      * @param paramName 参数名称
      * @returns 路由query参数值
      */
-    static getRouteQueryValue(paramName: string): string {
-        const params = this.getRouter().currentRoute?.value?.query || {}
-        return params[paramName] || ''
-    }
+    // static getRouteQueryValue(paramName: string): string {
+    //     const params = this.getRouter().currentRoute?.value?.query || {}
+    //     const value = params[paramName]
+    //     if (typeof value === 'string') {
+    //         return value
+    //     } else {
+    //         return ''
+    //     }
+    // }
 }
