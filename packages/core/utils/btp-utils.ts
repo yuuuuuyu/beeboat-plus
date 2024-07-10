@@ -151,7 +151,7 @@ export default class BTPUtils {
     }
 
     /**
-     * 转字符串为驼峰字符串
+     * @description 转字符串为驼峰字符串
      * @param str 字符串
      * @returns 驼峰字符串
      */
@@ -160,5 +160,25 @@ export default class BTPUtils {
             return str[0].toLowerCase() + str.slice(1)
         }
         return str
+    }
+
+    /**
+     * @description 从params获取路由参数
+     * @param paramName 参数名称
+     * @returns 路由params参数值
+     */
+    static getRouteParamValue(paramName: string): string {
+        const params = this.getRouter().currentRoute?.value?.params || {}
+        return params[paramName] || ''
+    }
+
+    /**
+     * @description 从query获取路由参数
+     * @param paramName 参数名称
+     * @returns 路由query参数值
+     */
+    static getRouteQueryValue(paramName: string): string {
+        const params = this.getRouter().currentRoute?.value?.query || {}
+        return params[paramName] || ''
     }
 }
