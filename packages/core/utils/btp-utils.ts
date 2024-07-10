@@ -15,7 +15,7 @@ export default class BTPUtils {
      * @description 获取路由对象
      * @returns 路由对象
      */
-    static getRouter() {
+    static getRouterInfo() {
         return BTPApplication.getInstance().getRouter()
     }
 
@@ -167,28 +167,28 @@ export default class BTPUtils {
      * @param paramName 参数名称
      * @returns 路由params参数值
      */
-    // static getRouteParamValue(paramName: string): string {
-    //     const params = this.getRouter().currentRoute?.value?.params || {}
-    //     const value = params[paramName]
-    //     if (typeof value === 'string') {
-    //         return value
-    //     } else {
-    //         return ''
-    //     }
-    // }
+    static getRouteParamValue(paramName: string): string {
+        const params = this.getRouterInfo().currentRoute?.value?.params || {}
+        const value = params[paramName]
+        if (typeof value === 'string') {
+            return value
+        } else {
+            return ''
+        }
+    }
 
     /**
      * @description 从query获取路由参数
      * @param paramName 参数名称
      * @returns 路由query参数值
      */
-    // static getRouteQueryValue(paramName: string): string {
-    //     const params = this.getRouter().currentRoute?.value?.query || {}
-    //     const value = params[paramName]
-    //     if (typeof value === 'string') {
-    //         return value
-    //     } else {
-    //         return ''
-    //     }
-    // }
+    static getRouteQueryValue(paramName: string): string {
+        const params = this.getRouterInfo().currentRoute?.value?.query || {}
+        const value = params[paramName]
+        if (typeof value === 'string') {
+            return value
+        } else {
+            return ''
+        }
+    }
 }
