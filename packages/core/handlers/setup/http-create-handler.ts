@@ -1,6 +1,6 @@
 import Axios, { AxiosInstance } from 'axios'
 import { BTPBaseSetupHandler } from '../base'
-import BTPUtils from '../../utils-ex/utils-ex'
+import BTPUtils from '../../utils-ex/btp-utils'
 
 /**
  * http(axios)加载处理对象

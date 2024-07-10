@@ -1,5 +1,5 @@
 import { nextTick } from 'vue'
-import BTPUtils from '@beeboat/core/utils-ex/utils-ex'
+import BTPUtils from '@beeboat/core/utils-ex/btp-utils'
 
 export const useTable = (props, state, status, tableRef, emits) => {
     /**

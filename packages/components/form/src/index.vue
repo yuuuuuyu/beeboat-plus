@@ -36,7 +36,7 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import Utils from '@beeboat/core/utils-ex/utils';
+import Utils from '@beeboat/core/utils-ex/common-utils';
 
 const varName = (str: any) => {
     if (str && str.length > 0) {

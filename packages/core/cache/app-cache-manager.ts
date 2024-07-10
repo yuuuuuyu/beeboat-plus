@@ -1,5 +1,5 @@
-import Utils from '../utils-ex/utils'
-import BTPUtils from '../utils-ex/utils-ex'
+import Utils from '../utils-ex/common-utils'
+import BTPUtils from '../utils-ex/btp-utils'
 
 /**
  * 全局应用缓存数据管理对象

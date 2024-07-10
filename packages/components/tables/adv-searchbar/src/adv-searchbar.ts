@@ -1,5 +1,5 @@
 import cloneDeep from 'lodash-es/cloneDeep'
-import BTPUtils from '@beeboat/core/utils-ex/utils-ex'
+import BTPUtils from '@beeboat/core/utils-ex/btp-utils'
 
 export const useAdvSearchbar = (props, emits, state) => {
     const getColumn = columnId => {

@@ -1,4 +1,4 @@
-import BTPUtils from '@beeboat/core/utils-ex/utils-ex'
+import BTPUtils from '@beeboat/core/utils-ex/btp-utils'
 import { expressConfigList } from './adv-searchbar-common'
 
 const toJSON = value => {

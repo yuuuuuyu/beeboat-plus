@@ -248,7 +248,8 @@
 import { reactive, watch } from 'vue'
 import { expressConfigList } from './adv-searchbar-common'
 import { useAdvSearchbarItem } from './adv-searchbar-item'
-import { useElementConfig } from '../../../useElementConfig'
+
+import { useElementConfig } from '@beeboat/core/utils-ex/use-element-config'
 
 const emits = defineEmits(['update:modelValue', 'search'])
 
@@ -270,7 +271,6 @@ const { sizeClass, size } = useElementConfig(
     },
     props,
 )
-console.log(size)
 
 const state = reactive({
     options: [],
