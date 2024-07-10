@@ -26,6 +26,7 @@ export default series(
         await remove(`${directivesRoot}/es`)
         await remove(`${directivesRoot}/lib`)
     }),
+    // withTaskName('autoPatch', () => run('pnpm --filter ./packages/beeboat-plus auto-patch')),
     withTaskName('buildPackages', () => run('pnpm --filter ./packages --parallel build')),
     parallel(
         withTaskName('buildFullComponent', () => run('pnpm build buildFullComponent')),
