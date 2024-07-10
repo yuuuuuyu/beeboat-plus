@@ -16,7 +16,7 @@ export default class BTPUtils {
      * @returns 路由对象
      */
     static getRouterInfo() {
-        return BTPApplication.getInstance().getRouter()
+        return BTPApplication.getInstance().getRouter() as any
     }
 
     /**
