@@ -46,23 +46,6 @@ export default class BTPViewContext extends BTPBaseViewContext {
     }
 
     /**
-     * @description 创建视图的ViewContext对象
-     * @param vueInstance 实例
-     * @param viewId 视图ID
-     * @param viewModelId 视图配置ID
-     * @param parentViewContext 上级页面
-     * @returns 对象
-     */
-    public static createInstance(
-        vueInstance?: any,
-        viewId?: string,
-        viewModelId?: string,
-        parentViewContext?: any,
-    ): any {
-        return new BTPViewContext(vueInstance, viewId, viewModelId, parentViewContext)
-    }
-
-    /**
      * 获取Ref对象引用
      * @param name ref名称
      * @returns 实例

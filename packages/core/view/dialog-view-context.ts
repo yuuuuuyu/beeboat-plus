@@ -6,42 +6,53 @@ export default class BTPDialogViewContext extends BTPViewContext {
     }
 
     /**
-     * @description 创建视图的ViewContext对象
-     * @param vueInstance 实例
-     * @param viewId 视图ID
-     * @param viewModelId 视图配置ID
-     * @param parentViewContext 上级页面
-     * @returns 对象
+     * @description 初始化视图配置模型
+     * @returns 配置
      */
-    public static createInstance(
-        vueInstance?: any,
-        viewId?: string,
-        viewModelId?: string,
-        parentViewContext?: any,
-    ): any {
-        return new BTPDialogViewContext(vueInstance, viewId, viewModelId, parentViewContext)
+    initViewModel() {
+        const viewModel = super.initViewModel()
+        viewModel.dialog = { visible: false, title: '' }
+        return viewModel
     }
-
+    /**
+     * @description 获取弹窗的Ref对象
+     */
     getDialogRef() {
         return this.getRef(this.viewModel.components[0].props.ref)
     }
 
-    openDialog() {
-        this.getDialogRef()?.openDialog()
+    /**
+     * @description 打开弹窗
+     * @param title 标题
+     * @param params 参数
+     */
+    openDialog(title = '', params = {}): void {
+        this.viewModel.dialog.title = title
+        this.viewModel.dialog.visible = true
+        console.log(this.getDialogRef())
     }
 
-    closeDialog() {
-        console.log('view context close dialog')
+    /**
+     * @description 关闭窗口
+     * @param direct 是否直接关闭,不触发关闭事件
+     */
+    closeDialog(direct: boolean): void {
+        this.viewModel.dialog.visible = false
+        if (!direct) {
+            if (this.viewModel.components[0].events['onOpenDialog']) {
+                this.viewModel.components[0].events['onOpenDialog']()
+            }
+        }
     }
 
     getExpose() {
         return {
             ...super.getExpose(),
-            openDialog: () => {
-                this.openDialog()
+            openDialog: (title = '', params = {}) => {
+                this.openDialog(title, params)
             },
-            closeDialog: () => {
-                this.closeDialog()
+            closeDialog: (direct: boolean) => {
+                this.closeDialog(direct)
             },
         }
     }
