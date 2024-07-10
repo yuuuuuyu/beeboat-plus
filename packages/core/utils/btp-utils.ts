@@ -167,15 +167,15 @@ export default class BTPUtils {
      * @param paramName 参数名称
      * @returns 路由params参数值
      */
-    static getRouteParamValue(paramName: string): string {
-        const params = this.getRouter().currentRoute?.value?.params || {} 
-        const value = params[paramName]
-        if (typeof value === 'string') {
-            return value
-        } else {
-            return ''
-        }
-    }
+    // static getRouteParamValue(paramName: string): string {
+    //     const params = this.getRouter().currentRoute?.value?.params || {}
+    //     const value = params[paramName]
+    //     if (typeof value === 'string') {
+    //         return value
+    //     } else {
+    //         return ''
+    //     }
+    // }
 
     /**
      * @description 从query获取路由参数
