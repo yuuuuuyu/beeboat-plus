@@ -36,14 +36,7 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import Utils from '@beeboat/core/utils-ex/utils';
-
-const varName = (str: any) => {
-    if (str && str.length > 0) {
-        return str[0].toLowerCase() + str.slice(1)
-    }
-    return str
-}
+import Utils from '@beeboat/core/utils/btp-utils'
 
 defineProps({
     /**

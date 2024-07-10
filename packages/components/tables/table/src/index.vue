@@ -133,7 +133,7 @@ import BtpPagination from '../../pagination/src/index.vue'
 import BtpTableColumnContent from '../../table-column-content/src/index.vue'
 import BtpTableColumnSetting from './column-setting-popover.vue'
 
-import { useElementConfig } from '../../../useElementConfig'
+import { useElementConfig } from '@beeboat/core/utils/use-element-config'
 
 const emits = defineEmits([
     'select',
@@ -202,7 +202,6 @@ const props = withDefaults(defineProps<IProps>(), {
     size: '',
 })
 
-// 处理size
 const { sizeClass, size } = useElementConfig(
     {
         componentName: 'btp-table',

@@ -6,7 +6,7 @@ import {
     BTPGlobalAppManager,
     BTPDialogViewContext,
 } from './view/index'
-import BTPUtils from './utils-ex/utils-ex'
+import BTPUtils from './utils/btp-utils'
 import {
     BTPBaseHandler,
     BTPBaseApiHandler,

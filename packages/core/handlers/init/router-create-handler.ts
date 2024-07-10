@@ -1,7 +1,7 @@
 import { BTPBaseInitHandler } from '../base/index'
 import { Router, RouterHistory, createRouter, createWebHashHistory } from 'vue-router'
 import BtNProgress from '../../utils/nprogress'
-import BTPUtils from '../../utils-ex/utils-ex'
+import BTPUtils from '../../utils/btp-utils'
 
 /**
  * 路由创建对象

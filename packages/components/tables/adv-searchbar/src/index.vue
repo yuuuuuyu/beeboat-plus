@@ -71,7 +71,8 @@ import { reactive, ref } from 'vue'
 import AdvSearchItem from './adv-searchbar-item.vue'
 import AdvSearchDialog from './adv-searchbar-dialog.vue'
 import { useAdvSearchbar } from './adv-searchbar'
-import { useElementConfig } from '../../../useElementConfig'
+
+import { useElementConfig } from '@beeboat/core/utils/use-element-config'
 
 const emits = defineEmits(['search', 'reset'])
 

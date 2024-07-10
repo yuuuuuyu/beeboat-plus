@@ -3,7 +3,7 @@ import 'nprogress/nprogress.css'
 /**
  * nprogress的帮助类类
  */
-class BtNProgress {
+class BtpNProgress {
     constructor(params?) {
         if (params) {
             this.initParams = params
@@ -37,5 +37,5 @@ class BtNProgress {
     }
 }
 
-export default BtNProgress
-export { BtNProgress }
+export default BtpNProgress
+export { BtpNProgress }

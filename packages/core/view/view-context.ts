@@ -2,7 +2,7 @@ import { ComponentInternalInstance } from 'vue'
 
 import BTPApplication from '../app/application'
 import BTPBaseViewContext from './base-view-context'
-import BTPUtils from '../utils-ex/utils-ex'
+import BTPUtils from '../utils/btp-utils'
 import BTPLogicExecutor from '../logics/logic-executor'
 
 export default class BTPViewContext extends BTPBaseViewContext {

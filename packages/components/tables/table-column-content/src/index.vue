@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue'
 import CellEditor from '../../table-editor/src/index.vue'
-import BTPUtils from '@beeboat/core/utils-ex/utils-ex'
+import BTPUtils from '@beeboat/core/utils/btp-utils'
 
 interface IProps {
     editable?: boolean

@@ -1,7 +1,7 @@
 import { useGlobalConfig } from 'element-plus'
 import { ref, watch } from 'vue'
 
-export const useElementConfig = (option: Object, props: any) => {
+export const useElementConfig = (option: any, props: any) => {
     const size = ref('default')
     const sizeClass = ref('')
     const globalConfig = useGlobalConfig()
@@ -14,7 +14,7 @@ export const useElementConfig = (option: Object, props: any) => {
                 size.value = props.size
                 sizeClass.value = `${option.componentName}--${size.value}`
             } else {
-                size.value = config.value.size
+                size.value = config.value.size || 'default'
                 config.value.size && (sizeClass.value = `${option.componentName}--${size.value}`)
             }
         },
