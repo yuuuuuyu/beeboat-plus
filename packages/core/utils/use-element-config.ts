@@ -14,7 +14,7 @@ export const useElementConfig = (option: Object, props: any) => {
                 size.value = props.size
                 sizeClass.value = `${option.componentName}--${size.value}`
             } else {
-                size.value = config.value.size
+                size.value = config.value.size || 'default'
                 config.value.size && (sizeClass.value = `${option.componentName}--${size.value}`)
             }
         },

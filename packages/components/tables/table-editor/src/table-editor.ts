@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 import cloneDeep from 'lodash-es/cloneDeep'
 import Validator from 'async-validator'
-import BTPUtils from '@beeboat/core/utils-ex/utils-ex'
+import BTPUtils from '@beeboat/core/utils/btp-utils'
 
 /**
  * 表格行内编辑处理对象

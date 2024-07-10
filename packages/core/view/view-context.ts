@@ -2,7 +2,7 @@ import { ComponentInternalInstance } from 'vue'
 
 import BTPApplication from '../app/application'
 import BTPBaseViewContext from './base-view-context'
-import BTPUtils from '../utils-ex/utils-ex'
+import BTPUtils from '../utils/btp-utils'
 import BTPLogicExecutor from '../logics/logic-executor'
 
 export default class BTPViewContext extends BTPBaseViewContext {
@@ -43,23 +43,6 @@ export default class BTPViewContext extends BTPBaseViewContext {
         } else {
             console.log('无法获取参数', BTPApplication.getInstance().getRouter().currentRoute)
         }
-    }
-
-    /**
-     * @description 创建视图的ViewContext对象
-     * @param vueInstance 实例
-     * @param viewId 视图ID
-     * @param viewModelId 视图配置ID
-     * @param parentViewContext 上级页面
-     * @returns 对象
-     */
-    public static createInstance(
-        vueInstance?: any,
-        viewId?: string,
-        viewModelId?: string,
-        parentViewContext?: any,
-    ): any {
-        return new BTPViewContext(vueInstance, viewId, viewModelId, parentViewContext)
     }
 
     /**
