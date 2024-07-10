@@ -1,5 +1,5 @@
 import { BTPBaseApiHandler } from '../base'
-import Utils from '@beeboat/core/utils-ex/common-utils'
+import Utils from '../../utils/btp-utils'
 
 /**
  * 数据字典数据加载对象

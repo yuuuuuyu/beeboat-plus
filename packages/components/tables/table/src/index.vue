@@ -133,7 +133,7 @@ import BtpPagination from '../../pagination/src/index.vue'
 import BtpTableColumnContent from '../../table-column-content/src/index.vue'
 import BtpTableColumnSetting from './column-setting-popover.vue'
 
-import { useElementConfig } from '@beeboat/core/utils-ex/use-element-config'
+import { useElementConfig } from '@beeboat/core/utils/use-element-config'
 
 const emits = defineEmits([
     'select',

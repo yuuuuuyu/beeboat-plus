@@ -249,7 +249,7 @@ import { reactive, watch } from 'vue'
 import { expressConfigList } from './adv-searchbar-common'
 import { useAdvSearchbarItem } from './adv-searchbar-item'
 
-import { useElementConfig } from '@beeboat/core/utils-ex/use-element-config'
+import { useElementConfig } from '@beeboat/core/utils/use-element-config'
 
 const emits = defineEmits(['update:modelValue', 'search'])
 

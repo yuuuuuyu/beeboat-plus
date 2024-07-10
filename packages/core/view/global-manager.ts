@@ -1,7 +1,7 @@
 import { cloneDeep } from 'lodash'
 import BTPViewContext from './view-context'
 import BTPDialogViewContext from './dialog-view-context'
-import BTPUtils from '../utils-ex/btp-utils'
+import BTPUtils from '../utils/btp-utils'
 
 export default class BTPGlobalAppManager {
     layoutView = null as any

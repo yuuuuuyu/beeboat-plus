@@ -1,12 +1,10 @@
-import Utils from '../utils-ex/common-utils'
-import BTPUtils from '../utils-ex/btp-utils'
+import BTPUtils from '../utils/btp-utils'
 
 /**
  * 全局应用缓存数据管理对象
  * @author Enmaai
  */
 export default class BTPAppCacheManager {
-
     /**
      * 接口数据
      */
@@ -216,7 +214,7 @@ export default class BTPAppCacheManager {
     public setMenuTreeList(menuTreeList: any): void {
         this.menuTreeList = menuTreeList
         this.menuRouteIdList = []
-        const menuList = Utils.treeToList(menuTreeList)
+        const menuList = BTPUtils.treeToList(menuTreeList)
         menuList.forEach(item => {
             this.menuRouteIdList.push(item.routeId)
         })

@@ -1,5 +1,5 @@
 import { BTPBaseInitHandler } from '../base/index'
-import BTPUtils from '../../utils-ex/btp-utils'
+import BTPUtils from '../../utils/btp-utils'
 
 /**
  * 路由创建对象
