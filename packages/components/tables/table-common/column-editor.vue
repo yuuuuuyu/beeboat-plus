@@ -3,8 +3,8 @@
         <div class="btp-table-cell-editor--content">
             <el-input v-model.trim="data[column.prop]" />
         </div>
-        <el-popover v-if="editor?.hasError(row, column)" placement="right" trigger="hover">
-            {{ editor.getErrorMessage(row, column) || '' }}
+        <el-popover v-if="manager.editor.hasError(row, column)" placement="right" trigger="hover">
+            {{ manager.editor.getErrorMessage(row, column) || '' }}
             <template #reference>
                 <el-icon>
                     <WarningFilled color="#f56c6c" />
@@ -19,15 +19,15 @@ import { computed } from 'vue'
 interface IProps {
     row?: any
     column?: any
-    editor?: any
+    manager?: any
 }
 const props = withDefaults(defineProps<IProps>(), {
     column: {},
     row: {},
-    editor: null,
+    manager: null,
 })
 
 const data = computed(() => {
-    return props.editor?.getData(props.row) || {}
+    return props.manager.editor.getData(props.row) || {}
 })
 </script>

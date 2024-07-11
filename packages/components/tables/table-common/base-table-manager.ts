@@ -1,17 +1,20 @@
 import { nextTick } from 'vue'
 import BTPUtils from '@beeboat/core/utils/btp-utils'
+import BTPTableEditor from './table-editor'
 
 export default class BTPBaseTableManager {
-    private state = null as any
-    private tableRef = null as any
-    private emits = null as any
-    private props = null as any
+    public state = null as any
+    public tableRef = null as any
+    public emits = null as any
+    public props = null as any
+    public editor = null as any
 
     constructor(tableRef, props, state, emits) {
         this.tableRef = tableRef
         this.props = props
         this.state = state
         this.emits = emits
+        this.editor = new BTPTableEditor(this, props, state, emits)
     }
 
     installTable() {
@@ -233,6 +236,8 @@ export default class BTPBaseTableManager {
      * 清空选择
      */
     onPaginationClearSelection() {
+        this.state.selection = []
+        this.state.radioSelection = null
         this.tableRef.value.clearSelection()
     }
 

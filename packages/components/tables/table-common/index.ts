@@ -1,4 +1,5 @@
-import BTPTableManager from './base-table-manager'
+import BTPBaseTableManager from './base-table-manager'
+import BTPTableManager from './table-manager'
 import BTPTableEditor from './table-editor'
 import ColumnRadio from './column-redio.vue'
 import ColumnContent from './column-content.vue'

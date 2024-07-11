@@ -4,12 +4,12 @@
             :is="column.contentComponent"
             :column="column"
             :scope="scope"
-            :editor="editor"
+            :manager="manager"
         ></component>
     </template>
     <template v-else>
-        <template v-if="column.editProps?.enable && editor.isEditing(scope.row)">
-            <ColumnEditor :column="column" :row="scope.row" :editor="editor"></ColumnEditor>
+        <template v-if="column.editProps?.enable && manager.editor.isEditing(scope.row)">
+            <ColumnEditor :column="column" :row="scope.row" :manager="manager"></ColumnEditor>
         </template>
         <template v-else>
             <ColumnRender :column="column" :scope="scope"></ColumnRender>
@@ -30,7 +30,7 @@ defineProps({
         type: Object,
         default: null,
     },
-    editor: {
+    manager: {
         type: Object,
         default: null,
     },

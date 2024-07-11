@@ -1,3 +1,4 @@
+import { markRaw } from 'vue'
 import Ctn from './content.vue'
 import Cell from './cell.vue'
 export const editProps = {
@@ -78,7 +79,7 @@ export const columns = {
             prop: 'entityName',
             showOverflowTooltip: true,
             contentComponent: Ctn,
-            component: Cell,
+            component: markRaw(Cell),
             searchProps: {
                 enable: true,
                 componentType: 'text',
@@ -154,16 +155,6 @@ export const columns = {
                     'gele',
                 ],
             },
-            children: [
-                {
-                    code: 'AddModule',
-                    id: '32ei899JrHe2cVAX5kyGTZ',
-                    props: { size: 'small', link: false },
-                    styles: {},
-                    actions: {},
-                    type: 'BtpButton',
-                },
-            ],
         },
     ],
 }

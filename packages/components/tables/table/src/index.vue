@@ -37,7 +37,7 @@
                     :data="manager.getTableData()"
                     v-loading="state.loading"
                     v-bind="tableProps"
-                    v-on="emitEvents"
+                    v-on="manager.getEmitsEvent()"
                 >
                     <template v-if="$slots.append" #append>
                         <slot name="append"></slot>
@@ -54,7 +54,6 @@
                                         :is="item.component"
                                         :column="item"
                                         :manager="manager"
-                                        :editor="tableEditor"
                                     ></component>
                                 </template>
                                 <el-table-column v-else v-bind="item">
@@ -82,7 +81,7 @@
                                             <ColumnContent
                                                 :column="item"
                                                 :scope="scope"
-                                                :editor="tableEditor"
+                                                :manager="manager"
                                             >
                                             </ColumnContent>
                                         </template>
@@ -94,7 +93,11 @@
                             <template #header>
                                 <ColumnSetting
                                     :columns="state.columns"
-                                    @change="manager.onColumnSettingChange"
+                                    @change="
+                                        columns => {
+                                            manager.onColumnSettingChange(columns)
+                                        }
+                                    "
                                 >
                                 </ColumnSetting>
                             </template>
@@ -102,14 +105,14 @@
                                 <el-button
                                     type="primary"
                                     :link="true"
-                                    @click.stop="tableEditor.add(scope.$index)"
+                                    @click.stop="manager.editor.add(scope.$index)"
                                 >
                                     添加
                                 </el-button>
                                 <el-button
                                     type="danger"
                                     :link="true"
-                                    @click.stop="tableEditor.delete(scope.row)"
+                                    @click.stop="manager.editor.delete(scope.row)"
                                 >
                                     删除
                                 </el-button>
@@ -136,12 +139,10 @@
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from 'vue'
 import { useElementConfig } from '@beeboat/core/utils/use-element-config'
-import { useTableEvents } from './table-events'
 import BtpAdvSearchbar from '../../adv-searchbar/src/index.vue'
 import BtpPagination from '../../pagination/src/index.vue'
 import {
     BTPTableManager,
-    BTPTableEditor,
     ColumnRadio,
     ColumnOperator,
     ColumnContent,
@@ -259,10 +260,6 @@ const state = reactive({
 
 const manager = new BTPTableManager(tableRef, props, state, emits)
 
-const tableEditor = new BTPTableEditor(props, manager.getTableData, emits)
-
-const { emitEvents } = useTableEvents(props, state, status, tableRef, emits, tableEditor)
-
 /**
  * 进行V-Model监控
  */
@@ -287,7 +284,5 @@ watch(
 
 manager.installTable()
 
-defineExpose({
-    editor: tableEditor,
-})
+defineExpose({})
 </script>
