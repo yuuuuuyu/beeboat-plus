@@ -1,21 +1,6 @@
 export const useTableEvents = (props, state, status, tableRef, emits, editor) => {
-    /**
-     * 拖动列头
-     * @param newVal 新值
-     * @param _oldVal 旧值
-     * @param column 列
-     * @param _events 事件
-     */
-    const onColumnHeaderDraged = (newVal, _oldVal, $column, _events) => {
-        const column = props.columns.find(item => item.prop == $column.property)
-        if (column) {
-            column.width = `${newVal}px`
-        }
-    }
-
     const emitEvents = {
         select: (v1, v2) => {
-            console.log('-----select-------')
             emits('select', v1, v2)
         },
         'select-all': v1 => {
@@ -59,7 +44,6 @@ export const useTableEvents = (props, state, status, tableRef, emits, editor) =>
             emits('filter-change', v1)
         },
         'selection-change': rows => {
-            console.log('-----selection-change-------')
             state.selection = rows
             emits('selection-change', rows)
         },
@@ -67,7 +51,6 @@ export const useTableEvents = (props, state, status, tableRef, emits, editor) =>
             emits('current-change', v1, v2)
         },
         'header-dragend': (v1, v2, v3, v4) => {
-            onColumnHeaderDraged(v1, v2, v3, v4)
             emits('header-dragend', v1, v2, v3, v4)
         },
         'expand-change': (v1, v2) => {

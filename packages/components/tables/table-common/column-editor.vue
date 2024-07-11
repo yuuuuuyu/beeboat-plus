@@ -4,7 +4,7 @@
             <el-input v-model.trim="data[column.prop]" />
         </div>
         <el-popover v-if="editor?.hasError(row, column)" placement="right" trigger="hover">
-            {{ editor?.getErrorMessage(row, column) || '' }}
+            {{ editor.getErrorMessage(row, column) || '' }}
             <template #reference>
                 <el-icon>
                     <WarningFilled color="#f56c6c" />

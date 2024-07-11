@@ -2,7 +2,7 @@ export const routes = [
     {
         path: '/',
         name: 'home',
-        component: import('@/views/index.vue'),
+        component: () => import('@/views/index.vue'),
         redirect: '/welcome',
         meta: {
             icon: 'home-filled',
@@ -43,6 +43,15 @@ export const routes = [
                 component: () => import('@/views/tables/index.vue'),
                 meta: {
                     title: '表格',
+                    hidden: false,
+                },
+            },
+            {
+                path: '/tables-edit',
+                name: 'tables-edit',
+                component: () => import('@/views/tables-edit/index.vue'),
+                meta: {
+                    title: '行内编辑表格',
                     hidden: false,
                 },
             },

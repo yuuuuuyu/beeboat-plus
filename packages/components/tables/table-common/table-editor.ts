@@ -38,6 +38,14 @@ export default class BTPTableEditor {
         })
     }
 
+    /**
+     * 判断当前表格是否支持行内编辑
+     * @returns 判断当前表格是否支持行内编辑
+     */
+    isEditable(): boolean {
+        return this.props?.editProps?.enable || false
+    }
+
     getRowKey() {
         return this.props.rowKey || 'id'
     }

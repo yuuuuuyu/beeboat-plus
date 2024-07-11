@@ -1,5 +1,3 @@
-import Ctn from './content.vue'
-import Cell from './cell.vue'
 export const editProps = {
     enable: false,
 }
@@ -13,7 +11,7 @@ export const columns = {
             width: '70px',
             showOverflowTooltip: true,
             editProps: {
-                enable: false,
+                enable: true,
             },
             searchProps: {
                 enable: true,
@@ -77,8 +75,6 @@ export const columns = {
             label: '序号5',
             prop: 'entityName',
             showOverflowTooltip: true,
-            contentComponent: Ctn,
-            component: Cell,
             searchProps: {
                 enable: true,
                 componentType: 'text',
@@ -125,45 +121,6 @@ export const columns = {
                     'gele',
                 ],
             },
-            children: [
-                {
-                    code: 'AddModule',
-                    id: '32ei899JrHe2cVAX5kyGTZ',
-                    props: { size: 'small', link: false },
-                    styles: {},
-                    actions: {},
-                    type: 'BtpButton',
-                },
-            ],
-        },
-        {
-            id: '7',
-            label: '序号7',
-            prop: 'index7',
-            showOverflowTooltip: true,
-            searchProps: {
-                enable: true,
-                componentType: 'text',
-                supportConditionList: [
-                    'ne',
-                    'like',
-                    'eq',
-                    'isNull',
-                    'notlike',
-                    'isNotNull',
-                    'gele',
-                ],
-            },
-            children: [
-                {
-                    code: 'AddModule',
-                    id: '32ei899JrHe2cVAX5kyGTZ',
-                    props: { size: 'small', link: false },
-                    styles: {},
-                    actions: {},
-                    type: 'BtpButton',
-                },
-            ],
         },
     ],
 }
@@ -200,7 +157,7 @@ export const pagination = {
 
 export const useDataLoader = () => {
     const staticData = []
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 5; i++) {
         staticData.push({
             id: `id${i}`,
             entityName: `entityName${i}`,
@@ -222,7 +179,9 @@ export const useDataLoader = () => {
                 i < params.pageNumber * params.pageSize;
                 i++
             ) {
-                data.records.push(staticData[i])
+                if (i < staticData.length) {
+                    data.records.push(staticData[i])
+                }
             }
 
             resolve({
