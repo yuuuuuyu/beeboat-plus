@@ -63,7 +63,7 @@
     </el-card>
 </template>
 <script lang="ts" setup>
-defineProps({
+const props = defineProps({
     /**
      * @description 视图动态配置
      */
@@ -79,4 +79,5 @@ defineProps({
         default: undefined,
     },
 })
+console.log(props)
 </script>

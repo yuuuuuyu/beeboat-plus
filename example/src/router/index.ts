@@ -116,7 +116,16 @@ export const routes = [
                 name: 'card',
                 component: () => import('@/views/card/index.vue'),
                 meta: {
-                    title: 'card',
+                    title: 'Card',
+                    hidden: false,
+                },
+            },
+            {
+                path: '/dialog',
+                name: 'dialog',
+                component: () => import('@/views/dialog/index.vue'),
+                meta: {
+                    title: 'Dialog',
                     hidden: false,
                 },
             },

@@ -109,6 +109,7 @@ export default class BTPHttpCreateHandler extends BTPBaseSetupHandler {
      * 判断是否过期登录
      * @param result 响应
      * @returns 是否过期登录
+     * '用户未登录' = 130001,'操作未授权' = 130002,'数据未授权' = 130003,'用户登录过期' = 13004,'token' = 13005,
      */
     isAuthExpired(result): boolean {
         return ['130001', '130002', '130003', '130004', '130005'].includes(`${result.code}`)

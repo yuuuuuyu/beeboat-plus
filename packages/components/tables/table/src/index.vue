@@ -36,7 +36,7 @@
                     ref="tableRef"
                     :data="manager.getTableData()"
                     v-loading="state.loading"
-                    v-bind="tableProps"
+                    v-bind="{ ...$props, ...$attrs }"
                     v-on="manager.getEmitsEvent()"
                 >
                     <template v-if="$slots.append" #append>
@@ -133,6 +133,7 @@
             v-model:reserve="state.pagination.reserve"
             :selection="state.selection"
             :total="state.pagination.total"
+            :size="size"
         ></BtpPagination>
     </div>
 </template>
