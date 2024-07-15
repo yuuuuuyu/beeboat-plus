@@ -237,4 +237,41 @@ export default class BTPUtils {
             }
         }
     }
+    /**
+     * @description 递归获取ref对象
+     * @param name ref名称
+     * @param vueInstance vue内置对象
+     * @returns ref对象
+     */
+    static getRef(name, vueInstance) {
+        const startTime = new Date().getTime()
+        //判断组件是否可穿透获取ref
+        const injectable = ref => {
+            return ref.$options?.btpInject || false
+        }
+        const formatRef = refs => {
+            return Array.isArray(refs) ? refs[0] : refs
+        }
+        const findRef = (name, refs) => {
+            const ref = refs[name]
+            if (ref) {
+                return formatRef(ref)
+            } else {
+                const keys = Object.keys(refs)
+                for (let i = 0; i < keys.length; i++) {
+                    const child = formatRef(refs[keys[i]])
+                    if (injectable(child)) {
+                        const refx = findRef(name, child.$refs)
+                        if (refx) {
+                            return formatRef(refx)
+                        }
+                    }
+                }
+            }
+            return null
+        }
+        const findedRef = findRef(name, vueInstance?.refs)
+        console.log(`查找组件${name}的ref对象耗时${new Date().getTime() - startTime}毫秒`)
+        return findedRef
+    }
 }

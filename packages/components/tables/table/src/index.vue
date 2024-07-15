@@ -133,7 +133,6 @@
             v-model:reserve="state.pagination.reserve"
             :selection="state.selection"
             :total="state.pagination.total"
-            :size="size"
         ></BtpPagination>
     </div>
 </template>
