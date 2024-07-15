@@ -4,11 +4,8 @@
     "description": "beeboat-theme library",
     "main": "index.ts",
     "scripts": {
-        "build": "gulp"
+        "build": "vite build"
     },
     "author": "于智勇｜15684187702@163.com",
-    "license": "ISC",
-    "dependencies": {
-        "@ctrl/tinycolor": "^3.4.1"
-    }
+    "license": "ISC"
 }

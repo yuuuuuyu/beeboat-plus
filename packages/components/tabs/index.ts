@@ -1,8 +1,7 @@
-import { withInstall } from '../with-install'
+import { withInstall } from '@beeboat/core/utils/with-install'
 import Tabs from './src/index.vue'
 import TabPane from './src/tab-pane.vue'
 import TabsAnchor from './src/tabs-anchor.vue'
-
 
 const BtpTabs = withInstall(Tabs)
 const BtpTabPane = withInstall(TabPane)

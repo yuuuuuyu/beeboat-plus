@@ -2,18 +2,15 @@
     "name": "@beeboat/core",
     "version": "1.0.0",
     "description": "beeboat core library",
-    "main": "es/index.js",
+    "main": "dist/core.cjs.js",
+    "module": "dist/core.es.js",
+    "types": "dist/types/index.d.ts",
+    "files": [
+        "dist"
+    ],
     "scripts": {
-        "build": "gulp",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "vite build"
     },
     "keywords": [],
-    "author": "mickey | xiukun@163.com",
-    "dependencies": {
-        "uuid": "^10.0.0",
-        "axios": "^0.26.1",
-        "jsencrypt": "^3.2.1",
-        "nprogress": "^0.2.0",
-        "vue-cookies": "^1.8.2"
-    }
+    "author": "于智勇｜15684187702@163.com"
 }

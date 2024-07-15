@@ -6,12 +6,9 @@
     "main": "lib/index.js",
     "module": "es/index.js",
     "scripts": {
-        "auto-patch": "npm version patch"
+        "auto-patch": "npm version patch",
+        "build": "vite build"
     },
     "keywords": [],
-    "author": "zhiyong.yu@ytever.com",
-    "dependencies": {
-        "jsencrypt": "^3.2.1",
-        "vue-cookies": "^1.8.2"
-    }
+    "author": "zhiyong.yu@ytever.com"
 }

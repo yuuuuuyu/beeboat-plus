@@ -70,7 +70,11 @@ export default class BTPLogicExecutor {
      * @returns 是否是指定组件
      */
     isComponent(componentCode): boolean {
-        return this.bptLogicOptions.component.code == componentCode
+        const _component = this.bptLogicOptions.component
+        if (_component) {
+            return (_component as any).code == componentCode
+        }
+        return false
     }
 
     /**

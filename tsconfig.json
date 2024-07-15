@@ -1,6 +1,10 @@
 {
     "compilerOptions": {
-        "module": "ESNext", // 打包模块类型ESNext
+        "baseUrl": ".",
+        "paths": {
+            "@beeboat-theme/*": ["packages/beeboat-theme/*"]
+        },
+        "module": "esnext", // 打包模块类型ESNext
         "declaration": false, //  生成*.d.ts文件
         "noImplicitAny": false, // 支持类型不标注可以默认any
         "removeComments": false, // 删除注释
@@ -8,7 +12,7 @@
         "esModuleInterop": true, // 支持es6,commonjs模块
         "jsx": "preserve", // jsx 不转
         "noLib": false, // 不处理类库
-        "target": "es6", // 遵循es6版本
+        "target": "esnext", // 遵循es6版本
         "sourceMap": true,
         "lib": [
             // 编译时用的库
@@ -26,5 +30,6 @@
         // 排除掉哪些类库
         "node_modules",
         "**/__tests__"
-    ]
+    ],
+    "include": ["packages/*/*", "packages/core/utils/with-install.ts"]
 }
