@@ -62,6 +62,12 @@
         </template>
     </el-card>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpCard',
+    btpInject: true,
+}
+</script>
 <script lang="ts" setup>
 const props = defineProps({
     /**

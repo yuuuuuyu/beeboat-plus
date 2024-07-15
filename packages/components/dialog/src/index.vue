@@ -35,8 +35,14 @@
         </el-dialog>
     </div>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpDialog',
+    btpInject: true,
+}
+</script>
 <script setup lang="ts">
-const prop = defineProps({
+defineProps({
     /**
      * @description 视图动态配置
      */

@@ -33,6 +33,7 @@
 <script lang="ts">
 export default {
     name: 'BTPView',
+    btpInject: true,
 }
 </script>
 <script setup lang="ts">

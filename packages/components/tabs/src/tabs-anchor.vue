@@ -24,6 +24,12 @@
         </el-scrollbar>
     </el-tabs>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpTabsAnchor',
+    btpInject: true,
+}
+</script>
 <script setup lang="ts">
 import { onMounted, ref, reactive, getCurrentInstance } from 'vue'
 

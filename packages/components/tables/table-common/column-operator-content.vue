@@ -5,7 +5,12 @@
         </template>
     </template>
 </template>
-
+<script lang="ts">
+export default {
+    name: 'BtpTableOperator',
+    btpInject: true,
+}
+</script>
 <script setup lang="ts">
 defineProps({
     column: {

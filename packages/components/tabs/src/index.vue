@@ -13,6 +13,12 @@
         </slot>
     </el-tabs>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpTabs',
+    btpInject: true,
+}
+</script>
 <script lang="ts" setup>
 defineProps({
     /**
