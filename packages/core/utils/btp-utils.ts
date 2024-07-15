@@ -191,4 +191,50 @@ export default class BTPUtils {
             return ''
         }
     }
+
+    /**
+     * @description 递归获取对象键对应的值
+     * @param key 键
+     * @param data 数据对象
+     * @returns 值
+     */
+    static getObjectValue(key, data) {
+        let lastObject = data
+        const keys = key.split('.')
+        for (let i = 0; i < keys.length; i++) {
+            const val = keys[i]
+            if (i == keys.length - 1) {
+                return lastObject[val]
+            } else {
+                if (Reflect.has(lastObject, val)) {
+                    lastObject = lastObject[val]
+                } else {
+                    return null
+                }
+            }
+        }
+        return null
+    }
+
+    /**
+     * @description 递归给对象的某个键设置值
+     * @param key 键
+     * @param data 数据对象
+     */
+    static setObjectValue(data, key: string, value): void {
+        let lastObject = data
+        const keys = key.split('.')
+
+        for (let i = 0; i < keys.length; i++) {
+            const val = keys[i]
+            if (i == keys.length - 1) {
+                lastObject[val] = value
+            } else {
+                if (!Reflect.has(lastObject, val)) {
+                    lastObject[val] = {}
+                }
+                lastObject = lastObject[val]
+            }
+        }
+    }
 }
