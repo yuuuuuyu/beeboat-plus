@@ -1,5 +1,11 @@
 import BTPUtils from '../../utils/btp-utils'
 export default class BTPBaseStepExecutor {
+    public executor
+
+    constructor(executor) {
+        this.executor = executor
+    }
+
     getRouter() {
         return BTPUtils.getRouter()
     }
@@ -11,7 +17,7 @@ export default class BTPBaseStepExecutor {
      * @returns
      */
     lv(key, defaultValue = null) {
-        return null
+        return this.executor.lv(key, defaultValue)
     }
 
     /**
@@ -21,7 +27,7 @@ export default class BTPBaseStepExecutor {
      * @returns
      */
     v(key, defaultValue = null) {
-        return null
+        return this.executor.v(key, defaultValue)
     }
     /**
      * 从全局变量中获取值
@@ -30,6 +36,16 @@ export default class BTPBaseStepExecutor {
      * @returns
      */
     gv(key, defaultValue = null) {
-        return null
+        return this.executor.gv(key, defaultValue)
+    }
+
+    /**
+     * 从当前路由参数中获取值
+     * @param key 键
+     * @param defaultValue 默认值
+     * @returns
+     */
+    rv(key, defaultValue = null) {
+        return this.executor.rv(key, defaultValue)
     }
 }

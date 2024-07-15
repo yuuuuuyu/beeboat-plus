@@ -1,4 +1,7 @@
+import BTPUtils from '../utils/btp-utils'
+import { BTPStepRedirectExecutor, BTPStepParamAllocExecutor } from './steps/index'
 export default class BTPBaseLogicExecutor {
+    public __steps__ = {}
     /**
      * 事件配置信息
      */
@@ -14,12 +17,16 @@ export default class BTPBaseLogicExecutor {
         /**
          * 事件信息
          */
-        event: null,
+        event: null as any,
         /**
          * 事件名称
          */
         eventName: '',
-    }
+    } as any
+    /**
+     * 内部临时变量
+     */
+    public internalParams = {}
 
     /**
      * @description 创建对象
@@ -30,6 +37,8 @@ export default class BTPBaseLogicExecutor {
      * @param params 调用参数数组
      */
     constructor(viewContext, component, event, eventName, params) {
+        this.__steps__['redirect'] = new BTPStepRedirectExecutor(this)
+        this.__steps__['alloc'] = new BTPStepParamAllocExecutor(this)
         this.bptLogicOptions.viewContext = viewContext
         this.bptLogicOptions.component = component
         this.bptLogicOptions.event = event
@@ -47,6 +56,11 @@ export default class BTPBaseLogicExecutor {
      * @returns 未知
      */
     execute() {
+        const logics = this.bptLogicOptions.event?.logics
+        for (let i = 0; i < logics.length; i++) {
+            this.__steps__[logics[i].type].execute(logics[i])
+        }
+
         return null
     }
 
@@ -89,5 +103,44 @@ export default class BTPBaseLogicExecutor {
      */
     getRef(ref: string) {
         return this.bptLogicOptions.viewContext.getRef(ref)
+    }
+
+    /**
+     * 从临时变量中获取值
+     * @param key 键
+     * @param defaultValue 默认值
+     * @returns
+     */
+    lv(key, defaultValue = null) {
+        return BTPUtils.getObjectValue(key, this.internalParams) || defaultValue
+    }
+
+    /**
+     * 从入参变量中获取值
+     * @param key 键
+     * @param defaultValue 默认值
+     * @returns
+     */
+    v(_key, _defaultValue = null) {
+        return null
+    }
+    /**
+     * 从全局变量中获取值
+     * @param key 键
+     * @param defaultValue 默认值
+     * @returns
+     */
+    gv(_key, _defaultValue = null) {
+        return null
+    }
+
+    /**
+     * 从当前路由参数中获取值
+     * @param key 键
+     * @param defaultValue 默认值
+     * @returns
+     */
+    rv(key, defaultValue = null) {
+        return BTPUtils.getRouteParamValue(key) || defaultValue
     }
 }
