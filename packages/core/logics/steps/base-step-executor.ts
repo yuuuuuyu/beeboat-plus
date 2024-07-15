@@ -1,4 +1,4 @@
-import { BTPUtils } from 'beeboat-plus'
+import BTPUtils from '../../utils/btp-utils'
 export default class BTPBaseStepExecutor {
     getRouter() {
         return BTPUtils.getRouter()

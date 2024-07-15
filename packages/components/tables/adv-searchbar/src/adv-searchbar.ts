@@ -61,7 +61,7 @@ export const useAdvSearchbar = (props, emits, state) => {
             state.currentSceneId = scene.defaultId
             sceneList = scene.sceneList
         }
-        state.cachedSceneData = scene
+        state.cachedSceneData = scene || cloneDeep(props.scene)
         state.sceneList = cloneDeep(sceneList)
 
         state.sceneList.forEach(data => {
@@ -70,8 +70,8 @@ export const useAdvSearchbar = (props, emits, state) => {
             })
         })
         onSceneChange()
-        if(props.initLoading) {
-            emits('search',getAdvQueryParam())
+        if (props.initLoading) {
+            emits('search', getAdvQueryParam())
         }
     }
 
