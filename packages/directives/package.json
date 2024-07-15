@@ -2,7 +2,7 @@
     "name": "@beeboat/directives",
     "version": "1.0.0",
     "description": "beeboat directives library",
-    "main": "dist/directives.cjs.js",
+    "main": "dist/directives.umd.js",
     "module": "dist/directives.es.js",
     "types": "dist/types/index.d.ts",
     "files": [

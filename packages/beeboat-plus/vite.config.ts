@@ -12,9 +12,5 @@ export default defineConfig({
             name: 'BeeboatPlus',
             fileName: format => `beeboat-plus.${format}.js`,
         },
-        rollupOptions: {
-            ...baseConfig.build.rollupOptions,
-            plugins: [...baseConfig.build.rollupOptions.plugins],
-        },
     },
 })
