@@ -26,6 +26,8 @@ import {
 import BTPAppCacheManager from './cache/app-cache-manager'
 import BTPLogicExecutor from './logics/logic-executor'
 
+export * from './utils/with-install'
+
 export {
     BTPApplication,
     BTPBaseApplication,

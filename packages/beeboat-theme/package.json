@@ -2,7 +2,16 @@
     "name": "@beeboat/beeboat-theme",
     "version": "1.0.0",
     "description": "beeboat-theme library",
-    "main": "index.ts",
+    "main": "./dist/beeboat-theme.umd.js",
+    "module": "./dist/beeboat-theme.es.js",
+    "types": "./dist/types/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/beeboat-theme.esm.js",
+            "require": "./dist/beeboat-theme.js",
+            "types": "./dist/types/index.d.ts"
+        }
+    },
     "scripts": {
         "build": "vite build"
     },

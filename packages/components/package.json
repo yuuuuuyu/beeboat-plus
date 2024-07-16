@@ -2,9 +2,16 @@
     "name": "@beeboat/components",
     "version": "1.0.0",
     "description": "beeboat components library",
-    "main": "dist/components.umd.js",
-    "module": "dist/components.es.js",
-    "types": "dist/types/index.d.ts",
+    "main": "./dist/components.umd.js",
+    "module": "./dist/components.es.js",
+    "types": "./dist/types/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/components.es.js",
+            "require": "./dist/components.umd.js",
+            "types": "./dist/types/index.d.ts"
+        }
+    },
     "files": [
         "dist"
     ],

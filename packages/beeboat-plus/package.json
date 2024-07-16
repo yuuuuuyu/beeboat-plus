@@ -3,9 +3,16 @@
     "version": "0.0.61",
     "private": false,
     "description": "",
-    "main": "dist/beeboat-plus.umd.js",
-    "module": "dist/beeboat-plus.es.js",
-    "types": "dist/types/index.d.ts",
+    "main": "./dist/beeboat-plus.umd.js",
+    "module": "./dist/beeboat-plus.es.js",
+    "types": "./dist/types/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/beeboat-plus.esm.js",
+            "require": "./dist/beeboat-plus.js",
+            "types": "./dist/types/index.d.ts"
+        }
+    },
     "scripts": {
         "auto-patch": "npm version patch",
         "build": "vite build"

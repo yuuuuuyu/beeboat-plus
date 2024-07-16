@@ -38,17 +38,15 @@ export default defineConfig({
     ...baseConfig,
     build: {
         ...baseConfig.build,
-        rollupOptions: {
-            input: componentFiles,
-            output: {
-                dir: 'dist/components',
-                format: 'es',
-                // 确保每个组件都有一个文件夹
-                entryFileNames: '[name]/index.js',
-                preserveModulesRoot: componentsDir,
-            },
+        lib: {
+            entry: resolve(__dirname, './index.ts'),
+            name: 'Components',
+            fileName: format => `components.${format}.js`,
         },
-        // 防止将所有的组件打包到一个文件中
-        lib: undefined,
+    },
+    resolve: {
+        alias: {
+            '@beeboat/core': resolve(__dirname, '../core'),
+        },
     },
 })

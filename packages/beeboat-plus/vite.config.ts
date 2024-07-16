@@ -12,5 +12,17 @@ export default defineConfig({
             name: 'BeeboatPlus',
             fileName: format => `beeboat-plus.${format}.js`,
         },
+        rollupOptions: {
+            output: {
+                exports: 'named', // 设置为 "named" 以消除警告
+            },
+        },
     },
+    resolve: {
+        alias: {
+            '@beeboat/core': resolve(__dirname, '../core'),
+            '@beeboat/components': resolve(__dirname, '../components'),
+        },
+    },
+    // logLevel: 'debug', // 开启调试日志
 })
