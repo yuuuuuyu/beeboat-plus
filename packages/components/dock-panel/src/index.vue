@@ -55,6 +55,12 @@
         </div>
     </div>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpDockPanel',
+    btpInject: true,
+}
+</script>
 <script lang="ts" setup>
 import { reactive, ref, watch } from 'vue'
 

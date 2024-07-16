@@ -16,7 +16,7 @@ export default class BTPUtils {
      * @returns 路由对象
      */
     static getRouter() {
-        return BTPApplication.getInstance().getRouter()
+        return BTPApplication.getInstance().getRouter() as any
     }
 
     /**
@@ -151,7 +151,7 @@ export default class BTPUtils {
     }
 
     /**
-     * 转字符串为驼峰字符串
+     * @description 转字符串为驼峰字符串
      * @param str 字符串
      * @returns 驼峰字符串
      */
@@ -160,5 +160,118 @@ export default class BTPUtils {
             return str[0].toLowerCase() + str.slice(1)
         }
         return str
+    }
+
+    /**
+     * @description 从params获取路由参数
+     * @param paramName 参数名称
+     * @returns 路由params参数值
+     */
+    static getRouteParamValue(paramName: string): string {
+        const params = this.getRouter().currentRoute?.value?.params || {}
+        const value = params[paramName]
+        if (typeof value === 'string') {
+            return value
+        } else {
+            return ''
+        }
+    }
+
+    /**
+     * @description 从query获取路由参数
+     * @param paramName 参数名称
+     * @returns 路由query参数值
+     */
+    static getRouteQueryValue(paramName: string): string {
+        const params = this.getRouter().currentRoute?.value?.query || {}
+        const value = params[paramName]
+        if (typeof value === 'string') {
+            return value
+        } else {
+            return ''
+        }
+    }
+
+    /**
+     * @description 递归获取对象键对应的值
+     * @param key 键
+     * @param data 数据对象
+     * @returns 值
+     */
+    static getObjectValue(key, data) {
+        let lastObject = data
+        const keys = key.split('.')
+        for (let i = 0; i < keys.length; i++) {
+            const val = keys[i]
+            if (i == keys.length - 1) {
+                return lastObject[val]
+            } else {
+                if (Reflect.has(lastObject, val)) {
+                    lastObject = lastObject[val]
+                } else {
+                    return null
+                }
+            }
+        }
+        return null
+    }
+
+    /**
+     * @description 递归给对象的某个键设置值
+     * @param key 键
+     * @param data 数据对象
+     */
+    static setObjectValue(data, key: string, value): void {
+        let lastObject = data
+        const keys = key.split('.')
+
+        for (let i = 0; i < keys.length; i++) {
+            const val = keys[i]
+            if (i == keys.length - 1) {
+                lastObject[val] = value
+            } else {
+                if (!Reflect.has(lastObject, val)) {
+                    lastObject[val] = {}
+                }
+                lastObject = lastObject[val]
+            }
+        }
+    }
+    /**
+     * @description 递归获取ref对象
+     * @param name ref名称
+     * @param vueInstance vue内置对象
+     * @returns ref对象
+     */
+    static getRef(name, vueInstance) {
+        const startTime = new Date().getTime()
+        //判断组件是否可穿透获取ref
+        const injectable = ref => {
+            return ref.$options?.btpInject || false
+        }
+        const formatRef = refs => {
+            return Array.isArray(refs) ? refs[0] : refs
+        }
+        const findRef = (name, refs) => {
+            const ref = refs[name]
+            if (ref) {
+                return formatRef(ref)
+            } else {
+                const keys = Object.keys(refs)
+                for (let i = 0; i < keys.length; i++) {
+                    const child = formatRef(refs[keys[i]])
+                    if (injectable(child)) {
+                        const refx = findRef(name, child.$refs)
+                        if (refx) {
+                            return formatRef(refx)
+                        }
+                    }
+                }
+            }
+            return null
+        }
+        const findedRef = findRef(name, vueInstance?.refs)
+        console.log(`查找组件${name}的ref对象耗时${new Date().getTime() - startTime}毫秒`)
+        return findedRef
     }
 }

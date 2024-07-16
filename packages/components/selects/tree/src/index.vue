@@ -95,6 +95,12 @@
         </div>
     </div>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpTree',
+    btpInject: true,
+}
+</script>
 <script lang="ts" setup>
 import { ref, reactive, watch, useAttrs } from 'vue'
 import { useSelects } from '../../use-selects'

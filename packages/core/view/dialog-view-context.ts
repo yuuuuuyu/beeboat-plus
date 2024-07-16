@@ -29,7 +29,9 @@ export default class BTPDialogViewContext extends BTPViewContext {
     openDialog(title = '', params = {}): void {
         this.viewModel.dialog.title = title
         this.viewModel.dialog.visible = true
-        console.log(this.getDialogRef())
+        if (this.viewModel.components[0].events['onOpenDialog']) {
+            this.viewModel.components[0].events['onOpenDialog'](params)
+        }
     }
 
     /**
@@ -39,8 +41,8 @@ export default class BTPDialogViewContext extends BTPViewContext {
     closeDialog(direct: boolean): void {
         this.viewModel.dialog.visible = false
         if (!direct) {
-            if (this.viewModel.components[0].events['onOpenDialog']) {
-                this.viewModel.components[0].events['onOpenDialog']()
+            if (this.viewModel.components[0].events['onCloseDialog']) {
+                this.viewModel.components[0].events['onCloseDialog'](direct)
             }
         }
     }

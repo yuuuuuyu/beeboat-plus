@@ -17,12 +17,20 @@ import {
     RemoteMethodLoadHandler,
 } from './hooks/api-handlers'
 import AppCacheManager from './hooks/cache-manager'
+import { views } from './views/dynamics/index'
 
 class UserApplication extends BTPApplication {
     constructor(options) {
         super(options)
         this.cacheManager = new AppCacheManager()
         this.appManager.layoutView = DynamicView
+        views.forEach(view => {
+            if (view.component) {
+                this.appManager.registerPage(view.name, view.component)
+            } else if (view.context) {
+                this.appManager.registerViewContext(view.name, view.context)
+            }
+        })
     }
 }
 

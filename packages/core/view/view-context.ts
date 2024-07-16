@@ -51,8 +51,7 @@ export default class BTPViewContext extends BTPBaseViewContext {
      * @returns 实例
      */
     getRef(name): any {
-        const refs = this.vueInstance?.refs[name]
-        return Array.isArray(refs) ? refs[0] : refs
+        return BTPUtils.getRef(name, this.vueInstance)
     }
 
     /**

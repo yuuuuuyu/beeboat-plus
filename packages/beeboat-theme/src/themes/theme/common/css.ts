@@ -13,6 +13,7 @@ export default `
     --bt-gap-s16: 16px;
     --bt-gap-s24: 24px;
     --bt-gap-s32: 32px;
+    --bt-gap-s48: 48px;
 
     --ever-button-text-color-secondary: var(--el-color-primary);
     --ever-button-hover-text-color-secondary: var(--el-color-primary);
@@ -75,7 +76,7 @@ export default `
 
 .el-dialog .el-dialog__body {
     box-sizing: border-box;
-    padding: var(--bt-gap-s24) 32px;
+    padding: var(--bt-gap-s24) var(--bt-gap-s32);
     overflow: hidden
 }
 

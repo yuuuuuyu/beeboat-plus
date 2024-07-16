@@ -6,8 +6,8 @@
                 ref="searchbarRef"
                 v-bind="props.search"
                 :column-list="props.columns"
-                @search="onAdvSearch"
                 :size="size || 'default'"
+                v-on="manager.getAdvSearchbarEvents()"
             >
                 <template #default>
                     <slot name="search"></slot>
@@ -34,10 +34,10 @@
             <div class="btp-table--table--container">
                 <el-table
                     ref="tableRef"
-                    :data="getTableData()"
-                    v-loading="status.loading"
+                    :data="manager.getTableData()"
+                    v-loading="state.loading"
                     v-bind="{ ...$props, ...$attrs }"
-                    v-on="emitEvents"
+                    v-on="manager.getEmitsEvent()"
                 >
                     <template v-if="$slots.append" #append>
                         <slot name="append"></slot>
@@ -49,31 +49,41 @@
                     <slot>
                         <template v-for="item in state.columns" :key="item.uniqueIndex">
                             <slot v-if="!item.hidden" :name="item.prop" :column="item">
-                                <el-table-column v-bind="item">
+                                <template v-if="item.component">
+                                    <component
+                                        :is="item.component"
+                                        :column="item"
+                                        :manager="manager"
+                                    ></component>
+                                </template>
+                                <el-table-column v-else v-bind="item">
                                     <template #default="scope">
-                                        <template v-if="item.type == 'index' && item.continuous">
-                                            {{ computeRowIndex(scope.$index) }}
+                                        <template v-if="item.type == 'index'">
+                                            {{ manager.computeRowIndex(scope.$index) }}
                                         </template>
                                         <template v-else-if="item.type == 'radio'">
-                                            <el-radio
-                                                :label="scope.row.id"
-                                                v-model="state.radioSelection"
-                                                @change="radioSelectionChange(scope.row)"
-                                            >
-                                                {{ '' }}
-                                            </el-radio>
-                                        </template>
-                                        <template v-else-if="item.type == 'operate'">
-                                            <el-button :row="scope">123</el-button>
-                                        </template>
-                                        <template v-else-if="!item.type || item.type == ''">
-                                            <BtpTableColumnContent
+                                            <ColumnRadio
                                                 :column="item"
                                                 :scope="scope"
-                                                :editor="tableEditor"
-                                                :editable="props.editProps?.enable"
+                                                :manager="manager"
+                                            ></ColumnRadio>
+                                        </template>
+                                        <template v-else-if="item.type == 'operate'">
+                                            <ColumnOperator
+                                                :column="item"
+                                                :scope="scope"
+                                                :manager="manager"
+                                            ></ColumnOperator>
+                                        </template>
+                                        <template
+                                            v-else-if="item.type == '' || item.type == undefined"
+                                        >
+                                            <ColumnContent
+                                                :column="item"
+                                                :scope="scope"
+                                                :manager="manager"
                                             >
-                                            </BtpTableColumnContent>
+                                            </ColumnContent>
                                         </template>
                                     </template>
                                 </el-table-column>
@@ -81,24 +91,28 @@
                         </template>
                         <el-table-column v-if="props.columnSetting" width="120px" fixed="right">
                             <template #header>
-                                <BtpTableColumnSetting
+                                <ColumnSetting
                                     :columns="state.columns"
-                                    @change="onColumnSettingChange"
+                                    @change="
+                                        columns => {
+                                            manager.onColumnSettingChange(columns)
+                                        }
+                                    "
                                 >
-                                </BtpTableColumnSetting>
+                                </ColumnSetting>
                             </template>
                             <template #default="scope">
                                 <el-button
                                     type="primary"
                                     :link="true"
-                                    @click.stop="tableEditor.add(scope.$index)"
+                                    @click.stop="manager.editor.add(scope.$index)"
                                 >
                                     添加
                                 </el-button>
                                 <el-button
                                     type="danger"
                                     :link="true"
-                                    @click.stop="tableEditor.delete(scope.row)"
+                                    @click.stop="manager.editor.delete(scope.row)"
                                 >
                                     删除
                                 </el-button>
@@ -113,27 +127,33 @@
             v-if="props.pagination?.enable"
             ref="paginationRef"
             v-bind="props.pagination"
+            v-on="manager.getPaginationEvents()"
             v-model:current-page="state.pagination.currentPage"
             v-model:page-size="state.pagination.pageSize"
             v-model:reserve="state.pagination.reserve"
             :selection="state.selection"
             :total="state.pagination.total"
-            @clear-selection="onPaginationClearSelection"
-            :size="size || 'default'"
         ></BtpPagination>
     </div>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpTable',
+    btpInject: true,
+}
+</script>
 <script setup lang="ts">
-import { reactive, ref, watch } from 'vue'
-import { useTable, useTableLoader } from './index'
-import { useTableEvents } from './table-events'
-import BTPTableEditor from '../../table-editor/src/table-editor'
+import { computed, reactive, ref, watch } from 'vue'
+import { useElementConfig } from '@beeboat/core/utils/use-element-config'
 import BtpAdvSearchbar from '../../adv-searchbar/src/index.vue'
 import BtpPagination from '../../pagination/src/index.vue'
-import BtpTableColumnContent from '../../table-column-content/src/index.vue'
-import BtpTableColumnSetting from './column-setting-popover.vue'
-
-import { useElementConfig } from '@beeboat/core/utils/use-element-config'
+import {
+    BTPTableManager,
+    ColumnRadio,
+    ColumnOperator,
+    ColumnContent,
+    ColumnSetting,
+} from '../../table-common/index'
 
 const emits = defineEmits([
     'select',
@@ -191,6 +211,7 @@ const props = withDefaults(defineProps<IProps>(), {
     rowKey: 'id',
     search: {},
     pagination: {
+        enable: true,
         reserveSelection: false,
     },
     editProps: { enable: false },
@@ -200,6 +221,23 @@ const props = withDefaults(defineProps<IProps>(), {
     initLoading: true,
     propEvents: {},
     size: '',
+})
+
+const tableProps = computed(() => {
+    const tableProps = Object.assign({}, props) as any
+    delete tableProps['btConfig']
+    delete tableProps['btViewContext']
+    delete tableProps['id']
+    delete tableProps['search']
+    delete tableProps['pagination']
+    delete tableProps['editProps']
+    delete tableProps['columns']
+    delete tableProps['columnSetting']
+    delete tableProps['dataApi']
+    delete tableProps['initLoading']
+    delete tableProps['propEvents']
+
+    return tableProps
 })
 
 const { sizeClass, size } = useElementConfig(
@@ -212,7 +250,7 @@ const { sizeClass, size } = useElementConfig(
 const tableRef = ref()
 const state = reactive({
     data: [],
-    columns: [],
+    columns: [] as any,
     selection: [],
     pagination: {
         reserve: false,
@@ -223,18 +261,10 @@ const state = reactive({
     },
     radioSelection: null,
     advQueryParam: null as any,
-})
-const status = reactive({
     loading: false,
 })
 
-const { initTable, loadData, getTableData, onPaginationClearSelection, onColumnSettingChange } =
-    useTableLoader(props, state, status, tableRef, emits)
-
-const tableEditor = new BTPTableEditor(props, getTableData, emits)
-
-const { emitEvents } = useTableEvents(props, state, status, tableRef, emits, tableEditor)
-const { computeRowIndex, radioSelectionChange } = useTable(props, state, status, tableRef, emits)
+const manager = new BTPTableManager(tableRef, props, state, emits)
 
 /**
  * 进行V-Model监控
@@ -243,7 +273,7 @@ watch(
     () => state.pagination.currentPage,
     value => {
         state.pagination.pageNumber = value
-        loadData()
+        manager.loadData()
     },
     { immediate: false },
 )
@@ -258,18 +288,7 @@ watch(
     { immediate: false },
 )
 
-const onAdvSearch = advQueryParam => {
-    state.advQueryParam = advQueryParam
-    loadData()
-}
+manager.installTable()
 
-initTable()
-
-if (props.initLoading && !props.search.enable) {
-    loadData()
-}
-
-defineExpose({
-    editor: tableEditor,
-})
+defineExpose({})
 </script>

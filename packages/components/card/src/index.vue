@@ -62,8 +62,14 @@
         </template>
     </el-card>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpCard',
+    btpInject: true,
+}
+</script>
 <script lang="ts" setup>
-defineProps({
+const props = defineProps({
     /**
      * @description 视图动态配置
      */
@@ -79,4 +85,5 @@ defineProps({
         default: undefined,
     },
 })
+console.log(props)
 </script>

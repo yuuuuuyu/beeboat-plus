@@ -1,8 +1,6 @@
 <template>
-    <el-config-provider size="large" :locale="zhCn">
-        <el-scrollbar>
-            <router-view />
-        </el-scrollbar>
+    <el-config-provider :locale="zhCn">
+        <router-view />
     </el-config-provider>
 </template>
 

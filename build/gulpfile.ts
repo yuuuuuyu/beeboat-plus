@@ -17,15 +17,13 @@ export default series(
         // 删除dist目录
         await remove(outDir)
         // 删除packages/bee-theme目录下的es,lib目录
-        await remove(`${themeRoot}/es`)
-        await remove(`${themeRoot}/lib`)
+        await remove(`${themeRoot}/dist`)
         // 删除core下的es,lib目录
-        await remove(`${coreRoot}/es`)
-        await remove(`${coreRoot}/lib`)
+        await remove(`${coreRoot}/dist`)
         // 删除directives下的es,lib目录
-        await remove(`${directivesRoot}/es`)
-        await remove(`${directivesRoot}/lib`)
+        await remove(`${directivesRoot}/dist`)
     }),
+    withTaskName('autoPatch', () => run('pnpm --filter ./packages/beeboat-plus auto-patch')),
     withTaskName('buildPackages', () => run('pnpm --filter ./packages --parallel build')),
     parallel(
         withTaskName('buildFullComponent', () => run('pnpm build buildFullComponent')),

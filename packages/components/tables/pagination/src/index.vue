@@ -119,7 +119,7 @@ const state = reactive({
 })
 
 const observer = new ResizeObserver(() => {
-    if (props.autoLayout) {
+    if (props.autoLayout && paginationRef?.value) {
         state.layout = getLayout('auto', paginationRef.value.offsetWidth)
     }
 })

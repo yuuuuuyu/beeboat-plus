@@ -34,6 +34,12 @@
         </el-form>
     </template>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpForm',
+    btpInject: true,
+}
+</script>
 <script lang="ts" setup>
 import { ref } from 'vue'
 import Utils from '@beeboat/core/utils/btp-utils'

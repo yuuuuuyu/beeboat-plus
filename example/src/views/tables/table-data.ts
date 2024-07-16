@@ -1,3 +1,6 @@
+import { markRaw } from 'vue'
+import Ctn from './content.vue'
+import Cell from './cell.vue'
 export const editProps = {
     enable: false,
 }
@@ -75,6 +78,8 @@ export const columns = {
             label: '序号5',
             prop: 'entityName',
             showOverflowTooltip: true,
+            contentComponent: Ctn,
+            component: markRaw(Cell),
             searchProps: {
                 enable: true,
                 componentType: 'text',
@@ -107,6 +112,35 @@ export const columns = {
             label: '序号6',
             type: 'operate',
             prop: 'index6',
+            showOverflowTooltip: true,
+            searchProps: {
+                enable: true,
+                componentType: 'text',
+                supportConditionList: [
+                    'ne',
+                    'like',
+                    'eq',
+                    'isNull',
+                    'notlike',
+                    'isNotNull',
+                    'gele',
+                ],
+            },
+            children: [
+                {
+                    code: 'AddModule',
+                    id: '32ei899JrHe2cVAX5kyGTZ',
+                    props: { size: 'small', link: false },
+                    styles: {},
+                    actions: {},
+                    type: 'BtpButton',
+                },
+            ],
+        },
+        {
+            id: '7',
+            label: '序号7',
+            prop: 'index7',
             showOverflowTooltip: true,
             searchProps: {
                 enable: true,

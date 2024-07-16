@@ -7,10 +7,9 @@ import BTPUtils from '@beeboat/core/utils/btp-utils'
  * 表格行内编辑处理对象
  */
 export default class BTPTableEditor {
+    manager: any
     props: any
     emits: any
-
-    getTableData: any
 
     /**
      * 行内编辑校验规则
@@ -26,16 +25,24 @@ export default class BTPTableEditor {
      */
     editDataList = []
 
-    constructor(props, getTableData, emits) {
+    constructor(manager, props, state, emits) {
+        this.manager = manager
         this.props = props
         this.emits = emits
-        this.getTableData = getTableData
         //处理列的校验信息
         this.props.columns.forEach(item => {
             if (item.editProps?.rules) {
                 this.rules[item.prop] = item.editProps.rules
             }
         })
+    }
+
+    /**
+     * 判断当前表格是否支持行内编辑
+     * @returns 判断当前表格是否支持行内编辑
+     */
+    isEditable(): boolean {
+        return this.props?.editProps?.enable || false
     }
 
     getRowKey() {
@@ -47,7 +54,7 @@ export default class BTPTableEditor {
     }
 
     getRowData(uniqueId) {
-        const dataList = this.getTableData()
+        const dataList = this.manager.getTableData()
         const data = dataList.find(item => item[this.getRowKey()] == uniqueId)
         return data
     }
@@ -68,7 +75,7 @@ export default class BTPTableEditor {
 
     add(index: number): void {
         const data = this.createRow()
-        const dataList = this.getTableData()
+        const dataList = this.manager.getTableData()
         if (index != -1) {
             dataList.splice(index + 1, 0, data)
         } else {
@@ -90,7 +97,7 @@ export default class BTPTableEditor {
     }
 
     delete(row: any): void {
-        const dataList = this.getTableData()
+        const dataList = this.manager.getTableData()
         const index = dataList.findIndex(item => item[this.getRowKey()] == row[this.getRowKey()])
         dataList.splice(index, 1)
         this.emits('row-edit-delete', [row])

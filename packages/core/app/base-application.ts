@@ -130,7 +130,7 @@ export default class BTPBaseApplication {
     /**
      * @description 获取路由对象
      */
-    getRouter(): Router {
+    getRouter(): any {
         return this.$router
     }
 
