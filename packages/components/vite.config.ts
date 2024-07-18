@@ -3,10 +3,21 @@ import type { UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
 import path from 'path'
+import DefineOptions from 'unplugin-vue-define-options/vite'
 
 export default defineConfig(() => {
     return {
-        plugins: [vue()],
+        plugins: [
+            vue(),
+            DefineOptions(),
+            // dts({
+            //     entryRoot: 'src',
+            //     outputDir: 'types',
+            //     // outputDir: ['../beeboat-plus/es/src', '../beeboat-plus/lib/src'],
+            //     //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
+            //     tsConfigFilePath: './tsconfig.json',
+            // }),
+        ],
         build: {
             rollupOptions: {
                 // 将vue模块排除在打包文件之外，使用用这个组件库的项目的vue模块
@@ -48,7 +59,7 @@ export default defineConfig(() => {
                         // 打包目录和开发目录对应
                         preserveModules: true,
                         // 输出目录
-                        dir: 'es',
+                        dir: 'dist/es',
                         // 指定保留模块结构的根目录
                         preserveModulesRoot: 'src',
                         exports: 'named',
@@ -61,7 +72,7 @@ export default defineConfig(() => {
                         // 打包目录和开发目录对应
                         preserveModules: true,
                         // 输出目录
-                        dir: 'lib',
+                        dir: 'dist/lib',
                         // 指定保留模块结构的根目录
                         preserveModulesRoot: 'src',
                         exports: 'named',

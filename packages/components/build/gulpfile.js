@@ -1,15 +1,13 @@
-// gulpfile.js
 import gulp from 'gulp'
 import {
     removeDist,
     buildRootStyle,
-    buildStyle,
+    buildComponentStyles,
     buildComponents,
     buildTypes,
-    compileTs,
 } from './index.js'
 
 const { series } = gulp
 
-// removeDist, buildComponents, buildStyle, buildRootStyle, buildTypes, compileTs
-export default series(removeDist, buildComponents, buildStyle, buildRootStyle, buildTypes)
+// dts部分暂时不生成
+export default series(removeDist, buildComponents, buildComponentStyles, buildRootStyle)

@@ -1,25 +1,26 @@
 {
     "name": "@beeboat/components",
-    "version": "1.0.0",
+    "version": "1.0.10",
     "description": "beeboat components library",
-    "main": "lib",
-    "module": "es",
-    "types": "types/index.d.ts",
+    "main": "dist/lib",
+    "module": "dist/es",
+    "types": "dist/types/index.d.ts",
     "type": "module",
     "files": [
-        "es",
-        "lib",
-        "types",
-        "global.d.ts"
+        "dist",
+        "global.d.ts",
+        "README.md"
     ],
     "scripts": {
-        "build": "gulp -f build/gulpfile.js"
+        "build": "vite build",
+        "build:gulp": "gulp -f build/gulpfile.js"
     },
     "keywords": [],
     "author": "于智勇｜15684187702@163.com",
     "devDependencies": {
         "gulp": "^4.0.2",
         "gulp-autoprefixer": "^8.0.0",
+        "gulp-replace": "^1.1.4",
         "gulp-sass": "^5.1.0",
         "gulp-typescript": "^6.0.0-alpha.1",
         "gulp-vue": "^0.1.0",
