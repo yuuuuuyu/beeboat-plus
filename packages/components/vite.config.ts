@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import type { UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
+import path from 'path'
 
 export default defineConfig(() => {
     return {
@@ -72,6 +73,11 @@ export default defineConfig(() => {
                 entry: 'src/index.ts',
                 // 模块名
                 name: 'beeboat_components',
+            },
+        },
+        resolve: {
+            alias: {
+                '@beeboat/core': path.resolve(__dirname, '../core'),
             },
         },
     } as UserConfig

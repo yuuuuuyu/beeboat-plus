@@ -24,7 +24,6 @@
         "gulp-typescript": "^6.0.0-alpha.1",
         "gulp-vue": "^0.1.0",
         "sass": "^1.51.0",
-        "shelljs": "^0.8.5",
-        "vue-tsc": "^0.34.7"
+        "shelljs": "^0.8.5"
     }
 }

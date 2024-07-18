@@ -49,7 +49,6 @@ export const compileTs = async () => {
     return src(tsPath).pipe(ts()).pipe(gulp.dest('dist1'))
 }
 const tsProject = ts.createProject(`${componentPath}/tsconfig.json`)
-console.log(`${componentPath}/tsconfig.json`)
 export const buildTypes = async () => {
     return src(
         [

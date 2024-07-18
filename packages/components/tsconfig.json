@@ -1,15 +1,8 @@
 {
     "extends": "../../tsconfig.json",
-    "include": [
-        "src/**/*.ts",
-        "../components/src/**/*.vue",
-        "src/**/*.d.ts",
-        "utils/*.ts",
-        "shims-vue.d.ts"
-    ],
+    "include": ["src/**/*.ts", "src/**/*.vue", "src/**/*.d.ts", "utils/*.ts", "shims-vue.d.ts"],
     "exclude": ["node_modules", "**/*.spec.ts"],
     "compilerOptions": {
-        "types": ["vite/client"],
         "moduleResolution": "node",
         "baseUrl": "./",
         "outDir": "dist",
@@ -17,8 +10,8 @@
         "declaration": true,
         "emitDeclarationOnly": true,
         "paths": {
-            "*.vue": ["shims-vue.d.ts"],
-            "@/*": ["src/*"]
+            "*": ["types/*"],
+            "*.vue": ["shims-vue.d.ts"]
         }
     }
 }

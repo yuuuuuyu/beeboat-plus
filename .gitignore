@@ -16,6 +16,10 @@ webSite
 /packages/core/es/
 /packages/core/lib/
 
+/packages/components/es/
+/packages/components/lib/
+/packages/components/types/
+
 /packages/directives/es/
 /packages/directives/lib/
 
