@@ -6,6 +6,9 @@
     </el-button>
 </template>
 <script lang="ts" setup>
+defineOptions({
+    name: 'BtpButton',
+})
 defineProps({
     /**
      * @description 视图动态配置

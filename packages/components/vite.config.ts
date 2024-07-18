@@ -1,52 +1,78 @@
 import { defineConfig } from 'vite'
-import baseConfig from '../../vite.config'
-import { resolve, join } from 'path'
-import fs from 'fs'
+import type { UserConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import dts from 'vite-plugin-dts'
 
-// 递归查找所有子文件夹中的 index.ts 文件
-function findComponentEntries(dir, baseDir = '') {
-    const entries = {}
+export default defineConfig(() => {
+    return {
+        plugins: [vue()],
+        build: {
+            rollupOptions: {
+                // 将vue模块排除在打包文件之外，使用用这个组件库的项目的vue模块
+                external: id => {
+                    const externals = [
+                        'vue',
+                        'lodash',
+                        'lodash-es',
+                        'vue-router',
+                        '@vueuse/core',
+                        'axios',
+                        'element-plus',
+                        'nprogress',
+                        'vue-demi',
+                        '@vue_shared',
+                        'vue-cookies',
+                        'pinia',
+                        'uuid',
+                        '@beeboat/core',
+                        'resize-observer',
+                        'async-validator',
+                        '@ctrl/tinycolor',
+                    ]
+                    // 匹配直接模块名
+                    if (externals.includes(id)) {
+                        return true
+                    }
+                    // 匹配子模块情况，如 nprogress 的子路径
+                    return externals.some(pkg => id.startsWith(pkg))
+                },
 
-    function findFiles(currentDir, relativeDir = '') {
-        const files = fs.readdirSync(currentDir)
-        files.forEach(file => {
-            const fullPath = join(currentDir, file)
-            const relativePath = relativeDir ? `${relativeDir}/${file}` : file
-
-            if (fs.statSync(fullPath).isDirectory()) {
-                findFiles(fullPath, relativePath)
-            } else if (file === 'index.ts' || file === 'index.tsx') {
-                const entryName = relativeDir ? `${relativeDir}` : baseDir
-                if (entryName) {
-                    entries[entryName] = fullPath
-                }
-            }
-        })
-    }
-
-    findFiles(dir)
-    return entries
-}
-
-const componentsDir = resolve(__dirname, '../components')
-const componentFiles = findComponentEntries(componentsDir)
-
-// 移除根目录下的 index.ts 文件
-delete componentFiles['index']
-
-export default defineConfig({
-    ...baseConfig,
-    build: {
-        ...baseConfig.build,
-        lib: {
-            entry: resolve(__dirname, './index.ts'),
-            name: 'Components',
-            fileName: format => `components.${format}.js`,
+                // 输出配置
+                output: [
+                    {
+                        // 打包成 es module
+                        format: 'es',
+                        // 重命名
+                        entryFileNames: '[name].js',
+                        // 打包目录和开发目录对应
+                        preserveModules: true,
+                        // 输出目录
+                        dir: 'es',
+                        // 指定保留模块结构的根目录
+                        preserveModulesRoot: 'src',
+                        exports: 'named',
+                    },
+                    {
+                        // 打包成 commonjs
+                        format: 'cjs',
+                        // 重命名
+                        entryFileNames: '[name].js',
+                        // 打包目录和开发目录对应
+                        preserveModules: true,
+                        // 输出目录
+                        dir: 'lib',
+                        // 指定保留模块结构的根目录
+                        preserveModulesRoot: 'src',
+                        exports: 'named',
+                    },
+                ],
+            },
+            lib: {
+                // 指定入口文件
+                entry: 'src/index.ts',
+                // 模块名
+                name: 'beeboat_components',
+            },
         },
-    },
-    resolve: {
-        alias: {
-            '@beeboat/core': resolve(__dirname, '../core'),
-        },
-    },
+    } as UserConfig
 })

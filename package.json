@@ -27,7 +27,7 @@
         "@types/gulp-autoprefixer": "^0.0.33",
         "@types/gulp-clean-css": "^4.3.0",
         "@types/gulp-sass": "^5.0.0",
-        "@types/node": "^17.0.24",
+        "@types/node": "^20.14.11",
         "@types/sass": "^1.43.1",
         "@typescript-eslint/eslint-plugin": "^5.23.0",
         "@typescript-eslint/parser": "^5.23.0",

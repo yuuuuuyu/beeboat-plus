@@ -1,5 +1,4 @@
 export * from './button'
-// export { default as BtpButton } from './button'
 // export * from './card'
 // export * from './datetimes'
 // export * from './dialog'
