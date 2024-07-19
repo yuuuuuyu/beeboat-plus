@@ -25,7 +25,7 @@ export const removeDist = async () => {
 export const buildRootStyle = () => {
     return src(`${componentPath}/src/index.scss`)
         .pipe(
-            replace(/@import\s+["'](.*)\.scss["'];/g, (match, p1) => {
+            replace(/@import\s+["'](.*\/style\/index)\.scss["'];?/g, (match, p1) => {
                 return `@import "${p1}.css";`
             }),
         )
@@ -34,11 +34,20 @@ export const buildRootStyle = () => {
         .pipe(dest(`${componentPath}/dist/es`))
         .pipe(dest(`${componentPath}/dist/lib`))
 }
-
 // 构建组件css
 export const buildComponentStyles = () => {
-    return src(`${componentPath}/src/**/style/**.scss`)
-        .pipe(sass().on('error', sass.logError))
+    return src(`${componentPath}/src/**/*.scss`)
+        .pipe(
+            replace(/@import\s+["'](.*\/style\/index)\.scss["'];?/g, (match, p1) => {
+                return `@import "${p1}.css";`
+            }),
+        )
+        .pipe(
+            replace(/@import\s+["'](.+)\.scss["'];?/g, (match, p1) => {
+                return `@import "${p1}.css";`
+            }),
+        )
+        .pipe(sass(dartSass).on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(dest(`${componentPath}/dist/es`))
         .pipe(dest(`${componentPath}/dist/lib`))
@@ -51,6 +60,7 @@ export const buildComponents = async () => {
 }
 
 // 构建dts
+// TODO
 const tsProject = ts.createProject(`${componentPath}/tsconfig.json`)
 export const buildTypes = async () => {
     return src(
