@@ -1,19 +1,18 @@
 {
     "name": "@beeboat/beeboat-theme",
     "version": "1.0.0",
-    "description": "beeboat-theme library",
-    "main": "./dist/beeboat-theme.umd.js",
-    "module": "./dist/beeboat-theme.es.js",
-    "types": "./dist/types/index.d.ts",
-    "exports": {
-        ".": {
-            "import": "./dist/beeboat-theme.esm.js",
-            "require": "./dist/beeboat-theme.js",
-            "types": "./dist/types/index.d.ts"
-        }
-    },
+    "description": "beeboat theme library",
+    "main": "dist/lib",
+    "module": "dist/es",
+    "types": "dist/types/index.d.ts",
+    "type": "module",
+    "files": [
+        "dist",
+        "README.md"
+    ],
     "scripts": {
-        "build": "vite build"
+        "build": "vite build",
+        "build:gulp": "gulp -f build/gulpfile.js"
     },
     "author": "于智勇｜15684187702@163.com",
     "license": "ISC"
