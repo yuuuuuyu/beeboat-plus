@@ -37,16 +37,6 @@ export const buildRootStyle = () => {
 // 构建组件css
 export const buildComponentStyles = () => {
     return src(`${componentPath}/src/**/*.scss`)
-        .pipe(
-            replace(/@import\s+["'](.*\/style\/index)\.scss["'];?/g, (match, p1) => {
-                return `@import "${p1}.css";`
-            }),
-        )
-        .pipe(
-            replace(/@import\s+["'](.+)\.scss["'];?/g, (match, p1) => {
-                return `@import "${p1}.css";`
-            }),
-        )
         .pipe(sass(dartSass).on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(dest(`${componentPath}/dist/es`))
