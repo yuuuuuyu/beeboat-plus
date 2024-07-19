@@ -19,7 +19,12 @@ function colorMix(name: string, baseColor: string, whiteColor: string, blackColo
     return cssString
 }
 
-function getElementVarCss(config: Theme.ThemeConfig): string {
+/**
+ * 饿了么Css变量生成器/覆盖elementplus同名
+ * @param config 主题配置信息
+ * @returns
+ */
+function eleCssVariableGenerator(config: Theme.ThemeConfig): string {
     const white = config.color.white
     const black = config.color.black
     let cssString = ''
@@ -39,19 +44,11 @@ function getElementVarCss(config: Theme.ThemeConfig): string {
     cssString += `--el-border-color: ${config.color.line};`
     cssString += `--el-disabled-border-color: ${config.color.formDisableEdge};`
     cssString += `--el-disabled-text-color: ${config.color.formDisableText};`
-    // cssString += `--el-text-color-placeholder: red`
     cssString += `--el-text-color-placeholder: ${config.color.formInfo};`
     cssString += `--el-disabled-bg-color: ${config.color.formDisable};`
     cssString += `--el-button-text-color: ${config.color.link};`
 
-    // --el-border-color: #dcdfe6;
-    // --el-border-color-light: #e4e7ed;
-    // --el-border-color-lighter: #ebeef5;
-    // --el-border-color-extra-light: #f2f6fc;
-    // --el-border-color-dark: #d4d7de;
-    // --el-border-color-darker: #cdd0d6;
-
     return cssString
 }
 
-export { getElementVarCss }
+export { eleCssVariableGenerator }

@@ -1,7 +1,13 @@
 import { calculationColor } from '../utils'
 import { TinyColor } from '@ctrl/tinycolor'
 
-export function getEverButtonVarCss(config: Theme.ThemeConfig): string {
+/**
+ * Button Css 变量生成器
+ * CSS variable generator
+ * @param config
+ * @returns
+ */
+export function buttonCssVariableGenerator(config: Theme.ThemeConfig): string {
     const colorPrimary = new TinyColor(config.color.primary)
     const colorWhite = new TinyColor(config.color.white)
     let cssText = ''

@@ -1,4 +1,3 @@
-// root/packages/beeboat-theme/vite.config.js
 import { defineConfig } from 'vite'
 import baseConfig from '../../vite.config'
 import path from 'path'

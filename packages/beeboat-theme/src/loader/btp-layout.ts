@@ -1,6 +1,11 @@
 import { TinyColor } from '@ctrl/tinycolor'
 
-function getEverLayoutVarCss(config: Theme.ThemeConfig): string {
+/**
+ * 布局Css变量生成器
+ * @param config 主题配置信息
+ * @returns
+ */
+function layoutCssVariableGenerator(config: Theme.ThemeConfig): string {
     const colorPrimary = new TinyColor(config.color.primary)
     const colorWhite = new TinyColor(config.color.white)
     let cssText = ''
@@ -25,4 +30,4 @@ function getEverLayoutVarCss(config: Theme.ThemeConfig): string {
     return cssText
 }
 
-export { getEverLayoutVarCss }
+export { layoutCssVariableGenerator }

@@ -39,18 +39,6 @@ export function hexToRGB(hex: any) {
         (h & (alpha ? 0x0000ff00 : 0x0000ff)) >>> (alpha ? 8 : 0),
         alpha ? `, ${h & 0x000000ff}` : 1,
     ]
-
-    // return (
-    //     "rgb" + (alpha ? "a" : "") +
-    //     "(" +
-    //         (h >>> (alpha ? 24 : 16)) +
-    //     ", " +
-    //         ((h & (alpha ? 0x00ff0000 : 0x00ff00)) >>> (alpha ? 16 : 8)) +
-    //     ", " +
-    //         ((h & (alpha ? 0x0000ff00 : 0x0000ff)) >>> (alpha ? 8 : 0)) +
-    //     (alpha ? `, ${h & 0x000000ff}` : "") +
-    //     ")"
-    // );
 }
 
 //将 rgb()颜色字符串转换为数组
