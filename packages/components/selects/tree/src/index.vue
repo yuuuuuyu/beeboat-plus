@@ -184,6 +184,13 @@ const props = defineProps({
         },
     },
     /**
+     * @description
+     */
+    propEvents: {
+        type: Object,
+        default: {},
+    },
+    /**
      * @description 视图动态配置
      */
     btConfig: {
