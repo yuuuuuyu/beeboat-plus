@@ -50,7 +50,7 @@ export const buildComponents = async () => {
 }
 
 // 构建dts
-// TODO
+// TODO vite-plugin-dts可以生成了
 const tsProject = ts.createProject(`${componentPath}/tsconfig.json`)
 export const buildTypes = async () => {
     return src(

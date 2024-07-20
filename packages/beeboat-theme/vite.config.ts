@@ -10,37 +10,19 @@ export default defineConfig(() => {
         plugins: [
             vue(),
             DefineOptions(),
-            // dts({
-            //     entryRoot: 'src',
-            //     outputDir: 'types',
-            //     // outputDir: ['../beeboat-plus/es/src', '../beeboat-plus/lib/src'],
-            //     //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
-            //     tsConfigFilePath: './tsconfig.json',
-            // }),
+            dts({
+                entryRoot: 'src',
+                outputDir: 'dist/types',
+                // outputDir: ['../beeboat-plus/es/src', '../beeboat-plus/lib/src'],
+                //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
+                tsConfigFilePath: './tsconfig.json',
+            }),
         ],
         build: {
             rollupOptions: {
                 // 将vue模块排除在打包文件之外，使用用这个组件库的项目的vue模块
                 external: id => {
-                    const externals = [
-                        'vue',
-                        // 'lodash',
-                        // 'lodash-es',
-                        // 'vue-router',
-                        // '@vueuse/core',
-                        // 'axios',
-                        // 'element-plus',
-                        // 'nprogress',
-                        // 'vue-demi',
-                        // '@vue_shared',
-                        // 'vue-cookies',
-                        // 'pinia',
-                        // 'uuid',
-                        // '@beeboat/core',
-                        // 'resize-observer',
-                        // 'async-validator',
-                        '@ctrl/tinycolor',
-                    ]
+                    const externals = ['vue', '@ctrl/tinycolor']
                     // 匹配直接模块名
                     if (externals.includes(id)) {
                         return true

@@ -96,7 +96,7 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { ref, reactive, watch, useAttrs } from 'vue'
+import { ref, reactive, watch, useAttrs, Ref } from 'vue'
 import { useSelects } from '../../use-selects'
 
 const emits = defineEmits([
@@ -194,7 +194,7 @@ const props = defineProps({
 })
 const attrs = useAttrs()
 const elTreeRef = ref()
-const expandedKeys = ref([]) as any
+const expandedKeys: Ref<string[]> = ref([])
 
 //定义V-Model响应值
 const state = reactive({
@@ -266,7 +266,7 @@ const nodeCollapse = (v1, v2, v3) => {
     emits('node-collapse', v1, v2, v3)
     emits('sync-expanded', expandedKeys)
 }
-const setSyncExpanded = (expanded: Array<any>) => {
+const setSyncExpanded = (expanded: Ref<any[]>) => {
     expandedKeys.value = [...expanded.value]
 }
 

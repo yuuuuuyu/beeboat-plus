@@ -275,7 +275,7 @@ const { sizeClass, size } = useElementConfig(
 const state = reactive({
     options: [],
     dataValue: null,
-    treeSelectValue: [],
+    treeSelectValue: [] as any[],
     leftNumberValue: null,
     rightNumberValue: null,
     dsProp: { value: 'id', label: 'name', children: 'children' },

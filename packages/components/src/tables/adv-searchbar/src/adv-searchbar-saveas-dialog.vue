@@ -34,7 +34,7 @@ const formRef = ref()
 const state = reactive({
     dialogVisible: false,
     sceneName: '',
-    callback: null,
+    callback: (sceneName: string) => {},
 })
 
 const onSaveAsClick = () => {
