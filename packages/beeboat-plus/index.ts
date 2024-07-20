@@ -1,13 +1,11 @@
 import type { App } from 'vue'
-import { BtpButton } from '@beeboat/components'
+import * as components from '@beeboat/components'
 
 const install = (app: App) => {
-    // Object.entries(components).forEach(([name, component]) => {
-    //     app.component(name, component)
-    // })
-    app.component(BtpButton.name, BtpButton)
+    Object.entries(components).forEach(([name, component]) => {
+        app.component(name, component)
+    })
 }
-
 export default { install }
 
 // 可以实现按需加载

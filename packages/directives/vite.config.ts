@@ -1,4 +1,3 @@
-// root/packages/core/vite.config.js
 import { defineConfig } from 'vite'
 import baseConfig from '../../vite.config'
 import { resolve } from 'path'
