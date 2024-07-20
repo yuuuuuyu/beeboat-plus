@@ -1,16 +1,22 @@
 {
     "name": "@beeboat/directives",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "beeboat directives library",
-    "main": "dist/directives.umd.js",
-    "module": "dist/directives.es.js",
+    "main": "dist/lib",
+    "module": "dist/es",
     "types": "dist/types/index.d.ts",
     "files": [
-        "dist"
+        "dist",
+        "README.md"
     ],
     "scripts": {
         "build": "vite build"
     },
-    "keywords": [],
-    "author": "于智勇｜15684187702@163.com"
+    "keywords": [
+        "beeboat",
+        "beeboat-plus",
+        "directives"
+    ],
+    "author": "于智勇｜15684187702@163.com",
+    "license": "ISC"
 }

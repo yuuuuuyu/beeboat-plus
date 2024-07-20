@@ -4,6 +4,7 @@ import baseConfig from '../../vite.config'
 import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
+import DefineOptions from 'unplugin-vue-define-options/vite'
 
 export default defineConfig({
     ...baseConfig,
@@ -56,5 +57,15 @@ export default defineConfig({
             formats: ['es', 'cjs'],
         },
     },
-    plugins: [vue()],
+    plugins: [
+        vue(),
+        DefineOptions(),
+        dts({
+            entryRoot: './',
+            outputDir: 'dist/types',
+            // outputDir: ['../beeboat-plus/es/src', '../beeboat-plus/lib/src'],
+            //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
+            tsConfigFilePath: './tsconfig.json',
+        }),
+    ],
 })

@@ -26,7 +26,7 @@ export const removeDist = async () => {
 export const buildRootStyle = () => {
     return src(`${componentPath}/src/index.scss`)
         .pipe(
-            replace(/@import\s+["'](.*\/style\/index)\.scss["'];?/g, (match, p1) => {
+            replace(/@import\s+["'](\.\/scss\/[^\/]+)\.scss["'];?/g, (match, p1) => {
                 return `@import "${p1}.css";`
             }),
         )

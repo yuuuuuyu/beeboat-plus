@@ -14,6 +14,11 @@
         "build": "vite build",
         "build:gulp": "gulp -f build/gulpfile.js"
     },
+    "keywords": [
+        "beeboat",
+        "beeboat-plus",
+        "theme"
+    ],
     "author": "于智勇｜15684187702@163.com",
     "license": "ISC"
 }
