@@ -1,6 +1,5 @@
 import { loaderTheme } from './loader'
 import { getTheme, setTheme, getThemeAll } from './theme/index'
-
 /**
  * 添加主题
  */

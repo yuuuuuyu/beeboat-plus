@@ -6,6 +6,10 @@ import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 
+// fs
+import pkg from 'fs-extra'
+const { copySync } = pkg
+
 export default defineConfig({
     ...baseConfig,
     build: {
@@ -66,6 +70,11 @@ export default defineConfig({
             // outputDir: ['../beeboat-plus/es/src', '../beeboat-plus/lib/src'],
             //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
             tsConfigFilePath: './tsconfig.json',
+            afterBuild: () => {
+                copySync('dist/es/', '../beeboat-plus/dist/es/core')
+                copySync('dist/lib/', '../beeboat-plus/dist/lib/core')
+                copySync('dist/types/', '../beeboat-plus/dist/types/core')
+            },
         }),
     ],
 })

@@ -9,6 +9,7 @@ import 'element-plus/dist/index.css'
 import '@beeboat/beeboat-theme/src/components/index.scss'
 import './styles/index.scss'
 
+import * as core from '@beeboat/core/es'
 import RouteHandler from './hooks/route-handler'
 import {
     DictDataHandler,

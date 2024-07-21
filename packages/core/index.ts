@@ -7,6 +7,7 @@ import {
     BTPDialogViewContext,
 } from './view/index'
 import BTPUtils from './utils/btp-utils'
+import { UseElementConfig } from './utils/use-element-config'
 import {
     BTPBaseHandler,
     BTPBaseApiHandler,
@@ -51,4 +52,5 @@ export {
     BTPHttpCreateHandler,
     BTPStoreCreateHandler,
     BTPUtils,
+    UseElementConfig,
 }

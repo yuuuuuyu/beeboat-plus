@@ -72,7 +72,7 @@ import AdvSearchItem from './adv-searchbar-item.vue'
 import AdvSearchDialog from './adv-searchbar-dialog.vue'
 import { useAdvSearchbar } from './adv-searchbar'
 
-import { useElementConfig } from '@beeboat/core/utils/use-element-config'
+import { UseElementConfig } from '@beeboat/core'
 
 const emits = defineEmits(['search', 'reset'])
 
@@ -91,7 +91,7 @@ const props = withDefaults(defineProps<IProps>(), {
     size: '',
 })
 
-const { sizeClass, size } = useElementConfig(
+const { sizeClass, size } = UseElementConfig(
     {
         componentName: 'btp-adv-searchbar',
     },

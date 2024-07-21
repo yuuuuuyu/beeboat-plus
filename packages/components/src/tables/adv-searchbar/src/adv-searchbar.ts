@@ -1,5 +1,5 @@
 import cloneDeep from 'lodash-es/cloneDeep'
-import BTPUtils from '@beeboat/core/utils/btp-utils'
+import { BTPUtils } from '@beeboat/core'
 
 export const useAdvSearchbar = (props, emits, state) => {
     const getColumn = columnId => {
@@ -70,8 +70,8 @@ export const useAdvSearchbar = (props, emits, state) => {
             })
         })
         onSceneChange()
-        if(props.initLoading) {
-            emits('search',getAdvQueryParam())
+        if (props.initLoading) {
+            emits('search', getAdvQueryParam())
         }
     }
 

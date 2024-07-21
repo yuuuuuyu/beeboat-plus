@@ -75,6 +75,9 @@ export const buildTypes = async () => {
 }
 
 // TODO 复制产物到beeboat-plus包下
-export const copyToBeeboatPlus = async () => {
-    shell.cp('-r', `${componentPath}/lib`, '../beeboat-plus/node_modules/@beebo/components')
+// 高效！
+export const copyToBeeboatPlus = async (source, destination) => {
+    shell.cp('-r', `${componentPath}/dist/es/`, '../beeboat-plus/dist/es/components')
+    shell.cp('-r', `${componentPath}/dist/lib/`, '../beeboat-plus/dist/lib/components')
+    shell.cp('-r', `${componentPath}/dist/types/`, '../beeboat-plus/dist/types/components')
 }

@@ -1,5 +1,5 @@
 import { nextTick } from 'vue'
-import BTPUtils from '@beeboat/core/utils/btp-utils'
+import { BTPUtils } from '@beeboat/core'
 import BTPTableEditor from './table-editor'
 
 export default class BTPBaseTableManager {

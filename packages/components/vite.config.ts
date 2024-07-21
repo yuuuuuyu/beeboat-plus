@@ -5,6 +5,9 @@ import dts from 'vite-plugin-dts'
 import path from 'path'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 
+import pkg from 'fs-extra'
+const { copySync } = pkg
+
 export default defineConfig(() => {
     return {
         plugins: [
@@ -16,6 +19,12 @@ export default defineConfig(() => {
                 // outputDir: ['../beeboat-plus/es/src', '../beeboat-plus/lib/src'],
                 //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
                 tsConfigFilePath: './tsconfig.json',
+                closeBundle: () => {
+                    // TODO css没有复制到beeboat-plus中
+                    copySync('dist/es/', '../beeboat-plus/dist/es/components')
+                    copySync('dist/lib/', '../beeboat-plus/dist/lib/components')
+                    copySync('dist/types/', '../beeboat-plus/dist/types/components')
+                },
             }),
         ],
         build: {

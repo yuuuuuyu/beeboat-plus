@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { reactive, onMounted } from 'vue'
-import BTPUtils from '@beeboat/core/utils/btp-utils'
+import { BTPUtils } from '@beeboat/core'
 
 const props = defineProps({
     column: {

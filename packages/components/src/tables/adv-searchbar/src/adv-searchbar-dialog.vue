@@ -147,7 +147,7 @@ import AdvSaveAsDialog from './adv-searchbar-saveas-dialog.vue'
 import { expressConfigList } from './adv-searchbar-common'
 import { useAdvSearchbarDailog } from './adv-searchbar-dialog'
 
-import { useElementConfig } from '@beeboat/core/utils/use-element-config'
+import { UseElementConfig } from '@beeboat/core'
 
 const emits = defineEmits([
     'scene-search',
@@ -169,7 +169,7 @@ const props = withDefaults(defineProps<IProps>(), {
     size: '',
 })
 
-const { sizeClass, size } = useElementConfig(
+const { sizeClass, size } = UseElementConfig(
     {
         componentName: 'btp-adv-searchbar-dialog',
     },

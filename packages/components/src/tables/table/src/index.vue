@@ -139,7 +139,7 @@
 </template>
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from 'vue'
-import { useElementConfig } from '@beeboat/core/utils/use-element-config'
+import { UseElementConfig } from '@beeboat/core'
 import BtpAdvSearchbar from '../../adv-searchbar/src/index.vue'
 import BtpPagination from '../../pagination/src/index.vue'
 import {
@@ -235,7 +235,7 @@ const tableProps = computed(() => {
     return tableProps
 })
 
-const { sizeClass, size } = useElementConfig(
+const { sizeClass, size } = UseElementConfig(
     {
         componentName: 'btp-table',
     },

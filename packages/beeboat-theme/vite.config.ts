@@ -5,6 +5,13 @@ import dts from 'vite-plugin-dts'
 import path from 'path'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 
+import postcss from 'rollup-plugin-postcss'
+
+// fs
+import pkg from 'fs-extra'
+const { copySync, copyFileSync } = pkg
+
+// https://vitejs.dev/config/
 export default defineConfig(() => {
     return {
         plugins: [
@@ -13,9 +20,34 @@ export default defineConfig(() => {
             dts({
                 entryRoot: 'src',
                 outputDir: 'dist/types',
-                // outputDir: ['../beeboat-plus/es/src', '../beeboat-plus/lib/src'],
+                // outputDir: ['dist/es', 'dist/lib'],
                 //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
                 tsConfigFilePath: './tsconfig.json',
+                // // 如果使用rollupTypes: true会报错，貌似结果是对的
+                // rollupTypes: true,
+                // copyDtsFiles: true,
+                afterBuild: () => {
+                    // 复制文件的操作
+                    // TODO: 复制文件到对应的目录
+                    copyFileSync('src/fonts', 'dist/es/fonts')
+                    copyFileSync('src/fonts', 'dist/lib/fonts')
+                },
+            }),
+            postcss({
+                extract: 'dist/index.css', // 提取CSS到单独文件
+                minimize: false, // 最小化CSS
+                sourceMap: false,
+                modules: false,
+                minify: false,
+                extensions: ['.scss', '.css'],
+                use: [
+                    [
+                        'sass',
+                        {
+                            includePaths: ['./src'],
+                        },
+                    ],
+                ],
             }),
         ],
         build: {
@@ -30,7 +62,6 @@ export default defineConfig(() => {
                     // 匹配子模块情况，如 nprogress 的子路径
                     return externals.some(pkg => id.startsWith(pkg))
                 },
-
                 // 输出配置
                 output: [
                     {
@@ -68,10 +99,15 @@ export default defineConfig(() => {
                 name: 'beeboat_theme',
             },
         },
-        // resolve: {
-        //     alias: {
-        //         '@beeboat/core': path.resolve(__dirname, '../core'),
-        //     },
-        // },
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    additionalData: `@import "src/index.scss";`,
+                },
+            },
+            postcss: {
+                plugins: [],
+            },
+        },
     } as UserConfig
 })
