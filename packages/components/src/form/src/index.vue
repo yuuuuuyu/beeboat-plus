@@ -17,7 +17,10 @@
         </el-form>
     </template>
     <template v-else>
-        <el-form ref="formRef" :model="btViewContext?.dataModelProxy[Utils.varName(btConfig.code)]">
+        <el-form
+            ref="formRef"
+            :model="btViewContext?.dataModelProxy[BTPUtils.varName(btConfig.code)]"
+        >
             <slot>
                 <template :key="component.id" v-for="component in btConfig?.children">
                     <component
@@ -36,7 +39,7 @@
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import Utils from '@beeboat/core/utils/btp-utils'
+import { BTPUtils } from '@beeboat/core'
 
 defineProps({
     /**

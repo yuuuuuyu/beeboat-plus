@@ -1,10 +1,12 @@
-import { BTPRouterCreateHandler } from '@beeboat/core/handlers/index'
+import { BTPRouterCreateHandler } from '@beeboat/core'
 import { routes } from '../router/index'
 import { Router, RouterHistory, createRouter, createWebHashHistory } from 'vue-router'
 
 export default class RouteHandler extends BTPRouterCreateHandler {
     async handle() {
         const router = await this.createRouterInstance()
+        console.log('router', routes)
+        console.log('this.getApp()', this.getApp())
 
         await this.addRouteBeforeListener(router, routes)
         await this.addRouteAfterListener(router, routes)

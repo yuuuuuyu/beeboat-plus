@@ -1,4 +1,4 @@
-import { withInstall } from '@beeboat/core/utils/with-install'
+import { withInstall } from '@beeboat/core'
 import Tabs from './src/index.vue'
 import TabPane from './src/tab-pane.vue'
 import TabsAnchor from './src/tabs-anchor.vue'

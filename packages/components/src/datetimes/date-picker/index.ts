@@ -1,4 +1,4 @@
-import { withInstall } from '@beeboat/core/utils/with-install'
+import { withInstall } from '@beeboat/core'
 import DatePicker from './src/index.vue'
 
 const BtpDatePicker = withInstall(DatePicker)

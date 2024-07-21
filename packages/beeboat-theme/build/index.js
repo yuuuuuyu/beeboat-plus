@@ -75,7 +75,14 @@ export const buildTypes = async () => {
         .pipe(dest(`${componentPath}/types`))
 }
 
+export function copyFont() {
+    // 从src下单fonts文件夹下的所有文件开始=>压缩=>最终输出到当前目录下dist下的font目录
+    return src(path.resolve(__dirname, `${componentPath}/src/fonts/**`)).pipe(dest('./dist/fonts'))
+}
 // TODO 复制产物到beeboat-plus包下
-export const copyToBeeboatPlus = async () => {
-    shell.cp('-r', `${componentPath}/lib`, '../beeboat-plus/node_modules/@beebo/components')
+export const copyToBeeboatPlus = async (source, destination) => {
+    shell.cp('-r', `${componentPath}/src/fonts/`, '../beeboat-plus/dist/es/beeboat-theme')
+    shell.cp('-r', `${componentPath}/dist/es/`, '../beeboat-plus/dist/es/beeboat-theme')
+    shell.cp('-r', `${componentPath}/dist/lib/`, '../beeboat-plus/dist/lib/beeboat-theme')
+    shell.cp('-r', `${componentPath}/dist/types/`, '../beeboat-plus/dist/types/beeboat-theme')
 }

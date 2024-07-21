@@ -21,9 +21,9 @@
 </template>
 
 <script setup lang="ts">
-import { isArray } from '@beeboat/core/utils/is'
+import { isArray } from '@beeboat/core'
 import DictStatus from '../../../dict-status/src/dict-status.vue'
-import { BTPApplication } from '@beeboat/core/app'
+import { BTPApplication } from '@beeboat/core'
 
 const props = defineProps<{ item: any; scope: any; tableSrc: any }>()
 const cacheManager = BTPApplication.getInstance().getCacheManager()

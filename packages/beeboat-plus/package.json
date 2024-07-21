@@ -1,22 +1,27 @@
 {
     "name": "beeboat-plus",
-    "version": "0.0.61",
-    "private": false,
+    "version": "0.0.14",
     "description": "",
-    "main": "./dist/beeboat-plus.umd.js",
-    "module": "./dist/beeboat-plus.es.js",
-    "types": "./dist/types/index.d.ts",
-    "exports": {
-        ".": {
-            "import": "./dist/beeboat-plus.esm.js",
-            "require": "./dist/beeboat-plus.js",
-            "types": "./dist/types/index.d.ts"
-        }
-    },
+    "main": "dist/lib",
+    "module": "dist/es",
+    "types": "dist/types/index.d.ts",
     "scripts": {
         "auto-patch": "npm version patch",
         "build": "vite build"
     },
-    "keywords": [],
-    "author": "zhiyong.yu@ytever.com"
+    "keywords": [
+        "beeboat",
+        "beeboat-plus",
+        "element-plus",
+        "vue3"
+    ],
+    "author": "zhiyong.yu@ytever.com",
+    "dependencies": {
+        "@beeboat/components": "^1.0.12",
+        "@beeboat/core": "^1.0.2",
+        "axios": "^0.26.1",
+        "nprogress": "^0.2.0",
+        "pinia": "^2.1.7",
+        "vue-cookies": "^1.8.2"
+    }
 }

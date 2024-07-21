@@ -1,4 +1,4 @@
-import { BTPApplication } from '@beeboat/core/app'
+import { BTPApplication } from '@beeboat/core'
 
 export const useSelects = (state: any, props) => {
     /**
@@ -7,7 +7,8 @@ export const useSelects = (state: any, props) => {
     const loadOptionData = () => {
         state.options = []
         if (props.dictId) {
-            state.options = BTPApplication.getInstance().getCacheManager().getDictItemList(props.dictId)||[]
+            state.options =
+                BTPApplication.getInstance().getCacheManager().getDictItemList(props.dictId) || []
             state.options.forEach((item: any) => {
                 item.label = item.name
                 item.value = isNaN(parseInt(item.value)) ? item.value : parseInt(item.value)

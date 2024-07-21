@@ -1,4 +1,4 @@
-import { withInstall } from '@beeboat/core/utils/with-install'
+import { withInstall } from '@beeboat/core'
 import MicroAppHeader from './src/micro-app-header.vue'
 import MicroAppMenu from './src/micro-app-menu.vue'
 import MicroAppRouterView from './src/micro-app-router-view.vue'

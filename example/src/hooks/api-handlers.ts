@@ -1,4 +1,4 @@
-import { BTPDictDataHandler,BTPMenuDataHandler,BTPUserDataHandler,BTPRemoteMethodLoadHandler } from '@beeboat/core/handlers/index'
+import { BTPDictDataHandler,BTPMenuDataHandler,BTPUserDataHandler,BTPRemoteMethodLoadHandler } from '@beeboat/core'
 
 export class DictDataHandler extends BTPDictDataHandler{
     async handle() {

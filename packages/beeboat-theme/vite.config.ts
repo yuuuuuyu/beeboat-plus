@@ -26,7 +26,7 @@ export default defineConfig(() => {
                 // // 如果使用rollupTypes: true会报错，貌似结果是对的
                 // rollupTypes: true,
                 // copyDtsFiles: true,
-                afterBuild: () => {
+                closeBundle: () => {
                     // 复制文件的操作
                     // TODO: 复制文件到对应的目录
                     copyFileSync('src/fonts', 'dist/es/fonts')

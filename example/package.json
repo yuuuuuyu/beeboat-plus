@@ -13,7 +13,7 @@
         "register:components": "vitepress-rc"
     },
     "dependencies": {
-        "@beeboat/components": "workspace:^1.0.0",
+        "@beeboat/components": "workspace:^1.0.12",
         "@beeboat/core": "workspace:^1.0.2",
         "@element-plus/icons-vue": "^2.0.10",
         "axios": "^0.26.1",

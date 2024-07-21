@@ -1,4 +1,4 @@
-import { withInstall } from '@beeboat/core/utils/with-install'
+import { withInstall } from '@beeboat/core'
 import Card from './src/index.vue'
 
 const BtpCard = withInstall(Card)

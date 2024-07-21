@@ -1,7 +1,6 @@
-import BTPAppCacheManager from '@beeboat/core/cache/app-cache-manager'
+import { BTPAppCacheManager } from '@beeboat/core'
 
-export default class AppCacheManager extends BTPAppCacheManager{
-
+export default class AppCacheManager extends BTPAppCacheManager {
     /**
      * @description 获取用户场景数据
      * @param sceneId 场景ID
@@ -25,7 +24,7 @@ export default class AppCacheManager extends BTPAppCacheManager{
             data: data,
         }
         return new Promise(resolve => {
-            resolve({code:0})
+            resolve({ code: 0 })
         })
     }
 }

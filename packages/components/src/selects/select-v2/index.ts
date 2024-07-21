@@ -1,4 +1,4 @@
-import { withInstall } from '@beeboat/core/utils/with-install'
+import { withInstall } from '@beeboat/core'
 import SelectV2 from './src/index.vue'
 
 const BtpSelectV2 = withInstall(SelectV2)
