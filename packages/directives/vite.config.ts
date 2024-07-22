@@ -71,9 +71,9 @@ export default defineConfig({
             //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
             tsConfigFilePath: './tsconfig.json',
             afterBuild: () => {
-                copySync('dist/es/', '../beeboat-plus/dist/es/directives')
-                copySync('dist/lib/', '../beeboat-plus/dist/lib/directives')
-                copySync('dist/types/', '../beeboat-plus/dist/types/directives')
+                copySync('dist/es', '../beeboat-plus/es/directives')
+                copySync('dist/lib', '../beeboat-plus/lib/directives')
+                copySync('dist/types', '../beeboat-plus/types/directives')
             },
         }),
     ],

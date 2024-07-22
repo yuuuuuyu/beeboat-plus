@@ -1,6 +1,6 @@
 {
     "name": "beeboat-plus",
-    "version": "0.0.16",
+    "version": "0.0.17",
     "description": "",
     "main": "dist/lib",
     "module": "dist/es",
@@ -10,7 +10,9 @@
         "build:gulp": "vite build"
     },
     "files": [
-        "dist",
+        "es",
+        "lib",
+        "theme-chalk",
         "README.md"
     ],
     "keywords": [

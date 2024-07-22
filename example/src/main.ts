@@ -6,10 +6,9 @@ import * as components from '@beeboat/components'
 import DynamicView from './views/layout/bt-view.vue'
 
 import 'element-plus/dist/index.css'
-import '@beeboat/components/dist/es/index.css'
+import 'beeboat-plus/theme-chalk/es/index.css'
 import './styles/index.scss'
 
-// import * as core from '@beeboat/core/es'
 import RouteHandler from './hooks/route-handler'
 import {
     DictDataHandler,

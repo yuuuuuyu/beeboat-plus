@@ -4,7 +4,6 @@ import {
     buildRootStyle,
     buildComponentStyles,
     buildComponents,
-    buildTypes,
     copyToBeeboatPlus,
 } from './index.js'
 

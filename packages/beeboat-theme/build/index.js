@@ -1,5 +1,6 @@
 import gulp from 'gulp'
-import { resolve, dirname } from 'path'
+import { resolve, dirname, join } from 'path'
+import fs from 'fs'
 import { fileURLToPath } from 'url'
 import * as dartSass from 'sass'
 import gulpSass from 'gulp-sass'
@@ -25,11 +26,11 @@ export const removeDist = async () => {
 // 构建根css
 export const buildRootStyle = () => {
     return src(`${componentPath}/src/index.scss`)
-        .pipe(
-            replace(/@import\s+["'](\.\/scss\/[^\/]+)\.scss["'];?/g, (match, p1) => {
-                return `@import "${p1}.css";`
-            }),
-        )
+        // .pipe(
+        //     replace(/@import\s+["'](\.\/scss\/[^\/]+)\.scss["'];?/g, (match, p1) => {
+        //         return `@import "${p1}.css";`
+        //     }),
+        // )
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(dest(`${componentPath}/dist/es`))
@@ -75,14 +76,47 @@ export const buildTypes = async () => {
         .pipe(dest(`${componentPath}/types`))
 }
 
-export function copyFont() {
-    // 从src下单fonts文件夹下的所有文件开始=>压缩=>最终输出到当前目录下dist下的font目录
-    return src(path.resolve(__dirname, `${componentPath}/src/fonts/**`)).pipe(dest('./dist/fonts'))
-}
 // TODO 复制产物到beeboat-plus包下
+// 考虑改成vite插件
 export const copyToBeeboatPlus = async (source, destination) => {
-    shell.cp('-r', `${componentPath}/src/fonts/`, '../beeboat-plus/dist/es/beeboat-theme')
-    shell.cp('-r', `${componentPath}/dist/es/`, '../beeboat-plus/dist/es/beeboat-theme')
-    shell.cp('-r', `${componentPath}/dist/lib/`, '../beeboat-plus/dist/lib/beeboat-theme')
-    shell.cp('-r', `${componentPath}/dist/types/`, '../beeboat-plus/dist/types/beeboat-theme')
+    const targetDir = '../beeboat-plus/theme-chalk'
+
+    // 确保目标目录存在
+    if (!fs.existsSync(targetDir)) {
+        fs.mkdirSync(targetDir, { recursive: true })
+    }
+
+    // 定义需要复制的文件夹及其目标路径
+    const foldersToCopy = [
+        { source: 'dist/es', target: join(targetDir, '/') },
+        { source: 'dist/lib', target: join(targetDir, '/') },
+        { source: 'dist/types', target: join(targetDir, '/') },
+        {
+            source: 'src/fonts',
+            targets: [join(targetDir, 'es', '/'), join(targetDir, 'lib', '/')],
+        },
+    ]
+
+    // 进行复制操作
+    foldersToCopy.forEach(folder => {
+        const sourcePath = join(componentPath, folder.source)
+
+        // 确保源目录存在
+        if (fs.existsSync(sourcePath)) {
+            if (folder.targets) {
+                // 如果定义了多个目标目录，分别复制
+                folder.targets.forEach(target => {
+                    // 创建目标目录
+                    fs.mkdirSync(target, { recursive: true })
+                    shell.cp('-r', sourcePath, target)
+                })
+            } else {
+                // 否则直接复制到单个目标目录
+                fs.mkdirSync(folder.target, { recursive: true })
+                shell.cp('-r', sourcePath, folder.target)
+            }
+        } else {
+            console.warn(`Source directory does not exist: ${sourcePath}`)
+        }
+    })
 }

@@ -13,8 +13,15 @@ dist-ssr
 webSite
 *.local
 
+/packages/beeboat-plus/es/
+/packages/beeboat-plus/lib/
+/packages/beeboat-plus/dist/
+/packages/beeboat-plus/types/
+/packages/beeboat-plus/theme-chalk/
+
 /packages/core/es/
 /packages/core/lib/
+/packages/core/types/
 
 /packages/components/es/
 /packages/components/lib/
@@ -22,12 +29,11 @@ webSite
 
 /packages/directives/es/
 /packages/directives/lib/
-
-/packages/common/es/
-/packages/common/lib/
+/packages/components/types/
 
 /packages/beeboat-theme/es/
 /packages/beeboat-theme/lib/
+/packages/components/types/
 
 /play/
 /paly/src/

@@ -1,4 +1,3 @@
-// root/packages/core/vite.config.js
 import { defineConfig } from 'vite'
 import baseConfig from '../../vite.config'
 import { resolve } from 'path'
@@ -71,9 +70,9 @@ export default defineConfig({
             //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
             tsConfigFilePath: './tsconfig.json',
             afterBuild: () => {
-                copySync('dist/es/', '../beeboat-plus/dist/es/core')
-                copySync('dist/lib/', '../beeboat-plus/dist/lib/core')
-                copySync('dist/types/', '../beeboat-plus/dist/types/core')
+                copySync('dist/es/', '../beeboat-plus/es/core')
+                copySync('dist/lib/', '../beeboat-plus/lib/core')
+                copySync('dist/types/', '../beeboat-plus/types/core')
             },
         }),
     ],
