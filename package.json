@@ -4,6 +4,7 @@
     "version": "1.0.0",
     "description": "beeboat-plus repository",
     "scripts": {
+        "build:new": "pnpm run --filter ./packages/beeboat-plus build:gulp && pnpm --filter './packages/*' --filter '!./packages/beeboat-plus' build:gulp",
         "publish:version": "gulp -f build/publish/gulpfile.ts",
         "publish:npm": "gulp -f build/publish/gulpfile.ts",
         "dev": "pnpm -C example dev",

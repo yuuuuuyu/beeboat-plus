@@ -10,7 +10,7 @@
         "README.md"
     ],
     "scripts": {
-        "build": "vite build"
+        "build:gulp": "vite build"
     },
     "keywords": [
         "beeboat",

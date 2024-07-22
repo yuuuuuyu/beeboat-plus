@@ -6,7 +6,7 @@ import * as components from '@beeboat/components'
 import DynamicView from './views/layout/bt-view.vue'
 
 import 'element-plus/dist/index.css'
-// import 'beeboat-plus/dist/es/'
+import '@beeboat/components/dist/es/index.css'
 import './styles/index.scss'
 
 // import * as core from '@beeboat/core/es'
