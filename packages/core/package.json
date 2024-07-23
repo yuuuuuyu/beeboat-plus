@@ -1,6 +1,6 @@
 {
     "name": "@beeboat/core",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "description": "beeboat core library",
     "main": "./dist/lib",
     "module": "./dist/es",
@@ -26,5 +26,12 @@
         "utils"
     ],
     "author": "于智勇｜15684187702@163.com",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "pinia": "^2.1.7",
+        "axios": "^0.26.1",
+        "nprogress": "^0.2.0",
+        "vue-cookies": "^1.8.2",
+        "vue-router": "^4.0.0"
+    }
 }

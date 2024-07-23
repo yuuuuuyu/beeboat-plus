@@ -26,11 +26,6 @@ export const removeDist = async () => {
 // 构建根css
 export const buildRootStyle = () => {
     return src(`${componentPath}/src/index.scss`)
-        // .pipe(
-        //     replace(/@import\s+["'](\.\/scss\/[^\/]+)\.scss["'];?/g, (match, p1) => {
-        //         return `@import "${p1}.css";`
-        //     }),
-        // )
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(dest(`${componentPath}/dist/es`))

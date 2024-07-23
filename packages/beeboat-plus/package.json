@@ -1,6 +1,6 @@
 {
     "name": "beeboat-plus",
-    "version": "0.0.17",
+    "version": "0.0.21",
     "description": "",
     "main": "dist/lib",
     "module": "dist/es",
@@ -13,6 +13,7 @@
         "es",
         "lib",
         "theme-chalk",
+        "global.d.ts",
         "README.md"
     ],
     "keywords": [
@@ -21,17 +22,15 @@
         "element-plus",
         "vue3"
     ],
-    "author": "zhiyong.yu@ytever.com",
+    "author": "于智勇｜15684187702@163.com",
     "dependencies": {
-        "@beeboat/components": "^1.0.12",
-        "@beeboat/core": "^1.0.2",
-        "axios": "^0.26.1",
-        "nprogress": "^0.2.0",
-        "pinia": "^2.1.7",
-        "vue-cookies": "^1.8.2",
-        "vue-router": "^4.0.0"
+        "@beeboat/components": "^1.0.13",
+        "@beeboat/core": "^1.0.3",
+        "element-plus": "^2.7.7",
+        "vue": "^3.4.33"
     },
     "peerDependencies": {
-        "element-plus": "^2.7.7"
+        "element-plus": "^2.7.7",
+        "vue": "^3.3.4"
     }
 }

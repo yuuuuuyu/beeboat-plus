@@ -36,21 +36,20 @@ export default defineConfig({
                 // 匹配子模块情况，如 nprogress 的子路径
                 return externals.some(pkg => id.startsWith(pkg))
             },
-            input: ['index.ts'],
             output: [
                 {
                     format: 'es',
                     entryFileNames: '[name].js',
                     preserveModules: true,
                     exports: 'named',
-                    dir: './dist/es',
+                    dir: 'es',
                 },
                 {
                     format: 'cjs',
                     entryFileNames: '[name].js',
                     preserveModules: true,
                     exports: 'named',
-                    dir: './dist/lib',
+                    dir: 'lib',
                 },
             ],
         },
@@ -61,13 +60,13 @@ export default defineConfig({
     },
     plugins: [
         DefineOptions(),
-        // dts({
-        //     entryRoot: './',
-        //     outputDir: 'dist/types',
-        //     // outputDir: ['../beeboat-plus/es/src', '../beeboat-plus/lib/src'],
-        //     //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
-        //     tsConfigFilePath: './tsconfig.json',
-        // }),
+        dts({
+            entryRoot: './',
+            outputDir: 'types',
+            // outputDir: ['../beeboat-plus/es/src', '../beeboat-plus/lib/src'],
+            //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
+            tsConfigFilePath: './tsconfig.json',
+        }),
     ],
     resolve: {
         alias: {
