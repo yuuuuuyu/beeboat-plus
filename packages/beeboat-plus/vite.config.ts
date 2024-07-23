@@ -21,7 +21,7 @@ export default defineConfig({
                     'nprogress',
                     'vue-demi',
                     '@vue_shared',
-                    'vue-cookies',
+                    // 'vue-cookies',
                     'pinia',
                     'uuid',
                     'resize-observer',

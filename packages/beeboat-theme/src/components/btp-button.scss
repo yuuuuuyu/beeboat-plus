@@ -41,8 +41,8 @@
         &:hover,
         &:active {
             color: var(--el-color-white);
-            background-color: var(--ever-color-button-disable);
-            border-color: var(--ever-color-button-disable)
+            background-color: var(--btp-button-disabled-bg-color);
+            border-color: var(--btp-button-disabled-bg-color);
         }
     }
 

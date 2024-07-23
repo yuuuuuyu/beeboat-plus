@@ -6,8 +6,11 @@ import * as components from '@beeboat/components'
 import DynamicView from './views/layout/bt-view.vue'
 
 import 'element-plus/dist/index.css'
-import 'beeboat-plus/theme-chalk/es/index.css'
 import './styles/index.scss'
+// 快速调试样式
+import '../../packages/beeboat-theme/src/index.scss'
+// build后的css
+// import 'beeboat-plus/theme-chalk/es/index.css'
 
 import RouteHandler from './hooks/route-handler'
 import {

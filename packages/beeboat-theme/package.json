@@ -20,5 +20,8 @@
         "theme"
     ],
     "author": "于智勇｜15684187702@163.com",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "sass": "^1.51.0"
+    }
 }
