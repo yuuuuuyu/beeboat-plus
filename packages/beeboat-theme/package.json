@@ -21,7 +21,17 @@
     ],
     "author": "于智勇｜15684187702@163.com",
     "license": "ISC",
+    "devDependencies": {
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^8.0.0",
+        "gulp-replace": "^1.1.4",
+        "gulp-sass": "^5.1.0",
+        "gulp-typescript": "^6.0.0-alpha.1",
+        "gulp-vue": "^0.1.0",
+        "sass": "^1.51.0",
+        "shelljs": "^0.8.5"
+    },
     "dependencies": {
-        "sass": "^1.51.0"
+        "@ctrl/tinycolor": "^3.4.1"
     }
 }

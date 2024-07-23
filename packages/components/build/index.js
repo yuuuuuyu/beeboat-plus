@@ -1,18 +1,9 @@
-import gulp from 'gulp'
 import { resolve, dirname, basename, join } from 'path'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
-import * as dartSass from 'sass'
-import gulpSass from 'gulp-sass'
-import autoprefixer from 'gulp-autoprefixer'
 import shell from 'shelljs'
-import ts from 'gulp-typescript'
-import replace from 'gulp-replace'
 
 const componentPath = resolve(dirname(fileURLToPath(import.meta.url)), '../')
-
-const { src, dest } = gulp
-const sass = gulpSass(dartSass)
 
 // 删除打包产物
 export const removeDist = async () => {
@@ -22,36 +13,10 @@ export const removeDist = async () => {
     shell.rm('-rf', `${componentPath}/dist`)
 }
 
-
 // 打包组件: 使用vite.config配置
 export const buildComponents = async () => {
     shell.cd(componentPath)
     shell.exec('vite build')
-}
-
-// 构建dts
-// TODO vite-plugin-dts可以生成了
-const tsProject = ts.createProject(`${componentPath}/tsconfig.json`)
-export const buildTypes = async () => {
-    return src(
-        [
-            `${componentPath}/**/**/*.ts`,
-            `${componentPath}/**/**/*.vue`,
-            `${componentPath}/shims-vue.d.ts`,
-            '!**/node_modules/**',
-            '!vite.config.ts',
-            '!**/utils/**',
-        ],
-        {
-            sourcemaps: false,
-        },
-    )
-        .pipe(tsProject())
-        .on('error', function (err) {
-            console.error(err.toString())
-            this.emit('end')
-        })
-        .pipe(dest(`${componentPath}/types`))
 }
 
 // TODO 复制产物到beeboat-plus包下

@@ -28,10 +28,14 @@
     "author": "于智勇｜15684187702@163.com",
     "license": "ISC",
     "dependencies": {
-        "pinia": "^2.1.7",
         "axios": "^0.26.1",
+        "element-plus": "^2.7.7",
+        "lodash": "^4.17.21",
         "nprogress": "^0.2.0",
+        "pinia": "^2.1.7",
+        "uuid": "^10.0.0",
         "vue-cookies": "^1.8.2",
-        "vue-router": "^4.0.0"
+        "vue-router": "^4.0.0",
+        "jsencrypt": "^3.2.1"
     }
 }

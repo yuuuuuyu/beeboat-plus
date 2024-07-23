@@ -1,14 +1,13 @@
-/* eslint-disable @typescript-eslint/no-extra-semi */
-
+// TODO
 import type { App, Directive } from 'vue'
 import type { AppContext, Plugin } from 'vue'
 
 // 类型必须导出否则生成不了.d.ts文件
 export type SFCWithInstall<T> = T & Plugin
-
 export type SFCInstallWithContext<T> = SFCWithInstall<T> & {
     _context: AppContext | null
 }
+
 /**
  * 定义withInstall方法处理以下组件类型问题
  * @param main
