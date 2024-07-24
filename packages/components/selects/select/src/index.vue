@@ -1,16 +1,14 @@
 <template>
     <el-select class="btp-select" ref="selectRef">
-        <template v-if="$slots.default">
-            <slot>
-                <el-option
-                    v-for="item in state.options"
-                    :key="item.id"
-                    :label="item.label"
-                    :value="item.value"
-                    :disabled="item.disabled"
-                />
-            </slot>
-        </template>
+        <slot>
+            <el-option
+                v-for="item in state.options"
+                :key="item.id"
+                :label="item.label"
+                :value="item.value"
+                :disabled="item.disabled"
+            />
+        </slot>
         <template v-if="$slots.prefix" #prefix>
             <slot name="prefix" />
         </template>

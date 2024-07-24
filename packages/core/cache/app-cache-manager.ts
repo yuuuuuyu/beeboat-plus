@@ -43,7 +43,7 @@ export default class BTPAppCacheManager {
     /**
      * 数据字典数据
      */
-    private dictMap = {} as Object
+    private dictMap = [] as Array<any>
 
     constructor() {}
 
@@ -55,7 +55,7 @@ export default class BTPAppCacheManager {
         this.roleIdList = []
         this.rightIdList = []
         this.menuTreeList = []
-        this.dictMap = {}
+        this.dictMap = []
     }
 
     /**
@@ -138,7 +138,8 @@ export default class BTPAppCacheManager {
      * @returns 获取数据字典项
      */
     public getDictItemList(dictId: any): Array<any> {
-        return this.dictMap[dictId]?.children || []
+        const dict = this.dictMap.find(item => item.value == dictId)
+        return dict?.children || []
     }
 
     /**
