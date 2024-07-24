@@ -138,7 +138,7 @@ export default class BTPAppCacheManager {
      * @returns 获取数据字典项
      */
     public getDictItemList(dictId: any): Array<any> {
-        return this.dictMap[dictId] || []
+        return this.dictMap[dictId]?.children || []
     }
 
     /**
