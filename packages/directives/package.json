@@ -5,12 +5,13 @@
     "main": "dist/lib",
     "module": "dist/es",
     "types": "dist/types/index.d.ts",
+    "type": "module",
     "files": [
         "dist",
         "README.md"
     ],
     "scripts": {
-        "build:gulp": "vite build"
+        "build": "vite build"
     },
     "keywords": [
         "beeboat",
@@ -18,5 +19,9 @@
         "directives"
     ],
     "author": "于智勇｜15684187702@163.com",
-    "license": "ISC"
+    "license": "ISC",
+    "devDependencies": {
+        "vite-plugin-cleaned": "^1.0.28",
+        "vite-plugin-copyto": "^1.0.18"
+    }
 }

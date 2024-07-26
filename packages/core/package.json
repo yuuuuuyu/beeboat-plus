@@ -5,6 +5,7 @@
     "main": "./dist/lib",
     "module": "./dist/es",
     "types": "./dist/types/index.d.ts",
+    "type": "module",
     "exports": {
         ".": {
             "import": "./dist/es",
@@ -16,7 +17,7 @@
         "dist"
     ],
     "scripts": {
-        "build:gulp": "vite build"
+        "build": "vite build"
     },
     "keywords": [
         "beeboat",
@@ -37,5 +38,9 @@
         "vue-cookies": "^1.8.2",
         "vue-router": "^4.0.0",
         "jsencrypt": "^3.2.1"
+    },
+    "devDependencies": {
+        "vite-plugin-cleaned": "^1.0.28",
+        "vite-plugin-copyto": "^1.0.18"
     }
 }

@@ -17,6 +17,7 @@ webSite
 /packages/beeboat-plus/lib/
 /packages/beeboat-plus/dist/
 /packages/beeboat-plus/types/
+/packages/beeboat-plus/utils/
 /packages/beeboat-plus/theme-chalk/
 
 /packages/core/es/
@@ -26,6 +27,7 @@ webSite
 /packages/components/es/
 /packages/components/lib/
 /packages/components/types/
+/packages/beeboat-plus/utils/
 
 /packages/directives/es/
 /packages/directives/lib/

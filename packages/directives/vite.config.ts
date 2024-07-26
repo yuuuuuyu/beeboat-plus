@@ -5,8 +5,8 @@ import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 
-import pkg from 'fs-extra'
-const { copySync } = pkg
+import vitePluginCleaned from 'vite-plugin-cleaned'
+import vitePluginCopyto from 'vite-plugin-copyto'
 
 export default defineConfig({
     ...baseConfig,
@@ -43,7 +43,6 @@ export default defineConfig({
                     entryFileNames: '[name].js',
                     preserveModules: true,
                     exports: 'named',
-                    // dir: '../beeboat-plus/dist/es/directives',
                     dir: './dist/es',
                 },
                 {
@@ -51,7 +50,6 @@ export default defineConfig({
                     entryFileNames: '[name].js',
                     preserveModules: true,
                     exports: 'named',
-                    // dir: '../beeboat-plus/dist/lib/directives',
                     dir: './dist/lib',
                 },
             ],
@@ -62,19 +60,21 @@ export default defineConfig({
         },
     },
     plugins: [
+        vitePluginCleaned({
+            folder: 'dist',
+        }),
         vue(),
         DefineOptions(),
         dts({
             entryRoot: './',
             outputDir: 'dist/types',
-            // outputDir: '../beeboat-plus/dist/types/directives',
-            //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
             tsConfigFilePath: './tsconfig.json',
-            afterBuild: () => {
-                copySync('dist/es', '../beeboat-plus/es/directives')
-                copySync('dist/lib', '../beeboat-plus/lib/directives')
-                copySync('dist/types', '../beeboat-plus/types/directives')
-            },
+        }),
+        vitePluginCopyto({
+            root: resolve(__dirname),
+            base: 'dist',
+            source: ['es', 'lib', 'types'],
+            dest: '../beeboat-plus',
         }),
     ],
 })

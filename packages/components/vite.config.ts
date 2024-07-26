@@ -2,28 +2,32 @@ import { defineConfig } from 'vite'
 import type { UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
-import path from 'path'
+import { resolve } from 'path'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 
-import pkg from 'fs-extra'
-const { copySync } = pkg
+import vitePluginCleaned from 'vite-plugin-cleaned'
+import VitePluginCopyto from 'vite-plugin-copyto'
 
 export default defineConfig(() => {
     return {
         plugins: [
+            vitePluginCleaned({
+                folder: ['dist', 'es', 'lib', 'types'],
+            }),
             vue(),
             DefineOptions(),
             dts({
                 entryRoot: 'src',
                 outputDir: 'dist/types',
-                // outputDir: ['../beeboat-plus/es/src', '../beeboat-plus/lib/src'],
-                //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
                 tsConfigFilePath: './tsconfig.json',
-                closeBundle: () => {
-                    // TODO css没有复制到beeboat-plus中
-                    copySync('dist/es/', '../beeboat-plus/dist/es/components')
-                    copySync('dist/lib/', '../beeboat-plus/dist/lib/components')
-                    copySync('dist/types/', '../beeboat-plus/dist/types/components')
+                afterBuild() {
+                    const cpto = VitePluginCopyto({
+                        root: resolve(__dirname),
+                        base: 'dist',
+                        source: ['es', 'lib', 'types', 'utils'],
+                        dest: '../beeboat-plus',
+                    })
+                    cpto.closeBundle()
                 },
             }),
         ],
@@ -97,7 +101,7 @@ export default defineConfig(() => {
         },
         resolve: {
             alias: {
-                '@beeboat/core': path.resolve(__dirname, '../core'),
+                '@beeboat/core': resolve(__dirname, '../core'),
             },
         },
     } as UserConfig

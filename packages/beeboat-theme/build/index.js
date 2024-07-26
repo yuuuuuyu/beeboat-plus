@@ -13,7 +13,7 @@ const { src, dest } = gulp
 const sass = gulpSass(dartSass)
 
 // 删除打包产物
-// TODO 公共
+// TODO 已经提取成vite插件，此处待删除
 export const removeDist = async () => {
     shell.rm('-rf', `${componentPath}/lib`)
     shell.rm('-rf', `${componentPath}/es`)
