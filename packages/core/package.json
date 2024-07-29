@@ -1,19 +1,46 @@
 {
     "name": "@beeboat/core",
-    "version": "1.0.0",
+    "version": "1.0.4",
     "description": "beeboat core library",
-    "main": "es/index.js",
-    "scripts": {
-        "build": "gulp",
-        "test": "echo \"Error: no test specified\" && exit 1"
+    "main": "./dist/lib",
+    "module": "./dist/es",
+    "types": "./dist/types/index.d.ts",
+    "type": "module",
+    "exports": {
+        ".": {
+            "import": "./dist/es",
+            "require": "./dist/lib",
+            "types": "./dist/types/index.d.ts"
+        }
     },
-    "keywords": [],
-    "author": "mickey | xiukun@163.com",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "vite build"
+    },
+    "keywords": [
+        "beeboat",
+        "beeboat-plus",
+        "core",
+        "library",
+        "utils"
+    ],
+    "author": "于智勇｜15684187702@163.com",
+    "license": "ISC",
     "dependencies": {
-        "uuid": "^10.0.0",
         "axios": "^0.26.1",
-        "jsencrypt": "^3.2.1",
+        "element-plus": "^2.7.7",
+        "lodash": "^4.17.21",
         "nprogress": "^0.2.0",
-        "vue-cookies": "^1.8.2"
+        "pinia": "^2.1.7",
+        "uuid": "^10.0.0",
+        "vue-cookies": "^1.8.2",
+        "vue-router": "^4.0.0",
+        "jsencrypt": "^3.2.1"
+    },
+    "devDependencies": {
+        "vite-plugin-cleaned": "^1.0.28",
+        "vite-plugin-copyto": "^1.0.18"
     }
 }

@@ -1,14 +1,23 @@
 {
     "compilerOptions": {
+        "rootDir": "./packages",
+        "outDir": "dist",
+        "baseUrl": ".",
+        "paths": {
+            "@beeboat/beeboat-theme/*": ["./packages/beeboat-theme/*"],
+            "@beeboat/core/*": ["./packages/core/*"],
+            "@beeboat/components/*": ["./packages/components/*"]
+        },
         "module": "ESNext", // 打包模块类型ESNext
-        "declaration": false, //  生成*.d.ts文件
+        "declaration": true, //  生成*.d.ts文件
+        "emitDeclarationOnly": true,
         "noImplicitAny": false, // 支持类型不标注可以默认any
         "removeComments": false, // 删除注释
         "moduleResolution": "node", // 按照node模块来解析
         "esModuleInterop": true, // 支持es6,commonjs模块
         "jsx": "preserve", // jsx 不转
         "noLib": false, // 不处理类库
-        "target": "es6", // 遵循es6版本
+        "target": "ESNext", // 遵循es6版本
         "sourceMap": true,
         "lib": [
             // 编译时用的库
@@ -25,6 +34,14 @@
     "exclude": [
         // 排除掉哪些类库
         "node_modules",
-        "**/__tests__"
+        "**/__tests__",
+        "dist"
+    ],
+    "include": [
+        "packages/**/*",
+        "packages/**/*.ts",
+        "packages/**/*.d.ts",
+        "packages/**/*.tsx",
+        "packages/**/*.vue"
     ]
 }

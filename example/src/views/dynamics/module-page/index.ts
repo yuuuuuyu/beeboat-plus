@@ -1,4 +1,4 @@
-import { BTPViewContext, BTPUtils } from '@beeboat/core/index'
+import { BTPViewContext, BTPUtils } from '@beeboat/core'
 export default class ModuleViewContext extends BTPViewContext {
     executeAction(vv) {
         if (vv.isEvent('loadTableData', 'ModuleTable')) {

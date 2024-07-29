@@ -43,11 +43,16 @@ export default class BTPWebsocketObserver {
      * 心跳
      */
     private keepAlive() {
-        this.socketTimeInterval = setInterval(function () {
+        this.socketTimeInterval = setInterval(() => {
             if (this.socket && this.socket.readyState == 1) {
                 this.send('{code:0}')
             }
         }, 10000)
+        // this.socketTimeInterval = setInterval(function () {
+        //     if (this.socket && this.socket.readyState == 1) {
+        //         this.send('{code:0}')
+        //     }
+        // }, 10000)
     }
 
     /**

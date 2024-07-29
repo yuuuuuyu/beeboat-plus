@@ -1,17 +1,46 @@
 {
     "name": "beeboat-plus",
-    "version": "0.0.79",
-    "private": false,
+    "version": "0.0.26",
     "description": "",
-    "main": "lib/index.js",
-    "module": "es/index.js",
+    "main": "dist/lib",
+    "module": "dist/es",
+    "types": "dist/types/index.d.ts",
+    "type": "module",
     "scripts": {
-        "auto-patch": "npm version patch"
+        "auto-patch": "npm version patch",
+        "build": "vite build"
     },
-    "keywords": [],
-    "author": "zhiyong.yu@ytever.com",
+    "files": [
+        "es",
+        "lib",
+        "theme-chalk",
+        "global.d.ts",
+        "README.md"
+    ],
+    "keywords": [
+        "beeboat",
+        "beeboat-plus",
+        "element-plus",
+        "vue3"
+    ],
+    "author": "于智勇｜15684187702@163.com",
     "dependencies": {
+        "@beeboat/components": "^1.0.13",
+        "@beeboat/core": "^1.0.3",
+        "axios": "^0.26.1",
+        "element-plus": "^2.7.7",
+        "lodash": "^4.17.21",
+        "nprogress": "^0.2.0",
+        "pinia": "^2.1.7",
+        "uuid": "^10.0.0",
+        "vue": "^3.4.33",
+        "vue-cookies": "^1.8.2",
+        "vue-router": "^4.0.0",
         "jsencrypt": "^3.2.1",
-        "vue-cookies": "^1.8.2"
+        "@ctrl/tinycolor": "^3.4.1"
+    },
+    "peerDependencies": {
+        "element-plus": "^2.7.7",
+        "vue": "^3.3.4"
     }
 }

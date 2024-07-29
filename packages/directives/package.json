@@ -1,11 +1,27 @@
 {
     "name": "@beeboat/directives",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "beeboat directives library",
-    "main": "index.ts",
+    "main": "dist/lib",
+    "module": "dist/es",
+    "types": "dist/types/index.d.ts",
+    "type": "module",
+    "files": [
+        "dist",
+        "README.md"
+    ],
     "scripts": {
-        "build": "gulp"
+        "build": "vite build"
     },
-    "keywords": [],
-    "author": "mickey | xiukun@163.com"
+    "keywords": [
+        "beeboat",
+        "beeboat-plus",
+        "directives"
+    ],
+    "author": "于智勇｜15684187702@163.com",
+    "license": "ISC",
+    "devDependencies": {
+        "vite-plugin-cleaned": "^1.0.28",
+        "vite-plugin-copyto": "^1.0.18"
+    }
 }

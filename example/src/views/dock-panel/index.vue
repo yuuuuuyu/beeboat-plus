@@ -10,3 +10,7 @@
     </btp-dock-panel>
 </template>
 <script setup></script>
+<style lang="scss">
+@use 'beeboat-plus/theme-chalk/es/components/btp-dockpanel.css';
+@use 'beeboat-plus/theme-chalk/es/fonts/iconfont.css';
+</style>

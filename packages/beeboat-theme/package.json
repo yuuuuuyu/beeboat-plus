@@ -1,13 +1,32 @@
 {
     "name": "@beeboat/beeboat-theme",
-    "version": "1.0.0",
-    "description": "beeboat-theme library",
-    "main": "index.ts",
+    "version": "1.0.1",
+    "description": "beeboat theme library",
+    "main": "dist/lib",
+    "module": "dist/es",
+    "types": "dist/types/index.d.ts",
+    "type": "module",
+    "files": [
+        "dist",
+        "README.md"
+    ],
     "scripts": {
-        "build": "gulp"
+        "import": "node import.js",
+        "build": "pnpm run import && vite build"
     },
+    "keywords": [
+        "beeboat",
+        "beeboat-plus",
+        "theme"
+    ],
     "author": "于智勇｜15684187702@163.com",
     "license": "ISC",
+    "devDependencies": {
+        "sass": "^1.51.0",
+        "shelljs": "^0.8.5",
+        "vite-plugin-cleaned": "^1.0.28",
+        "vite-plugin-copyto": "^1.0.19"
+    },
     "dependencies": {
         "@ctrl/tinycolor": "^3.4.1"
     }
