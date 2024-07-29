@@ -12,7 +12,7 @@ export default defineConfig(() => {
     return {
         plugins: [
             vitePluginCleaned({
-                folder: ['dist', 'es', 'lib', 'types'],
+                folder: ['dist'],
             }),
             vue(),
             DefineOptions(),

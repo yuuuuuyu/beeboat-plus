@@ -23,19 +23,23 @@ webSite
 /packages/core/es/
 /packages/core/lib/
 /packages/core/types/
+/packages/core/dist/
 
 /packages/components/es/
 /packages/components/lib/
 /packages/components/types/
-/packages/beeboat-plus/utils/
+/packages/components/dist/
 
 /packages/directives/es/
 /packages/directives/lib/
-/packages/components/types/
+/packages/directives/types/
+/packages/directives/dist/
 
 /packages/beeboat-theme/es/
 /packages/beeboat-theme/lib/
-/packages/components/types/
+/packages/beeboat-theme/types/
+/packages/beeboat-theme/dist/
+/packages/beeboat-theme/plugins/
 
 /play/
 /paly/src/

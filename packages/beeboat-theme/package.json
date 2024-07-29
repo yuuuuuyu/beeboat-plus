@@ -29,7 +29,9 @@
         "gulp-typescript": "^6.0.0-alpha.1",
         "gulp-vue": "^0.1.0",
         "sass": "^1.51.0",
-        "shelljs": "^0.8.5"
+        "shelljs": "^0.8.5",
+        "vite-plugin-cleaned": "^1.0.28",
+        "vite-plugin-copyto": "^1.0.18"
     },
     "dependencies": {
         "@ctrl/tinycolor": "^3.4.1"

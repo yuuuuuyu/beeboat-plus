@@ -1,5 +1,1 @@
-export default `
-    .aa {
-        height: 100%;
-    }
-`
+export default ``
