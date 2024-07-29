@@ -7,7 +7,7 @@
     "types": "dist/types/index.d.ts",
     "scripts": {
         "auto-patch": "npm version patch",
-        "build:gulp": "vite build"
+        "build": "vite build"
     },
     "files": [
         "es",

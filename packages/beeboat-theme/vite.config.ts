@@ -6,8 +6,8 @@ import DefineOptions from 'unplugin-vue-define-options/vite'
 import { resolve } from 'path'
 
 import VitePluginCleaned from 'vite-plugin-cleaned'
-// import VitePluginCopyto from 'vite-plugin-copyto'
-import VitePluginCopyto from './plugins/index'
+import VitePluginCopyto from 'vite-plugin-copyto'
+// import VitePluginCopyto from './plugins/index'
 
 // https://vitejs.dev/config/
 export default defineConfig(() => {
@@ -41,7 +41,7 @@ export default defineConfig(() => {
                     cptoAll.closeBundle()
                     const cptoThemeChalk = VitePluginCopyto({
                         base: 'dist/es',
-                        source: ['components/*.css', 'index.css', 'types'],
+                        source: ['components', 'index.css'],
                         dest: '../beeboat-plus/theme-chalk',
                     })
                     cptoThemeChalk.closeBundle()

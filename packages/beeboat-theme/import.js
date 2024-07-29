@@ -22,25 +22,19 @@ fs.readdir(componentsDir, (err, files) => {
         console.error('Error reading components directory:', err);
         return;
     }
-
-    // 过滤出所有 SCSS 文件
     const scssFiles = files.filter(file => file.endsWith('.scss'));
-
     // 生成导入语句
     const imports = scssFiles.map(file => `import './components/${file}';`);
-
     // 读取现有的 index.ts 内容
     fs.readFile(indexFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading index.ts file:', err);
             return;
         }
-
         // 检查是否已经包含 SCSS 导入的标记
         const importMarker = '// SCSS imports';
         if (!data.includes(importMarker)) {
             // 将 SCSS 导入添加到文件内容中，使用标记位置以便将来管理
-            console.log(imports, '==', importMarker, '==', data)
             const updatedContent = `${imports.join('')}\n${importMarker}\n${data}`;
             // 写入更新后的内容到 index.ts 文件
             fs.writeFile(indexFilePath, updatedContent, (err) => {

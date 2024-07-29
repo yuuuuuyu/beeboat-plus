@@ -63,8 +63,6 @@ export default defineConfig({
         dts({
             entryRoot: './',
             outputDir: 'types',
-            // outputDir: ['../beeboat-plus/es/src', '../beeboat-plus/lib/src'],
-            //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
             tsConfigFilePath: './tsconfig.json',
         }),
     ],
@@ -74,5 +72,4 @@ export default defineConfig({
             '@beeboat/components': resolve(__dirname, '../components'),
         },
     },
-    // logLevel: 'debug', // 开启调试日志
 })
