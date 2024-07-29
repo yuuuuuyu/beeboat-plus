@@ -1,0 +1,17 @@
+{
+    "extends": "../../tsconfig.json",
+    "include": ["src/**/*.ts", "src/**/*.vue", "src/**/*.d.ts", "utils/*.ts", "shims-vue.d.ts"],
+    "exclude": ["node_modules", "**/*.spec.ts"],
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "baseUrl": "./",
+        "outDir": "dist",
+        "rootDir": "./",
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "paths": {
+            "*": ["types/*"],
+            "*.vue": ["shims-vue.d.ts"]
+        }
+    }
+}

@@ -1,11 +1,34 @@
 {
     "name": "@beeboat/components",
-    "version": "1.0.0",
+    "version": "1.0.13",
     "description": "beeboat components library",
-    "main": "index.ts",
+    "main": "dist/lib",
+    "module": "dist/es",
+    "types": "dist/types/index.d.ts",
+    "type": "module",
+    "files": [
+        "dist",
+        "global.d.ts",
+        "README.md"
+    ],
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "vite build"
     },
-    "keywords": [],
-    "author": "mickey | xiukun@163.com"
+    "keywords": [
+        "beeboat",
+        "beeboat-plus",
+        "components",
+        "vue3",
+        "element-plus"
+    ],
+    "author": "于智勇｜15684187702@163.com",
+    "license": "ISC",
+    "dependencies": {
+        "@beeboat/core": "^1.0.3"
+    },
+    "devDependencies": {
+        "shelljs": "^0.8.5",
+        "vite-plugin-cleaned": "^1.0.28",
+        "vite-plugin-copyto": "^1.0.18"
+    }
 }

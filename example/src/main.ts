@@ -1,13 +1,16 @@
 import App from './App.vue'
 import ElementPlus from 'element-plus'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-import { BTPApplication } from '@beeboat/core/app/index'
+import { BTPApplication } from '@beeboat/core'
 import * as components from '@beeboat/components'
 import DynamicView from './views/layout/bt-view.vue'
 
 import 'element-plus/dist/index.css'
-import '@beeboat/beeboat-theme/src/components/index.scss'
 import './styles/index.scss'
+// 快速调试样式
+import '../../packages/beeboat-theme/src/index.scss'
+// build后的css
+// import 'beeboat-plus/theme-chalk/es/index.css'
 
 import RouteHandler from './hooks/route-handler'
 import {

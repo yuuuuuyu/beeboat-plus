@@ -4,16 +4,12 @@ import {
     BTPBaseInitHandler,
     BTPBaseMountHandler,
     BTPBaseSetupHandler,
-} from './base/index'
+} from './base'
+import { BTPDictDataHandler, BTPMenuDataHandler, BTPUserDataHandler } from './api'
+import { BTPRouterCreateHandler, BTPRemoteMethodLoadHandler } from './init'
+import { BTPAppMountHandler } from './mount'
+import { BTPCookieCreateHandler, BTPHttpCreateHandler, BTPStoreCreateHandler } from './setup'
 
-import {
-    BTPDictDataHandler,
-    BTPMenuDataHandler,
-    BTPUserDataHandler,
-} from './api/index'
-import { BTPRouterCreateHandler,BTPRemoteMethodLoadHandler } from './init/index'
-import { BTPAppMountHandler } from './mount/index'
-import { BTPCookieCreateHandler, BTPHttpCreateHandler, BTPStoreCreateHandler } from './setup/index'
 export {
     BTPBaseHandler,
     BTPBaseApiHandler,

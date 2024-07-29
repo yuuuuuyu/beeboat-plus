@@ -1,7 +1,7 @@
 import { useGlobalConfig } from 'element-plus'
 import { ref, watch } from 'vue'
 
-export const useElementConfig = (option: any, props: any) => {
+export const UseElementConfig = (option: any, props: any) => {
     const size = ref('default')
     const sizeClass = ref('')
     const globalConfig = useGlobalConfig()
