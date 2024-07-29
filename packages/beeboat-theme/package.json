@@ -11,8 +11,8 @@
         "README.md"
     ],
     "scripts": {
-        "build": "vite build",
-        "build:gulp": "gulp -f build/gulpfile.js"
+        "import": "node import.js",
+        "build": "pnpm run import && vite build"
     },
     "keywords": [
         "beeboat",

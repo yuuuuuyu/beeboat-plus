@@ -13,8 +13,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const componentsDir = path.join(__dirname, '../src', 'components');
-const indexFilePath = path.join(__dirname, '../src', 'index.ts');
+const componentsDir = path.join(__dirname, './src', 'components');
+const indexFilePath = path.join(__dirname, './src', 'index.ts');
 
 // 读取 components 目录下的所有 SCSS 文件
 fs.readdir(componentsDir, (err, files) => {
@@ -27,7 +27,7 @@ fs.readdir(componentsDir, (err, files) => {
     const scssFiles = files.filter(file => file.endsWith('.scss'));
 
     // 生成导入语句
-    const imports = scssFiles.map(file => `import './components/${file}';`).join('\n');
+    const imports = scssFiles.map(file => `import './components/${file}';`);
 
     // 读取现有的 index.ts 内容
     fs.readFile(indexFilePath, 'utf8', (err, data) => {
@@ -40,8 +40,8 @@ fs.readdir(componentsDir, (err, files) => {
         const importMarker = '// SCSS imports';
         if (!data.includes(importMarker)) {
             // 将 SCSS 导入添加到文件内容中，使用标记位置以便将来管理
-            const updatedContent = `${imports}\n\n${importMarker}\n${data}`;
-
+            console.log(imports, '==', importMarker, '==', data)
+            const updatedContent = `${imports.join('')}\n${importMarker}\n${data}`;
             // 写入更新后的内容到 index.ts 文件
             fs.writeFile(indexFilePath, updatedContent, (err) => {
                 if (err) {
