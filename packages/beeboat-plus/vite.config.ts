@@ -4,6 +4,8 @@ import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 
+import VitePluginCleaned from 'vite-plugin-cleaned'
+
 export default defineConfig({
     ...baseConfig,
     build: {
@@ -59,6 +61,7 @@ export default defineConfig({
         },
     },
     plugins: [
+        VitePluginCleaned({ folder: ['es', 'lib', 'theme-chalk', 'types', 'utils'] }),
         DefineOptions(),
         dts({
             entryRoot: './',
