@@ -16,7 +16,7 @@ export default class BTPAppMessageBoxManager {
         }else{
             ElMessage({
                 message:message,
-                type:type
+                type:type,
             })
         }
     }

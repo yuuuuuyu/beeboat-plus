@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite'
-import { resolve } from 'path'
 import baseConfig from '../../vite.config'
 import dts from 'vite-plugin-dts'
 

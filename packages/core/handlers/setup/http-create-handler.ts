@@ -101,7 +101,9 @@ export default class BTPHttpCreateHandler extends BTPBaseSetupHandler {
                     msg: data.msg ?? data.stackMsg ?? (response.statusText || '网络异常'),
                 })
             },
-            error => {},
+            error => {
+                console.log(error)
+            },
         )
     }
 
@@ -121,6 +123,7 @@ export default class BTPHttpCreateHandler extends BTPBaseSetupHandler {
      * @returns 是否开启全局异常提示
      */
     isEnableNotice(result): boolean {
+        console.log(result)
         return true
     }
 }

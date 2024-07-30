@@ -7,6 +7,7 @@ import ColumnOperator from './column-operator-content.vue'
 import ColumnSetting from './column-setting-popover.vue'
 
 export {
+    BTPBaseTableManager,
     BTPTableManager,
     BTPTableEditor,
     ColumnRadio,

@@ -1,5 +1,5 @@
 <template>
-    <el-switch class="btp-switch" ref="switchRef">
+    <el-switch ref="switchRef" class="btp-switch">
         <template #active-action><slot name="active-action" /></template>
         <template #inactive-action>
             <slot name="inactive-action" />

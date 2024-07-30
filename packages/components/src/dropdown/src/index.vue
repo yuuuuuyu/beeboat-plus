@@ -1,5 +1,5 @@
 <template>
-    <el-dropdown class="btp-dropdown" ref="dropdownRef">
+    <el-dropdown ref="dropdownRef" class="btp-dropdown">
         <slot>
             <span v-if="$attrs['split-button'] || $attrs['splitButton']">
                 {{ btConfig?.props.name || '' }}
@@ -13,7 +13,7 @@
         <template #dropdown>
             <slot name="dropdown">
                 <el-dropdown-menu>
-                    <template :key="component.id" v-for="component in btConfig?.children">
+                    <template v-for="component in btConfig?.children" :key="component.id">
                         <el-dropdown-item
                             :style="component.styles"
                             v-bind="component.props"

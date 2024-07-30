@@ -1,5 +1,5 @@
 <template>
-    <el-time-select class="btp-time-select" ref="timeSelectRef" />
+    <el-time-select ref="timeSelectRef" class="btp-time-select" />
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'

@@ -1,5 +1,5 @@
 <template>
-    <el-cascader class="btp-cascader" ref="cascaderRef" :options="props.options || state.options">
+    <el-cascader ref="cascaderRef" class="btp-cascader" :options="props.options || state.options">
         <template v-if="$slots.default" #default="{ node, data }">
             <slot :node="node" :data="data" />
         </template>

@@ -66,8 +66,8 @@
                             v-model="item.searchCondition"
                             class="btp-adv-searchbar-dialog--container--item__condition"
                             placeholder="请选择"
-                            @change="onItemConditionChange(item)"
                             :size="size"
+                            @change="onItemConditionChange(item)"
                         >
                             <template v-for="(condition, key) in expressConfigList" :key="key">
                                 <el-option
@@ -93,8 +93,8 @@
                             <el-checkbox
                                 v-model="item.searchVisible"
                                 label="外露"
-                                @change="onExposeClick"
                                 :size="size"
+                                @change="onExposeClick"
                             ></el-checkbox>
                         </el-space>
                     </el-space>
@@ -108,33 +108,33 @@
                     </div>
                     <div class="btp-adv-searchbar-dialog--toolbar">
                         <el-checkbox
-                            label="设置为默认"
                             v-model="state.defaultSceneValue"
-                            @change="onSetDefaultSceneClick"
+                            label="设置为默认"
                             :size="size"
+                            @change="onSetDefaultSceneClick"
                         ></el-checkbox>
                     </div>
                     <div class="btp-adv-searchbar-dialog--toolbar">
                         <el-checkbox
                             v-model="state.exposeAll"
                             label="全部外露"
-                            @change="onExposeAllClick"
                             :size="size"
+                            @change="onExposeAllClick"
                         ></el-checkbox>
                     </div>
                 </el-scrollbar>
             </div>
         </div>
         <template #footer>
-            <el-button :size="size" type="info" @click="state.dialogVisible = false"
-                >取 消</el-button
-            >
-            <el-button :size="size" type="primary" plain @click="onSaveSceneClick"
-                >保存方案</el-button
-            >
-            <el-button :size="size" type="primary" plain @click="onSaveAsSceneClick"
-                >另存方案</el-button
-            >
+            <el-button :size="size" type="info" @click="state.dialogVisible = false">
+                取 消
+            </el-button>
+            <el-button :size="size" type="primary" plain @click="onSaveSceneClick">
+                保存方案
+            </el-button>
+            <el-button :size="size" type="primary" plain @click="onSaveAsSceneClick">
+                另存方案
+            </el-button>
             <el-button :size="size" type="primary" @click="onSearchClick">查 询</el-button>
         </template>
     </el-dialog>
@@ -169,7 +169,7 @@ const props = withDefaults(defineProps<IProps>(), {
     size: '',
 })
 
-const { sizeClass, size } = UseElementConfig(
+const { size } = UseElementConfig(
     {
         componentName: 'btp-adv-searchbar-dialog',
     },
