@@ -4,3 +4,4 @@ import CheckboxGroup from './src/index.vue'
 const BtpCheckboxGroup = withInstall(CheckboxGroup)
 
 export { BtpCheckboxGroup }
+export default BtpCheckboxGroup

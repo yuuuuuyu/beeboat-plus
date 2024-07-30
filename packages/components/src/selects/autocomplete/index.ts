@@ -4,3 +4,4 @@ import Autocomplete from './src/index.vue'
 const BtpAutocomplete = withInstall(Autocomplete)
 
 export { BtpAutocomplete }
+export default BtpAutocomplete

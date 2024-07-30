@@ -4,3 +4,4 @@ import Dialog from './src/index.vue'
 const BtpDialog = withInstall(Dialog)
 
 export { BtpDialog }
+export default BtpDialog

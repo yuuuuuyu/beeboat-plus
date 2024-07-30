@@ -1,41 +1,60 @@
-// vite.config.js
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
 import path from 'path'
+import DefineOptions from 'unplugin-vue-define-options/vite'
 
 export default defineConfig({
-    plugins: [
-        vue(),
-        dts({
-            // outputDir指定.d.ts文件生成的目录
-            outputDir: 'dist/types',
-            // 如果你想为整个项目生成单个声明文件，可以设置staticImport为true
-            staticImport: false,
-            // include指定需要生成声明文件的源文件
-            include: ['**/*.ts', '**/*.tsx', '**/*.vue'],
-            // exclude可以排除不需要生成声明文件的文件或目录
-            exclude: ['vite.config.ts', 'node_modules'],
-            // 使用根目录的 tsconfig.json
-            tsConfigFilePath: path.resolve(__dirname, './tsconfig.json'),
-        }),
-    ],
     build: {
-        lib: {
-            entry: 'src/index.ts',
-            name: 'YourLibraryName',
-            formats: ['es', 'cjs'],
-            fileName: format => `your-library-name.${format}.js`,
-        },
+        minify: true,
         rollupOptions: {
-            // 设置外部依赖，这些不会被打包进库
-            external: ['vue'],
-            output: {
-                globals: {
-                    vue: 'Vue',
-                },
+            external: id => {
+                const externals = [
+                    'vue',
+                    'lodash',
+                    'lodash-es',
+                    'vue-router',
+                    '@vueuse/core',
+                    'axios',
+                    'element-plus',
+                    'nprogress',
+                    'vue-demi',
+                    '@vue_shared',
+                    'vue-cookies',
+                    'pinia',
+                    'uuid',
+                    '@beeboat/core',
+                    '@beeboat/components',
+                    'resize-observer',
+                    'async-validator',
+                    '@ctrl/tinycolor',
+                ]
+                if (externals.includes(id)) {
+                    return true
+                }
+                return externals.some(pkg => id.startsWith(pkg))
             },
+            output: [
+                {
+                    format: 'es',
+                    entryFileNames: '[name].js',
+                    preserveModules: true,
+                    exports: 'named',
+                    dir: './dist/es',
+                },
+                {
+                    format: 'cjs',
+                    entryFileNames: '[name].js',
+                    preserveModules: true,
+                    exports: 'named',
+                    dir: './dist/lib',
+                },
+            ],
+        },
+        lib: {
+            entry: './index.ts',
+            formats: ['es', 'cjs'],
         },
     },
+    plugins: [vue(), DefineOptions()],
 })

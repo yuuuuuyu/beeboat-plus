@@ -4,3 +4,4 @@ import DatePicker from './src/index.vue'
 const BtpDatePicker = withInstall(DatePicker)
 
 export { BtpDatePicker }
+export default BtpDatePicker
