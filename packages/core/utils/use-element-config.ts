@@ -10,6 +10,8 @@ export const UseElementConfig = (option: any, props: any) => {
     watch(
         () => globalConfig,
         config => {
+            console.log(config, 'config...')
+
             if (props?.size) {
                 size.value = props.size
                 sizeClass.value = `${option.componentName}--${size.value}`

@@ -1,13 +1,12 @@
 {
     "name": "beeboat-plus",
-    "version": "0.0.26",
+    "version": "0.0.29",
     "description": "",
     "main": "dist/lib",
     "module": "dist/es",
     "types": "dist/types/index.d.ts",
     "type": "module",
     "scripts": {
-        "auto-patch": "npm version patch",
         "build": "vite build"
     },
     "files": [
