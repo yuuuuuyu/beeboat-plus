@@ -67,7 +67,7 @@ export default defineConfig({
         dts({
             entryRoot: './',
             outputDir: 'dist/types',
-            tsConfigFilePath: './tsconfig.json',
+            tsConfigFilePath: '../../tsconfig.json',
             copyDtsFiles: true,
             afterBuild() {
                 const cpto = VitePluginCopyto({

@@ -36,7 +36,6 @@ export default defineConfig({
                 // 匹配子模块情况，如 nprogress 的子路径
                 return externals.some(pkg => id.startsWith(pkg))
             },
-            input: ['index.ts'],
             output: [
                 {
                     format: 'es',
@@ -68,13 +67,16 @@ export default defineConfig({
         dts({
             entryRoot: './',
             outputDir: 'dist/types',
-            tsConfigFilePath: './tsconfig.json',
-        }),
-        vitePluginCopyto({
-            root: resolve(__dirname),
-            base: 'dist',
-            source: ['es', 'lib', 'types'],
-            dest: '../beeboat-plus',
+            tsConfigFilePath: '../../tsconfig.json',
+            afterBuild() {
+                const cpto = vitePluginCopyto({
+                    root: resolve(__dirname),
+                    base: 'dist',
+                    source: ['es', 'lib', 'types'],
+                    dest: '../beeboat-plus',
+                })
+                cpto.closeBundle()
+            },
         }),
     ],
 })

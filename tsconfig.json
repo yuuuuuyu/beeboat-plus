@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "rootDir": "./packages",
+        "rootDir": "./",
         "outDir": "dist",
         "baseUrl": ".",
         "paths": {
@@ -31,17 +31,6 @@
         "strict": true, // 是否启动严格模式
         "skipLibCheck": true // 跳过类库检测
     },
-    "exclude": [
-        // 排除掉哪些类库
-        "node_modules",
-        "**/__tests__",
-        "dist"
-    ],
-    "include": [
-        "packages/**/*",
-        "packages/**/*.ts",
-        "packages/**/*.d.ts",
-        "packages/**/*.tsx",
-        "packages/**/*.vue"
-    ]
+    "exclude": ["node_modules", "**/__tests__", "dist"],
+    "include": ["**/*", "**/*.ts", "**/*.d.ts", "**/*.tsx", "**/*.vue"]
 }

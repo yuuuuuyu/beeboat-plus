@@ -7,7 +7,6 @@ import { resolve } from 'path'
 
 import VitePluginCleaned from 'vite-plugin-cleaned'
 import VitePluginCopyto from 'vite-plugin-copyto'
-// import VitePluginCopyto from './plugins/index'
 
 // https://vitejs.dev/config/
 export default defineConfig(() => {
@@ -21,7 +20,7 @@ export default defineConfig(() => {
             dts({
                 entryRoot: 'src',
                 outputDir: 'dist/types',
-                tsConfigFilePath: './tsconfig.json',
+                tsConfigFilePath: '../../tsconfig.json',
                 // // 如果使用rollupTypes: true会报错，貌似结果是对的
                 // rollupTypes: true,
                 // copyDtsFiles: true,

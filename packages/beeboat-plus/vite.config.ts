@@ -66,7 +66,7 @@ export default defineConfig({
         dts({
             entryRoot: './',
             outputDir: 'types',
-            tsConfigFilePath: './tsconfig.json',
+            tsConfigFilePath: '../../tsconfig.json',
         }),
     ],
     resolve: {
