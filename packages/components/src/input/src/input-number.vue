@@ -1,5 +1,5 @@
 <template>
-    <el-input-number class="btp-input-number" ref="inputNumberRef">
+    <el-input-number ref="inputNumberRef" class="btp-input-number">
         <template v-if="$slots['decrease-icon']"><slot name="decrease-icon" /></template>
         <template v-if="$slots['increase-icon']"><slot name="increase-icon" /></template>
     </el-input-number>

@@ -55,9 +55,9 @@ export const useInit = (elTableRef, props, emits) => {
             state.multiSelectionCheckAll = false
             state.multiSelectionCheckIndeterminate = false
             state.selection = []
-            Object.keys(state.multiSelectionData).forEach((key) => {
-                state.multiSelectionData[key] = false;
-            });
+            Object.keys(state.multiSelectionData).forEach(key => {
+                state.multiSelectionData[key] = false
+            })
         }).then(() => {
             loadData()
         })

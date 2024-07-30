@@ -1,5 +1,5 @@
 <template>
-    <el-date-picker class="btp-date-picker" ref="datePickerRef">
+    <el-date-picker ref="datePickerRef" class="btp-date-picker">
         <template v-if="$slots.default" #default="cell">
             <slot name="default" :cell="cell" />
         </template>

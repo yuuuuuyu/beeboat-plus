@@ -15,15 +15,15 @@
             }"
         >
             <slot name="dock">
-                <template :key="component.id" v-for="component in btConfig?.dock?.children">
+                <template v-for="component in btConfig?.dock?.children" :key="component.id">
                     <component
                         :is="btViewContext.render(component)"
+                        v-bind="component.props"
+                        v-model="btViewContext.dataModelProxy[component.model?.prop]"
                         :style="component.styles"
                         :bt-view-context="btViewContext"
                         :bt-config="component"
                         v-on="component.events"
-                        v-bind="component.props"
-                        v-model="btViewContext.dataModelProxy[component.model?.prop]"
                     />
                 </template>
             </slot>
@@ -40,15 +40,15 @@
         </div>
         <div class="btp-dockpanel-right">
             <slot>
-                <template :key="component.id" v-for="component in btConfig?.dockcontent?.children">
+                <template v-for="component in btConfig?.dockcontent?.children" :key="component.id">
                     <component
                         :is="btViewContext.render(component)"
+                        v-bind="component.props"
+                        v-model="btViewContext.dataModelProxy[component.model?.prop]"
                         :style="component.styles"
                         :bt-view-context="btViewContext"
                         :bt-config="component"
                         v-on="component.events"
-                        v-bind="component.props"
-                        v-model="btViewContext.dataModelProxy[component.model?.prop]"
                     />
                 </template>
             </slot>
