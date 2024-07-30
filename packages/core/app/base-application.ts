@@ -167,7 +167,7 @@ export default class BTPBaseApplication {
     /**
      * @description 获取Http请求对象
      */
-    getHttp(): AxiosInstance {
+    getHttp(): any {
         return this.$http
     }
 

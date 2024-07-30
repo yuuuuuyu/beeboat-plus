@@ -1,6 +1,7 @@
 import { reactive } from 'vue'
+import BTPComponentContext from './component-context'
 
-export default class BTPBaseViewContext {
+export default class BTPBaseViewContext extends BTPComponentContext {
     /**
      * @description 页面配置模型
      */
@@ -17,6 +18,7 @@ export default class BTPBaseViewContext {
     public dataModelProxy: ProxyConstructor
 
     constructor() {
+        super()
         this.viewModel = this.initViewModel()
         this.dataModel = this.initDataModel()
         this.dataModelProxy = this.initDataModelProxy(this.dataModel)
