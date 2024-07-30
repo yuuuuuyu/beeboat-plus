@@ -24,7 +24,7 @@ export default defineConfig(() => {
                     const cpto = VitePluginCopyto({
                         root: resolve(__dirname),
                         base: 'dist',
-                        source: ['es', 'lib', 'types', 'utils'],
+                        source: ['es', 'lib', 'types'],
                         dest: '../beeboat-plus',
                     })
                     cpto.closeBundle()
