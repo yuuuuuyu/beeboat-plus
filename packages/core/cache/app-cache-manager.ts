@@ -9,12 +9,7 @@ export default class BTPAppCacheManager {
     /**
      * 数据
      */
-    public datas = reactive({
-        /**
-         * 菜单树数据
-         */
-        menuTreeList: [] as Array<any>,
-    })
+    public datas
     /**
      * 接口数据
      */
@@ -50,7 +45,17 @@ export default class BTPAppCacheManager {
      */
     private dictMap = [] as Array<any>
 
-    constructor() {}
+    constructor() {
+        /**
+         * 数据
+         */
+        this.datas = reactive({
+            /**
+             * 菜单树数据
+             */
+            menuTreeList: [] as Array<any>,
+        })
+    }
 
     /**
      * 清空数据
