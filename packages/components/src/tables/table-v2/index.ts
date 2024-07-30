@@ -4,3 +4,4 @@ import TableV2 from './src/table-v2.vue'
 const BtpTableV2 = withInstall(TableV2)
 
 export { BtpTableV2 }
+export default BtpTableV2
