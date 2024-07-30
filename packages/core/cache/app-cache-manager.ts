@@ -1,3 +1,4 @@
+import { reactive } from 'vue'
 import BTPUtils from '../utils/btp-utils'
 
 /**
@@ -5,6 +6,15 @@ import BTPUtils from '../utils/btp-utils'
  * @author Enmaai
  */
 export default class BTPAppCacheManager {
+    /**
+     * 数据
+     */
+    public datas = reactive({
+        /**
+         * 菜单树数据
+         */
+        menuTreeList: [] as Array<any>,
+    })
     /**
      * 接口数据
      */
@@ -36,11 +46,6 @@ export default class BTPAppCacheManager {
     private menuRouteIdList = [] as Array<String>
 
     /**
-     * 菜单树数据
-     */
-    private menuTreeList = [] as Array<any>
-
-    /**
      * 数据字典数据
      */
     private dictMap = [] as Array<any>
@@ -54,7 +59,7 @@ export default class BTPAppCacheManager {
         this.userToken = undefined
         this.roleIdList = []
         this.rightIdList = []
-        this.menuTreeList = []
+        this.datas.menuTreeList = []
         this.dictMap = []
     }
 
@@ -121,7 +126,7 @@ export default class BTPAppCacheManager {
      * @returns 菜单树列表数据
      */
     public getMenuTreeList(): Array<any> {
-        return this.menuTreeList
+        return this.datas.menuTreeList
     }
 
     /**
@@ -213,7 +218,7 @@ export default class BTPAppCacheManager {
      * @param menuTreeList 菜单树数据
      */
     public setMenuTreeList(menuTreeList: any): void {
-        this.menuTreeList = menuTreeList
+        this.datas.menuTreeList = menuTreeList
         this.menuRouteIdList = []
         const menuList = BTPUtils.treeToList(menuTreeList)
         menuList.forEach(item => {

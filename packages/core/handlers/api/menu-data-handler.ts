@@ -19,7 +19,9 @@ export default class BTPMenuDataHandler extends BTPBaseApiHandler {
             const data = await this.getApp().$http.post(this.getEnv('VITE_GLOBAL_MENU_API'), {
                 t: Math.random() * 1000 + 1,
             })
-            this.getCacheManager().setMenuTreeList(data.data)
+            if (data) {
+                this.getCacheManager().setMenuTreeList(data.data || [])
+            }
         }
     }
 }
