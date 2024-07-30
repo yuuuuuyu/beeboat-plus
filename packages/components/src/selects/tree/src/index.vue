@@ -21,14 +21,14 @@
         <div class="btp-tree--toolbar">
             <slot name="treeToolbar">
                 <template v-if="btConfig?.toolbar?.children?.length > 0">
-                    <template :key="component.id" v-for="component in btConfig?.toolbar?.children">
+                    <template v-for="component in btConfig?.toolbar?.children" :key="component.id">
                         <component
                             :is="btViewContext.render(component)"
                             :style="component.styles"
                             :bt-view-context="btViewContext"
                             :bt-config="component"
-                            v-on="component.events"
                             v-bind="component.props"
+                            v-on="component.events"
                         />
                     </template>
                 </template>
@@ -73,16 +73,16 @@
                                 <slot name="append" :node="node" :data="data">
                                     <template v-if="btConfig?.children?.length > 0">
                                         <template
-                                            :key="component.id"
                                             v-for="component in btConfig?.children"
+                                            :key="component.id"
                                         >
                                             <component
                                                 :is="btViewContext.render(component)"
                                                 :style="component.styles"
                                                 :bt-view-context="btViewContext"
                                                 :bt-config="component"
-                                                v-on="component.events"
                                                 v-bind="component.props"
+                                                v-on="component.events"
                                             />
                                         </template>
                                     </template>

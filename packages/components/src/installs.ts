@@ -51,4 +51,13 @@ export default [
     BtpMicroAppHeader,
     BtpMicroAppMenu,
     BtpMicroAppRouterView,
+    BtpSelectV2,
+    BtpAutocomplete,
+    BtpCascader,
+    BtpCheckboxGroup,
+    BtpDataPicker,
+    BtpRadioGroup,
+    BtpSelect,
+    BtpTree,
+    BtpTreeSelect,
 ]

@@ -1,7 +1,7 @@
 <template>
     <el-radio
-        :label="scope.row.id"
         v-model="manager.state.radioSelection"
+        :label="scope.row.id"
         @change="manager.selectSingleRow(scope.row)"
     >
         {{ '' }}

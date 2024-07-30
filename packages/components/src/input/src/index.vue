@@ -1,5 +1,5 @@
 <template>
-    <el-input class="btp-input" ref="inputRef">
+    <el-input ref="inputRef" class="btp-input">
         <template v-if="$slots.prefix"><slot name="prefix" /></template>
         <template v-if="$slots.suffix"><slot name="suffix" /></template>
         <template v-if="$slots.prepend"><slot name="prepend" /></template>

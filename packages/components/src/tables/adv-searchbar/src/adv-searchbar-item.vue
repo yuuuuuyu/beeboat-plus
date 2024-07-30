@@ -19,7 +19,7 @@
                     </span>
                     <template #dropdown>
                         <el-dropdown-menu>
-                            <template :key="key" v-for="(condition, key) in expressConfigList">
+                            <template v-for="(condition, key) in expressConfigList" :key="key">
                                 <el-dropdown-item
                                     v-if="isColumnSupportCondition(key)"
                                     :command="key"

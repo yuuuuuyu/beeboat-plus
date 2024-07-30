@@ -1,9 +1,7 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import baseConfig from '../../vite.config'
-import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
-import DefineOptions from 'unplugin-vue-define-options/vite'
 
 import VitePluginCleaned from 'vite-plugin-cleaned'
 import VitePluginCopyto from 'vite-plugin-copyto'

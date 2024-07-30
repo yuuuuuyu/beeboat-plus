@@ -17,15 +17,15 @@
         <!-- 搜索栏下 头部左侧操作栏 -->
         <div class="btp-table--toolbar">
             <slot name="toolbar" :selection="state.selection">
-                <template :key="component.id" v-for="component in btConfig?.toolbar?.children">
+                <template v-for="component in btConfig?.toolbar?.children" :key="component.id">
                     <component
                         :is="btViewContext.render(component)"
+                        v-bind="component.props"
+                        v-model="btViewContext.dataModelProxy[component.model?.prop]"
                         :style="component.styles"
                         :bt-view-context="btViewContext"
                         :bt-config="component"
                         v-on="component.events"
-                        v-bind="component.props"
-                        v-model="btViewContext.dataModelProxy[component.model?.prop]"
                     />
                 </template>
             </slot>
@@ -34,8 +34,8 @@
             <div class="btp-table--table--container">
                 <el-table
                     ref="tableRef"
-                    :data="manager.getTableData()"
                     v-loading="state.loading"
+                    :data="manager.getTableData()"
                     v-bind="{ ...$props, ...$attrs }"
                     v-on="manager.getEmitsEvent()"
                 >
@@ -127,12 +127,13 @@
             v-if="props.pagination?.enable"
             ref="paginationRef"
             v-bind="props.pagination"
-            v-on="manager.getPaginationEvents()"
             v-model:current-page="state.pagination.currentPage"
             v-model:page-size="state.pagination.pageSize"
             v-model:reserve="state.pagination.reserve"
             :selection="state.selection"
             :total="state.pagination.total"
+            :size="size"
+            v-on="manager.getPaginationEvents()"
         ></BtpPagination>
     </div>
 </template>

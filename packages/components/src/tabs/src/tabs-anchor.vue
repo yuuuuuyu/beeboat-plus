@@ -1,8 +1,8 @@
 <template>
     <el-tabs
-        class="btp-tabs-anchor"
         ref="elTabRef"
         v-model="state.activeTabName"
+        class="btp-tabs-anchor"
         @tab-change="tabChange"
         @tab-click="v1 => jump(v1, null)"
         @tab-remove="v1 => $emit('tab-remove', v1)"
@@ -11,7 +11,7 @@
     >
         <el-scrollbar>
             <slot name="default">
-                <template :key="component.id" v-for="component in btConfig?.children">
+                <template v-for="component in btConfig?.children" :key="component.id">
                     <component
                         :is="btViewContext.render(component)"
                         :style="component.styles"

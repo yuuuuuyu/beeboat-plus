@@ -10,9 +10,9 @@
                             <CaretBottom v-else></CaretBottom>
                         </el-icon>
                     </el-button>
-                    <el-button :size="size" type="primary" @click="onSearchClick()"
-                        >查 询</el-button
-                    >
+                    <el-button :size="size" type="primary" @click="onSearchClick()">
+                        查 询
+                    </el-button>
                     <el-button :size="size" plain @click="onReset">重 置</el-button>
                     <template v-if="props.enableAdvSearch">
                         <el-button
@@ -24,8 +24,8 @@
                             高级查询
                         </el-button>
                         <el-select
-                            :size="size"
                             v-model="state.currentSceneId"
+                            :size="size"
                             @change="onSceneChange"
                         >
                             <el-option
@@ -43,11 +43,11 @@
                 <template v-for="item in state.exposeSearchList" :key="item.id">
                     <AdvSearchItem
                         v-if="item.searchVisible"
-                        :props="item"
                         v-model:modelValue="item.searchValue"
+                        :props="item"
                         class="expose-item"
-                        @search="onSearchClick()"
                         :size="size"
+                        @search="onSearchClick()"
                     ></AdvSearchItem>
                 </template>
             </el-scrollbar>
@@ -91,7 +91,7 @@ const props = withDefaults(defineProps<IProps>(), {
     size: '',
 })
 
-const { sizeClass, size } = UseElementConfig(
+const { size } = UseElementConfig(
     {
         componentName: 'btp-adv-searchbar',
     },

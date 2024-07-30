@@ -1,15 +1,15 @@
 <template>
     <el-card class="btp-card">
         <slot name="default">
-            <template :key="component.id" v-for="component in btConfig?.children">
+            <template v-for="component in btConfig?.children" :key="component.id">
                 <component
                     :is="btViewContext.render(component)"
+                    v-bind="component.props"
+                    v-model="btViewContext.dataModelProxy[component.model?.prop]"
                     :style="component.styles"
                     :bt-view-context="btViewContext"
                     :bt-config="component"
                     v-on="component.events"
-                    v-bind="component.props"
-                    v-model="btViewContext.dataModelProxy[component.model?.prop]"
                 />
             </template>
         </slot>
@@ -20,17 +20,17 @@
                     <template v-if="btConfig?.toolbar?.children?.lengt > 0">
                         <span class="btp-card-header--toolbar">
                             <template
-                                :key="component.id"
                                 v-for="component in btConfig.toolbar.children"
+                                :key="component.id"
                             >
                                 <component
                                     :is="btViewContext.render(component)"
+                                    v-bind="component.props"
+                                    v-model="btViewContext.dataModelProxy[component.model?.prop]"
                                     :style="component.styles"
                                     :bt-view-context="btViewContext"
                                     :bt-config="component"
                                     v-on="component.events"
-                                    v-bind="component.props"
-                                    v-model="btViewContext.dataModelProxy[component.model?.prop]"
                                 />
                             </template>
                         </span>
@@ -46,15 +46,15 @@
             <div class="btp-card-footer">
                 <span class="btp-card-footer--title">{{ $attrs.footer }}</span>
                 <span class="btp-card-footer--toolbar">
-                    <template :key="component.id" v-for="component in btConfig?.footer?.children">
+                    <template v-for="component in btConfig?.footer?.children" :key="component.id">
                         <component
                             :is="btViewContext.render(component)"
+                            v-bind="component.props"
+                            v-model="btViewContext.dataModelProxy[component.model?.prop]"
                             :style="component.styles"
                             :bt-view-context="btViewContext"
                             :bt-config="component"
                             v-on="component.events"
-                            v-bind="component.props"
-                            v-model="btViewContext.dataModelProxy[component.model?.prop]"
                         />
                     </template>
                 </span>

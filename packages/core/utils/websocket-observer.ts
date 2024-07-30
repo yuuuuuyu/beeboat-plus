@@ -2,8 +2,10 @@ export default class BTPWebsocketObserver {
     private listener: any
     private socket: WebSocket
     private socketTimeInterval: any
+    private retry: number
 
     constructor(url, listener, retry = 10000) {
+        this.retry = retry
         this.listener = listener
         this.socket = new WebSocket(url)
         this.socket.onmessage = (msg: any) => {

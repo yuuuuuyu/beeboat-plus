@@ -1,15 +1,15 @@
 <template>
     <el-tab-pane>
         <slot name="default">
-            <template :key="component.id" v-for="component in btConfig?.children">
+            <template v-for="component in btConfig?.children" :key="component.id">
                 <component
                     :is="btViewContext.render(component)"
+                    v-bind="component.props"
+                    v-model="btViewContext.dataModelProxy[component.model?.prop]"
                     :style="component.styles"
                     :bt-view-context="btViewContext"
                     :bt-config="component"
                     v-on="component.events"
-                    v-bind="component.props"
-                    v-model="btViewContext.dataModelProxy[component.model?.prop]"
                 />
             </template>
         </slot>
