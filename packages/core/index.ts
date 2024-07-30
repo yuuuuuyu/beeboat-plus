@@ -35,7 +35,12 @@ import BTPLogicExecutor from './logics/logic-executor'
 
 import BTPUtils from './utils/btp-utils'
 import { UseElementConfig } from './utils/use-element-config'
-import { withInstall, withInstallFunction, withInstallDirective } from './utils/with-install'
+import {
+    withInstall,
+    withInstallFunction,
+    withInstallDirective,
+    makeInstaller,
+} from './utils/with-install'
 
 // is
 import {
@@ -89,6 +94,7 @@ export {
     withInstall,
     withInstallFunction,
     withInstallDirective,
+    makeInstaller,
     // 以下待考量
     is,
     isFunction,

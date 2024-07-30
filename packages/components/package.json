@@ -24,7 +24,7 @@
     "author": "于智勇｜15684187702@163.com",
     "license": "ISC",
     "dependencies": {
-        "@beeboat/core": "^1.0.3"
+        "@beeboat/core": "^1.0.5"
     },
     "devDependencies": {
         "shelljs": "^0.8.5",

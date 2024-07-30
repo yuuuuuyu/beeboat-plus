@@ -4,3 +4,4 @@ import Resizer from './src/index.vue'
 const BtpResizer = withInstall(Resizer)
 
 export { BtpResizer }
+export default BtpResizer

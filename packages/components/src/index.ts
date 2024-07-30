@@ -1,4 +1,4 @@
-import { makeInstaller } from '../utils/make-installer'
+import { makeInstaller } from '@beeboat/core'
 import installs from './installs'
 
 export * from './components'
