@@ -17,14 +17,13 @@ export default defineConfig({
         }),
         dts({
             entryRoot: './',
-            outputDir: 'dist/types',
+            outputDir: ['dist/es', 'dist/lib'],
             tsConfigFilePath: '../../tsconfig.json',
-            copyDtsFiles: true,
             afterBuild() {
                 const cpto = VitePluginCopyto({
                     root: resolve(__dirname),
                     base: 'dist',
-                    source: ['es', 'lib', 'types'],
+                    source: ['es', 'lib'],
                     dest: '../beeboat-plus',
                 })
                 cpto.closeBundle()

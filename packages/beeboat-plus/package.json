@@ -1,16 +1,16 @@
 {
     "name": "beeboat-plus",
-    "version": "0.0.95",
+    "version": "0.1.1",
     "description": "",
     "main": "./lib",
     "module": "./es",
-    "types": "./types/index.d.ts",
+    "types": "./es/index.d.ts",
     "type": "module",
     "exports": {
         ".": {
             "import": "./es",
             "require": "./lib",
-            "types": "./types/index.d.ts"
+            "types": "./es/index.d.ts"
         },
         "./*": "./*"
     },
@@ -33,9 +33,10 @@
     ],
     "author": "于智勇｜15684187702@163.com",
     "dependencies": {
-        "@beeboat/beeboat-theme": "^1.0.1",
+        "@beeboat/beeboat-theme": "^1.0.9",
         "@beeboat/components": "^1.0.14",
         "@beeboat/core": "^1.0.6",
+        "@beeboat/directives": "^1.0.2",
         "@ctrl/tinycolor": "^3.4.1",
         "axios": "^0.26.1",
         "element-plus": "^2.7.7",

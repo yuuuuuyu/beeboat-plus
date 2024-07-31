@@ -23,6 +23,7 @@ export default defineConfig({
                     'uuid',
                     '@beeboat/core',
                     '@beeboat/components',
+                    '@beeboat/directives',
                     'resize-observer',
                     'async-validator',
                     '@ctrl/tinycolor',
