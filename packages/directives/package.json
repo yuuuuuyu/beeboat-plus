@@ -22,6 +22,6 @@
     "license": "ISC",
     "devDependencies": {
         "vite-plugin-cleaned": "^1.0.28",
-        "vite-plugin-copyto": "^1.0.18"
+        "vite-plugin-copyto": "^1.0.19"
     }
 }

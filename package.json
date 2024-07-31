@@ -5,8 +5,7 @@
     "description": "beeboat-plus repository",
     "scripts": {
         "build": "pnpm run --filter \"./packages/beeboat-plus\" build && pnpm --filter \"./packages/*\" --filter \"!./packages/beeboat-plus\" build",
-        "publish:version": "gulp -f build/publish/gulpfile.ts",
-        "publish:npm": "gulp -f build/publish/gulpfile.ts",
+        "publish:npm": "cd \"./packages/beeboat-plus\" && npm version patch && npm publish --registry=https://nexus.hive-df.com/repository/bt-npm-hosted/",
         "dev": "pnpm -C example dev",
         "lint:eslint": "eslint --cache --max-warnings 0  \"packages/**/*.{vue,js,ts,tsx}\" --fix",
         "lint:prettier": "prettier --write  \"packages/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",

@@ -13,10 +13,12 @@
         "register:components": "vitepress-rc"
     },
     "dependencies": {
+        "@beeboat/core": "^1.0.7",
         "@element-plus/icons-vue": "^2.0.10",
         "axios": "^0.26.1",
+        "beeboat-plus": "^0.0.88",
         "cross-env": "^7.0.3",
-        "element-plus": "2.7.6",
+        "element-plus": "^2.7.6",
         "pinia": "^2.0.18",
         "vue": "^3.2.37",
         "vue-cookies": "^1.8.2",
@@ -33,12 +35,5 @@
         "vite-plugin-dts": "^1.7.0",
         "vite-plugin-html": "^3.2.0",
         "vue-tsc": "^0.34.7"
-    },
-    "pnpm": {
-        "peerDependencyRules": {
-            "ignoreMissing": [
-                "@algolia/client-search"
-            ]
-        }
     }
 }

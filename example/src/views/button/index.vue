@@ -32,4 +32,7 @@
 </template>
 <script setup lang="ts">
 import { Share } from '@element-plus/icons-vue'
+import { UseElementConfig } from '@beeboat/core'
+const cc = UseElementConfig({ componentName: 'btp-button' })
+console.log(cc)
 </script>
