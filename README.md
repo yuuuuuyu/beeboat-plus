@@ -66,3 +66,7 @@ pnpm dev
 ### gitlab提交规范
 
     参考 commitlint.config.js 中规则提交
+
+
+### 子包构建
+子包构建发布后，在主包中更新版本号
