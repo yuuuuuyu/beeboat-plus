@@ -11,3 +11,5 @@ export default { install }
 // 可以实现按需加载
 export * from '@beeboat/components'
 export * from '@beeboat/core'
+export * from '@beeboat/beeboat-theme'
+export * from '@beeboat/directives'

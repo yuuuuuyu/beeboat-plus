@@ -1,6 +1,6 @@
 {
     "name": "@beeboat/core",
-    "version": "1.0.5",
+    "version": "1.0.8",
     "description": "beeboat core library",
     "main": "./dist/lib",
     "module": "./dist/es",
@@ -41,6 +41,9 @@
     },
     "devDependencies": {
         "vite-plugin-cleaned": "^1.0.28",
-        "vite-plugin-copyto": "^1.0.18"
+        "vite-plugin-copyto": "^1.0.19"
+    },
+    "peerDependencies": {
+        "element-plus": "^2.7.7"
     }
 }

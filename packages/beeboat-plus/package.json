@@ -1,18 +1,26 @@
 {
     "name": "beeboat-plus",
-    "version": "0.0.26",
+    "version": "0.0.95",
     "description": "",
-    "main": "dist/lib",
-    "module": "dist/es",
-    "types": "dist/types/index.d.ts",
+    "main": "./lib",
+    "module": "./es",
+    "types": "./types/index.d.ts",
     "type": "module",
+    "exports": {
+        ".": {
+            "import": "./es",
+            "require": "./lib",
+            "types": "./types/index.d.ts"
+        },
+        "./*": "./*"
+    },
     "scripts": {
-        "auto-patch": "npm version patch",
         "build": "vite build"
     },
     "files": [
         "es",
         "lib",
+        "types",
         "theme-chalk",
         "global.d.ts",
         "README.md"
@@ -25,19 +33,20 @@
     ],
     "author": "于智勇｜15684187702@163.com",
     "dependencies": {
-        "@beeboat/components": "^1.0.13",
-        "@beeboat/core": "^1.0.3",
+        "@beeboat/beeboat-theme": "^1.0.1",
+        "@beeboat/components": "^1.0.14",
+        "@beeboat/core": "^1.0.6",
+        "@ctrl/tinycolor": "^3.4.1",
         "axios": "^0.26.1",
         "element-plus": "^2.7.7",
+        "jsencrypt": "^3.2.1",
         "lodash": "^4.17.21",
         "nprogress": "^0.2.0",
         "pinia": "^2.1.7",
         "uuid": "^10.0.0",
         "vue": "^3.4.33",
         "vue-cookies": "^1.8.2",
-        "vue-router": "^4.0.0",
-        "jsencrypt": "^3.2.1",
-        "@ctrl/tinycolor": "^3.4.1"
+        "vue-router": "^4.0.0"
     },
     "peerDependencies": {
         "element-plus": "^2.7.7",
