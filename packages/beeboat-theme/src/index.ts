@@ -1,4 +1,4 @@
-import './components/btp-adv-searchbar-dialog.scss';import './components/btp-adv-searchbar-item.scss';import './components/btp-adv-searchbar.scss';import './components/btp-button.scss';import './components/btp-card.scss';import './components/btp-dialog.scss';import './components/btp-dockpanel.scss';import './components/btp-pagination.scss';import './components/btp-table-editor.scss';import './components/btp-table-setting.scss';import './components/btp-table.scss';import './components/btp-tabs-anchor.scss';import './components/btp-tabs.scss';import './components/btp-tree.scss';import './components/index.scss'
+import './components/btp-adv-searchbar-dialog.scss';import './components/btp-adv-searchbar-item.scss';import './components/btp-adv-searchbar.scss';import './components/btp-button.scss';import './components/btp-card.scss';import './components/btp-dialog.scss';import './components/btp-dockpanel.scss';import './components/btp-pagination.scss';import './components/btp-table-editor.scss';import './components/btp-table-setting.scss';import './components/btp-table.scss';import './components/btp-tabs-anchor.scss';import './components/btp-tabs.scss';import './components/btp-tree.scss';import './components/index.scss';
 // SCSS imports
 import { loaderTheme } from './loader'
 import { getTheme, setTheme, getThemeAll } from './theme/index'
@@ -26,8 +26,8 @@ function addTheme(theme: Theme.ThemeConfig): void {
  * 初始化
  * @param theme
  */
-function start(theme?: Theme.ThemeType): void {
-    const themeConfig: Theme.ThemeConfig = getTheme(theme)
+function start(themeddd?: Theme.ThemeType): void {
+    const themeConfig: Theme.ThemeConfig = getTheme(themeddd)
     // 加载 css变量
     loaderTheme(themeConfig)
 }
