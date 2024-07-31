@@ -32,7 +32,7 @@ export default defineConfig({
         VitePluginCleaned({ folder: ['es', 'lib', 'theme-chalk', 'types', 'utils'] }),
         dts({
             entryRoot: './',
-            outputDir: 'types',
+            outputDir: ['es', 'lib'],
             tsConfigFilePath: '../../tsconfig.json',
         }),
     ],

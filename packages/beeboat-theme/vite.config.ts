@@ -22,22 +22,19 @@ export default defineConfig({
         }),
         dts({
             entryRoot: 'src',
-            outputDir: 'dist/types',
+            outputDir: ['dist/es', 'dist/lib'],
             tsConfigFilePath: '../../tsconfig.json',
-            // // 如果使用rollupTypes: true会报错，貌似结果是对的
-            // rollupTypes: true,
-            // copyDtsFiles: true,
             afterBuild() {
                 const cpto = VitePluginCopyto({
                     base: 'src',
-                    source: ['fonts', 'types'],
+                    source: ['fonts'],
                     dest: './dist/es',
                 })
                 cpto.closeBundle()
                 const cptoAll = VitePluginCopyto({
                     root: resolve(__dirname),
                     base: 'dist',
-                    source: ['es', 'lib', 'types'],
+                    source: ['es', 'lib'],
                     dest: '../beeboat-plus',
                 })
                 cptoAll.closeBundle()
