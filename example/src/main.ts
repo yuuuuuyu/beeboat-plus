@@ -1,16 +1,15 @@
 import App from './App.vue'
 import ElementPlus from 'element-plus'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-import { BTPApplication } from '@beeboat/core'
-import * as components from '@beeboat/components'
 import DynamicView from './views/layout/bt-view.vue'
 
 import 'element-plus/dist/index.css'
 import './styles/index.scss'
-// 快速调试样式
-import '../../packages/beeboat-theme/src/index.scss'
-// build后的css
-// import 'beeboat-plus/theme-chalk/es/index.css'
+
+// 实时调试/配合vite的alias
+import { BTPApplication } from '@beeboat/core'
+import * as components from '@beeboat/components'
+import '@beeboat/beeboat-theme/styles'
 
 import RouteHandler from './hooks/route-handler'
 import {
@@ -56,6 +55,7 @@ function initApp() {
             ])
             await application.init()
             application.mount()
+            // 注册@beeboat/components组件，或者在componentKit注册
             Object.entries(components).forEach(([name, component]) => {
                 application.$app.component(name, component)
             })

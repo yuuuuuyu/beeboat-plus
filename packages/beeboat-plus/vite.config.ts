@@ -3,7 +3,6 @@ import baseConfig from '../../vite.config'
 import dts from 'vite-plugin-dts'
 
 import VitePluginCleaned from 'vite-plugin-cleaned'
-// import VitePluginCleaned from './plugins/index'
 
 export default defineConfig({
     build: {
