@@ -9,7 +9,6 @@ import VitePluginCopyto from 'vite-plugin-copyto'
 export default defineConfig({
     build: {
         ...baseConfig.build,
-        cssCodeSplit: true,
         lib: {
             entry: ['src/index.ts', 'src/index.scss'], // scss入口：合并一个文件
             name: 'beeboat_theme',
