@@ -35,7 +35,7 @@
     "dependencies": {
         "@beeboat/beeboat-theme": "^1.0.9",
         "@beeboat/components": "^1.0.14",
-        "@beeboat/core": "^1.0.6",
+        "@beeboat/core": "^1.0.8",
         "@beeboat/directives": "^1.0.2",
         "@ctrl/tinycolor": "^3.4.1",
         "axios": "^0.26.1",

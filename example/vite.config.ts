@@ -12,6 +12,11 @@ const pathResolve = (dir: string): string => {
 const alias: Record<string, string> = {
     '@': pathResolve('src'),
     '/@': pathResolve('src'),
+    // 用于实时调试
+    '@beeboat/core': pathResolve('../packages/core/index.ts'),
+    '@beeboat/beeboat-theme/styles': pathResolve('../packages/beeboat-theme/src/index.scss'),
+    '@beeboat/beeboat-theme': pathResolve('../packages/beeboat-theme/src/index.ts'),
+    '@beeboat/components': pathResolve('../packages/components/src/index.ts'),
 }
 
 /*
