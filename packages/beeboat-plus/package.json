@@ -1,6 +1,6 @@
 {
     "name": "beeboat-plus",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "",
     "main": "./lib",
     "module": "./es",
@@ -52,5 +52,8 @@
     "peerDependencies": {
         "element-plus": "^2.7.7",
         "vue": "^3.3.4"
+    },
+    "devDependencies": {
+        "vite-plugin-cleaned": "^1.0.29"
     }
 }

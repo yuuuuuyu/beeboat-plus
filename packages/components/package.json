@@ -29,7 +29,7 @@
     },
     "devDependencies": {
         "shelljs": "^0.8.5",
-        "vite-plugin-cleaned": "^1.0.28",
+        "vite-plugin-cleaned": "^1.0.29",
         "vite-plugin-copyto": "^1.0.19"
     }
 }

@@ -21,7 +21,7 @@
     "author": "于智勇｜15684187702@163.com",
     "license": "ISC",
     "devDependencies": {
-        "vite-plugin-cleaned": "^1.0.28",
+        "vite-plugin-cleaned": "^1.0.29",
         "vite-plugin-copyto": "^1.0.19"
     }
 }

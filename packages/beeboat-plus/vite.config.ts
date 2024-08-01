@@ -3,6 +3,7 @@ import baseConfig from '../../vite.config'
 import dts from 'vite-plugin-dts'
 
 import VitePluginCleaned from 'vite-plugin-cleaned'
+// import VitePluginCleaned from './plugins/index'
 
 export default defineConfig({
     build: {
@@ -29,7 +30,7 @@ export default defineConfig({
     },
     plugins: [
         ...baseConfig.plugins,
-        VitePluginCleaned({ folder: ['es', 'lib', 'theme-chalk', 'types', 'utils'] }),
+        VitePluginCleaned({ folder: ['es', 'lib', 'theme-chalk', 'aa'] }),
         dts({
             entryRoot: './',
             outputDir: ['es', 'lib'],
