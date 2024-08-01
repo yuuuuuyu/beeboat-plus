@@ -31,6 +31,6 @@
         "strict": true, // 是否启动严格模式
         "skipLibCheck": true // 跳过类库检测
     },
-    "exclude": ["node_modules", "**/__tests__", "dist"],
+    "exclude": ["node_modules", "**/__tests__", "dist", "es", "lib"], // 排除掉不需要生成dts的文件夹
     "include": ["**/*", "**/*.ts", "**/*.d.ts", "**/*.tsx", "**/*.vue"]
 }
