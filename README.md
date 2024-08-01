@@ -70,4 +70,4 @@ pnpm dev
 
 ### 子包构建
 
-    子包构建发布后，在主包中更新版本号
+    子包构建发布后，在主包中更新版本号，例如: 在beeboat-plus中`pnpm link @beeboat/core`
