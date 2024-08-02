@@ -38,7 +38,7 @@ export default {
 </script>
 <script setup lang="ts">
 import { getCurrentInstance } from 'vue'
-import { BTPUtils } from '@beeboat/core/index'
+import { BTPUtils } from '@beeboat/core'
 
 const props = defineProps({
     dialogMode: {
