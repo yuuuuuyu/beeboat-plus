@@ -119,6 +119,7 @@ const {
     sceneSearch,
     sceneSave,
     sceneUpdate,
+    getAdvQueryParam,
 } = useAdvSearchbar(props, emits, state)
 
 initAdvSearchbar()
@@ -130,6 +131,7 @@ const onSearchClick = () => {
     if (state.isExposePanelExpanded) {
         state.isExposePanelExpanded = !state.isExposePanelExpanded
     }
+    emits('search', getAdvQueryParam())
 }
 
 /**

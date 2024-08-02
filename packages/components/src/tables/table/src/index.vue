@@ -137,6 +137,12 @@
         ></BtpPagination>
     </div>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpTable',
+    btpInject: true,
+}
+</script>
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from 'vue'
 import { UseElementConfig } from '@beeboat/core'

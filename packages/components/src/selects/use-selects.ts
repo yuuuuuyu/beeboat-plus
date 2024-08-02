@@ -21,6 +21,14 @@ export const useSelects = (state: any, props) => {
                 })
                 state.options = res.data
             })
+        } else if (props.propEvents?.loadTreeData) {
+            props.propEvents.loadTreeData({}).then(res => {
+                res.data.forEach((item: any) => {
+                    item.label = item[props.props.label]
+                    item.value = item[props.props.value]
+                })
+                state.options = res.data
+            })
         }
     }
     return { loadOptionData }

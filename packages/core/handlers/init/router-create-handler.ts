@@ -83,10 +83,6 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
         return new Promise(resolve => {
             router.beforeEach(async (to, _from, next) => {
                 this.nprogress.start()
-                if (this.isWhiteUrl(to.path) || to.meta?.dynamicLoad == false) {
-                    next()
-                    return
-                }
                 if (this.getApp().getToken()) {
                     if (!this.getCacheManager().getUserId()) {
                         //重新加载用户、菜单数据
@@ -94,6 +90,10 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
                         //进行路由菜单权限处理
                         this.loadRouteData(router, routes)
                     }
+                    next()
+                    return
+                }
+                if (this.isWhiteUrl(to.path) || to.meta?.dynamicLoad == false) {
                     next()
                     return
                 }
@@ -123,7 +123,7 @@ export default class BTPRouterCreateHandler extends BTPBaseInitHandler {
      * @returns 是否白名单地址
      */
     isWhiteUrl(path) {
-        return this.getApp().getEnv('VITE_WHITELIST').indexOf(path) !== -1
+        return this.getApp().getEnv('VITE_WHITELIST')?.includes(path)
     }
 
     /**

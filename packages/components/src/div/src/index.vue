@@ -15,6 +15,12 @@
         </slot>
     </div>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpDiv',
+    btpInject: true,
+}
+</script>
 <script lang="ts" setup>
 defineProps({
     /**

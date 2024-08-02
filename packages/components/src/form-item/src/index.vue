@@ -16,6 +16,12 @@
         </template>
     </el-form-item>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpFormItem',
+    btpInject: true,
+}
+</script>
 <script lang="ts" setup>
 defineProps({
     /**

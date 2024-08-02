@@ -15,6 +15,12 @@
         </slot>
     </el-tab-pane>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpTabPane',
+    btpInject: true,
+}
+</script>
 <script lang="ts" setup>
 defineProps({
     /**

@@ -34,6 +34,12 @@
         </template>
     </el-dialog>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpDialog',
+    btpInject: true,
+}
+</script>
 <script setup lang="ts">
 defineProps({
     /**

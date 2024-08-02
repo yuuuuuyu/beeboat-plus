@@ -95,6 +95,12 @@
         </div>
     </div>
 </template>
+<script lang="ts">
+export default {
+    name: 'BtpTree',
+    btpInject: true,
+}
+</script>
 <script lang="ts" setup>
 import { ref, reactive, watch, useAttrs, Ref } from 'vue'
 import { useSelects } from '../../use-selects'
@@ -176,6 +182,13 @@ const props = defineProps({
         default() {
             return { label: 'name', value: 'id', children: 'children' }
         },
+    },
+    /**
+     * @description
+     */
+    propEvents: {
+        type: Object,
+        default: {},
     },
     /**
      * @description 视图动态配置
