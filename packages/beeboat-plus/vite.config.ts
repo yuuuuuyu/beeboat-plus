@@ -29,7 +29,7 @@ export default defineConfig({
     },
     plugins: [
         ...baseConfig.plugins,
-        VitePluginCleaned({ folder: ['es', 'lib', 'theme-chalk', 'aa'] }),
+        VitePluginCleaned({ folder: ['es', 'lib', 'theme-chalk'] }),
         dts({
             entryRoot: './',
             outputDir: ['es', 'lib'],

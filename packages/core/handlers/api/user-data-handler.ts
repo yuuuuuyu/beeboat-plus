@@ -18,8 +18,9 @@ export default class BTPUserDataHandler extends BTPBaseApiHandler {
             const data = await this.getApp().$http.post(this.getEnv('VITE_GLOBAL_USERDATA_API'), {
                 t: Math.random() * 1000 + 1,
             })
-
-            this.getCacheManager().setToken(data.data.userToken)
+            if (data?.data?.userToken) {
+                this.getCacheManager().setToken(data.data.userToken)
+            }
         }
     }
 }
