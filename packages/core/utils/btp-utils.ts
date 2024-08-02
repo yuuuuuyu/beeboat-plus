@@ -44,6 +44,13 @@ export default class BTPUtils {
     }
 
     /**
+     * @description 获取Http请求对象
+     */
+    static getHttp() {
+        return this.getApp().getHttp()
+    }
+
+    /**
      * 显示消息<如果指定了options,则会忽略message和type参数>
      * @param message 消息文本
      * @param type 消息类型

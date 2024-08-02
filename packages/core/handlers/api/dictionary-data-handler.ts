@@ -22,7 +22,9 @@ export default class BTPDictDataHandler extends BTPBaseApiHandler {
             const data = await this.getApp().$http.post(this.getEnv('VITE_GLOBAL_DICT_API'), {
                 t: Math.random() * 1000 + 1,
             })
-            data && this.getCacheManager().setDictMap(this.formatDictData(data.data || []))
+            if (data?.data) {
+                data && this.getCacheManager().setDictMap(this.formatDictData(data.data || []))
+            }
         }
     }
 
