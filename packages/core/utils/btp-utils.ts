@@ -1,6 +1,14 @@
 import { v4 as uuidv4 } from 'uuid'
 import { BTPApplication } from '../app'
 import BTPWebsocketObserver from './websocket-observer'
+import BTPAppMessageBoxManager from '../hook/global-message-manager'
+import type {
+    ElMessageBoxOptions,
+    MessageBoxData,
+    MessageParams,
+    NotificationHandle,
+} from 'element-plus'
+import type { AppContext } from 'vue'
 
 export default class BTPUtils {
     /**
@@ -39,7 +47,7 @@ export default class BTPUtils {
      * @description 获取消息弹框管理对象
      * @returns 消息弹框管理对象
      */
-    static getMessageBoxManager() {
+    static getMessageCtrl(): BTPAppMessageBoxManager {
         return this.getApp().getMessageBoxManager()
     }
 
@@ -50,15 +58,33 @@ export default class BTPUtils {
         return this.getApp().getHttp()
     }
 
+    // *************消息相关方法*************
     /**
-     * 显示消息<如果指定了options,则会忽略message和type参数>
-     * @param message 消息文本
-     * @param type 消息类型
-     * @param options 详细参数
+     * ElMessage同款options配置
+     * @param options
+     * @param appContext
      */
-    static message(message: any, type: any, options = null as any): void {
-        this.getMessageBoxManager().message(message, type, options)
+    static message(options?: MessageParams, appContext?: null | AppContext): void {
+        this.getMessageCtrl().message(options, appContext)
     }
+    /**
+     * ElMessageBox同款options配置
+     * @param options
+     * @returns
+     */
+    static messageBox(options = null as any): Promise<MessageBoxData> | void {
+        return this.getMessageCtrl().messageBox(options)
+    }
+    /**
+     * ElNotification同款配置
+     * @param options
+     * @returns
+     */
+    static notification(options = null as any): NotificationHandle | void {
+        return this.getMessageCtrl().notification(options) || void 0
+    }
+    // *************消息相关方法*************
+
     /**
      * @description 创建一个新的uuidv4
      * @returns uuid
