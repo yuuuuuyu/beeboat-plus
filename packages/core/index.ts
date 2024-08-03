@@ -34,7 +34,9 @@ import BTPAppCacheManager from './cache/app-cache-manager'
 import BTPLogicExecutor from './logics/logic-executor'
 
 import BTPUtils from './utils/btp-utils'
+import Function2Class from './hook/mount-function2class'
 import { UseElementConfig } from './utils/use-element-config'
+
 import {
     withInstall,
     withInstallFunction,
@@ -67,6 +69,7 @@ import {
     isNullOrUnDef,
 } from './utils/is'
 export {
+    Function2Class,
     BTPApplication,
     BTPBaseApplication,
     BTPAppCacheManager,

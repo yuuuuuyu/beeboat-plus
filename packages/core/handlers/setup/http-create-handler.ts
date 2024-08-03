@@ -94,7 +94,10 @@ export default class BTPHttpCreateHandler extends BTPBaseSetupHandler {
                     return
                 }
                 if (this.isEnableNotice(data)) {
-                    BTPUtils.message(data.msg || data.stackMsg, 'error')
+                    BTPUtils.message({
+                        message: data.msg || data.stackMsg,
+                        type: 'error',
+                    })
                 }
                 return Promise.reject({
                     ...response,
