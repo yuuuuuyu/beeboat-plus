@@ -1,6 +1,6 @@
 {
     "name": "beeboat-plus",
-    "version": "0.1.2",
+    "version": "0.1.7",
     "description": "",
     "main": "./lib",
     "module": "./es",
@@ -34,7 +34,7 @@
     "author": "于智勇｜15684187702@163.com",
     "dependencies": {
         "@beeboat/beeboat-theme": "^1.0.9",
-        "@beeboat/components": "^1.0.14",
+        "@beeboat/components": "^1.0.15",
         "@beeboat/core": "^1.0.8",
         "@beeboat/directives": "^1.0.2",
         "@ctrl/tinycolor": "^3.4.1",
@@ -47,7 +47,8 @@
         "uuid": "^10.0.0",
         "vue": "^3.4.33",
         "vue-cookies": "^1.8.2",
-        "vue-router": "^4.0.0"
+        "vue-router": "^4.0.0",
+        "resize-observer": "1.0.4"
     },
     "peerDependencies": {
         "element-plus": "^2.7.7",
