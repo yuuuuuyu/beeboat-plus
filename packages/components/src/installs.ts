@@ -8,6 +8,7 @@ import BtpForm from './form'
 import BtpFormItem from './form-item'
 import BtpSwitch from './switch'
 import BtpResizer from './resizer'
+import BtpParseView from './parse-view'
 import { BtpDatePicker, BtpTimePicker, BtpTimeSelect } from './datetimes'
 import { BtpTabPane, BtpTabs, BtpTabsAnchor } from './tabs'
 import { BtpPagination, BtpAdvSearchbar, BtpTable, BtpTableV2 } from './tables'
@@ -60,4 +61,5 @@ export default [
     BtpSelect,
     BtpTree,
     BtpTreeSelect,
+    BtpParseView,
 ]

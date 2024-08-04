@@ -1,6 +1,6 @@
 {
     "name": "@beeboat/components",
-    "version": "1.0.14",
+    "version": "1.0.15",
     "description": "beeboat components library",
     "main": "dist/lib",
     "module": "dist/es",
@@ -25,7 +25,8 @@
     "license": "ISC",
     "dependencies": {
         "@beeboat/core": "^1.0.6",
-        "async-validator": "^4.2.5"
+        "async-validator": "^4.2.5",
+        "resize-observer": "1.0.4"
     },
     "devDependencies": {
         "shelljs": "^0.8.5",
