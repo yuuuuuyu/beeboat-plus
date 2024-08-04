@@ -25,6 +25,7 @@ export default defineConfig({
                     '@beeboat/core',
                     '@beeboat/components',
                     '@beeboat/directives',
+                    '@beeboat/beeboat-theme',
                     'resize-observer',
                     'async-validator',
                     '@ctrl/tinycolor',
