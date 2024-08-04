@@ -1,18 +1,11 @@
 {
     "name": "@beeboat/core",
-    "version": "1.0.9",
+    "version": "1.0.11",
     "description": "beeboat core library",
-    "main": "./dist/lib",
-    "module": "./dist/es",
-    "types": "./dist/types/index.d.ts",
+    "main": "dist/lib",
+    "module": "dist/es",
+    "types": "dist/types/index.d.ts",
     "type": "module",
-    "exports": {
-        ".": {
-            "import": "./dist/es",
-            "require": "./dist/lib",
-            "types": "./dist/types/index.d.ts"
-        }
-    },
     "files": [
         "dist"
     ],

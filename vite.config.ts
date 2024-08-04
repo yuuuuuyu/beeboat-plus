@@ -28,6 +28,7 @@ export default defineConfig({
                     'resize-observer',
                     'async-validator',
                     '@ctrl/tinycolor',
+                    'jsencrypt',
                 ]
                 if (externals.includes(id)) {
                     return true

@@ -30,6 +30,9 @@ import {
 // 缓存信息
 import BTPAppCacheManager from './cache/app-cache-manager'
 
+// 消息管理器
+import BTPAppMessageBoxManager from './hook/global-message-manager'
+
 // 逻辑事件
 import BTPLogicExecutor from './logics/logic-executor'
 
@@ -73,6 +76,7 @@ export {
     BTPApplication,
     BTPBaseApplication,
     BTPAppCacheManager,
+    BTPAppMessageBoxManager,
     BTPViewContext,
     BTPBaseViewContext,
     BTPGlobalAppManager,

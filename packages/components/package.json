@@ -1,6 +1,6 @@
 {
     "name": "@beeboat/components",
-    "version": "1.0.15",
+    "version": "1.0.17",
     "description": "beeboat components library",
     "main": "dist/lib",
     "module": "dist/es",
@@ -24,7 +24,7 @@
     "author": "于智勇｜15684187702@163.com",
     "license": "ISC",
     "dependencies": {
-        "@beeboat/core": "^1.0.6",
+        "@beeboat/core": "^1.0.11",
         "async-validator": "^4.2.5",
         "resize-observer": "1.0.4"
     },
