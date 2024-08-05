@@ -102,7 +102,12 @@ export default class BTPHttpCreateHandler extends BTPBaseSetupHandler {
                     // 拦截非0响应
                     // 登录过期
                     if (this.isAuthExpired(data)) {
+                        BTPUtils.message({
+                            message: data.msg || data.stackMsg,
+                            type: 'warning',
+                        })
                         this.getApp().logout()
+
                         return this.reject(
                             response,
                             data.msg ?? data.stackMsg ?? (response.statusText || '网络异常'),
