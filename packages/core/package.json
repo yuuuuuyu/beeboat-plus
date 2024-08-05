@@ -1,6 +1,6 @@
 {
     "name": "@beeboat/core",
-    "version": "1.0.13",
+    "version": "1.0.14",
     "description": "beeboat core library",
     "main": "./dist/lib",
     "module": "./dist/es",

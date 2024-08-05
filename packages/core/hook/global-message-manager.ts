@@ -8,6 +8,7 @@ import type {
 } from 'element-plus'
 import type { AppContext, VNode } from 'vue'
 import { BtpMessageBoxOptions } from './mount-function2class'
+
 /**
  * 全局消息弹窗管理对象
  */

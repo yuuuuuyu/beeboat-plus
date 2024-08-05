@@ -15,6 +15,11 @@ MessageTypes.forEach((type: string) => {
         return BTPUtils.getMessageCtrl().message({ type: type as messageType, message: message })
     }
 
+    /**
+     * 为Notification挂载['success', 'info', 'warning', 'error']方法，提供简便方式
+     * @param options
+     * @returns
+     */
     BTPUtils.notification[type] = (options: string | object) => {
         options =
             (!isObject(options) && {

@@ -19,15 +19,22 @@ export default class BTPHttpCreateHandler extends BTPBaseSetupHandler {
     protected pending = [] as any
 
     /**
-     * 是否开启错误通知
+     * 是否开启全局错误通知
      */
-    protected enabledNotification = false
+    protected enabledGlobalIntercept = true
 
     handle(params: any = {}) {
         this.$http = this.createAxios(params)
         this.initReqInterceptors(this.$http)
         this.initRespInterceptors(this.$http)
         this.getApp().setHttp(this.$http)
+    }
+
+    /**
+     * 切换全局响应拦截开关
+     */
+    toggleGlobalIntercept(): void {
+        this.enabledGlobalIntercept = !this.enabledGlobalIntercept
     }
 
     /**
@@ -82,30 +89,47 @@ export default class BTPHttpCreateHandler extends BTPBaseSetupHandler {
         axiosInstance.interceptors.response.use(
             response => {
                 const { data, config } = response
+                try {
+                    //文件请求,直接返回原始响应数据
+                    if (config?.responseType == 'blob' || config?.responseType == 'arraybuffer') {
+                        return response
+                    }
+                    const code = data.code.toString()
 
-                if (config?.responseType == 'blob' || config?.responseType == 'arraybuffer') {
-                    return response
+                    if (code === '0') {
+                        return data
+                    }
+                    // 拦截非0响应
+                    // 登录过期
+                    if (this.isAuthExpired(data)) {
+                        this.getApp().logout()
+                        return this.reject(
+                            response,
+                            data.msg ?? data.stackMsg ?? (response.statusText || '网络异常'),
+                        )
+                    }
+                    // 如果未启用了全局拦截则抛出异常由用户自己catch处理
+                    if (this.enabledGlobalIntercept) {
+                        // 启用全局拦截由beeboat-plus提供拦截
+                        BTPUtils.message({
+                            message: data.msg || data.stackMsg,
+                            type: 'error',
+                        })
+                        return this.reject(
+                            response,
+                            data.msg ?? data.stackMsg ?? (response.statusText || '网络异常'),
+                        )
+                    }
+                    return this.reject(
+                        response,
+                        data.msg ?? data.stackMsg ?? (response.statusText || '网络异常'),
+                    )
+                } catch (error) {
+                    return Promise.reject(error)
                 }
-                if (data.code == 0) {
-                    return data
-                }
-                if (this.isAuthExpired(data)) {
-                    this.getApp().logout()
-                    return
-                }
-                if (this.isEnableNotice(data)) {
-                    BTPUtils.message({
-                        message: data.msg || data.stackMsg,
-                        type: 'error',
-                    })
-                }
-                return Promise.reject({
-                    ...response,
-                    msg: data.msg ?? data.stackMsg ?? (response.statusText || '网络异常'),
-                })
             },
             error => {
-                console.log(error)
+                return this.reject(error, error.statusText || '网络异常')
             },
         )
     }
@@ -114,19 +138,22 @@ export default class BTPHttpCreateHandler extends BTPBaseSetupHandler {
      * 判断是否过期登录
      * @param result 响应
      * @returns 是否过期登录
-     * '用户未登录' = 130001,'操作未授权' = 130002,'数据未授权' = 130003,'用户登录过期' = 13004,'token' = 13005,
+     * '用户未登录' = 130001,'操作未授权' = 130002,'数据未授权' = 130003,'用户登录过期' = 130004,'token' = 130005,
      */
     isAuthExpired(result): boolean {
         return ['130001', '130002', '130003', '130004', '130005'].includes(`${result.code}`)
     }
 
     /**
-     * 判断是否开启全局异常提示
-     * @param result 响应
-     * @returns 是否开启全局异常提示
+     * 统一拦截拒绝
+     * @param response
+     * @param message
+     * @returns
      */
-    isEnableNotice(result): boolean {
-        console.log(result)
-        return true
+    reject(response: any, message: string): Promise<any> {
+        return Promise.reject({
+            ...response,
+            msg: message,
+        })
     }
 }
