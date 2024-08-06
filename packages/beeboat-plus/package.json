@@ -1,6 +1,6 @@
 {
     "name": "beeboat-plus",
-    "version": "0.0.91",
+    "version": "0.0.95",
     "private": false,
     "description": "",
     "main": "lib/index.js",
