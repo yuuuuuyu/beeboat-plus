@@ -121,7 +121,7 @@ export default class BTPViewContext extends BTPBaseViewContext {
                     const action = item.actions[eventName]
                     if (action.propEvent) {
                         item.props.propEvents[eventName] = (p1, p2, p3, p4, p5, p6, p7) => {
-                            const executor = new BTPLogicExecutor(
+                            const executor = this.createExecutor(
                                 viewContext,
                                 item,
                                 action,
@@ -132,7 +132,7 @@ export default class BTPViewContext extends BTPBaseViewContext {
                         }
                     } else {
                         item.events[eventName] = (p1, p2, p3, p4, p5, p6, p7) => {
-                            const executor = new BTPLogicExecutor(
+                            const executor = this.createExecutor(
                                 viewContext,
                                 item,
                                 action,
@@ -148,6 +148,10 @@ export default class BTPViewContext extends BTPBaseViewContext {
                 this.buildEvents(item.children)
             }
         })
+    }
+
+    createExecutor(viewContext, item, action, eventName, params) {
+        return new BTPLogicExecutor(viewContext, item, action, eventName, params)
     }
 
     executeAction(executor) {

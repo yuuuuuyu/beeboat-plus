@@ -25,4 +25,18 @@ export default class BTPComponentContext {
         const method = BTPUtils.getCacheManager().getMethod(methodId)
         return BTPUtils.getHttp().post(method.url, params)
     }
+
+    /**
+     * @description 进行页面跳转
+     * @param url 地址
+     * @param mode 模式  url 打开浏览器分页  route 进行路由跳转
+     * @param queryParams 路由跳转参数
+     */
+    redirect(url, mode = 'url', queryParams = {}) {
+        if (mode == 'url') {
+            window.open(url, '_blank')
+        } else if (mode == 'route') {
+            BTPUtils.getRouter().push({ path: url, query: queryParams })
+        }
+    }
 }
