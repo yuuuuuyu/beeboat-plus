@@ -81,6 +81,7 @@
                                                 :style="component.styles"
                                                 :bt-view-context="btViewContext"
                                                 :bt-config="component"
+                                                :bt-parent-scope="[node, data]"
                                                 v-on="component.events"
                                                 v-bind="component.props"
                                             />
