@@ -8,7 +8,7 @@
         ></component>
     </template>
     <template v-else>
-        <template v-if="column.editProps?.enable && manager.editor.isEditing(scope.row)">
+        <template v-if="column.editProps?.enable == true && manager.editor.isEditing(scope.row)">
             <ColumnEditor :column="column" :row="scope.row" :manager="manager"></ColumnEditor>
         </template>
         <template v-else>

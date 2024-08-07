@@ -1,7 +1,18 @@
 <template>
     <template v-if="column.children && column.children.length > 0">
-        <template v-for="item in column.children" :key="item.id">
-            <el-button>{{ item.name }}</el-button>
+        <template v-for="component in column.children" :key="component.id">
+            <template v-if="btViewContext">
+                <component
+                    ref="formRef"
+                    :is="btViewContext.render(component)"
+                    :style="component.styles"
+                    :bt-view-context="btViewContext"
+                    :bt-config="component"
+                    :bt-parent-scope="[scope.row, scope]"
+                    v-on="component.events"
+                    v-bind="component.props"
+                ></component>
+            </template>
         </template>
     </template>
 </template>
@@ -24,6 +35,13 @@ defineProps({
     manager: {
         type: Object,
         default: null,
+    },
+    /**
+     * @description 视图动态配置
+     */
+    btViewContext: {
+        type: Object,
+        default: undefined,
     },
 })
 </script>

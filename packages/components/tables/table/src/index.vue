@@ -73,6 +73,7 @@
                                                 :column="item"
                                                 :scope="scope"
                                                 :manager="manager"
+                                                :bt-view-context="btViewContext"
                                             ></ColumnOperator>
                                         </template>
                                         <template
@@ -100,22 +101,6 @@
                                     "
                                 >
                                 </ColumnSetting>
-                            </template>
-                            <template #default="scope">
-                                <el-button
-                                    type="primary"
-                                    :link="true"
-                                    @click.stop="manager.editor.add(scope.$index)"
-                                >
-                                    添加
-                                </el-button>
-                                <el-button
-                                    type="danger"
-                                    :link="true"
-                                    @click.stop="manager.editor.delete(scope.row)"
-                                >
-                                    删除
-                                </el-button>
                             </template>
                         </el-table-column>
                     </slot>

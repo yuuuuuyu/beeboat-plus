@@ -145,6 +145,7 @@ export default class BTPViewContext extends BTPBaseViewContext {
 
         componentList.forEach(item => {
             item.events = {}
+            item.props = item.props || {}
             item.props.propEvents = {}
             if (item.actions) {
                 Object.keys(item.actions).forEach(eventName => {
