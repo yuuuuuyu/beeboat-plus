@@ -2,6 +2,14 @@ import BTPUtils from '../utils/btp-utils'
 
 export default class BTPComponentContext {
     /**
+     * @description 获取路由对象
+     * @returns 路由对象
+     */
+    getRouter() {
+        return BTPUtils.getRouter()
+    }
+
+    /**
      * @description 从params获取路由参数
      * @param paramName 参数名称
      * @returns 路由params参数值
@@ -34,7 +42,14 @@ export default class BTPComponentContext {
      */
     redirect(url, mode = 'url', queryParams = {}) {
         if (mode == 'url') {
-            window.open(url, '_blank')
+            if (url.startsWith('http')) {
+                window.open(url, '_blank')
+            } else {
+                const routeUrl = this.getRouter().resolve({
+                    path: url,
+                })
+                window.open(routeUrl.href, '_blank')
+            }
         } else if (mode == 'route') {
             BTPUtils.getRouter().push({ path: url, query: queryParams })
         }
