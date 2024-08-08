@@ -5,6 +5,7 @@
     "description": "beeboat-plus repository",
     "scripts": {
         "build": "pnpm run --filter \"./packages/beeboat-plus\" build && pnpm --filter \"./packages/*\" --filter \"!./packages/beeboat-plus\" build",
+        "publish:private": "cd \"./packages/beeboat-plus\" && npm version patch && npm publish --registry=http://localhost:4873/",
         "publish:plus": "cd \"./packages/beeboat-plus\" && npm version patch && npm publish --registry=https://nexus.hive-df.com/repository/bt-npm-hosted/",
         "publish:core": "cd \"./packages/core\" && npm version patch && npm publish --registry=https://nexus.hive-df.com/repository/bt-npm-hosted/",
         "publish:directives": "cd \"./packages/directives\" && npm version patch && npm publish --registry=https://nexus.hive-df.com/repository/bt-npm-hosted/",

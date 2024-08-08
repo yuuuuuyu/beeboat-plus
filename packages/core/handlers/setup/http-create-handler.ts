@@ -1,4 +1,4 @@
-import Axios, { AxiosInstance } from 'axios'
+import Axios, { AxiosInstance } from '@beeboat/axios'
 import { BTPBaseSetupHandler } from '../base'
 import BTPUtils from '../../utils/btp-utils'
 
