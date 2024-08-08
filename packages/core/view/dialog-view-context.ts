@@ -1,3 +1,4 @@
+import { nextTick } from 'vue'
 import BTPViewContext from './view-context'
 
 export default class BTPDialogViewContext extends BTPViewContext {
@@ -30,7 +31,9 @@ export default class BTPDialogViewContext extends BTPViewContext {
         this.viewModel.dialog.title = title
         this.viewModel.dialog.visible = true
         if (this.viewModel.components[0].events['onOpenDialog']) {
-            this.viewModel.components[0].events['onOpenDialog'](params)
+            nextTick(() => {
+                this.viewModel.components[0].events['onOpenDialog'](params)
+            })
         }
     }
 
