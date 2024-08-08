@@ -216,7 +216,7 @@ const state = reactive({
     searchText: '',
 })
 
-const { loadOptionData } = useSelects(state, props)
+const { loadOptionData } = useSelects(state, props, 'loadTreeData')
 
 watch(
     () => props.dictId,
