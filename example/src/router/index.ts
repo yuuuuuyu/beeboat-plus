@@ -63,7 +63,7 @@ export const routes = [
                     title: '动态数据页《模块表格》',
                     hidden: false,
                     viewId: 'ModuleTablePage',
-                    viewModelId: 'ae96e0352e73edbc812fe26553278d7c',
+                    viewModelId: '5119e77e64f4e7f96c489a2a5b5f5015',
                 },
             },
             {

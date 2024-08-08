@@ -17,7 +17,7 @@
             <slot name="header">
                 <div class="btp-card-header">
                     <span class="btp-card-header--title">{{ $attrs.header }}</span>
-                    <template v-if="btConfig?.toolbar?.children?.lengt > 0">
+                    <template v-if="btConfig?.toolbar?.children?.length > 0">
                         <span class="btp-card-header--toolbar">
                             <template
                                 v-for="component in btConfig.toolbar.children"

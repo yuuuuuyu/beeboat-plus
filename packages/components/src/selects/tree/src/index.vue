@@ -81,8 +81,9 @@
                                                 :style="component.styles"
                                                 :bt-view-context="btViewContext"
                                                 :bt-config="component"
-                                                v-bind="component.props"
+                                                :bt-parent-scope="[node, data]"
                                                 v-on="component.events"
+                                                v-bind="component.props"
                                             />
                                         </template>
                                     </template>
@@ -215,7 +216,7 @@ const state = reactive({
     searchText: '',
 })
 
-const { loadOptionData } = useSelects(state, props)
+const { loadOptionData } = useSelects(state, props, 'loadTreeData')
 
 watch(
     () => props.dictId,

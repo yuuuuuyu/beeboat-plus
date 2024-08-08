@@ -1,6 +1,6 @@
 import { BTPApplication } from '@beeboat/core'
 
-export const useSelects = (state: any, props) => {
+export const useSelects = (state: any, props, eventName) => {
     /**
      * 加载动态选项数据
      */
@@ -21,8 +21,8 @@ export const useSelects = (state: any, props) => {
                 })
                 state.options = res.data
             })
-        } else if (props.propEvents?.loadTreeData) {
-            props.propEvents.loadTreeData({}).then(res => {
+        } else if (props.propEvents && props.propEvents[eventName]) {
+            props.propEvents[eventName]({}).then(res => {
                 res.data.forEach((item: any) => {
                     item.label = item[props.props.label]
                     item.value = item[props.props.value]

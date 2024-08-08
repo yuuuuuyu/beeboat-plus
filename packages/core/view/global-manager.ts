@@ -158,6 +158,12 @@ export default class BTPGlobalAppManager {
             if (element.dockcontent?.children) {
                 datas.push(...this.parseComponentList(element.dockcontent?.children))
             }
+            if (element.footer?.children) {
+                datas.push(...this.parseComponentList(element.footer?.children))
+            }
+            if (element.componentTypeId == '103102') {
+                datas.push(...this.parseComponentList(element.props.columns))
+            }
         })
         return datas
     }

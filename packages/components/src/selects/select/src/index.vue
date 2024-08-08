@@ -57,6 +57,13 @@ const props = defineProps({
         },
     },
     /**
+     * @description 属性事件
+     */
+    propEvents: {
+        type: Object,
+        default: null,
+    },
+    /**
      * @description 视图动态配置
      */
     btConfig: {
@@ -77,7 +84,7 @@ const state = reactive({
     options: [] as any,
 })
 
-const { loadOptionData } = useSelects(state, props)
+const { loadOptionData } = useSelects(state, props, 'loadSelectData')
 
 watch(
     () => props.dictId,
